@@ -1,0 +1,27 @@
+<?php
+
+/* 
+ *  All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ *  To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+?>
+    <h3><?php echo $this->translate('Comments');?></h3>
+    <div>
+        <a rel="async" href="<?php echo $this->baseUrl('/comments/index/save-option/entryid/'.$this->entryId.'/option/disableComments/value/'.($this->disableComments ? 'false': 'true'));?>">
+            <label for="comments_option_disable">
+                <input type="checkbox" id="comments_option_disable" value="1" <?php echo $this->disableComments ? 'checked="checked"': '';?> />
+                <span><?php echo $this->translate('Disable comments for this media'); ?></span>
+            </label>
+        </a>
+    </div>
+    <?php if($this->allowClose):?>
+    <div>
+        <a rel="async" href="<?php echo $this->baseUrl('/comments/index/save-option/entryid/'.$this->entryId.'/option/closeComments/value/'.($this->commentsClosed  ? 'false': 'true'));?>">
+            <label for="comments_option_close">
+                <input type="checkbox" id="comments_option_close" value="1" <?php echo $this->commentsClosed  ? 'checked="checked"': '';?> />
+                <span><?php echo $this->translate('Close discussion (do not allow new comments)');?></span>
+            </label>
+        </a>
+    </div>
+    <?php endif;?>
+<?php

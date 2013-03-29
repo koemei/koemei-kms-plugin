@@ -1,0 +1,31 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+
+
+$this->placeholder('html')->captureStart('SET', 'html');  
+
+
+if(count($this->related))
+{
+    echo $this->partialLoop( 'partials/relatedItem.phtml', 'related', $this->related); 
+}
+else
+{
+    echo $this->translate("No related media for this entry")."...";
+}
+$this->placeholder('html')->captureEnd();
+
+$script = '$("ul#related").removeClass("cursorwait");';
+//$script .= $this->partial('partials/playerSideTabsJs.phtml');
+
+$this->JsonContent(
+    array(
+        'target' => 'ul#related',
+        'content' => $this->placeholder('html')->html,
+        'action' => 'replace',
+    )
+);
+$this->JsonScript($script);

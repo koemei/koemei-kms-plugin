@@ -1,0 +1,76 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+/**
+ * partial to wrap the global search form in the Kms_Interface_Functional_Search_ModifyGlobal interface
+ */
+$links = array();
+
+// loop on the Kms_Interface_Functional_Search_Modify interface
+foreach (Kms_Resource_Config::getModulesForInterface('Kms_Interface_Functional_Search_ModifyGlobal') as $name => $module) {
+    // compose the link text
+    $link['link'] = $this->escape($module->getGlobalLinkText());
+
+    // compose the actions
+    $link['action'] = $this->baseUrl($module->getGlobalSearchAction());
+
+    // compose the default search text
+    $link['defaultText'] = $module->getGlobalDefaultText();
+
+    if (isset($this->partial()->view->activeLink) && $this->partial()->view->activeLink == strtolower($name)) {
+	// mark this link as the active link
+	$link['class'] = 'active_search';
+    }
+
+    $links[$name] = $link;
+}
+
+// add the default link if we have any links at all
+if (!empty($links)) {
+    // if we don't have an acive link indication from the calling view - the default link is active
+    $activeLink = isset($this->partial()->view->activeLink) ? '' : 'active_search';
+    $defaultLink = array('link' => $this->translate('Media'), 'action' => '', 'defaultText' => '', 'class' => 'first ' . $activeLink);
+    $links = array($defaultLink) + $links;
+}
+?>
+<div id="global_search">
+
+<?php // print the search form  ?>
+    <?php echo $this->form; ?>
+    <?php // render the links ?>
+    <div class="search_types wrapper">
+    <?php foreach ($links as $link): ?>
+    	<a href="#" class="search_link <?php echo (isset($link['class']) ? $link['class'] : '') ?>" data-action="<?php echo $link['action'] ?>"><?php echo $link['link'] ?>
+    	    <em class="icon">&nbsp;</em>
+    	</a>
+    <?php endforeach; ?>	
+    </div>
+</div>
+<script>
+    // get this form default action
+    var defaultAction = $("#<?php echo $this->formId ?>").attr('action');
+	
+    // bind the links to the click event
+    $('#' + $("#<?php echo $this->formId ?>").parent().attr('id') + ' a.search_link').each( function(index) {
+	// pass the default action as event data to avoid closure issues
+	$(this).click({action: defaultAction},function(event) {
+	    // get the link action to set the form action
+	    var linkAction = $(this).attr('data-action');
+	    if (!linkAction){
+		// this is the default event - use the original form action
+		linkAction = event.data.action;
+	    };
+	    $("#<?php echo $this->formId ?>").attr('action',linkAction);
+
+	    // set the link active class
+	    $(this).addClass('active_search').siblings().removeClass('active_search');
+	    $(this).addClass('active_search');
+	});
+    });
+
+</script>
+
+<?php 

@@ -1,0 +1,38 @@
+/* email notifications management */
+#manage-notifications { width: 100%; }
+#manage-notifications th { font-size: 14px; font-weight: bold; border-bottom: 1px solid #ccc; }
+#manage-notifications th,
+#manage-notifications td { padding: 10px; vertical-align: middle; }
+
+.subText {
+	width: 200px;
+	height: 50px;
+	border: 3px solid #cccccc;
+	padding: 5px;
+	background-position: bottom right;
+	background-repeat: no-repeat;
+}
+
+.bodyText {
+	width: 300px;
+	height: 50px;
+	border: 3px solid #cccccc;
+	padding: 5px;
+	background-position: bottom right;
+	background-repeat: no-repeat;
+}
+
+.button {
+	width: 78px;	
+}
+
+input[type="submit"] {
+	color:#050;   
+	font: bold 84% 'trebuchet ms',helvetica,sans-serif;   
+	background-color:#fed;   
+	border: 1px solid;   
+	border-color: #696 #363 #363 #696;   
+	filter:progid:DXImageTransform.Microsoft.Gradient   (GradientType=0,StartColorStr='#ffffffff',EndColorStr='#ffeeddaa'); }
+}
+
+

@@ -1,0 +1,50 @@
+<?php
+
+/*
+ *  All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ *  To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+
+$text = $this->translate('To enable "Developer Tools", add the following line to the') .
+        ' <strong>' . $_SERVER['DOCUMENT_ROOT'] . '.htaccess</strong> ' .
+        $this->translate("file") . "<br/><br/><code># SetEnv APPLICATION_ENV development</code><br/><br/>" .
+        $this->translate('Please note that changing the APPLICATION_ENV variable, will enable debugging mode. In this mode, error suppression is turned off, and the error messages are very detailed and revealing. This may represent a security risk; therefore, the APPLICATION_ENV should be set to "production" on all production and live environments, and only updated for debugging or temporary administration purposes!');
+?>
+if($('#dialog')) {
+    $("body").append('<div id="dialog"></div>');
+}
+<?php //echo new Zend_Json_Expr("$('#dialog').text('" . $text . "');"); 
+echo new Zend_Json_Expr("$('#dialog').html('".$text."');") ;
+
+$this->dialogContainer(
+    'dialog', $this->translate('How to enable "Developer Tools"'), 
+    array(
+        'width' => '350px',
+        'autoOpen' => true,
+        'draggable' => false,
+        'modal' => true,
+        'resizable' => false,
+        'title' => $this->translate('How to enable "Developer Tools"'),
+        'closeOnEscape' => true,
+        'close' => new Zend_Json_Expr('function() {
+                $("#dialog").remove();
+            }'),
+        'buttons' => array(
+            $this->translate('Ok') => new Zend_Json_Expr('function() {
+                $(this).dialog(\'close\');
+            }'),
+        ),
+    )
+);
+
+
+$actions = $this->JQuery()->getOnLoadActions();
+
+$this->JQuery()->disable();
+
+foreach ($actions as $action)
+{
+    echo $action;
+}
+        

@@ -1,0 +1,38 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+/**
+ * @ignore
+ */
+
+?>
+<div id="view-content">
+    <div class="requirements-status <?php echo ($this->status) ? 'passed' : 'failed'; ?>">
+	<span class="icon"></span>
+	<?php if ($this->status): ?>
+	    <?php echo $this->translate('You can proceed with the Kaltura MediaSpace').' '.$this->MajorVersion() .' '.$this->translate('setup process.'); ?>
+	<?php else: ?>
+	    <?php echo $this->translate('Some requirements failed. Please fix and refresh the page.'); ?>
+	<?php endif; ?>
+    </div>
+
+    <div id="krequirements">
+	<?php foreach ($this->list as $test => $statusArr): ?>
+            <div class="requirement-<?php echo strtolower($statusArr['status']); ?> cf">
+                <span class="description"><?php echo $statusArr['description']; ?></span>
+                <span class="status"><?php echo $statusArr['status']; ?><span class="icon"></span></span>
+            </div>
+	<?php endforeach; ?>
+    </div>
+
+    <?php if ($this->showNext): ?>
+        <div id="choose-next" class="cf">
+            <div class="explain"><?php echo $this->translate('If you are upgrading from KMS2, KMS3, or KMS4 select "Migrate", otherwise select "Install"'); ?></div>
+    	<div class="buttons">
+    	    <a href="<?php echo $this->baseUrl('install/install'); ?>" class="button"><?php echo $this->translate('Install'); ?></a> <a href="<?php echo $this->baseUrl('install/migrate'); ?>" class="button"><?php echo $this->translate('Migrate'); ?></a>
+    	</div>
+        </div>
+    <?php endif; ?>
+</div>

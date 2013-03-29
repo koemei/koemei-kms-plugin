@@ -1,0 +1,23 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+/**
+ * @ignore
+ */
+
+?>
+<div id="view-content">
+    <p class="doneerror"><?php echo $this->translate('KMS') . $this->MajorVersion() . ' ' . $this->translate('failed to install');?>.</p>
+    <p><?php echo $this->translate('You can try to start installation again');?>: <a href="<?php echo $this->baseUrl('/'); ?>"><?php echo $this->translate('here');?></a>.</p>
+    <p><?php echo $this->translate('If you keep getting installation error contact Kaltura for support');?>. <?php echo $this->translate('Provide all logs under the "logs" directory');?>.</p>
+
+</div>
+<?php if(isset($this->deploymentErrors)):?>
+<div id="deployment-errors">
+<?php foreach($this->deploymentErrors as $error): ?>
+    <div><?php echo $error; ?></div>
+<?php endforeach; ?>
+    <?php endif;?>
+</div>

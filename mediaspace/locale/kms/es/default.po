@@ -1,0 +1,1566 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-04 18:32+0200\n"
+"PO-Revision-Date: 2012-03-04 18:32+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: translate\n"
+"X-Poedit-Basepath: ../../../\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: application\n"
+"X-Poedit-SearchPath-1: modules\n"
+"X-Poedit-SearchPath-2: public\n"
+"X-Poedit-SearchPath-3: themes\n"
+"X-Poedit-SearchPath-4: library\n"
+
+#: application/controllers/InstallController.php:21
+msgid "This instance does not require installation at that time"
+msgstr "Esta instancia no requiere la instalación en ese momento"
+
+#: application/controllers/InstallController.php:27
+msgid "Requirements check"
+msgstr ""
+
+#: application/controllers/InstallController.php:28
+#, fuzzy
+msgid "Installation"
+msgstr "Instalación"
+
+#: application/controllers/InstallController.php:28
+#: application/controllers/InstallController.php:29
+msgid "Done"
+msgstr "Realizado"
+
+#: application/controllers/InstallController.php:29
+#, fuzzy
+msgid "Migration"
+msgstr "Empezar Migración"
+
+#: application/controllers/InstallController.php:64
+#: application/controllers/AdminController.php:746
+msgid "maximum one file expected"
+msgstr "Un máximo de un archivo que se esperaba"
+
+#: application/controllers/KbController.php:48
+msgid "Knowledge base"
+msgstr ""
+
+#: application/controllers/KbController.php:97
+msgid "KMS KB - Interface"
+msgstr ""
+
+#: application/controllers/ErrorController.php:47
+msgid "You have reached the error page"
+msgstr "Has llegado a la página de error"
+
+#: application/controllers/ErrorController.php:61
+#: application/controllers/ErrorController.php:62
+msgid "Page not found"
+msgstr "Página no encontrada"
+
+#: application/controllers/ErrorController.php:63
+msgid "We're sorry, the page you requested cannot be found. Please check the address line or follow the navigation menu."
+msgstr ""
+
+#: application/controllers/ErrorController.php:68
+msgid "Error page"
+msgstr ""
+
+#: application/controllers/EntryController.php:131
+#: application/controllers/EntryController.php:144
+#: application/controllers/EntryController.php:149
+#: application/controllers/EntryController.php:217
+#: application/controllers/EntryController.php:224
+#: application/controllers/EntryController.php:494
+msgid "Save"
+msgstr "Guardar"
+
+#: application/controllers/EntryController.php:203
+#: application/controllers/PlaylistController.php:68
+msgid "Saved"
+msgstr "Guardado"
+
+#: application/controllers/EntryController.php:292
+msgid "The information was saved successfully"
+msgstr "La información se ha guardado correctamente"
+
+#: application/controllers/EntryController.php:372
+msgid "There is no such entry"
+msgstr "No hay tal medio"
+
+#: application/controllers/EntryController.php:444
+#: application/controllers/EntryController.php:468
+#: application/controllers/PlaylistController.php:107
+msgid "Successfully deleted"
+msgstr "Se ha eliminado correctamente"
+
+#: application/controllers/EntryController.php:444
+msgid "items"
+msgstr "Artículos"
+
+#: application/controllers/EntryController.php:522
+msgid "Choose a file to upload"
+msgstr "Elige un archivo para subir"
+
+#: application/controllers/EntryController.php:522
+msgid "Choose another file"
+msgstr "Elige otro archivo"
+
+#: application/controllers/EntryController.php:523
+msgid "Upload Media"
+msgstr "Subir Medio"
+
+#: application/controllers/EntryController.php:523
+msgid "Upload another file"
+msgstr "Subir otro archivo"
+
+#: application/controllers/EntryController.php:538
+msgid "Your presentation has been successfully created. You can now sync keypoints or edit metadata."
+msgstr ""
+
+#: application/controllers/PlaylistController.php:67
+msgid "Playlist successfully updated"
+msgstr "La lista se ha actualizado correctamente"
+
+#: application/controllers/PlaylistController.php:72
+msgid "The playlist could not be updated"
+msgstr "La lista de reproducción no se pudo actualizar"
+
+#: application/controllers/GalleryController.php:133
+#: application/controllers/GalleryController.php:158
+msgid "Category"
+msgstr "Categoría"
+
+#: application/controllers/GalleryController.php:133
+msgid "is restricted"
+msgstr ""
+
+#: application/controllers/GalleryController.php:158
+#: application/controllers/GalleryController.php:183
+msgid "not found"
+msgstr "no se ha encontrado"
+
+#: application/controllers/GalleryController.php:183
+#: application/controllers/GalleryController.php:199
+msgid "Playlist"
+msgstr "Lista de reproducción"
+
+#: application/controllers/GalleryController.php:193
+msgid "Home"
+msgstr "Inicio"
+
+#: application/controllers/GalleryController.php:268
+msgid "Created By"
+msgstr "Creado por"
+
+#: application/controllers/GalleryController.php:303
+msgid "Search"
+msgstr "Búsqueda"
+
+#: application/controllers/GalleryController.php:327
+#: application/controllers/GalleryController.php:328
+msgid "No gallery type specified"
+msgstr "No había especificado tipo de galería"
+
+#: application/controllers/AdminController.php:183
+msgid "Add New User"
+msgstr "Añadir Usuario Nuevo"
+
+#: application/controllers/AdminController.php:222
+msgid "Edit User"
+msgstr "Editar Usuario"
+
+#: application/controllers/AdminController.php:239
+msgid "Are you sure you want to delete"
+msgstr "¿Está seguro que desea eliminar "
+
+#: application/controllers/AdminController.php:239
+msgid "users"
+msgstr "usuarios"
+
+#: application/controllers/AdminController.php:240
+msgid "users were deleted successfully"
+msgstr "usuarios se han eliminado con éxito"
+
+#: application/controllers/AdminController.php:244
+msgid "Are you sure you want to delete the user"
+msgstr "¿Está seguro que desea eliminar el usuario"
+
+#: application/controllers/AdminController.php:245
+msgid "The user"
+msgstr "El usuario"
+
+#: application/controllers/AdminController.php:245
+msgid "was deleted successfully"
+msgstr "se ha eliminado con éxito"
+
+#: application/controllers/AdminController.php:292
+msgid "Passwords do not match"
+msgstr "Las contraseñas no coinciden"
+
+#: application/controllers/AdminController.php:307
+#: application/controllers/AdminController.php:335
+msgid "The User"
+msgstr "El Usuario"
+
+#: application/controllers/AdminController.php:307
+msgid "was added successfully"
+msgstr "se ha añadido con éxito"
+
+#: application/controllers/AdminController.php:316
+msgid "This User ID is taken. Please choose another"
+msgstr "Este nombre de usuario no está disponible. Por favor elije otro"
+
+#: application/controllers/AdminController.php:321
+msgid "User ID must be a string or an email address, no spaces"
+msgstr ""
+
+#: application/controllers/AdminController.php:335
+msgid "was saved successfully"
+msgstr "se ha guardado correctamente"
+
+#: application/controllers/AdminController.php:353
+#: application/controllers/AdminController.php:354
+msgid "User Management"
+msgstr "Gestión de usuarios"
+
+#: application/controllers/AdminController.php:426
+msgid "The config file"
+msgstr "El archivo de configuración"
+
+#: application/controllers/AdminController.php:426
+msgid "is not writable"
+msgstr "no esta escribible"
+
+#: application/controllers/AdminController.php:426
+msgid "Save is disabled"
+msgstr "La opción de guardar está desactivada"
+
+#: application/controllers/AdminController.php:433
+#: application/controllers/AdminController.php:434
+#: application/controllers/AdminController.php:682
+msgid "Configuration Management"
+msgstr "Gestión de la Configuración"
+
+#: application/controllers/AdminController.php:451
+#: application/controllers/AdminController.php:684
+#, fuzzy
+msgid "Configuration saved"
+msgstr "Guardando la configuración"
+
+#: application/controllers/AdminController.php:467
+#: application/controllers/AdminController.php:691
+#, fuzzy
+msgid "Failed to save configuration"
+msgstr "Guardando la configuración"
+
+#: application/controllers/AdminController.php:469
+msgid "Please make sure that the config files backup folder exists, and that it is writable"
+msgstr "Por favor, asegúrese que la carpeta de copia de seguridad de la configuración existente, y que se puede escribir"
+
+#: application/controllers/AdminController.php:482
+msgid "Your configuration for"
+msgstr "La configuración de"
+
+#: application/controllers/AdminController.php:482
+msgid "was saved"
+msgstr "se ha guardado"
+
+#: application/controllers/AdminController.php:482
+msgid "The cache was cleared"
+msgstr "El caché fue limpiado"
+
+#: application/controllers/AdminController.php:485
+msgid "We saved a backup file of your configuration under"
+msgstr "Hemos guardado un archivo de copia de seguridad de la configuración en"
+
+#: application/controllers/AdminController.php:491
+#: application/controllers/AdminController.php:499
+msgid "Saving Configuration"
+msgstr "Guardando la configuración"
+
+#: application/controllers/AdminController.php:491
+#: application/controllers/AdminController.php:499
+msgid "FAILED"
+msgstr "FALLO"
+
+#: application/controllers/AdminController.php:493
+msgid "An error occurred while saving your configuration"
+msgstr "Ha producido un error mientras guardando la configuración"
+
+#: application/controllers/AdminController.php:493
+msgid "Please check the logs for details"
+msgstr "Por favor, consulte los logs para obtener detalles"
+
+#: application/controllers/AdminController.php:527
+msgid "Clear Cache"
+msgstr ""
+
+#: application/controllers/AdminController.php:543
+msgid "Log File Viewer"
+msgstr ""
+
+#: application/controllers/AdminController.php:654
+msgid "Kaltura MediaSpace&trade; Configuration"
+msgstr ""
+
+#: application/controllers/AdminController.php:659
+#, fuzzy
+msgid "Import Configuration"
+msgstr "La configuración de"
+
+#: application/controllers/AdminController.php:682
+msgid "Your configuration was imported, and the cache was cleared. Click OK to go back to the "
+msgstr ""
+
+#: application/controllers/AdminController.php:689
+msgid "The configuration import process has failed."
+msgstr ""
+
+#: application/controllers/AdminController.php:689
+msgid "Perhaps you can try again with a different file?"
+msgstr ""
+
+#: application/controllers/UserController.php:89
+#: application/controllers/UserController.php:153
+#: application/controllers/UserController.php:251
+msgid "Error in authentication"
+msgstr "Error en la autenticación"
+
+#: application/controllers/UserController.php:89
+#: application/controllers/UserController.php:153
+#: application/controllers/UserController.php:251
+msgid "Auth Adapter"
+msgstr "Adaptador de Autenticación"
+
+#: application/controllers/UserController.php:89
+#: application/controllers/UserController.php:153
+#: application/controllers/UserController.php:251
+msgid "does not exist"
+msgstr "no existe"
+
+#: application/controllers/UserController.php:105
+msgid "The Redirect URL"
+msgstr "El URL de redireccionamiento"
+
+#: application/controllers/UserController.php:105
+msgid " is invalid"
+msgstr "no es válido"
+
+#: application/controllers/UserController.php:225
+msgid "Invalid Username/Password provided"
+msgstr "Inválido Usuario / Contraseña"
+
+#: application/forms/EditUser.php:28
+msgid "Click for Notes"
+msgstr "Haga clic para las notas"
+
+#: application/forms/EditUser.php:30
+msgid "User ID, password and email may only contain these characters: 0-9, full alphabet of most languages (utf-8) and ~ . ! @ # $ % _ - +.&nbsp; Extra data can contain anything but a single-quote (\\'), double-quote (\") or backslash (\\\\)."
+msgstr "ID de usuario, contraseña y correo electrónico sólo pueden contener los siguientes caracteres: 0-9, alfabeto completo de la mayoría de idiomas (UTF-8) y ~. ! @ # $% _ -. +. La información adicional no puede contener comilla simple ('), comillas dobles (\") o la barra invertida (\\)."
+
+#: application/forms/EditUser.php:31
+msgid "To store name-value pairs in \"Extra data\": separate names from values with the equals sign (=) and separate name-value sets using a comma (,), e.g. name=value,lorem=ipsum,one=two"
+msgstr "Para almacenar los pares nombre-valor de \"datos adicionales\": Separe los nombres de los valores con el signo igual (=) y separe el nombre-valor con una coma (,), por ejemplo: nombre=valor, lorem=ipsum,uno=dos"
+
+#: application/forms/EditUser.php:32
+msgid "Passwords cannot be retrieved but only overwritten"
+msgstr "Las contraseñas no se pueden recuperar, pero sólo se sobrescribe"
+
+#: application/forms/EditUser.php:40
+msgid "User ID"
+msgstr "ID de Usuario"
+
+#: application/forms/EditUser.php:46
+#: application/forms/Login.php:50
+msgid "Password"
+msgstr "Contraseña"
+
+#: application/forms/EditUser.php:53
+msgid "Confirm Password"
+msgstr "Confirme su contraseña"
+
+#: application/forms/EditUser.php:83
+msgid "send by email"
+msgstr "enviar por correo electrónico"
+
+#: application/forms/EditUser.php:87
+msgid "generate new password"
+msgstr "generar una nueva contraseña"
+
+#: application/forms/EditUser.php:94
+msgid "Role"
+msgstr "Función"
+
+#: application/forms/EditUser.php:103
+msgid "Email"
+msgstr "E-mail"
+
+#: application/forms/EditUser.php:111
+msgid "Extra Data"
+msgstr "Datos Adicionales"
+
+#: application/forms/EditUser.php:124
+#: application/forms/EditEntry.php:118
+#: application/forms/EditEntry.php:198
+msgid "Required"
+msgstr "Obligatorio"
+
+#: application/forms/Install.php:20
+msgid "Kaltura Server URL"
+msgstr "URL del servidor Kaltura"
+
+#: application/forms/Install.php:29
+msgid "Partner ID"
+msgstr "ID de asociado"
+
+#: application/forms/Install.php:45
+msgid "Next"
+msgstr "Próximo"
+
+#: application/forms/Migrate.php:24
+msgid "path"
+msgstr "ruta"
+
+#: application/forms/Migrate.php:32
+msgid "upload"
+msgstr "subir"
+
+#: application/forms/Migrate.php:46
+msgid "Start Migration"
+msgstr "Empezar Migración"
+
+#: application/forms/ImportConfig.php:27
+#, fuzzy
+msgid "Upload configuration file"
+msgstr "Subir otro archivo"
+
+#: application/forms/ImportConfig.php:39
+msgid "Keep partner settings?"
+msgstr ""
+
+#: application/forms/ImportConfig.php:43
+msgid "Yes"
+msgstr "Sí"
+
+#: application/forms/ImportConfig.php:43
+msgid "No"
+msgstr "No"
+
+#: application/forms/ImportConfig.php:50
+msgid "Import"
+msgstr ""
+
+#: application/forms/Login.php:25
+msgid "Username"
+msgstr "Usuario"
+
+#: application/forms/Login.php:74
+msgid "Login"
+msgstr "Iniciar Sesión"
+
+#: application/forms/EditEntry.php:28
+msgid "Name"
+msgstr "Nombre"
+
+#: application/forms/EditEntry.php:50
+msgid "Description"
+msgstr "Descripción"
+
+#: application/forms/EditEntry.php:61
+msgid "Tags"
+msgstr "Etiquetas"
+
+#: application/forms/EditEntry.php:161
+msgid "Saving"
+msgstr "Guardando"
+
+#: application/forms/EditEntry.php:162
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: modules/customdata/models/Customdata.php:437
+msgid "Add"
+msgstr "Añadir"
+
+#: modules/customdata/models/Customdata.php:603
+msgid "Prev"
+msgstr "Ant"
+
+#: modules/customdata/models/Customdata.php:605
+msgid "Today"
+msgstr "Hoy"
+
+#: modules/customdata/models/Customdata.php:607
+msgid "January"
+msgstr "Enero"
+
+#: modules/customdata/models/Customdata.php:608
+msgid "February"
+msgstr "Febrero"
+
+#: modules/customdata/models/Customdata.php:609
+msgid "March"
+msgstr "Marzo"
+
+#: modules/customdata/models/Customdata.php:610
+msgid "April"
+msgstr "Abril"
+
+#: modules/customdata/models/Customdata.php:611
+#: modules/customdata/models/Customdata.php:625
+msgid "May"
+msgstr "Mayo"
+
+#: modules/customdata/models/Customdata.php:612
+msgid "June"
+msgstr "Junio"
+
+#: modules/customdata/models/Customdata.php:613
+msgid "July"
+msgstr "Julio"
+
+#: modules/customdata/models/Customdata.php:614
+msgid "August"
+msgstr "Agosto"
+
+#: modules/customdata/models/Customdata.php:615
+msgid "September"
+msgstr "Septiembre"
+
+#: modules/customdata/models/Customdata.php:616
+msgid "October"
+msgstr "Octubre"
+
+#: modules/customdata/models/Customdata.php:617
+msgid "November"
+msgstr "Noviembre"
+
+#: modules/customdata/models/Customdata.php:618
+msgid "December"
+msgstr "Deciembre"
+
+#: modules/customdata/models/Customdata.php:621
+msgid "Jan"
+msgstr "Ene"
+
+#: modules/customdata/models/Customdata.php:622
+msgid "Feb"
+msgstr "Feb"
+
+#: modules/customdata/models/Customdata.php:623
+msgid "Mar"
+msgstr "Mar"
+
+#: modules/customdata/models/Customdata.php:624
+msgid "Apr"
+msgstr "Abr"
+
+#: modules/customdata/models/Customdata.php:626
+msgid "Jun"
+msgstr "Jun"
+
+#: modules/customdata/models/Customdata.php:627
+msgid "Jul"
+msgstr "Jul"
+
+#: modules/customdata/models/Customdata.php:628
+msgid "Aug"
+msgstr "Ago"
+
+#: modules/customdata/models/Customdata.php:629
+msgid "Sep"
+msgstr "Sep"
+
+#: modules/customdata/models/Customdata.php:630
+msgid "Oct"
+msgstr "Oct"
+
+#: modules/customdata/models/Customdata.php:631
+msgid "Nov"
+msgstr "Nov"
+
+#: modules/customdata/models/Customdata.php:632
+msgid "Dec"
+msgstr "Dic"
+
+#: modules/customdata/models/Customdata.php:635
+msgid "Sunday"
+msgstr "Domingo"
+
+#: modules/customdata/models/Customdata.php:636
+msgid "Monday"
+msgstr "Lunes"
+
+#: modules/customdata/models/Customdata.php:637
+msgid "Tuesday"
+msgstr "Martes"
+
+#: modules/customdata/models/Customdata.php:638
+msgid "Wednesday"
+msgstr "Miércoles"
+
+#: modules/customdata/models/Customdata.php:639
+msgid "Thursday"
+msgstr "Jueves"
+
+#: modules/customdata/models/Customdata.php:640
+msgid "Friday"
+msgstr "Viernes"
+
+#: modules/customdata/models/Customdata.php:641
+msgid "Saturday"
+msgstr "Sábado"
+
+#: modules/customdata/models/Customdata.php:644
+msgid "Sun"
+msgstr "Dom"
+
+#: modules/customdata/models/Customdata.php:645
+msgid "Mon"
+msgstr "Lun"
+
+#: modules/customdata/models/Customdata.php:646
+msgid "Tue"
+msgstr "Mar"
+
+#: modules/customdata/models/Customdata.php:647
+msgid "Wed"
+msgstr "Mié"
+
+#: modules/customdata/models/Customdata.php:648
+msgid "Thu"
+msgstr "Juv"
+
+#: modules/customdata/models/Customdata.php:649
+msgid "Fri"
+msgstr "Vie"
+
+#: modules/customdata/models/Customdata.php:650
+msgid "Sat"
+msgstr "Sáb"
+
+#: modules/customdata/models/Customdata.php:653
+msgid "Su"
+msgstr "Do"
+
+#: modules/customdata/models/Customdata.php:654
+msgid "Mo"
+msgstr "Lu"
+
+#: modules/customdata/models/Customdata.php:655
+msgid "Tu"
+msgstr "Ma"
+
+#: modules/customdata/models/Customdata.php:656
+msgid "We"
+msgstr "Mi"
+
+#: modules/customdata/models/Customdata.php:657
+msgid "Th"
+msgstr "Ju"
+
+#: modules/customdata/models/Customdata.php:658
+msgid "Fr"
+msgstr "Vi"
+
+#: modules/customdata/models/Customdata.php:659
+msgid "Sa"
+msgstr "Sá"
+
+#: modules/customdata/models/Customdata.php:661
+msgid "Wk"
+msgstr "Sem"
+
+#: library/Kms/View/Helper/UserLink.php:44
+msgid "logout"
+msgstr "cerrar la sesión"
+
+#: library/Kms/View/Helper/UserLink.php:57
+msgid "login"
+msgstr "iniciar sesión"
+
+#: library/Kms/View/Helper/ForgotPasswordLink.php:32
+#: library/Kms/View/Helper/ForgotPasswordLink.php:36
+msgid "Forgot Password"
+msgstr "¿Olvidó su Contraseña"
+
+#: application/layouts/scripts/admin.phtml:49
+msgid "MANAGE CONFIGURATION"
+msgstr "Gestión de la Configuración"
+
+#: application/layouts/scripts/admin.phtml:50
+msgid "MANAGE USERS"
+msgstr "Gestión de usuarios"
+
+#: application/layouts/scripts/admin.phtml:51
+msgid "KNOWLEDGE BASE"
+msgstr ""
+
+#: application/layouts/scripts/admin.phtml:53
+msgid "CLEAR THE CACHE"
+msgstr ""
+
+#: application/layouts/scripts/admin.phtml:54
+msgid "LOG VIEWER"
+msgstr ""
+
+#: application/layouts/scripts/admin.phtml:55
+msgid "GO TO SITE"
+msgstr "IR AL SITIO"
+
+#: application/layouts/scripts/admin.phtml:57
+msgid "RUN TESTS"
+msgstr ""
+
+#: application/layouts/scripts/admin.phtml:58
+msgid "LOGOUT"
+msgstr "CERRAR LA SESIÓN"
+
+#: application/layouts/scripts/admin.phtml:72
+#: application/layouts/scripts/layout.phtml:70
+#: application/layouts/scripts/login.phtml:67
+msgid "Notice"
+msgstr "Aviso"
+
+#: application/layouts/scripts/setup.phtml:49
+#, fuzzy
+msgid "Requirements"
+msgstr "Obligatorio"
+
+#: application/layouts/scripts/layout.phtml:150
+#: application/layouts/scripts/login.phtml:99
+msgid "video portal"
+msgstr "portal de vídeos"
+
+#: application/layouts/scripts/layout.phtml:150
+#: application/layouts/scripts/login.phtml:99
+msgid "by"
+msgstr "por"
+
+#: application/views/scripts/kb/viewhooks.phtml:13
+msgid "Core"
+msgstr ""
+
+#: application/views/scripts/kb/viewhooks.phtml:15
+msgid "View hooks declared by core views of mediaspace."
+msgstr ""
+
+#: application/views/scripts/kb/viewhooks.phtml:24
+#: application/views/scripts/kb/viewhooks.phtml:50
+msgid "View Files Implementing"
+msgstr ""
+
+#: application/views/scripts/kb/viewhooks.phtml:36
+msgid "Modules"
+msgstr "Módulos"
+
+#: application/views/scripts/kb/viewhooks.phtml:38
+msgid "View hooks declared in different modules that wish to let other modules extend their output"
+msgstr ""
+
+#: application/views/scripts/kb/viewfiles.phtml:24
+msgid "Layouts"
+msgstr ""
+
+#: application/views/scripts/kb/viewfiles.phtml:71
+#: application/views/scripts/kb/viewfiles.phtml:109
+msgid "Viewhook name"
+msgstr ""
+
+#: application/views/scripts/kb/viewfiles.phtml:95
+msgid "Module View Files"
+msgstr ""
+
+#: application/views/scripts/entry/edit.phtml:7
+#: application/views/scripts/entry/edit.phtml:11
+msgid "Edit Media"
+msgstr "Editar Medio"
+
+#: application/views/scripts/entry/edit.phtml:12
+msgid "Delete"
+msgstr "Borrar"
+
+#: application/views/scripts/entry/edit.phtml:19
+msgid "Media is being processed"
+msgstr "El medio se está procesando"
+
+#: application/views/scripts/entry/edit.phtml:38
+#: application/views/scripts/entry/add-entry-form.ajax.phtml:11
+msgid "Please fill out all required fields"
+msgstr "Por favor, rellene todos los campos requeridos"
+
+#: application/views/scripts/entry/edit.phtml:40
+#: application/views/scripts/entry/add-entry-form.ajax.phtml:15
+#: application/views/scripts/entry/done.ajax.phtml:18
+msgid "Please fill out these details"
+msgstr "Por favor, rellene estos datos"
+
+#: application/views/scripts/entry/add-entry-form.ajax.phtml:33
+msgid "The information will be saved, once the file is finished uploading"
+msgstr "La información se guardará, cuando el archivo acaba de subir"
+
+#: application/views/scripts/entry/done.ajax.phtml:27
+msgid "Link to this media"
+msgstr "Enlace a este medio"
+
+#: application/views/scripts/entry/done.ajax.phtml:36
+msgid "Finished uploading"
+msgstr "Acabó la subida"
+
+#: application/views/scripts/entry/done.ajax.phtml:37
+msgid "Go to media page"
+msgstr "Ir a la página del medio"
+
+#: application/views/scripts/entry/done.ajax.phtml:67
+msgid "Your changes have been saved"
+msgstr "Los cambios han sido guardados"
+
+#: application/views/scripts/entry/play.ajax.phtml:34
+msgid "By"
+msgstr "Por"
+
+#: application/views/scripts/entry/add.phtml:20
+#: application/views/scripts/entry/add.phtml:33
+msgid "Video Presentations are disabled."
+msgstr "as presentaciones de vídeo estan desactivadas."
+
+#: application/views/scripts/entry/set-private.dialog.phtml:8
+msgid "This will cause this media to be disassociated from all categories and it will not appear anywhere in MediaSpace."
+msgstr "Este medio será indisociable de todas las categorías, y no aparecerá en cualquier parte de MediaSpace."
+
+#: application/views/scripts/entry/set-private.dialog.phtml:26
+msgid "Confirm Unpublishing"
+msgstr "Confirmar Despublicación"
+
+#: application/views/scripts/entry/set-private.dialog.phtml:32
+msgid "Confirm"
+msgstr "Confirmar"
+
+#: application/views/scripts/entry/delete.dialog.phtml:35
+#: application/views/scripts/entry/delete.dialog.phtml:81
+#: application/views/scripts/playlist/delete.dialog.phtml:28
+#: application/views/scripts/playlist/delete.dialog.phtml:68
+msgid "Confirm Delete"
+msgstr "Confirmar Eliminación"
+
+#: application/views/scripts/entry/delete.dialog.phtml:66
+msgid "You are not allowed to delete this media."
+msgstr "Usted no está autorizado a borrar este medio."
+
+#: application/views/scripts/entry/delete.dialog.phtml:91
+#: application/views/scripts/playlist/delete.dialog.phtml:74
+msgid "Ok"
+msgstr "Ok"
+
+#: application/views/scripts/playlist/delete.dialog.phtml:12
+msgid "Are you sure you want to delete this playlist?"
+msgstr "¿Está seguro que desea eliminar esta lista de reproducción?"
+
+#: application/views/scripts/playlist/delete.dialog.phtml:52
+msgid "You are not allowed to delete this playlist"
+msgstr "No está permitido eliminar esta lista de reproducción"
+
+#: application/views/scripts/partials/playerBlockSideTabs.phtml:12
+msgid "Show me"
+msgstr "Muéstrame"
+
+#: application/views/scripts/partials/playerBlockTabs.phtml:15
+msgid "Details"
+msgstr "Detalles"
+
+#: application/views/scripts/partials/filterBar.phtml:9
+#: application/views/scripts/partials/filterBar.phtml:83
+msgid "Search this gallery"
+msgstr "Buscar la galería"
+
+#: application/views/scripts/partials/filterBar.phtml:18
+msgid "Show"
+msgstr "Mostrar"
+
+#: application/views/scripts/partials/filterBar.phtml:25
+msgid "All Media"
+msgstr "Todos los Medios"
+
+#: application/views/scripts/partials/filterBar.phtml:27
+msgid "Videos Only"
+msgstr "Sólo Video"
+
+#: application/views/scripts/partials/filterBar.phtml:28
+msgid "Audio Only"
+msgstr "Sólo Audio"
+
+#: application/views/scripts/partials/filterBar.phtml:29
+msgid "Images Only"
+msgstr "Sólo Imágenes"
+
+#: application/views/scripts/partials/filterBar.phtml:41
+msgid "Video Presentations"
+msgstr "Presentaciones de Video"
+
+#: application/views/scripts/partials/filterBar.phtml:52
+msgid "Sort by"
+msgstr "Ordenar por"
+
+#: application/views/scripts/partials/filterBar.phtml:58
+msgid "Recent"
+msgstr "Reciente"
+
+#: application/views/scripts/partials/filterBar.phtml:59
+msgid "Most Viewed"
+msgstr "Las más vistas"
+
+#: application/views/scripts/partials/filterBar.phtml:60
+msgid "Alphabetical"
+msgstr "Alfabético"
+
+#: application/views/scripts/partials/filterBar.phtml:81
+msgid "of"
+msgstr "de"
+
+#: application/views/scripts/partials/playerBlockDetails.phtml:37
+msgid "Edit"
+msgstr "Editar"
+
+#: application/views/scripts/partials/playerBlockDetails.phtml:44
+msgid "This media is still being converted"
+msgstr "Este medio está siendo convertido"
+
+#: application/views/scripts/partials/playerBlockDetails.phtml:48
+msgid "This media is pending review"
+msgstr "Este medio está pendiente de revisión"
+
+#: application/views/scripts/partials/playerBlockDetails.phtml:52
+msgid "No description provided"
+msgstr "Ninguna descripción"
+
+#: application/views/scripts/partials/playerBlockDetails.phtml:73
+msgid "Categories"
+msgstr "Categorías"
+
+#: application/views/scripts/partials/hideUploadBoxButton.phtml:12
+#: application/views/scripts/partials/hideUploadBoxButton.phtml:14
+msgid "Hide"
+msgstr "Esconder"
+
+#: application/views/scripts/partials/galleryPaging.phtml:10
+#: application/views/scripts/partials/admin/userAdminPaging.phtml:13
+msgid "Previous"
+msgstr "Anterior"
+
+#: application/views/scripts/partials/siteHeader.phtml:22
+msgid "Add New"
+msgstr "Añadir"
+
+#: application/views/scripts/partials/siteHeader.phtml:24
+msgid "Media Upload"
+msgstr "Subir Medio"
+
+#: application/views/scripts/partials/siteHeader.phtml:25
+msgid "Webcam Recording"
+msgstr "Grabación de Cámara Web"
+
+#: application/views/scripts/partials/siteHeader.phtml:27
+msgid "Video Presentation"
+msgstr "Presentación de Vídeo"
+
+#: application/views/scripts/partials/siteHeader.phtml:39
+msgid "More"
+msgstr "Más"
+
+#: application/views/scripts/partials/headerSearch.phtml:7
+msgid "Search all media"
+msgstr "Buscar todos los medios"
+
+#: application/views/scripts/partials/headerSearch.phtml:46
+#: application/views/scripts/partials/headerSearch.phtml:51
+msgid "Reset"
+msgstr "Reajustar"
+
+#: application/views/scripts/partials/entryItem/detailed.phtml:54
+msgid "Converting"
+msgstr "Convertir"
+
+#: application/views/scripts/partials/entryItem/detailed.phtml:116
+msgid "Views"
+msgstr "Vistas"
+
+#: application/views/scripts/partials/entryItem/detailed.phtml:118
+msgid "Published"
+msgstr "Publicado"
+
+#: application/views/scripts/partials/entryItem/detailed.phtml:118
+msgid "Not published"
+msgstr "No publicado"
+
+#: application/views/scripts/partials/admin/configImportantItems.phtml:11
+msgid "Important Notice"
+msgstr ""
+
+#: application/views/scripts/partials/admin/configImportantItems.phtml:11
+#, fuzzy
+msgid "click to open"
+msgstr "Haga clic para las notas"
+
+#: application/views/scripts/partials/admin/configImportantItems.phtml:13
+msgid "The default values have not changed. We recommended that you modify the values for your configuration."
+msgstr ""
+
+#: application/views/scripts/partials/admin/configSideNav.phtml:11
+msgid "Global"
+msgstr "Global"
+
+#: application/views/scripts/partials/admin/configAutoComplete.phtml:23
+#, fuzzy
+msgid "Configuration"
+msgstr "Guardando la configuración"
+
+#: application/views/scripts/partials/upload/mediaBox.phtml:23
+msgid "Loading, Please Wait..."
+msgstr "Cargando, por favor espere..."
+
+#: application/views/scripts/partials/upload/mediaBox.phtml:38
+msgid ""
+"Upload limited to 2GB files. Kaltura accepts all common video, audio and image formats in all resolutions.\n"
+" For best results with video, we recommend preparing videos in 1280x720 pixels and using the H.264 video codec at about 4000 kb/s."
+msgstr ""
+"El límite de subida para archivos es 2GB. Kaltura acepta todos los formatos comunes de vídeo, audio e imágenes en todas las resoluciones. \n"
+"Para obtener los mejores resultados con vídeos, se recomienda la preparación de videos de 1280x720 píxeles y con el códec de vídeo H.264 a 4.000 kb/s."
+
+#: application/views/scripts/partials/upload/webcamBox.phtml:8
+msgid "Record from Webcam"
+msgstr "Grabar de Cámara Web"
+
+#: application/views/scripts/partials/upload/documentBox.phtml:8
+#: application/views/scripts/partials/upload/kvpBox.phtml:20
+#: application/views/scripts/partials/upload/kvpBox.phtml:21
+msgid "Upload Document"
+msgstr "Subir Documento"
+
+#: application/views/scripts/partials/upload/documentBox.phtml:11
+msgid "A video presentation consists of a document and a video file, synchronized together, Document formats supported are:ppt/pptx, pdf, doc/ docx, xls/ xlsx."
+msgstr "Una presentación de video consiste de un documento y un archivo de vídeo, sincronizadas. Los formatos de documentos soportados son: ppt / pptx, pdf, doc / docx, xls / xlsx."
+
+#: application/views/scripts/partials/upload/documentBox.phtml:13
+msgid "After the document is uploaded, it will be converted to a format suitable for display in the presentation (this might take a few minutes)."
+msgstr "Después de que el documento se carga, se convertirse en un formato adecuado para visualización en la presentación (esto puede tardar unos minutos)."
+
+#: application/views/scripts/partials/upload/documentBox.phtml:15
+msgid "Once your content is ready it will appear in the document list(step 2)."
+msgstr "Cuando su contenido esté listo, aparecerá en la lista de documentos (paso 2)."
+
+#: application/views/scripts/partials/upload/documentBox.phtml:17
+msgid "Back to the video presentation creation flow (step 1)"
+msgstr "Volver a creación de presentaciones de vídeo (paso 1)"
+
+#: application/views/scripts/partials/upload/kvpBox.phtml:7
+msgid "Add Video Presentation"
+msgstr "Añadir Presentación de Video"
+
+#: application/views/scripts/partials/upload/kvpBox.phtml:10
+msgid "To create a Video Presentation, follow these steps"
+msgstr "Para crear una presentación de vídeo, siga estos pasos"
+
+#: application/views/scripts/partials/upload/kvpBox.phtml:12
+msgid "Select media (from a list of already uploaded and ready video and audio items)"
+msgstr "Seleccione medios (de una lista de vídeos y elementos de audio ya cargados y listos )"
+
+#: application/views/scripts/partials/upload/kvpBox.phtml:13
+msgid "Select document (from a list of uploaded, and converted documents)"
+msgstr "Seleccione el documento (de una lista de documentos cargados, y convertidos)"
+
+#: application/views/scripts/partials/upload/kvpBox.phtml:14
+msgid "Add sync points to synchronize the document with the media"
+msgstr "Añadir puntos de sincronización para sincronizar el documento con el medio"
+
+#: application/views/scripts/partials/upload/kvpBox.phtml:17
+msgid "In case you need to upload new documents to the server, use the upload document button below."
+msgstr "En caso que necesite cargar nuevos documentos al servidor, utilice el botón Subir Documento abajo."
+
+#: application/views/scripts/partials/upload/kvpBox.phtml:18
+msgid "Once a Presentation is created, you will be redirected to the \"edit page\", where you will be able to sync keypoints for playback, and edit metadata."
+msgstr "Cuando se crea una presentación, se le redirige a la \"página de edición \", donde podrá a sincronizar puntos clave para la reproducción y editar metadatos."
+
+#: application/views/scripts/partials/myplaylists/actionBarBottom.phtml:10
+msgid "Save Changes"
+msgstr "Guardar Cambios"
+
+#: application/views/scripts/partials/myplaylists/actionBar.phtml:10
+msgid "Show Playlist"
+msgstr "Mostrar Lista de Reproducción"
+
+#: application/views/scripts/partials/myplaylists/actionBar.phtml:20
+msgid "Short View"
+msgstr "Reducir"
+
+#: application/views/scripts/partials/myplaylists/actionBar.phtml:21
+msgid "Full View"
+msgstr "Ampliar"
+
+#: application/views/scripts/partials/myplaylists/actionBar.phtml:23
+msgid "Delete Playlist"
+msgstr "Borrar Lista"
+
+#: application/views/scripts/user/no-playlists.phtml:6
+#: application/views/scripts/user/no-playlists.phtml:9
+#: application/views/scripts/user/my-playlists.phtml:15
+#: application/views/scripts/user/my-playlists.phtml:17
+msgid "My Playlists"
+msgstr "Mis Listas"
+
+#: application/views/scripts/user/no-playlists.phtml:10
+msgid "You have not created any playlists yet"
+msgstr "Aún no ha creado ninguna lista de reproducción"
+
+#: application/views/scripts/user/no-playlists.phtml:12
+msgid "To Create a Playlist"
+msgstr "Para crear una lista de reproducción"
+
+#: application/views/scripts/user/no-playlists.phtml:14
+msgid "Select \"Add to Playlist\" tab that appears under the player in other pages on the site"
+msgstr "Seleccione \"Añadir a listas de reproducción\" que aparece debajo del reproductor en otras páginas en el sitio"
+
+#: application/views/scripts/user/no-playlists.phtml:15
+msgid "Click \"Add new Playlist\" and enter name and description, The media will be added to playlist"
+msgstr "Haga clic en \"Añadir nueva lista\" e introduzca el nombre y la descripción, los medios se añadirá a la lista"
+
+#: application/views/scripts/user/no-playlists.phtml:18
+msgid "Once you have created a playlist, it will appear on this page where you can preview it, edit the sequence of media, select design of playlist, and grab the embed code."
+msgstr "Cuando haya creado una lista de reproducción, aparecerá en esta página donde se puede ver, editar la secuencia de los medios , seleccionar el diseño de la lista de reproducción, y coger el código de inserción."
+
+#: application/views/scripts/user/my-media.ajax.phtml:32
+#: application/views/scripts/user/my-media.phtml:83
+msgid "There are no entries..."
+msgstr "No hay entradas ..."
+
+#: application/views/scripts/user/login.ajax.phtml:26
+#: application/views/scripts/user/login.dialog.phtml:24
+msgid "Please Login"
+msgstr "Por favor inicie sesión"
+
+#: application/views/scripts/user/my-media.phtml:16
+#: application/views/scripts/user/my-media.phtml:49
+msgid "My Media"
+msgstr "Mis Medios"
+
+#: application/views/scripts/user/my-playlists.ajax.phtml:21
+#: application/views/scripts/user/my-playlists.phtml:32
+msgid "Remove"
+msgstr "Quitar"
+
+#: application/views/scripts/user/my-playlists.phtml:18
+msgid "Drag and drop to reorder media"
+msgstr "Arrastra y suelta para reordenar los medios"
+
+#: application/views/scripts/admin/clear-cache.phtml:10
+#: application/views/scripts/admin/clear-cache.dialog.phtml:16
+#, fuzzy
+msgid "The cache was flushed successfuly."
+msgstr "La información se ha guardado correctamente"
+
+#: application/views/scripts/admin/user-delete.dialog.phtml:27
+msgid "Delete User"
+msgstr "Eliminar Usuario"
+
+#: application/views/scripts/admin/clear-cache.dialog.phtml:17
+msgid "success"
+msgstr ""
+
+#: application/views/scripts/admin/login.phtml:16
+msgid "Kaltura MediaSpace Administration Area"
+msgstr ""
+
+#: application/views/scripts/admin/login.phtml:17
+msgid "Please login using your Kaltura account"
+msgstr ""
+
+#: application/views/scripts/admin/log-viewer.phtml:19
+msgid "Unique Execution Id"
+msgstr ""
+
+#: application/views/scripts/admin/log-viewer.phtml:40
+msgid "Debug Level"
+msgstr ""
+
+#: application/views/scripts/admin/log-viewer.phtml:52
+msgid "Log File"
+msgstr ""
+
+#: application/views/scripts/admin/log-viewer.phtml:58
+msgid "General Log"
+msgstr ""
+
+#: application/views/scripts/admin/log-viewer.phtml:59
+msgid "Trace Log"
+msgstr ""
+
+#: application/views/scripts/admin/log-viewer.phtml:85
+msgid "Nothing found in the log file"
+msgstr ""
+
+#: application/views/scripts/admin/log-viewer.phtml:90
+msgid "The unique execution id, is a mandatory parameter."
+msgstr ""
+
+#: application/views/scripts/admin/config.phtml:34
+#, fuzzy
+msgid "Backup Actions"
+msgstr "Acciones"
+
+#: application/views/scripts/admin/config.phtml:35
+msgid "Export to a file"
+msgstr ""
+
+#: application/views/scripts/admin/config.phtml:36
+msgid "Import from a file"
+msgstr ""
+
+#: application/views/scripts/admin/user-list.phtml:12
+msgid "User Management is only available if MediaSpace authentication is set to \"KalturaAuth\"."
+msgstr "Gestión de usuarios sólo está disponible si la autenticación MediaSpace se ajusta a \"KalturaAuth\"."
+
+#: application/views/scripts/admin/user-list.phtml:13
+msgid "GO TO CONFIG"
+msgstr "IR A CONFIGURACIÓN"
+
+#: application/views/scripts/admin/user-list.phtml:21
+msgid "ADD NEW USER"
+msgstr "AÑADIR NUEVO USUARIO"
+
+#: application/views/scripts/admin/user-list.phtml:22
+msgid "DELETE CHECKED"
+msgstr "BORRAR MARCADOS"
+
+#: application/views/scripts/admin/user-list.phtml:39
+msgid "Extra data"
+msgstr "Datos adicionales"
+
+#: application/views/scripts/admin/user-list.phtml:40
+msgid "Actions"
+msgstr "Acciones"
+
+#: application/views/scripts/admin/user-list.phtml:45
+msgid "No data found"
+msgstr "No se encontraron datos"
+
+#: application/views/scripts/admin/user-list.phtml:58
+msgid "Role does not exist in config file: user will not be able to log in."
+msgstr "Función no existe en el archivo de configuración: el usuario no podrá entrar"
+
+#: application/views/scripts/index/version.phtml:10
+msgid "version"
+msgstr "versión"
+
+#: application/views/scripts/index/version.phtml:10
+msgid "build"
+msgstr "build"
+
+#: application/views/scripts/error/404.phtml:19
+#: application/views/scripts/error/error.phtml:21
+msgid "Stack trace:"
+msgstr "Seguimiento de pila:"
+
+#: application/views/scripts/error/404.phtml:23
+#: application/views/scripts/error/error.phtml:25
+msgid "Request Parameters:"
+msgstr "Parámetros de la solicitud:"
+
+#: application/views/scripts/error/error.phtml:16
+msgid "Exception information:"
+msgstr "Información de Excepción:"
+
+#: application/views/scripts/install/done.phtml:13
+msgid "KMS3 was setup successfully"
+msgstr "KMS3 fue instalado con éxito"
+
+#: application/views/scripts/install/done.phtml:14
+#, fuzzy
+msgid "You can visit your Kaltura MediaSpace site"
+msgstr "Usted puede visitar su sitio MediaSpace"
+
+#: application/views/scripts/install/done.phtml:14
+#: application/views/scripts/install/done.phtml:15
+#: application/views/scripts/install/done.phtml:16
+#: application/views/scripts/install/done.phtml:18
+msgid "here"
+msgstr "aquí"
+
+#: application/views/scripts/install/done.phtml:15
+#, fuzzy
+msgid "You can create new users for your Kaltura MediaSpace site"
+msgstr "Usted puede visitar su sitio MediaSpace"
+
+#: application/views/scripts/install/done.phtml:16
+#, fuzzy
+msgid "You can go to the administration area to set more configuration options"
+msgstr "Usted puede ir a la zona de administración para configurar la sitio"
+
+#: application/views/scripts/install/done.phtml:17
+#, fuzzy
+msgid "Note that some functionality might be limited or broken until you complete all of the required configurations"
+msgstr "Nótese que algunas funciones podrían ser limitadas o rotas hasta que complete todas las configuraciones necesarias"
+
+#: application/views/scripts/install/done.phtml:18
+msgid "To run the UnitTests please click "
+msgstr "Para ejecutar las pruebas unitarias por favor haga clic"
+
+#: application/views/scripts/install/index.phtml:15
+#, fuzzy
+msgid "You can proceed with the KMS3 setup process."
+msgstr "Todos los requisitos se satisfacen. Puede continuar con el proceso de instalación de KMS3."
+
+#: application/views/scripts/install/index.phtml:17
+msgid "Some requirements failed. Please fix and refresh the page."
+msgstr "Algunos de los requerimientos no han aprobado. Por favor, corrija y actualice la página."
+
+#: application/views/scripts/install/index.phtml:32
+msgid "If you are upgrading from KMS2 select \"Migrate\", otherwise select \"Install\""
+msgstr "Si está actualizando desde kms2 seleccione \"Migración\", de lo contrario seleccione \"Instalación\""
+
+#: application/views/scripts/install/index.phtml:34
+msgid "Install"
+msgstr "Instalación"
+
+#: application/views/scripts/install/index.phtml:34
+msgid "Migrate"
+msgstr "Migración"
+
+#: application/views/scripts/install/migrate.phtml:18
+#: application/views/scripts/install/install.phtml:18
+msgid "Installation in progress. Please wait..."
+msgstr ""
+
+#: application/views/scripts/install/install.phtml:14
+#, fuzzy
+msgid "Please fill all the fields!"
+msgstr "Por favor, rellene todos los campos requeridos"
+
+#: application/views/scripts/install/migrate-permissions.phtml:14
+msgid "Migration cannot continue due to missing write permissions on some configuration files"
+msgstr "La migración no puede continuar por faltar permisos de escritura en algunos archivos de configuración"
+
+#: application/views/scripts/install/migrate-permissions.phtml:17
+msgid "Following are configuration files that need to be writable by the web-server"
+msgstr "Los siguientes son los archivos de configuración que hay que ser escribible por el servidor web"
+
+#: application/views/scripts/install/migrate-permissions.phtml:23
+msgid "You can fix this by running the following commands"
+msgstr "Puede corregir esto ejecutando los comandos siguientes"
+
+#: application/views/scripts/gallery/view.phtml:37
+#: application/views/scripts/gallery/view.phtml:41
+msgid "hide"
+msgstr "esconder"
+
+#: application/views/scripts/gallery/view.phtml:37
+#: application/views/scripts/gallery/view.phtml:41
+msgid "show"
+msgstr "mostrar"
+
+#: application/views/scripts/gallery/view.phtml:77
+msgid "No results found"
+msgstr "No se encontraron resultados"
+
+#: modules/featured/views/scripts/partials/featuredToggle.phtml:10
+#, fuzzy
+msgid "This Media is Featured"
+msgstr "Este medio está pendiente de revisión"
+
+#: modules/featured/views/scripts/partials/featuredToggle.phtml:16
+#, fuzzy
+msgid "Feature this Media"
+msgstr "Medios Relacionados"
+
+#: modules/featured/views/scripts/index/index.phtml:67
+#, fuzzy
+msgid "Duration"
+msgstr "Descripción"
+
+#: modules/featured/views/scripts/index/index.phtml:69
+#, fuzzy
+msgid "Created At"
+msgstr "Creado por"
+
+#: modules/featured/views/scripts/index/add-featured.phtml:9
+msgid "You can choose to have this Media appear in the \"Featured\" section of the site."
+msgstr ""
+
+#: modules/featured/views/scripts/index/side-tab.phtml:8
+#, fuzzy
+msgid "Featured Media"
+msgstr "Medios Relacionados"
+
+#: modules/featured/views/scripts/index/featured.phtml:15
+#, fuzzy
+msgid "No featured media"
+msgstr "Medios Relacionados"
+
+#: modules/featured/views/scripts/index/tab.phtml:8
+msgid "Feature"
+msgstr ""
+
+#: modules/addtoplaylists/views/scripts/index/index.phtml:11
+msgid "Manage Playlists"
+msgstr "Gestionar Listas de Reproducción"
+
+#: modules/addtoplaylists/views/scripts/index/index.phtml:13
+msgid "Playlists allow you to grab embed code for displaying a player and a collection of media."
+msgstr "Listas de reproducción le permiten coger código de inserción para la visualización de un jugador y una colección de videos."
+
+#: modules/addtoplaylists/views/scripts/index/index.phtml:36
+#: modules/addtoplaylists/views/scripts/index/add-new-playlist.ajax.phtml:38
+msgid "Add New Playlist"
+msgstr "Añadir Nueva Lista"
+
+#: modules/addtoplaylists/views/scripts/index/index.phtml:60
+msgid "Appears in"
+msgstr "Aparece en"
+
+#: modules/addtoplaylists/views/scripts/index/tab.phtml:8
+msgid "Add to Playlists"
+msgstr "Añadir a Listas"
+
+#: modules/oembed/views/scripts/index/index.phtml:15
+msgid "Select Embed Type"
+msgstr "Seleccione el Tipo de Código de Inserción"
+
+#: modules/sidemymedia/views/scripts/index/index.phtml:20
+msgid "Show All"
+msgstr "Mostrar todo"
+
+#: modules/sidemymedia/views/scripts/index/index.phtml:27
+msgid "Oops! You have no media... :("
+msgstr "!Oops! Usted no tiene media... :("
+
+#: modules/sideplaylists/views/scripts/index/index.phtml:27
+msgid "Oops! This playlist is empty... :("
+msgstr "¡Oops! Esta lista está vacía... :("
+
+#: modules/demosite/views/scripts/index/pre-my-media-entries.phtml:12
+msgid "The Media will be reset once a day"
+msgstr "Los Medios se reiniciará una vez al día"
+
+#: modules/demosite/views/scripts/index/pre-login.phtml:8
+msgid "Click for login credentials to this demo site"
+msgstr "Haga clic para las credenciales de acceso a este sitio de demostración"
+
+#: modules/demosite/views/scripts/index/pre-login.phtml:28
+msgid "ALL NEW CONTENT WILL BE REMOVED ONCE A DAY"
+msgstr "Todo el contenido nuevo se eliminará una vez al dia"
+
+#: modules/embed/views/scripts/index/index.phtml:14
+msgid "Embed Code"
+msgstr "Código de Inserción"
+
+#: modules/embed/views/scripts/index/index.phtml:14
+msgid "Press Ctrl+C to copy"
+msgstr "Pulse Ctrl+C para copiar"
+
+#: modules/embed/views/scripts/index/index.phtml:30
+msgid "Select Player Skin"
+msgstr "Seleccione la piel de reproductor"
+
+#: modules/embed/views/scripts/index/index.phtml:47
+msgid "Select Player Size"
+msgstr "Seleccione tamaño del reproductor"
+
+#: modules/embed/views/scripts/index/tab.phtml:12
+#: modules/embedplaylist/views/scripts/index/tab.phtml:8
+msgid "Get Embed Code"
+msgstr "Obtener Código de Inserción"
+
+#: modules/embedplaylist/views/scripts/index/index.phtml:24
+msgid "Select Playlist Layout (Flash)"
+msgstr "Seleccione Disposición de la Lista de Reproducción (Flash)"
+
+#: modules/embedplaylist/views/scripts/index/index.phtml:27
+#: modules/embedplaylist/views/scripts/index/index.phtml:32
+msgid "Width"
+msgstr "Ancho"
+
+#: modules/embedplaylist/views/scripts/index/index.phtml:27
+#: modules/embedplaylist/views/scripts/index/index.phtml:32
+msgid "Height"
+msgstr "Altura"
+
+#: modules/embedplaylist/views/scripts/index/index.phtml:37
+msgid "Select Playlist Color"
+msgstr "Seleccione el color de la lista"
+
+#: modules/embedplaylist/views/scripts/index/index.phtml:40
+msgid "Dark"
+msgstr "Oscuro"
+
+#: modules/embedplaylist/views/scripts/index/index.phtml:45
+msgid "Light"
+msgstr "Claro"
+
+#: modules/related/views/scripts/index/index.phtml:8
+msgid "Loading"
+msgstr "Cargando"
+
+#: modules/related/views/scripts/index/related.ajax.phtml:17
+#: modules/related/views/scripts/index/related.phtml:16
+msgid "No related media for this entry"
+msgstr "No hay medios relacionados"
+
+#: modules/related/views/scripts/index/tab.phtml:8
+msgid "Related Media"
+msgstr "Medios Relacionados"
+
+#: modules/publish/views/scripts/partials/categoryList.phtml:25
+msgid "Not Published"
+msgstr "No publicado"
+
+#: modules/publish/views/scripts/partials/categoryList.phtml:25
+msgid "Private"
+msgstr "Privado"
+
+#: modules/publish/views/scripts/partials/categoryList.phtml:26
+msgid "Publish"
+msgstr "Publicar"
+
+#: modules/publish/views/scripts/index/index.phtml:9
+msgid "Non published media will only appear to you in your \"My Media\" page. You can publish to multiple categories. Note that you cannot publish to both a parent and child category."
+msgstr "Los medios no publicados, sólo le aparecerá en \"Mis Medios\". Usted puede publicar en múltiples categorías. Nótese que no se puede publicar a ambos los padres y niños de la categoría."
+
+#: modules/publish/views/scripts/index/publish.ajax.phtml:32
+msgid "This entry is already published under a child category of"
+msgstr "Este medio ya está publicado en una subcategoría de"
+
+#: themes/yftheme/layouts/scripts/layout.phtml:75
+#: themes/yftheme/views/scripts/partials/sideNavigation.phtml:10
+#, fuzzy
+msgid "Navigation"
+msgstr "Empezar Migración"
+
+#~ msgid "SUCCESS"
+#~ msgstr "ÉXITO"
+
+#~ msgid ""
+#~ "Please click on the Allow button, to enable your camera and microphone"
+#~ msgstr ""
+#~ "Por favor, haga clic en el botón Permitir (Allow) para permitir la cámara "
+#~ "y el micrófono"
+
+#~ msgid "An error occurred"
+#~ msgstr "Ha producido un error"
+
+#~ msgid "Message:"
+#~ msgstr "Mensaje:"
+
+#~ msgid "form validation failed"
+#~ msgstr "La validación del formulario ha fallado"
+
+#~ msgid "Edit details"
+#~ msgstr "Editar detalles"
+
+#~ msgid "Delete media"
+#~ msgstr "Borrar Medio"

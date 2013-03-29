@@ -1,0 +1,34 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+
+
+switch ($this->uploadType)
+{
+    case 'presentation':
+        $content = ''; //$this->partial('partials/upload/kvpBox.phtml');
+        break;
+    case 'webcam':
+        $content = $this->partial('partials/upload/webcamBox.phtml');
+        $this->JsonContent(
+                array(
+                    'target' => '#uploadContainer',
+                    'content' => $content,
+                    'action' => 'replace'
+                )
+        );
+    break;
+    case 'media':
+    default:
+        $content = $this->partial('partials/upload/mediaBox.phtml');
+        $this->JsonContent(
+                array(
+                    'target' => '#uploadContainer',
+                    'content' => $content,
+                    'action' => 'append'
+                )
+        );
+    break;
+}

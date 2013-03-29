@@ -1,0 +1,16 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+/**
+ * @ignore
+ */
+
+    $stringArray = array();
+    foreach($this->translations as $string)
+    {
+        $stringArray[$string] = $this->translate($string);
+    }
+?>
+var LOCALE = <?php echo Zend_Json::encode($stringArray);?>;

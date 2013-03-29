@@ -1,0 +1,23 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+?>
+
+<script>
+  $.ui.autocomplete.prototype._renderItem = function (ul, item) {
+        item.label = item.label.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + $.ui.autocomplete.escapeRegex(this.term) + ")(?![^<>]*>)(?![^&;]+;)", "gi"), "<strong>$1</strong>");
+        return $("<li></li>")
+                .data("item.autocomplete", item)
+                .append("<a>" + item.label + "</a>")
+                .appendTo(ul);
+    };
+
+</script>
+<?php echo $this->form;?>
+<div class="buttons">
+    <a class="cancel" onclick="$('#dialog').dialog('close');"><?php echo $this->translate('Cancel');?></a>
+    <a class="btn" onclick="$('form#addChannelMember').submit()"><?php echo $this->translate('Add');?></a>
+</div>
+<?php 

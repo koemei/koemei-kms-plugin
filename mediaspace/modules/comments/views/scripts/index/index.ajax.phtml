@@ -1,0 +1,44 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+
+if($this->commentsEnabled):
+    
+    $this->placeholder('commentsPlaceholder')->captureStart('SET', 'comments');    
+    foreach( $this->comments as $comment ):  ?>
+        <?php echo $this->partial('partials/comment.phtml', 'comments', array('allowedToPost' => $this->allowedToPost, 'commentsClosed' => $this->commentsClosed, 'comment' => $comment, 'isReply' => false, 'replyToUser' => $comment->userId,  'replies' => isset($this->replies[$comment->id]) ? $this->replies[$comment->id] : array())); ?>
+    <?php 
+    endforeach;
+    $this->placeholder('commentsPlaceholder')->captureEnd();    
+    $this->JsonContent( array(
+        'target'=> '#comments_tab > .container > ul',
+        'content' => $this->placeholder('commentsPlaceholder')->comments,
+        'action' => 'appendFade',
+        )
+    );
+    
+    if(count($this->comments) < Kms_Resource_Config::getModuleConfig('comments', 'pageSize'))
+    {
+        $this->JsonContent( array(
+            'target'=> '#comments_tab #comments_load_more',
+            'content' => '',
+            'action' => 'deleteFade',
+            )
+        );
+    }
+    else
+    {
+        $this->JsonContent( array(
+            'target'=> '#comments_tab #comments_load_more',
+            'content' => '<a href="'.$this->baseUrl('/comments/index/index/entryid/'.$this->entryId.'/start/'.(isset($comment->createdAt) ? $comment->createdAt : '')).'" rel="async">'.$this->translate('Load more comments').'</a>',
+            'action' => 'replace',
+            )
+        );
+        
+    }
+
+    $this->JsonScript('$("#comments_tab_link").removeAttr("href").removeAttr("rel");$("#comments_tab #comment_count_to").text($("#comments_tab > .container > ul > li.comment").length);');
+   
+endif; ?>

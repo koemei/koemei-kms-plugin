@@ -1,0 +1,93 @@
+#entry_details .webcast_title, .webcastSso {
+	margin-bottom : 1em;
+}
+
+#entry_details .thumbnail {
+	margin-right: 1em;
+}
+
+#dialog #webcast_sso label {
+	margin-left: 2em;
+}
+
+#webcastLogin div { width: 300px;
+	margin-bottom: 1em;
+}
+
+#webcastLogin #GetEmail-email {float: right;}
+
+#dialog .cancel, #page .cancel {
+	margin-right : 2em;
+	color: #888888;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+#dialog .buttons {
+	text-align : center;
+	padding-top: 1em;
+}
+
+a.btn  {
+	display : inline-block;
+}
+
+.webcastSso {
+	margin-top : 1em;
+}
+
+#kitems .webcast h3 em, #kitems .webcast.watch h3 em, #addcontent .main #kitems .webcast.watch .item em,
+#addcontent .main #kitems .webcast.register .item em, #addcontent .main #kitems .webcast.join .item em {
+	background: url(webcast_sprite.png) no-repeat -70px -20px; 
+	display: block; 
+	width: 18px; 
+	height: 15px;
+}
+
+#kgallery #kitems .webcast .icon, #kgallery #kitems .webcast.watch .icon {
+	background: url(webcast_sprite.png) no-repeat -47px -17px #0087ff;
+	display: block;
+	width: 24px;
+	height: 21px;
+}
+
+#kgallery #kitems .webcast.register .icon {
+	background: url(webcast_sprite.png) no-repeat 0px 0px #0087ff;
+	display: block;
+	width: 74px;
+	height: 21px;
+}
+
+#kgallery #kitems .webcast.join .icon {
+	background: url(webcast_sprite.png) no-repeat 0px -17px #669900;
+	display: block;
+	width: 51px;
+	height: 21px;
+}
+
+#addcontent .main #kitems .webcast.join .item .name {
+	max-width: 260px;
+}
+
+#addcontent .main #kitems .webcast.register .item .name {
+	max-width: 230px;
+}
+
+.webcast .tabActionLinks a#refresh_entry em {
+	background: none;
+}
+
+#kitems li div.duration.join {
+	background: url(webcast_sprite.png) no-repeat -2px -19px #669900;
+	display: block;
+	width: 40px;
+	height: 17px;
+}
+
+#kitems li div.duration.register {
+	background: url(webcast_sprite.png) no-repeat -2px -2px #000;
+	display: block;
+	width: 62px;
+	height: 17px;
+}

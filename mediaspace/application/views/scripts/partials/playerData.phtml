@@ -1,0 +1,31 @@
+<?php
+// Uploaded before timespan
+$timespan = $this->Timespan($this->createdAt, time());
+
+$displayName = $this->String()->getAuthorNameFromTags($this->tags);
+$displayNameExists = $displayName ? true : false;
+if (!$displayName) {
+    $displayName = $this->userId;
+}
+$uploaded = $this->translate('uploaded') . ' ' . $timespan;
+?>
+
+<div class="entry_stats">
+    <?php if ($this->partial()->view->showLike): ?>
+        <div class="fright"><?php echo $this->partial('partials/playerBlockLike.phtml', $this); ?></div>
+    <?php endif; ?>
+    <div id="nickname" class="fleft">
+	<span><?php echo $this->translate('by'); ?> </span>
+	<a href="<?php echo $this->baseUrl("/createdby/" . $displayName . ($displayNameExists ? '/dn' : ''));?>"><?php echo $this->escape($displayName); ?></a>
+	<span id="created_at">&nbsp;<?php echo $this->createdAt ? $uploaded : ""; ?></span>
+    </div> 
+    <?php if ($this->partial()->view->showLike): ?>
+        <div class="likes"><strong><?php echo $this->votes . '</strong> ' . ($this->votes == 1 ? $this->translate('like') : $this->translate('likes')); ?></div>
+    <?php endif; ?>
+</div>
+
+
+<div id="player_tabs">
+    <?php echo $this->partial('partials/playerBlockTabs.phtml', $this); ?>
+</div>
+<?php

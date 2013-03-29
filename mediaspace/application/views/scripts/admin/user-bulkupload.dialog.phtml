@@ -1,0 +1,59 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+/**
+ * @ignore
+ */
+
+?>
+if($('#dialog')) {
+    $("body").append('<div id="dialog"></div>');
+}
+<?php $this->placeholder('text')->captureStart('SET', 'text'); ?>
+
+<div class="submit-csv-description">
+Once you submit the CSV you can track the progress of your import from Kaltura Management Console (KMC). <br /><br />
+In KMC go to Content and click Upload Control. Once import is processed, refresh this page to view users and edit their properties.
+</div>
+
+<?php
+$this->placeholder('text')->captureEnd();
+echo new Zend_Json_Expr("$('#dialog').html(\"".(addcslashes(str_replace(array("\r\n", "\n", "\r"), '', $this->placeholder('text')->text.$this->form), '\"'))."\");")
+
+        ?>
+
+<?php
+    $this->dialogContainer(
+        'dialog',
+        $this->headerText,
+        array(
+            'width'         => '650px',
+            'autoOpen'      => true,
+            'draggable'     => false,
+            'modal'         => true,
+            'resizable'     => false,
+            'title'         => $this->headerText,
+            'closeOnEscape' => true,
+            'close' => new Zend_Json_Expr('function() {
+                $("#dialog").remove();
+            }'),
+            'buttons'   => array(
+                $this->translate('Cancel') => new Zend_Json_Expr('function() {
+                    $(this).dialog(\'close\');
+                }')
+            ),
+     )
+    );
+
+
+    $actions = $this->JQuery()->getOnLoadActions();
+
+    $this->JQuery()->disable();
+
+    foreach($actions as $action)
+    {
+        echo $action;
+    }
+?>

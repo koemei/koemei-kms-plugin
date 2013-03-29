@@ -1,0 +1,64 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+?>
+<div class="wrapper bottom" id="bulk_actions">
+    <div class="fright">
+        <a href="<?php echo $this->baseUrl('/my-playlists/'.$this->partial()->view->playlistId.'/view/'.$this->partial()->view->itemType); ?>" id="cancel_button"rel="async"><?php echo $this->translate('Cancel');?></a>
+        <button type="submit" class="ui-button save" disabled="disabled"><?php echo $this->translate('Save Changes');?></button>
+    </div>
+</div>
+<script>
+$(function() {
+    var playlistEntries = '';
+    
+    $("#myplaylists #kitems").sortable({
+//        revert: true,
+        axis: 'y',
+        scroll: false,
+        tolerance: 'pointer',
+        containment: 'parent',
+        update: updatePlaylists,
+        placeholder: "ui-state-highlight"
+    });
+
+    var saveCaption = $('#mp_wrap #bulk_actions .save').html();
+    function updatePlaylists(){
+        var ids = new Array();
+        var entryid;
+        $("#myplaylists #kitems >li").each(function(index, elem){
+            entryid = $(elem).attr('data-entryid');
+            ids.push(entryid);
+        });
+        playlistEntries = ids.join(',');
+        $('#mp_wrap #bulk_actions .save').removeAttr('disabled').html(saveCaption);
+        $('#mp_wrap #bulk_actions a#cancel_button').fadeIn();
+//        jsLog(playlistEntries);
+    }
+    
+    $("#mp_wrap #kitems .actionLinks a.remove").live('click', function(e){
+        var entryid = $(this).attr('data-entryid');
+        if($('#mp_wrap #kitems > li').length > 1) {
+            $('#mp_wrap #kitems > li[data-entryid='+entryid+']').remove();
+        }
+        else {
+            $("#mp_wrap #bulk_actions button.delete").click();
+        }
+            
+        updatePlaylists();
+    });
+    $('#mp_wrap #bulk_actions .save').click(function(){
+        if(typeof(playlistEntries) != 'undefined' && playlistEntries.length) {
+            $(this).html('<?php echo $this->translate('Saving').'...';?>');
+            $('#mp_wrap #bulk_actions a#cancel_button').fadeOut();
+            var url = baseUrl + '/playlist/update-entries/id/'+$("#playlist_select").val()+'/entries/'+playlistEntries+'?format=ajax';
+            $('body').addClass('cursorwait');
+            $.getJSON(url, asyncCallback).error(transportError);
+        }
+    });
+
+    $( "#myplaylists #kitems, #myplaylists #kitems > li" ).disableSelection();
+});
+</script>

@@ -1,0 +1,36 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+
+$script = '';
+$content = '';
+if($this->ready)
+{
+    $this->JsonContent(
+        array(
+            'target' => '#player_wrap #player',
+            'content' => $this->partial('partials/widgets/kdp.phtml', array('entryId' => $this->entryId)),
+            'action' => 'replace'
+        )
+    );
+    $this->JsonContent(
+        array(
+            'target' => '#converting_media',
+            'content' => ' ',
+            'action' => 'delete'
+        )
+    );
+    $this->JsonContent(
+        array(
+            'target' => '#player_tabs',
+            'content' => $this->partial('partials/playerBlockTabs.phtml', $this->entry),
+            'action' => 'replace'
+        )
+    );
+    
+    $this->JsonScript('$("#status_notice:empty").remove()');
+    
+    $this->JsonScript('clearInterval(checkStatusInterval)');
+}

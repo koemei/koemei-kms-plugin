@@ -1,0 +1,9 @@
+.uploadbutton {cursor: pointer}
+.uploadbutton span {color: #333; }
+#uploadContainer a#hide_box {display: none !important}
+#edit_entry #cancel_edit_entry {display: none !important}
+.entry_status {border-top: 0 !important}
+
+.uploadbox .progressbar {margin-bottom: 20px;}
+
+#ksrError {margin-top: 10px; margin-bottom: -10px}

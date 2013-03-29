@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<KUploadConfiguration>
+
+  <fileFilters default="documents">
+    <fileFilter id="documents"
+          description="documents"
+          extensions="*.ppt;*.doc;*.xls;*.ods;*.odt;*.pdf;*.pptx;*.docx;*.xlsx"
+          entryType="10"
+          mediaType="-1" />
+
+  </fileFilters>
+
+  <limits maxUploads="60" maxFileSize="2048" maxTotalSize="9999999999" />
+</KUploadConfiguration>

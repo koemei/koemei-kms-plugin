@@ -1,0 +1,18 @@
+<?php
+$channel = isset($this->partial()->view->channel) ? $this->partial()->view->channel : null;
+
+$isChannelManager = $channel && Kms_Resource_Models::getChannel()->getUserRoleInChannel($channel->name, Kms_Plugin_Access::getId(), $channel->id) == Kaltura_Client_Enum_CategoryUserPermissionLevel::MANAGER;
+$title = $this->translate('Remove media from').' '. ($channel ? $this->translate('channel') : $this->translate('gallery')); 
+/*
+if(Kms_Plugin_Access::isCurrentUser($this->userId) && isset($this->partial()->view->categoryId)): ?>    
+    <span class="remove"><a rel="dialog" title="<?php echo $title; ?>"href="<?php echo $this->baseUrl('/gallery/remove-entry/entry/'.$this->id.'/category/'.$this->partial()->view->categoryId); ?>"><?php echo $this->translate('Remove');?><em></em></a></span>
+<?php elseif( $isChannelManager ): ?>
+    <span class="remove"><a rel="dialog" href="<?php echo $this->baseUrl('/gallery/remove-entry/entry/'.$this->id.'/category/'.$this->partial()->view->categoryId); ?>"><?php echo $this->translate('Remove');?><em></em></a></span>
+<?php endif; 
+
+// by Leon - have to disable the remove link in Categories
+*/
+if( $isChannelManager ): ?>
+    <span class="remove"><a rel="dialog" href="<?php echo $this->baseUrl('/gallery/remove-entry/entry/'.$this->id.'/category/'.$this->partial()->view->categoryId); ?>"><?php echo $this->translate('Remove');?><em></em></a></span>
+<?php endif; 
+

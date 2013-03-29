@@ -1,0 +1,39 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+
+
+    $this->JsonContent(array(
+        'target' => '#embed_code',
+        'content' =>  $this->partial('partials/widgets/html5Fallback.phtml', array('playerId' => isset($this->embedParams['UICONF_ID']) ? $this->embedParams['UICONF_ID'] : Kms_Resource_Config::getConfiguration('player', 'playerId'))).
+                     $this->EntitlementEmbedCode($this->embedParams),
+        'action' => 'value'
+        )
+    );
+
+    $this->JsonContent(array(
+            'target' => '#widgetId',
+            'content' =>  $this->widgetId,
+            'action' => 'value'
+        )
+    );
+    
+    $this->placeholder('script')->captureStart('SET', 'script');
+?>
+$('#embed_button').removeAttr('href');
+$('#embed_button').removeAttr('rel');
+$('#embed_content').show(); 
+$('#embed_code').focus();
+$('#embed_code').select();
+$('#copy_notice').show(); 
+setTimeout(function(){ 
+    $('#copy_notice').fadeOut(500)
+},1000);
+$('#embed_sizes > label').removeClass('selected');
+
+$('#embed_sizes input[value=<?php echo $this->size; ?>]').attr('checked', 'checked').closest('label').addClass('selected');
+<?php
+    $this->placeholder('script')->captureEnd();
+    $this->JsonScript($this->placeholder('script')->script);

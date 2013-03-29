@@ -1,0 +1,13 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+
+?>
+<li data-id="<?php echo $this->id?>">
+    <?php echo $this->escape($this->name); ?>
+    <span>
+        <a class="remove_playlist" title="<?php echo $this->translate('Remove');?>" href="<?php echo $this->baseUrl('/addtoplaylists/index/add-entry/playlist/' . $this->id . '/entry/' . $this->entryId) ?>" rel="async"></a>
+    </span>
+</li>

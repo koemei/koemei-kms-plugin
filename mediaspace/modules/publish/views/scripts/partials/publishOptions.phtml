@@ -1,0 +1,20 @@
+<?php
+
+/* 
+ *  All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ *  To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+
+$unpublishUrl = $this->baseUrl('/publish/index/make-private/entry/'.$this->entryId.'?format=dialog');
+?>
+<div><?php echo $this->formRadio('publishradio', $this->published, array('onclick' => '$.getScript("'.$unpublishUrl.'", scriptCallback).error( transportError );$("body").addClass("cursorwait");return false;'), array( '0' => $this->translate('Not Published'))); ?></div>
+<?php if($this->publishCategories ): ?>
+    <div><?php echo $this->formRadio('publishradio', $this->published, array('onclick' => '$("#publishcats, #publishcats .galleries").fadeIn("fast"); $("#publishcats .channels").fadeOut("fast")'), array('1' => $this->translate('Publish in Gallery') )); ?></div>
+<?php endif; ?>
+<?php if($this->publishChannels): ?>
+    <div><?php echo $this->formRadio('publishradio', $this->published && !$this->publishCategories, array('onclick' => '$("#publishcats, #publishcats .channels").fadeIn("fast"); $("#publishcats .galleries").fadeOut("fast")'), array('2' => $this->translate('Publish in Channel') )); ?></div>
+<?php endif; ?>
+<?php
+
+

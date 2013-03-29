@@ -1,0 +1,60 @@
+<?php
+
+/* 
+ *  All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ *  To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+?>
+
+<div id="bulkpublish">
+    <div class="choice">
+        <?php if($this->partial()->view->canPublishToGalleries): ?>
+            <div><?php echo $this->formRadio('publish-where', 0, array('checked' => 'checked',  'onclick' => "$('#bulkpublish .channel input').attr('disabled','disabled'); $('#bulkpublish .channel').fadeOut('fast'); $('#bulkpublish .gallery').fadeIn('fast'); $('#bulkpublish .gallery input').removeAttr('disabled'); return true;"), array('gallery' => $this->translate('Publish in Gallery') )); ?></div>
+        <?php endif;?>
+        <?php if(isset($this->partial()->view->channels) && count($this->partial()->view->channels)): ?>
+            <div><?php echo $this->formRadio('publish-where', $this->partial()->view->canPublishToGalleries ? 1 : 0, array('onclick' => "$('#bulkpublish .gallery input').attr('disabled','disabled'); $('#bulkpublish .gallery').fadeOut('fast'); $('#bulkpublish .channel').fadeIn('fast'); $('#bulkpublish .channel input').removeAttr('disabled'); return true;"), array('channel' => $this->translate('Publish in Channel') )); ?></div>
+        <?php endif;?>
+    </div>  
+    <?php if($this->partial()->view->canPublishToGalleries): ?>
+    <div class="gallery">
+        <?php
+        $this->navigation()->setContainer(Kms_Resource_Nav::getContainer());
+        $this->navigation()->setMaxDepth(4)->setMinDepth(0);
+        echo $this->navigation()
+                ->menu()
+                ->setPartial(array('partials/bulkCategories.phtml', 'publish'));
+        
+    ?>
+    </div>
+    <?php endif;?>
+    <div class="channel" style="<?php if($this->partial()->view->canPublishToGalleries) echo 'display: none';?>">
+        <?php 
+        if(isset($this->partial()->view->channels) && count($this->partial()->view->channels))
+        {
+            $ci = 0;
+            foreach($this->partial()->view->channels as $channelItem)
+            {
+                echo $this->partial(
+                    'partials/bulkCategoryItem.phtml', 
+                    'publish', 
+                    array
+                    (
+                        'label' => $channelItem->name,
+                        'catid' => $channelItem->id,
+                        'depth' => 0,
+                        'id' => 'channel_'.$ci,
+                    )
+                );
+                
+                $ci++;
+            }
+        }
+        ?>
+    </div>
+    <div class="buttons">
+        <a class="btn"><?php echo $this->translate('Publish');?></a>
+        <a class="cancel" onclick="$('#dialog').dialog('close');"><?php echo $this->translate('Cancel');?></a>
+    </div>
+</div>
+

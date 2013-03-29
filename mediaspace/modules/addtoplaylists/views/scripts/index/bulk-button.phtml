@@ -1,0 +1,27 @@
+<?php
+
+/* 
+ *  All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ *  To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+
+?>
+<button type="submit" class="bulkplaylists" ><?php echo $this->translate('Add to Playlists');?></button>
+<script>
+$("#mm_wrap #bulk_actions button.bulkplaylists").click(function(){
+    var $items = $("#mymedia #kitems label.operate .sel-entry");
+    var items = new Array();
+    $.each($items, function(index, elem){
+        if(($(elem).attr('checked') || $(elem).is("[CHECKED]")) && $(elem).val()) {
+            items.push($(elem).val());
+        }
+    })
+    if(items.length) {
+        var entryIds = items.join(',');
+        var url = baseUrl + '/addtoplaylists/index/bulk/id/' + entryIds + '?format=dialog&redir=' + redirUrl;
+
+        $.getScript(url, scriptCallback).error( transportError );
+    }
+});</script>
+<?php

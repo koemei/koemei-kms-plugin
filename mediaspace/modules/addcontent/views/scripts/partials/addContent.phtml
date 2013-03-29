@@ -1,0 +1,53 @@
+<?php
+
+/* 
+ *  All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ *  To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+/* partial for the addcontent dialog window */
+
+if ($this->partial()->view->entries && count($this->partial()->view->entries)):
+    
+    $action = isset($this->partial()->view->channelId) ? $this->baseUrl('/addcontent/index/add/channelid/'.$this->partial()->view->channelId) : $this->baseUrl('/addcontent/index/add/categoryid/'.$this->partial()->view->categoryId);
+?>
+
+<div id="addcontent" content="wrapper">
+    <form action="<?php echo $action;?>" method="POST" ajax="1">
+    <?php echo $this->partial('partials/sideButtons.phtml', 'addcontent'); ?>
+    <div class="main">
+        <ul id="kitems">
+        <?php
+            foreach($this->partial()->view->entries as $entryId => $entryModel)
+            {
+                echo $this->partial('partials/entryLine.phtml', 'addcontent' ,
+                    array(
+                        'entry' => $entryModel->entry, 
+                        'enabled' => $entryModel->readyToPublish,
+                        'published' => isset($this->partial()->view->published[$entryModel->id]),
+                        'itemTag' => 'label'
+                    )
+                );
+            }
+        ?>
+        </ul>
+        <?php
+        if ($this->partial()->view->entries && count($this->partial()->view->entries)):?>
+        <div id="pager">
+            <?php
+            echo $this->paginationControl($this->partial()->view->paginator, $this->partial()->view->pagerType, 'partials/galleryPaging.phtml');
+            ?>    
+        </div>
+        <?php endif;?>
+        <div class="buttons">
+            <a class="btn" onclick="$('#addcontent form').submit()"><?php echo $this->translate('Add');?></a>
+            <a class="cancel" onclick="$('#dialog').dialog('close');"><?php echo $this->translate('Cancel');?></a>
+        </div>
+    </div>
+    </form>
+</div>
+<?php
+else:
+    echo $this->partial('partials/noEntries.phtml', 'addcontent');
+endif;
+

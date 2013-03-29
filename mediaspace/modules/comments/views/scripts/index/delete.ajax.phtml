@@ -1,0 +1,31 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+if($this->confirm)
+{
+    $this->JsonContent(array(
+        'target' => '#comments_tab > .container > ul li[data-comment-id="'.$this->commentId.'"]',
+        'action' => 'deleteFade',
+        'content' => '',
+    ));
+    
+    $this->JsonContent(array(
+        'target' => '#comments_tab #comment_count',
+        'content' => $this->commentsCount,
+        'action' => 'replace',
+    ));
+    
+    $this->JsonScript('$("#comments_tab #comment_count_to").text($("#comments_tab > .container > ul > li.comment").length -1 > 0 ? $("#comments_tab > .container > ul > li.comment").length -1 : 0 );');
+    if($this->commentsCount)
+    {
+        $this->JsonScript('$("#comments_tab .nocomments").hide();$("#comments_tab .counters").show();');
+    }
+    else
+    {
+        $this->JsonScript('$("#comments_tab .nocomments").show();$("#comments_tab .counters").hide();');
+    }
+   
+}

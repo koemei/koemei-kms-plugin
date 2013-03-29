@@ -1,0 +1,29 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+// upload ajax view - called on form validation errors
+
+$this->JsonContent(
+array(
+        'target' => '#upload_caption',
+        'content' => $this->partial('partials/upload.phtml', 'captions', array('form' => $this->form)),
+        'action' => 'replace'
+)
+);
+
+$actions = $this->JQuery()->getOnLoadActions();
+$this->JQuery()->disable();
+foreach ($actions as $action)
+{
+    $this->JsonScript($action);
+}
+
+// if an aupload was already done, switch the upload button
+if (!empty($this->name))
+{
+    $script = "ksuHandler.fileName = '$this->name'; ";    
+    $this->JsonScript($script);
+}

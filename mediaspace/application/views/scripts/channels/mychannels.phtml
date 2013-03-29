@@ -1,0 +1,88 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+// search keyword
+if ($this->admin){
+    $this->defaultKeyword = $this->translate('Search').' ('.$this->translate('as manager') .')';
+}
+else{
+    $this->defaultKeyword = $this->translate('Search').' ('.$this->translate('as member') . ')';
+}
+
+// title
+$this->headTitle($this->translate('My Channels'));
+
+// heading without sidebar
+$pageheading = $this->headingOnly($this->translate('My Channels'), 'h1', 'heading no_subheading');
+$pageheading .= $this->partial('partials/channels/createChannel.phtml');
+$this->placeholder('pageHeading')->content = $pageheading;
+
+// active class for filter bar links
+$memberLinkclass = 'active';
+$managerLinkClass = '';
+if ($this->params['type'] == 'manager'){
+    $memberLinkclass = '';
+    $managerLinkClass = 'active';
+}
+if(!$this->managerCount){
+    $memberLinkclass .= ' last';
+}
+?>
+ 
+ <div id="filter_bar" class="wrapper p_top">
+    <?php 
+        $links = array();
+        $links['member'] = array('label' => $this->memberCount . ' ' . $this->translate('as Member'), 'class' => $memberLinkclass );
+        if($this->managerCount)
+        {
+            $links['manager'] = array('label' => $this->managerCount . ' ' . $this->translate('as Manager'), 'class' => $managerLinkClass. ' last');
+        }
+        echo $this->partial('partials/filterBar.phtml', array
+            (
+                'disableType' => true, 
+                'sorters' => array(
+                    'date' => $this->translate('Date'),
+                    'name' => $this->translate('Alphabetical'),
+                    'members' => $this->translate('Members')
+                    ),
+                'links' => $links,
+            )
+        );
+        ?>
+</div>
+
+<div id="channels" class="mychannels wrapper">        
+    <?php  if (empty($this->channels)):?>
+    <div id="mychannels_message">
+        <?php 
+            // set the message by member/manager section
+            $message = '';
+            if ($this->params['type'] == 'manager'){
+                $message = $this->translate("You are not a manager of any channel.");
+            
+                $front = Zend_Controller_Front::getInstance();
+                if ($front->getPlugin('Kms_Plugin_Access')->hasPermission('channels', 'create')){
+                    // user can create channels - let him know
+                    $message .=  ' ' . $this->translate("Go ahead, and") . " <a href='" . $this->baseUrl('channels/create'). "'>" . $this->translate("create your first channel") . "</a>.";
+                }
+            }
+            else{
+                $message = $this->translate("You are not a member of any channel.");
+            }
+            echo $message;
+        ?>
+    </div>
+    <?php else:
+        foreach ($this->channels as $channel){
+            echo $this->partial('partials/channels/channel.phtml', array('channel' => $channel , 'admin' => $this->admin, 'grid_css_class'=> $this->cycle(array('grid_left', 'grid_middle', 'grid_right'))->next()));
+        }
+    endif;?>
+</div>
+
+<div id="pager" class="wrapper"><?php
+	echo $this->paginationControl($this->paginator, $this->pagerType, 'partials/galleryPaging.phtml');
+	?></div>
+<?php

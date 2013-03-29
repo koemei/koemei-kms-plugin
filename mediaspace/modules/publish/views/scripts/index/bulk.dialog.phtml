@@ -1,0 +1,119 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+if ($this->allowed)
+{
+    $content = $this->partial('partials/bulkPublish.phtml', 'publish');
+    ?>
+
+    if($('#dialog')) {
+        $("body").append('<div id="dialog"></div>');
+    }
+    
+    <?php
+    echo new Zend_Json_Expr("$('#dialog').html(\"".(addcslashes(str_replace(array("\r\n", "\n", "\r"), '', $content), '\"'))."\");") ;
+    
+    
+    
+    $this->dialogContainer(
+        'dialog', $content, array(
+            'autoOpen' => true,
+            'draggable' => false,
+            'modal' => true,
+            'width' => 576,
+            'height' => 486,
+            'resizable' => false,
+            'title' => $this->translate('Publish'),
+            'closeOnEscape' => true,
+            'open' => new Zend_Json_Expr('function() {
+                    $("#kplayer iframe").css("left", "-1000px");
+                }'
+            ),
+            'close' => new Zend_Json_Expr('function() {
+                    $("#kplayer iframe").css("left", "0");
+                    $("#dialog").remove();
+                }'
+            ),
+        )
+    );
+    
+}
+else
+{
+    $content = $this->translate('You are not allowed to publish media').'.';
+    ?>
+    if($('#dialog')) {
+        $("body").append('<div id="dialog"></div>');
+    }
+    $("#dialog").html('<?php echo $content ?>');
+
+    <?php
+    $this->dialogContainer(
+        'dialog', $content, array(
+            'autoOpen' => true,
+            'draggable' => false,
+            'modal' => true,
+            'resizable' => false,
+            'title' => $this->translate('Publish'),
+            'closeOnEscape' => true,
+            'open' => new Zend_Json_Expr('function() {
+                    $("#kplayer iframe").css("left", "-1000px");
+                }'
+            ),
+            'close' => new Zend_Json_Expr('function() {
+                    $("#kplayer iframe").css("left", "0");
+                    $("#dialog").remove();
+                }'
+            ),
+            'buttons' => array(
+                $this->translate('Ok') => new Zend_Json_Expr('function() {
+                        $(this).dialog(\'close\');
+                    }'
+                )
+            ),
+        )
+    );
+}
+
+$actions = $this->JQuery()->getOnLoadActions();
+
+$this->JQuery()->disable();
+
+foreach ($actions as $action)
+{
+    echo $action;
+}
+?>
+$('#bulkpublish .buttons .btn').click(function(){
+    var c = $('#bulkpublish .gallery input:checkbox:checked:enabled, #bulkpublish .channel input:checkbox:checked:enabled');
+    var ids = new Array;
+    $.each(c, function(i, val) {
+        ids.push($(val).val());
+    });
+    if(ids.length > 0) {
+        var categoryIds = ids.join(',');
+        var url = '<?php echo $this->baseUrl('/publish/index/publish/bulk/1/entry/'.join(',', $this->entryIds).'/category/');?>' + categoryIds;
+        url += '?format=ajax';
+        
+        $('body').addClass('cursorwait');
+        $.ajax({
+            url: url,
+            dataType: 'json',
+            data: '',
+            success: asyncCallback,
+            error: transportError,
+            timeout: 120000 //120 second timeout
+        });
+
+        //$.getJSON(url, asyncCallback).error( transportError );
+
+    }
+    else {
+        return false;
+    }
+
+});
+<?php
+

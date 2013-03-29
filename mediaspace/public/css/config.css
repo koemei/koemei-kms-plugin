@@ -1,0 +1,63 @@
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+
+
+body { font: normal 67.5% arial,sans-serif; background: #000 url("../../../assets/images/login_bg.png") repeat;}
+#header { margin: 0 0 10px;}
+h1 {  margin: 5px 15px; font: bold 24px arial,sans-serif; color:#fff;}
+h1 span {  font: normal 12px arial,sans-serif; color:#ebebeb;}
+/*		ul li a { font-size:16px;}*/
+fieldset { width:900px; padding: 15px 15px 7px; border-color:#aaa; margin: 0 10px 18px; clear:both;}
+fieldset fieldset { width:888px; padding: 10px 0 3px; border: 1px solid silver; margin:0; position:relative;}
+fieldset fieldset fieldset { width:864px; border-style:dotted; margin: 0 -10px 10px 12px;}
+label { display:block; width:869px; margin-left:5px; float:left;}
+fieldset fieldset legend { padding-right:6px; margin-left:2px;}
+fieldset fieldset label { width:857px; margin: 0 0 10px 10px;}
+ fieldset fieldset fieldset label { width:844px;}
+/*fieldset fieldset label:last-child { margin-bottom:0;}*/
+/*fieldset fieldset label:first-child { margin-bottom:10px !important;}*/
+label input { width:450px; margin: -3px 6px 0 0; float:right;}
+label select { width:456px; #width:456px; padding: 2px 0 0; margin: -2px 6px 0 0; float:right;}
+fieldset fieldset label input, fieldset fieldset label select { margin-right:0;}
+label.inner {float: right; width: 70px;}
+label.inner input[type=radio] { width:30px}
+input[type=checkbox] { width:30px;}
+input[type=submit] { padding: 2px 12px; margin: -5px 0 5px; float:none;}
+.tooltip { cursor: pointer;}
+fieldset fieldset .tooltip, #COMMENTS fieldset a { position:absolute; top:-25px; right:-8px; background:#222;} /*0972A5*/
+ #COMMENTS fieldset a { top:47px; right:auto; left:944px; cursor:pointer;}
+
+.ma_add, .a_add { display: block; padding: 3px 9px 3px 10px; margin: 3px 12px; float: left; cursor:pointer;}
+.a_add { float: right; margin: -4px 0 0;}
+/*.d_link.s { padding: 1px 4px 2px; margin: -2px 4px 0 0; float:right;}*/
+.d_link { padding-bottom:2px; margin-top:-2px; float:right;}
+/*.ma_add, .a_add, .c_add, .d_link {float:right; display: block;}*/
+/*.ma_add, .a_add , .c_add{background-image: url(../users/images/add.jpg);width:22px; height: 22px}*/
+/*.d_link {background-image: url(../users/images/delete.jpg); width:22px; height: 22px}*/
+
+fieldset.grp { display:none; margin-top:-26px; border-top: 1px solid #222;}
+fieldset.grp legend { background:#222;} /*0972A5*/
+fieldset a { padding: 1px 4px; border: solid 1px silver; margin: 0 0 -1px 2px; text-decoration:none;}
+fieldset a:hover { font-weight:bold; border-color:#fff;}
+fieldset legend a { border-style:dotted;}
+
+.ui-tabs-nav.ui-widget-header { border-radius: 6px 6px 0 0 !important;}
+
+#tabs { padding:0px; border: solid 1px #555; border-top:none;}
+#tabs>div { padding:15px 10px; border: 1px solid #fff; background:#222;} /* 0972A5 */
+#tabs>p { display:none;}
+
+.ui-tabs-selected a { font-weight:bold;}
+.ui-tabs-nav.ui-widget-header { margin: 0 -1px -1px;}
+.ui-tabs-selected.ui-state-active { background: #222; border-color:#fff;} /* 0972A5 */
+
+textarea[name=usercomments] { width:893px; margin: 0 0 18px 1px;}
+/*input[type=text] { display: none;}
+input[value] { display: inline !important;}*/
+
+/* webkit */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	fieldset fieldset .tooltip { top:-4px;}
+}

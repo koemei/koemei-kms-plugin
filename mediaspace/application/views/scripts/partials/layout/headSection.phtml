@@ -1,0 +1,63 @@
+<?php
+/*
+ *  All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ *  To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+?>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="requiresActiveX=true" />
+    <?php echo $this->headTitle() ?>
+    <?php echo $this->partial('partials/layout/headScript.phtml');?>
+<?php
+
+// jquery css must be the first one
+$this->headLink()->prependStylesheet($this->baseUrl('build' . BUILD_NUMBER . '/css/kms/jquery-ui-1.8.16.kms.css'));
+$this->headLink()->appendStylesheet($this->baseUrl('build' . BUILD_NUMBER . '/css/style.css'));
+
+// add ios android specific JS files
+if($this->Device(array('ios', 'android')))
+{
+    $this->headScript()->appendFile($this->baseUrl('build' . BUILD_NUMBER . '/js/jquery.ui.touch-punch.min.js'));
+    $this->headScript()->appendFile($this->baseUrl('build' . BUILD_NUMBER . '/js/iscroll.js'));
+}
+
+// global js
+$this->headScript()->prependFile($this->baseUrl('build' . BUILD_NUMBER . '/js/global.js'));
+
+// Javascript for thumbrotator
+if(Kms_Resource_Config::getConfiguration('gallery', 'thumbnailRotator'))
+{
+    $this->headScript()->appendFile($this->baseUrl('build' . BUILD_NUMBER . '/js/thumbRotator.js'));
+}
+
+// handling of theme javascript
+$themeJs = $this->theme('js/theme.js');
+if (file_exists(APPLICATION_PATH . '/../public/' . $themeJs))
+{
+    $this->headScript()->appendFile($this->baseUrl($themeJs));
+}
+ 
+// call the view hook first to allow modules to use the view helpers below:
+echo $this->partial('partials/layout/modulesHead.phtml');
+
+// handling of theme stylesheet
+$themeCss = $this->theme('css/theme.css');
+if (file_exists(APPLICATION_PATH . '/../public/' . $themeCss))
+{
+    $this->headLink()->appendStylesheet($this->baseUrl('build' . BUILD_NUMBER . '/' . $themeCss));
+}
+
+echo $this->headStyle();
+echo $this->headLink();
+
+// jquery must be before the rest of the js. the css was rendered before to force seperation of css and js
+echo $this->JQuery()->enable()->uiEnable()
+        ->setLocalPath($this->baseUrl('build' . BUILD_NUMBER .'/js/jquery-1.7.1.min.js'))
+        ->setUiLocalPath($this->baseUrl('build' . BUILD_NUMBER .'/js/jquery-ui-1.8.16.custom.min.js'));
+
+echo $this->headScript();
+?>
+
+</head>
+<?php

@@ -1,0 +1,71 @@
+if($('#dialog')) {
+$("body").append('<div id="dialog"></div>');
+}
+
+<?php
+$content = '';
+if(is_array($this->createdProfiles) && count($this->createdProfiles))
+{   
+    $content = '<p>The following customdata profiles were created for you:</p>';
+    
+    foreach($this->createdProfiles as $profile)
+    {
+        if(isset($profile->systemName) && isset($profile->id))
+        {
+            $content .= '<p>Id: '.$profile->id.', Name: '.$profile->systemName.'</p>';
+        }
+    }
+    
+}
+elseif(is_array($this->createdUiConfs) && count($this->createdUiConfs))
+{   
+    $content = '<p>The following uiConfs were created for you:</p>';
+    foreach($this->createdUiConfs as $uiConf)
+    {
+        if(isset($uiConf->name) && isset($uiConf->id))
+        {
+            $name = str_replace('DO NOT DELETE - ', '', $uiConf->name);
+            $name = str_replace('DO NOT DELETE ', '', $name);
+            $content .= '<p>Id: '.$uiConf->id.'<br/> Name: '.$name.'</p>';
+        }
+    }
+    
+}
+else
+{
+    $content = '<p>No profiles/uiconfs were created...</p>';
+}
+//$content = print_r($this->createdProfiles, true);
+echo new Zend_Json_Expr("$('#dialog').html(\"" . (addcslashes(str_replace(array("\r\n", "\n", "\r"), '', $content), '\"')) . "\");");
+
+$this->dialogContainer(
+        'dialog', $content, array(
+            'autoOpen' => true,
+            'width' => '500',
+            'draggable' => false,
+            'modal' => true,
+            'resizable' => false,
+            'title' => $this->translate('Deployment'),
+            'closeOnEscape' => true,
+            'close' => new Zend_Json_Expr('function() {
+                            $("#kplayer iframe").css("left", "0");
+                        }'
+            ),
+            'buttons' => array(
+                $this->translate('Ok') => new Zend_Json_Expr('function() {
+                                $(this).dialog(\'close\');
+                            }'
+                )
+            ),
+        )
+);
+
+$actions = $this->JQuery()->getOnLoadActions();
+
+$this->JQuery()->disable();
+
+foreach ($actions as $action)
+{
+    echo $action;
+}
+?>

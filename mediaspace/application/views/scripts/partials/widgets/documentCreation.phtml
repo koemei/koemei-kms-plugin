@@ -1,0 +1,43 @@
+<?php
+
+/* 
+ *  All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ *  To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+$movieUrl = Kms_Resource_Config::getConfiguration('client', 'serviceUrl') . '/kgeneric/ui_conf_id/' . Kms_Resource_Config::getConfiguration('widgets', 'kvpmDocUploadId');
+$kalturaHostNoHttp = preg_replace('#http[s]?://#', '', Kms_Resource_Config::getConfiguration('client', 'serviceUrl'));
+$components = parse_url(Kms_Resource_Config::getConfiguration('client', 'serviceUrl'));
+$protocol = isset($components['scheme']) ? $components['scheme'] : 'http';
+
+$flashvars = join('&', array(
+    'userId=' . $this->partial()->view->userId,
+    'partnerId=' . $this->partial()->view->partnerId,
+    'ks=' . $this->partial()->view->ks,
+//    'ks=' . Kms_Resource_Client::getAdminClient()->getKs(),
+    'protocol='.$protocol,
+    'host=' .$kalturaHostNoHttp,
+    'uiConfId=' . Kms_Resource_Config::getConfiguration('widgets', 'kvpmDocUploadId'),
+    
+));
+
+?>
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+                id="kvpm" width="100%" height="100%"
+                codebase="<?php echo $protocol;?>://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab">
+                <param name="movie" value="<?php echo $movieUrl ?>" />
+                <param name="quality" value="high" />
+                <param name="bgcolor" value="#ffffff" />
+                <param name="allowScriptAccess" value="always" />
+                <param name="flashvars" value="<?php echo $flashvars; ?>" />
+                <embed src="<?php echo $movieUrl ?>" quality="high" bgcolor="#ffffff"
+                        width="100%" height="100%" name="Kpvm" align="middle"
+                        play="true"
+                        loop="false"
+                        quality="high"
+                        allowScriptAccess="always"
+                        type="application/x-shockwave-flash"
+                        flashvars="<?php echo $flashvars; ?>"
+                        pluginspage="<?php echo $protocol;?>://www.adobe.com/go/getflashplayer">
+                </embed>
+</object>

@@ -1,0 +1,32 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+// partial to hold the caption upload form. used by upload views.
+
+$movieUrl = Kms_Resource_Config::getConfiguration('client', 'serviceUrl') . '/kupload/ui_conf_id/' . Kms_Resource_Config::getModuleConfig('captions', 'captionsKsuId');
+
+// add a ksu element to the form. done from here to use view paremeters.
+$element = new Zend_Form_Element('ksu');
+$element->setOrder(0);
+$element->viewScript = 'partials/ksu.phtml';
+$element->setDecorators(array(array('ViewScript',array('movieUrl' => $movieUrl))));
+$this->form->addElement($element);
+ 
+echo $this->form; 
+?>
+<div class="buttons">
+    <a class="cancel" onclick="$('#dialog').dialog('close'); setConfirmUnload(false);"><?php echo $this->translate('Cancel');?></a>
+    <a class="btn" onclick="$('#uploadCaption').submit();"><?php echo $this->translate('Save');?></a>
+</div> 
+<script type="text/javascript">
+	$('#uploadCaption').one('submit',function()
+	{
+		$('body').addClass('cursorwait'); 
+		ksuHandler.uploadFile();
+		return false;
+	});
+</script>
+<?php 

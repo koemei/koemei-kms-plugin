@@ -1,0 +1,68 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+/**
+ *	display one channel
+ *
+ * 	@viewhook Kms_Resource_Viewhook::CORE_VIEW_HOOK_CHANNELLIST_LINKS
+ */
+
+$mediaCount = $this->channel->directEntriesCount;
+$mediaCount = $mediaCount < 0 ? '' : ($mediaCount > 0 ? $mediaCount : $this->translate('No')) . ' ' .$this->translate('media');
+$memberCount = $this->channel->membersCount < 0 ? '' : $this->channel->membersCount . ' ' . (($this->channel->membersCount == 1) ?  $this->translate('member') : $this->translate('members'));
+$channelName = Kms_View_Helper_String::removeSpecialChars($this->channel->name);
+?>
+<div class="channel <?php echo $this->grid_css_class ?>">
+    <div>
+    <a href="<?php echo $this->url(array('channelname' => $channelName, 'channelid' => $this->channel->id), 'channelview', true) ?>" class="inner">
+	<h3><span><?php echo $this->channel->name ?></span></h3>
+	<div class="channel_counters">
+	    <span class="media_counter"><?php echo $mediaCount; ?></span>
+	    <span class="members_counter"><?php echo $memberCount;?></span>
+	    <?php 
+	        if (isset($this->channel->type)):?>
+	        <span class="channel_type">, <?php echo $this->channel->type;?></span>
+	    <?php endif;?>
+	</div>
+
+	<div class="thumbnail wide">
+	    <?php
+	    // large thumbnail
+	    if (!empty($this->channel->thumbnails[0])):
+		?>
+    	    <img src="<?php echo $this->channel->thumbnails[0] . '/width/238/height/92/type/' . Kaltura_Client_Enum_ThumbCropType::CROP; ?>"/>
+    	<?php endif ?>
+	</div>
+	<div class="thumbnails">
+	    <?php
+	    // small thumbails
+	    for ($i = 1; $i < Application_Model_Channel::CHANNEL_THUMBNAILS; ++$i):
+		?>
+    	    <div class="thumbnail">
+		    <?php if (!empty($this->channel->thumbnails[$i])): ?>
+		        <img src="<?php echo $this->channel->thumbnails[$i] , '/width/38/height/38/type/' . Kaltura_Client_Enum_ThumbCropType::CROP; ?>"/>
+		    <?php endif; ?>
+    	    </div>
+    	<?php endfor; ?>    
+	</div>
+    </a>
+    <?php if ($this->admin): ?>
+    <div class="channel_actions">
+    	<a class="fleft edit_entry" href="<?php echo $this->url(array('channelname' => $channelName, 'channelid' => $this->channel->id), 'channelsedit', true); ?>"><em>&nbsp;</em><?php echo $this->translate('Edit'); ?></a>
+    	<?php if ($this->channel->moderation && $this->channel->pendingEntriesCount > 0)
+    	{
+    	    $request = Zend_Controller_Front::getInstance()->getRequest();
+    	    $request->setParam('channelname',$this->channel->name);
+    	    $request->setParam('pending',$this->channel->pendingEntriesCount);
+    	    echo $this->ViewHook(Kms_Resource_Viewhook::CORE_VIEW_HOOK_CHANNELLIST_LINKS);
+    	}
+    	?>
+    </div>
+    <?php endif; ?>
+    </div>
+</div>
+
+<?php 

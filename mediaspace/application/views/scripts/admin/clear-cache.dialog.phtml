@@ -1,0 +1,52 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+/**
+ * @ignore
+ */
+
+?>
+if($('#dialog')) {
+    $("body").append('<div id="dialog"></div>');
+}
+<?php 
+
+echo new Zend_Json_Expr("$('#dialog').html(\"".$this->translate('The cache was flushed successfuly.')."\");") ;
+$header = $this->translate('Clear Cache').':'.$this->translate('success');        
+        ?>
+
+<?php
+    $this->dialogContainer(
+        'dialog',
+        $header,
+        array(
+            'width'         => '350px',
+            'autoOpen'      => true,
+            'draggable'     => false,
+            'modal'         => true,
+            'resizable'     => false,
+            'title'         => $header,
+            'closeOnEscape' => true,
+            'close' => new Zend_Json_Expr('function() {
+                $("#dialog").remove();
+            }'),
+            'buttons'   => array(
+                $this->translate('Ok') =>  new Zend_Json_Expr('function() {
+                    $(this).dialog(\'close\');
+                }')
+            ),
+     )
+    );
+
+
+    $actions = $this->JQuery()->getOnLoadActions();
+
+    $this->JQuery()->disable();
+
+    foreach($actions as $action)
+    {
+        echo $action;
+    }
+?>

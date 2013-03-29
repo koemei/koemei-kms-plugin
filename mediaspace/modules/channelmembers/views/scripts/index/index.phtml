@@ -1,0 +1,43 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+/**
+ * Main view of the Channelmembers module
+ * 
+ */
+?>
+<div id="channelmembers_tab" class="wrapper">
+
+    <div class="wrapper" id="members_heading">
+	<a class="btn addmember fright" href="<?php echo $this->baseUrl() . '/channelmembers/index/add/channelname/' . urlencode(Kms_View_Helper_String::removeSpecialChars($this->channel->name)). '/channelid/' . $this->channel->id; ?>" rel="dialog"><?php echo $this->translate('Add Member');?></a>
+	<h3 id="members_count"><?php echo $this->partial('partials/memberCount.phtml','channelmembers',$this); ?></h3>
+    </div>
+ 
+    <div class="members_header wrapper">
+        <div class="name"><?php echo $this->translate('Member')?></div>
+        <div class="user_id"><?php echo $this->translate('User ID')?></div>
+        <div class="permission"><?php echo $this->translate('Permission')?></div>
+    </div>
+    
+    <div id="members">
+    <?php 
+        if ($this->members && count($this->members))
+        {
+            echo $this->partialLoop('partials/channelMember.phtml', 'channelmembers', $this->members);
+        }
+        else
+        {
+            echo $this->translate('There are no members...');
+        }
+    ?>    
+    </div>
+    	<?php if (!empty($this->paginator)) : ?>
+    	<div id="pager" class="wrapper">
+    	<?php echo $this->paginationControl($this->paginator, $this->pagerType, 'partials/galleryPaging.phtml',array('urlParams' => $this->urlParams)); ?>
+    	</div>
+    	<?php endif; ?>    
+</div>
+<?php 

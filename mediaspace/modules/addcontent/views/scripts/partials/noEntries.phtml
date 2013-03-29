@@ -1,0 +1,20 @@
+<?php
+
+/* 
+ *  All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ *  To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+?>
+<div id="addcontent" content="wrapper">
+        <?php echo $this->partial('partials/sideButtons.phtml', 'addcontent'); ?>
+        <div class="main">
+            <ul id="kitems">
+                <li class="nohover"><?php echo $this->translate('No media found').'.'; ?></li>
+            </ul>
+            <div class="buttons">
+                <a class="cancel" onclick="$('#dialog').dialog('close');"><?php echo $this->translate('Cancel');?></a>
+            </div>
+        </div>
+</div>
+<?php
+

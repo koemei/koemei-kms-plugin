@@ -1,0 +1,44 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+
+$playlistId = $this->partial()->view->playlistId; ?>
+<div class="wrapper" id="bulk_actions">
+    <div class="fleft playlist_select">
+        <span><?php echo $this->translate('Show Playlist');?></span>
+        <select id="playlist_select" value="<?php echo $playlistId?>"onchange="$('body').addClass('cursorwait');$.getJSON(baseUrl + '/my-playlists/' + $(this).val() + '/view/' + viewType +'?format=ajax', asyncCallback).error(transportError)">
+        <?php foreach($this->playlists as $playlist): ?>
+            <option value="<?php echo $playlist->id; ?>"><?php echo $this->escape($playlist->name); ?></option>
+        <?php endforeach; ?>
+        </select>
+    </div>
+    <div class="fright">
+
+        <div class="views_switch fright">
+            <a class="short_view" title="<?php echo $this->translate('Short View');?>"></a>
+            <a class="full_view" title="<?php echo $this->translate('Full View');?>"></a>
+        </div>
+        <button type="submit" class="delete" ><?php echo $this->translate('Delete Playlist');?></button>
+    </div>
+</div>
+<script>
+$("#mp_wrap #bulk_actions button.delete").click(function(){
+    var url = baseUrl + '/playlist/delete/id/' + $("#playlist_select").val() + '?format=dialog';
+    $.getScript(url, scriptCallback).error( transportError );
+});
+
+var viewType = $('#mp_wrap').hasClass('short') ? 'short' : 'full';
+
+$("#mp_wrap #bulk_actions .short_view").click(function(){
+    $("#mp_wrap").removeClass("short").removeClass("full").addClass("short");
+    viewType = "short";
+})
+
+$("#mp_wrap #bulk_actions .full_view").click(function(){
+    $("#mp_wrap").removeClass("short").removeClass("full").addClass("full");
+    viewType = "full";
+})
+
+</script>

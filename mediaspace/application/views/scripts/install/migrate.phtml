@@ -1,0 +1,63 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+/**
+ * @ignore
+ */
+
+?>
+<div id="view-content">
+    <?php if(isset($this->migrationError)): ?>
+    <div id="migration_errors">
+        <?php echo $this->migrationError; ?>
+    </div>
+    <?php endif; ?>
+    <div>
+        <?php echo $this->translate('If you migrate from KMS 3.0.x/4.0.x - specify path to config.ini or upload the config.ini of your KMS 3.0.x/4.0.x instance.'); ?>
+        <br />
+        <?php echo $this->translate('If you migrate from KMS 2 - specify path to config.ini.php or upload the config.ini.php of your KMS 2 instance.'); ?>
+    </div>
+    <div>
+        <?php echo $this->form; ?>
+    </div>
+</div>
+
+<div class="loader">
+    <div class="loader_message"><?php echo $this->translate('Installation in progress. Please wait...');?></div>
+</div>
+
+<script type="text/javascript">
+    
+    $('form').submit(function(){
+	   $('.loader').fadeIn('slow');
+    });
+
+    // hide/show paramaters for their relevant version
+    // 4.0.x has privacy context and instance id - do not show them again
+    $('form #migrateFromVersion').change(function(){
+        // version selected
+        if ($(this).val() == '<?php echo Kms_Setup_Common::KNOWN_VERSION_40x ?>') {
+            $('#instanceId').parent().fadeOut('fast');
+            $('#forceUseInstanceId').parent().fadeOut('fast');            
+            $('#privacyContext').parent().fadeOut('fast');
+            $('#forceUseInstanceId').attr('checked','checked');           
+        }
+        else{
+            $('#instanceId').parent().fadeIn('slow');
+            $('#forceUseInstanceId').parent().fadeIn('slow');            
+            $('#privacyContext').parent().fadeIn('slow');
+        }
+    });
+
+    $(document).ready(function() {
+        // form validation error
+        if ($('form #migrateFromVersion').val() == '<?php echo Kms_Setup_Common::KNOWN_VERSION_40x ?>') {
+            $('#instanceId').parent().hide();
+            $('#forceUseInstanceId').parent().hide();            
+            $('#privacyContext').parent().hide();
+        }
+    });
+
+</script>

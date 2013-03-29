@@ -1,0 +1,32 @@
+<?php
+
+/* 
+ *  All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ *  To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+
+?>
+<div class="side">
+    <ul>
+        <?php echo $this->ViewHook(Kms_Resource_Viewhook::CORE_VIEW_HOOK_MYMEDIASIDEBARPRE); ?>                
+        <?php if ($this->partial()->view->mediaUpload): ?>
+            <li>
+                <a class="btn" rel="require-flash" href="<?php echo $this->baseUrl('/upload'); ?>" id="open_upload" target="_blank"><em></em><span><?php echo $this->translate('Media Upload'); ?></span></a>
+            </li>
+        <?php endif; ?>
+        <?php if ($this->partial()->view->webcamUpload): ?>
+        <li>
+            <a class="btn" rel="require-flash" href="<?php echo $this->baseUrl('/upload/webcam'); ?>" id="launch_webcam_kcw" target="_blank"><em></em><span><?php echo $this->translate('Webcam Recording'); ?></span></a>
+        </li>
+        <?php endif; ?>
+        <?php if ($this->partial()->view->presentationUpload): ?>
+        <li>
+            <a class="btn" rel="require-flash" href="<?php echo $this->baseUrl('/upload/presentation'); ?>" id="launch_kpw_wizard"  target="_blank"><em></em><span><?php echo $this->translate('Video Presentation'); ?></span></a>
+        </li>
+        <?php endif; ?>
+        <?php echo $this->ViewHook(Kms_Resource_Viewhook::CORE_VIEW_HOOK_MYMEDIASIDEBARPOST); ?>                
+    </ul>
+
+</div>
+<?php

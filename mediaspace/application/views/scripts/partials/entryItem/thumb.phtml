@@ -1,0 +1,97 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+// get the entry of this partial loop
+$entry = $this->{$this->partialLoop()->getObjectKey()};
+// keep backward compatability
+$this->assign(get_object_vars($entry));
+
+$displayName = $this->String()->getAuthorNameFromTags($this->tags);
+$displayNameExists = $displayName ? true : false;
+$_name = $displayName ? $displayName : $this->userId;
+$displayName = $_name;
+
+$divClass = '';
+if (isset($this->mediaType) && $this->mediaType == Kaltura_Client_Enum_MediaType::AUDIO)
+{
+    $divClass = 'kAudio';
+}
+elseif (isset($this->mediaType) && $this->mediaType == Kaltura_Client_Enum_MediaType::IMAGE)
+{
+    $divClass = 'kImage';
+}
+elseif(isset($this->dataContent))
+{
+    // retrieve the entryid for the thumbnail (the media entry)
+    $data = $this->dataContent;
+    $dataXml = new SimpleXMLElement($data);
+    $mediaEntryId = (string) $dataXml->video->entryId;
+    // change the thumbnail URL to include the entry Id of the media (video) entry
+    $this->thumbnailUrl = preg_replace('/\/entry_id\/([^\/])+/', '/entry_id/'.$mediaEntryId, $this->thumbnailUrl);
+    $divClass .= ' kVidPres';
+
+}
+
+// get the entry type related classes
+$models = Kms_Resource_Config::getModulesForInterface('Kms_Interface_Functional_Gallery_Item');
+foreach ($models as $model)
+{
+    $divClass .= ' ' . $model->getItemClass($entry);
+}
+
+if (isset($this->partialLoop()->view->entries{$this->partialLoop()->view->playEntry}->id))
+{
+    $active = $this->partialLoop()->view->entries{$this->partialLoop()->view->playEntry}->id == $this->id ? ' active' : '';
+}
+else
+{
+    $active = '';
+}
+
+if($this->partialLoop()->view->channel)
+{
+    $params = 'channelid='.$this->partialLoop()->view->channel->id;
+}
+elseif($this->partialLoop()->view->categoryId)
+{
+    $params = 'catid='.$this->partialLoop()->view->categoryId;
+}
+else
+{
+    $params = '';
+}
+
+
+$title = $this->escape($this->String()->shortenDescription(strip_tags($this->description), 240));
+?>
+<li class="<?php echo ($divClass ? $divClass : ''); ?>" data-entryid="<?php echo $this->id ?>" <?php echo Kms_Resource_Config::getConfiguration('gallery', 'thumbnailRotator') && !$this->Device(array('ios','android')) ? $this->thumbRotator('.item_link > img', $entry) : ''; ?> >
+    <a <?php echo $params ? 'data-params="'.$params.'"' : ''; ?> href="<?php echo $this->EntryLink($this->id, $this->name); ?>" class="item_link" <?php echo $title ? 'title="'.$title.'"' : '';?>>
+        <img src="<?php echo $this->thumbnailUrl; ?>/width/148/height/84/type/<?php echo Kaltura_Client_Enum_ThumbCropType::CROP;?>" height="84" width="148" alt="<?php echo $this->escape($this->name); ?>">
+        <span class="duration"><?php echo $this->String()->formatDuration($this->duration); ?>'</span>
+        <span class="icon"></span>
+        <span class="item_name"><?php echo $this->escape($this->name); ?></span>
+    
+    </a>
+
+    <span class="createdBy">
+        <?php 
+            $description = '';
+            foreach ($models as $model)
+            {
+                $description = $model->getItemDescription($entry, $description);
+            }
+        ?>
+        <?php if (!empty($description)):?>
+            <?php echo $description; ?>
+        <?php else:?>
+            <?php echo $this->translate('By'); ?>:&nbsp;<a class="nickname" href="<?php echo $this->baseUrl("/createdby/" . $displayName . ($displayNameExists ? '/dn' : ''));?>"><?php echo $displayName; ?></a> <nobr><?php echo $this->Timespan($this->createdAt); ?></nobr>
+        <?php endif;?>
+    </span>
+<?php 
+    echo $this->partial('partials/entryItem/removeLink.phtml', $entry);
+?>
+</li>
+<?php

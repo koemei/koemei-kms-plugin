@@ -1,0 +1,61 @@
+<?php
+    
+    $entryModel = Kms_Resource_Models::getEntry();
+    if(!$entryModel->id)
+    {
+        $entry = Kms_Resource_Models::getEntry()->get($this->comment->entryId, false);
+    }
+    else
+    {
+        $entry = $entryModel->entry;
+    }
+    $entryOwner = null;
+    if($entry->id == $this->comment->entryId)
+    {
+        $entryOwner = $entry->userId;
+    }
+    if(isset($this->isReply) && $this->isReply)
+    {
+        $replyToComment = $this->comment->parentId;
+    }
+    else
+    {
+        $replyToComment = $this->comment->id;
+    }
+?>
+<li class="comment" data-comment-id="<?php echo $this->comment->id;?>">
+    <p>
+	<?php echo nl2br($this->escape(strip_tags($this->comment->text)));?>
+    </p>
+    <div class="comment_actions">
+	<span class="userlink">
+            <a href="<?php echo $this->baseUrl('/createdby/'.$this->comment->userId);?>"><?php echo $this->comment->userId;?></a>
+            <?php if($this->isReply && isset($this->replyToUser)): ?>
+                <?php echo $this->translate('In reply to');?> 
+                <a href="<?php echo $this->baseUrl('/user/'.$this->replyToUser);?>"><?php echo $this->replyToUser;?></a>
+            <?php endif;?>
+        </span>
+	<span class="timespan" title="<?php echo date('M d Y, h:m:s', $this->comment->createdAt);?>"><?php echo $this->Timespan($this->comment->createdAt, time());?></span>
+        <ul class="fright">
+        <?php if(!$this->commentsClosed): ?>
+            <?php if(Kms_Plugin_Access::getCurrentRole() == Kms_Plugin_Access::getRole(Kms_Plugin_Access::ANON_ROLE)): ?>
+                <li class="fright reply"><a href="<?php echo $this->baseUrl('/user/login').'?ref='.$this->EntryLink($this->comment->entryId);?>" title="<?php echo $this->translate('Reply');?>"><em class="icon"></em><?php echo $this->translate('Reply');?></a></li>
+            <?php elseif($this->allowedToPost):?>
+                <li class="fright reply"><a rel="async" href="<?php echo $this->baseUrl('/comments/index/reply/entryId/'.$this->comment->entryId.'/commentId/'.$replyToComment.'/replyTo/'.($this->replyToUser ? $this->replyToUser : $this->comment->userId));?>" title="<?php echo $this->translate('Reply');?>"><em class="icon"></em><?php echo $this->translate('Reply');?></a></li>
+            <?php endif;?>
+        <?php endif; ?>
+        <?php if(Kms_Plugin_Access::isCurrentUser($this->comment->userId) || Kms_Plugin_Access::isCurrentUser($entryOwner)):?>
+            <li class="fright delete"><a rel="dialog" href="<?php echo $this->baseUrl('/comments/index/delete/entryId/'.$this->comment->entryId.'/commentId/'.$this->comment->id);?>" title="<?php echo $this->translate('Delete');?>"><em class="icon"></em><?php echo $this->translate('Delete');?></a></li>
+        <?php endif; ?>
+        </ul>
+    </div>
+    <?php if(!isset($this->isReply) || $this->isReply == false): ?>
+        <ul class="replies">
+        <?php if(isset($this->replies) && is_array($this->replies) && count($this->replies)): ?>
+            <?php foreach( $this->replies as $reply ):  ?>
+                <?php echo $this->partial('partials/comment.phtml', 'comments', array('allowedToPost' => $this->allowedToPost, 'commentsClosed' => $this->commentsClosed, 'comment' => $reply, 'isReply' => true, 'replyToUser' => $this->replyToUser, 'replies' => array())); ?> 
+            <?php endforeach;?>
+        <?php endif; ?>
+        </ul>
+    <?php endif; ?>
+</li>

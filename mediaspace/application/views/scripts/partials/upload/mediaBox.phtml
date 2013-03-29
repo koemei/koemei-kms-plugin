@@ -1,0 +1,43 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+
+
+$id = $this->partial()->view->uploadBoxId;
+$hTagName = $id == 1 ? 'h1' : 'h3';
+$movieUrl = Kms_Resource_Config::getConfiguration('client', 'serviceUrl') . '/kupload/ui_conf_id/' . Kms_Resource_Config::getConfiguration('widgets', 'ksuId');
+?>
+<?php echo '<'.$hTagName.' class="uploadBoxHeading">'.$this->partial()->view->uploadHeading.'</'.$hTagName.'>';?>
+<script>
+    ksuHandlers[<?php echo $id; ?>] = new ksuHandlerPrototype();
+    ksuHandlers[<?php echo $id; ?>].id = <?php echo $id; ?>;
+</script>
+
+<div id="uploadbox<?php echo $id ?>" class="uploadbox">
+    <div class="entry_status">
+        <div class="entry_videofile"></div>
+        <div class="uploadbutton">
+            <span class="loader"><?php echo $this->translate('Loading, Please Wait...');?></span>
+            <span class="text"><?php echo '+&nbsp;'.$this->partial()->view->uploadButtonText ?></span>
+            <object 
+                type="application/x-shockwave-flash" 
+                data="<?php echo $movieUrl ?>" 
+                id="ksu<?php echo $id ?>" >
+                <param name="allowScriptAccess" value="always" />
+                <param name="allowNetworking" value="all" />
+                <param name="wmode" value="transparent" />
+                <param name="flashvars" value="entryId=-1&uid=<?php echo $this->partial()->view->userId ?>&partnerId=<?php echo $this->partial()->view->partnerId ?>&ks=<?php echo $this->partial()->view->ks ?>&jsDelegate=ksuHandlers[<?php echo $id ?>]" />
+                <param name="movie" value="<?php echo $movieUrl ?>" />
+            </object>
+        </div>
+        <div class="progressbar"><span style="position: absolute"></span><a class="cancel_upload" title="<?php echo $this->translate('Cancel');?>" onclick="ksuHandlers[<?php echo $id; ?>].cancelUpload()">&nbsp;</a></div>
+        <!-- <div class="tryagain"><a onclick="ksuHandlers[<?php echo $id; ?>].ksuObj.browse()">Upload again</a></div> -->
+        <div class="bottomline"><?php echo nl2br($this->translate("Upload limited to 2GB files. Kaltura accepts all common video, audio and image formats in all resolutions.\n For best results with video, we recommend preparing videos in 1280x720 pixels and using the H.264 video codec at about 4000 kb/s."));?></div>
+    </div>
+    <div id="entry_details" class="entry_details">
+    </div>
+
+
+</div>

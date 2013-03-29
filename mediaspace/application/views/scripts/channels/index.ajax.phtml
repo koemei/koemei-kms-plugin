@@ -1,0 +1,40 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+// parse the channels
+$this->placeholder('channels')->captureStart('SET', 'channels');
+
+if ($this->channels && count($this->channels))
+{  
+    foreach ($this->channels as $channel){
+                echo $this->partial('partials/channels/channel.phtml', array('channel' => $channel, 'admin' => $this->admin, 'grid_css_class'=> $this->cycle(array('grid_left', 'grid_middle', 'grid_right'))->next()));
+	}
+}	    
+else
+{
+    echo $this->translate('No channels Found...');
+}
+$this->placeholder('channels')->captureEnd();
+
+
+// the channels
+$this->JsonContent(array(
+        'target' => '#channels',
+        'content' => $this->placeholder('channels')->channels,
+        'action' => 'replace'
+    )
+);
+
+// the pager
+$pager = $this->paginationControl($this->paginator, $this->pagerType, 'partials/galleryPaging.phtml');
+$pagesInfo = $this->partial()->view->paginator->getPages();
+
+$this->JsonContent(array(
+        'target' => '#pager',
+        'content' => $pager,
+        'action' => 'replace'
+    )
+);

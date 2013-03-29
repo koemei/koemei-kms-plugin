@@ -1,0 +1,35 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+/**
+ * @ignore
+ */
+
+$this->placeholder('errorContent')->captureStart();
+?>
+<div class="noplaylists">
+	<h1><?php echo $this->pagehead; ?></h1>
+	<div class="sub_heading"><?php echo $this->message ?></div>
+
+	<?php if (isset($this->exception)): ?>
+    	    <h3><?php echo $this->translate('Exception information:'); ?></h3>
+    	    <p>
+		    <?php echo $this->exception->getMessage() ?>
+    	    </p>
+
+    	    <h3><?php echo $this->translate('Stack trace:'); ?></h3>
+    	    <pre><?php echo $this->exception->getTraceAsString() ?>
+    	    </pre>
+
+    	    <h3><?php echo $this->translate('Request Parameters:'); ?></h3>
+    	    <pre><?php echo $this->escape(var_export($this->request->getParams(), true)) ?>
+    	    </pre>
+	
+	<?php endif; ?>
+</div>
+<?php
+$this->placeholder('errorContent')->captureEnd();
+$this->errorContent = $this->placeholder('errorContent');
+echo $this->placeholder('errorContent');

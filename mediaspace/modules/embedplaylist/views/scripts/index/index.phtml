@@ -1,0 +1,75 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+
+?>
+ 
+<?php if ($this->allowEmbed):?>  
+
+<div id="embed_pl">
+
+    <div id="embed_button_wrapper" class="fleft">
+        <div class="fleft">
+            <a id="embed_button" class="btn" rel="async"  href="<?php echo $this->baseUrl('embedplaylist/index/embed/playlistId/' . $this->playlistId);?>"><?php echo $this->translate('Embed');?></a>
+        </div>    
+        <p class=""><?php echo $this->translate('Grabbing the embed code will make this media public to the world.');?></p>
+    </div>
+
+
+    <div id="embed_content" style="display: none;">    
+
+
+    <label for="embed_code" class="bar"><?php echo $this->translate('Embed Code');?></label>
+    <?php 
+        echo $this->FormText(
+            'embed_code', 
+            '',
+            array(
+                'id' => 'embed_code',
+                'onclick' => "$('#embed_code').focus().select();"
+            )
+        );
+    ?>
+    <div class="embed_hilite"></div>
+    <form id="embedForm" action="<?php echo $this->baseUrl('/embedplaylist/index/embed');?>" method="GET" ajax="1">
+        <span id="kdp_embed_options">
+            <div id="embed_sizes">
+                <p><?php echo $this->translate('Select Playlist Layout (Flash)');?></p>
+                <label title="<?php echo $this->embedSizes['horizontal']['fullSize']; ?>">
+                    <input type="radio" name="embed[size]" value="horizontal" checked="checked" />
+                    <?php echo $this->translate('Width');?> <?php echo $this->embedSizes['horizontal']['width']; ?> x <?php echo $this->translate('Height');?> <?php echo $this->embedSizes['horizontal']['height'];?>
+                    <div class="horizontal"><img src="<?php echo $this->baseUrl('build'.BUILD_NUMBER.'/img/h_embed.png'); ?>"/></div>
+                </label>
+                <label title="<?php echo $this->embedSizes['vertical']['fullSize']; ?>">
+                    <input type="radio" name="embed[size]" value="vertical" />
+                    <?php echo $this->translate('Width');?> <?php echo $this->embedSizes['vertical']['width']; ?> x <?php echo $this->translate('Height');?> <?php echo $this->embedSizes['vertical']['height'];?>
+                    <div class="vertical"><img src="<?php echo $this->baseUrl('build'.BUILD_NUMBER.'/img/v_embed.png');?>"/></div>
+                </label>
+            </div>
+            <div id="embed_colors">
+                <p><?php echo $this->translate('Select Playlist Color');?></p>
+                <label title="Dark" class="dark">
+                    <input type="radio" name="embed[player]" value="dark" checked="checked" />
+                    <?php echo $this->translate('Dark');?>
+                    <em></em>
+                </label>
+                <label title="Light" class="light">
+                    <input type="radio" name="embed[player]" value="light"/>
+                    <?php echo $this->translate('Light');?>
+                    <em></em>
+                </label>
+            </div>
+        </span>
+        <input type="hidden" name="embed[playlistId]" value="<?php echo $this->playlistId; ?>" />
+        <input type="hidden" name="embed[widgetId]" value="" id="widgetId" />
+    </form>
+    <script>
+        $('#embedForm').change( function(){
+           $(this).submit(); 
+        });
+    </script>
+    </div>
+</div>
+<?php endif;

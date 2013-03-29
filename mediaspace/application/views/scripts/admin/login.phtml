@@ -1,0 +1,27 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+/**
+ * @ignore
+ */
+
+$this->headLink()
+          ->appendStylesheet( $this->baseUrl('build'.BUILD_NUMBER.'/css/admin.css') ) ;
+
+?>
+<div class="loginNotice">
+    <div id="creds" style="display: block">
+        <h2><?php echo $this->translate('Kaltura MediaSpace Administration Area');?></h2>
+        <p><?php echo $this->translate('Please login using your Kaltura account');?></p>
+    </div>
+</div>
+
+<div id="login">
+<div class="form_title"><?php echo $this->translate('Login'); ?></div>
+    <?php echo $this->form->render() ?>
+</div>
+<script>
+$("#Login-username").focus();
+</script>

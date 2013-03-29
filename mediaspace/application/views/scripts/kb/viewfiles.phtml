@@ -1,0 +1,157 @@
+<?php
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+/**
+ * @ignore
+ */
+echo $this->partial('partials/kb/sideNav.phtml');
+
+//$this->headScript()->appendScript('alert(1)');
+
+$viewHookDescriptions = Kms_Resource_Viewhook::listViewHooks();
+//$moduleViewHooks = Kms_Resource_Viewhook::
+?>
+<div class="tabContent">
+    <div class="description">
+        Since MediaSpace is an MVC application, it includes view files which can be overridden by a custom theme.<br />
+        When creating a theme you are free to implement only the view files you wish to override. Other files that are not implemented will be taken from the system's core view files.<br />
+        Following is a list of all view and layout files that can be overridden in your theme.<br />
+        Note that the relative path mentioned here should be the exact same relative path in your theme (under themes/YOURTHEME/{views/scripts|layouts/scripts|modules/{moduleName}/views/scripts}).<br />
+
+    </div>
+    <h3 class="toggler"><?php echo $this->translate('Layouts');?></h3>
+    <div class="tabSection">
+        <?php foreach ($this->viewFiles['layouts'] as $path => $parsedComment): ?>
+            <div class="tabItem" id="item_<?php echo $path;?>">
+                <a name="<?php echo preg_replace('/\.|\//', '_', $path);?>"></a>            
+                <div class="filename"><?php echo $path; ?></div>
+                <div><?php echo $parsedComment->description; ?></div>
+                <?php if (isset($parsedComment->viewhooks)): ?>
+                    <h4>View Hooks</h4>
+                    <table cellspacing="0">
+                        <tr>
+                            <th class="name"><?php echo $this->translate('Viewhook name');?></th>
+                            <th class="description"><?php echo $this->translate('Description');?></th>
+                        </tr>
+                        <?php foreach ($parsedComment->viewhooks as $viewhook): ?>
+                            <tr class="<?php echo $this->cycle(array('odd', 'even'))->next(); ?>">
+                                <td><?php
+                                    $viewHookName = defined($viewhook) ? constant($viewhook) : $viewhook;
+
+                                ?>
+                                    <a href="<?php echo $this->baseUrl('kb/viewhooks#'.$viewHookName); ?>"><?php echo $viewHookName;?></a>
+                                </td>
+                                <td>
+                                    <?php echo isset($viewHookDescriptions['core']) && isset($viewHookDescriptions['core'][$viewHookName]) ? $viewHookDescriptions['core'][$viewHookName] : '';?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+                <?php endif; ?>
+            </div>
+        <?php endforeach; ?>
+    </div>
+    <div class="tabItem">
+        <h3 class="toggler">Views</h3>
+        <div class="tabSection">
+            <?php
+                $currentSectionName = null;
+
+
+            ?>
+            <?php foreach ($this->viewFiles['views'] as $path => $parsedComment): ?>
+                <?php
+                    $matches = null;
+                    // get the first part before the slash (un greedy)
+                    preg_match_all('#^(.*)/(.*)$#U', $path, $matches);
+
+                    $sectionName = $matches && is_array($matches) && isset($matches[1]) && $matches[1] && count($matches[1]) ? $matches[1][0] : '';
+                    if($currentSectionName != $sectionName)
+                    {
+                        if(!is_null($currentSectionName))
+                        {
+                            echo "</div>";
+                        }
+
+                        $currentSectionName = $sectionName;
+                        ?>
+                        <h3 class="toggler"><?php echo $currentSectionName;?></h3>
+                        <div style="display: none">
+                        <?php
+                    }
+                ?>
+                <div class="tabItem" id="item_<?php echo preg_replace('/[\/\.]+/', '', $path);?>">
+                    <a name="<?php echo preg_replace('/\.|\//', '_', $path);?>"></a>            
+                    <div class="filename"><?php echo $path; ?></div>
+                    <div class="description"><?php echo $parsedComment->description; ?></div>
+                    <?php if (isset($parsedComment->viewhooks)): ?>
+                        <h4>View Hooks</h4>
+                        <table cellspacing="0">
+                            <tr>
+                                <th class="name"><?php echo $this->translate('Viewhook name');?></th>
+                                <th class="description"><?php echo $this->translate('Description');?></th>
+                            </tr>
+                            <?php foreach ($parsedComment->viewhooks as $viewhook): ?>
+                                <tr class="<?php echo $this->cycle(array('odd', 'even'))->next(); ?>">
+                                    <td><?php 
+                                        $viewHookName = defined($viewhook) ? constant($viewhook) : $viewhook; 
+
+                                    ?>
+                                        <a href="<?php echo $this->baseUrl('kb/viewhooks#'.$viewHookName); ?>"><?php echo $viewHookName;?></a>                                  
+                                    </td>
+                                    <td>
+                                        <?php echo isset($viewHookDescriptions['core']) && isset($viewHookDescriptions['core'][$viewHookName]) ? $viewHookDescriptions['core'][$viewHookName] : '';?>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </table>
+                    <?php endif; ?>
+
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <div class="tabItem">
+        <h3 class="toggler"><?php echo $this->translate('Module View Files');?></h3>
+        <div class="tabSection">
+            <?php foreach ($this->viewFiles['modules'] as $moduleName => $moduleFiles): ?>
+                <h4 class="toggler tabItem"><?php echo $moduleName; ?></h4>
+                <div class="moduleViews cf" style="display: none">    
+                    <?php foreach ($moduleFiles as $path => $parsedComment): ?>
+                        <div class="tabItem">
+                            <a name="<?php echo preg_replace('/\.|\//', '_', $path);?>"></a>
+                            <div class="filename"><?php echo $path; ?></div>
+                            <div class="description"><?php echo $parsedComment->description; ?></div>
+                            <?php if (isset($parsedComment->viewhooks)): ?>
+                                <h4>View Hooks</h4>
+                                <table cellspacing="0">
+                                    <tr>
+                                        <th class="name"><?php echo $this->translate('Viewhook name');?></th>
+                                        <!-- th class="description"><?php echo $this->translate('Description');?></th -->
+                                    </tr>
+                                    <?php foreach ($parsedComment->viewhooks as $viewhook): ?>
+                                        <tr class="<?php echo $this->cycle(array('odd', 'even'))->next(); ?>">
+                                            <td>
+                                                <?php
+                                                $viewhookName = defined($viewhook) ? constant($viewhook) : $viewhook;
+                                                ?>
+                                                <a href="<?php echo $this->baseUrl('kb/viewhooks#'.$viewHookName); ?>"><?php echo $viewHookName;?></a> 
+                                            </td>
+                                            <!--td>
+                                                <?php 
+                                                // echo isset($viewHookDescriptions['core']) && isset($viewHookDescriptions['core'][$viewHookName]) ? $viewHookDescriptions['core'][$viewHookName] : '';
+                                                ?>
+                                            </td -->
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </table>
+                            <?php endif; ?>
+                        </div>
+                    <?php endforeach; ?>   	    
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</div>

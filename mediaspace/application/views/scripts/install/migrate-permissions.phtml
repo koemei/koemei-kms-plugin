@@ -1,0 +1,27 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+/**
+ * @ignore
+ */
+
+?>
+<br /><br />
+<div id="view-content">
+	<p>
+        <?php echo $this->translate('Migration cannot continue due to missing write permissions on some configuration files');?>.
+    </p>
+    <p>
+        <?php echo $this->translate('Following are configuration files that need to be writable by the web-server');?>:
+        <ul>
+        <?php foreach($this->filepaths as $path): ?>
+            <li><?php echo $path; ?></li>
+        <?php endforeach; ?>
+        </ul>
+        <?php echo $this->translate('You can fix this by running the following commands');?>:<br />
+        chmod 777 modules/*/module.ini<br />
+        chmod 777 configs
+    </p>
+</div>

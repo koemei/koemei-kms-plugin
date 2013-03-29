@@ -1,0 +1,49 @@
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+if($this->commentsEnabled):?>
+<script>
+    var defaultCommentsText = "<?php echo addcslashes($this->defaultText, '\"');?>";    
+    var defaultReplyText = "<?php echo addcslashes($this->defaultReplyText, '\"');?>";    
+</script>
+<div id="comments_tab">
+
+    <div class="comments_bar wrapper">
+	<div class="fleft counters" style="<?php echo $this->commentsCount === '0' ? 'display: none' : '';?>">
+            <span id="comment_count_from">1</span>-<span id="comment_count_to"><?php echo count($this->comments);?></span> of <span id="comment_count"><?php echo $this->commentsCount;?></span> <?php echo $this->translate('Comments')?>
+	</div>
+        <div class="fleft nocomments" style="<?php echo $this->commentsCount === '0' ? '' : 'display: none';?>">
+            <?php echo $this->translate('There are no comments');?>
+        </div>
+        <?php if($this->commentsClosed): ?>
+         <div class="fleft closed">(<?php echo $this->translate('comments closed');?>)</div>
+        <?php elseif($this->allowedToPost): ?>
+            <button id="add_comment" class="btn fright" onclick="$('html, body').animate({scrollTop: $('#addComment').offset().top}, 500);"><em class="icon"></em><?php echo $this->translate('Add a comment');?></button>
+        <?php elseif(Kms_Plugin_Access::getCurrentRole() == Kms_Plugin_Access::getRole(Kms_Plugin_Access::ANON_ROLE)):?>
+            <a id="add_comment" class="btn fright" href="<?php echo $this->baseUrl('/user/login').'?ref='.$this->EntryLink($this->entryId);?>"><em class="icon"></em><?php echo $this->translate('Add a comment');?></a>
+        <?php endif; ?> 
+    </div>
+    <div class="container" style="<?php echo $this->commentsCount === '0' && (!$this->allowedToPost || $this->commentsClosed)  ? 'display: none' : '';?>">
+        <?php if($this->allowedToPost && !$this->commentsClosed && $this->boxOnTop):?>
+            <?php echo $this->partial('partials/commentbox.phtml', 'comments', array('form' => $this->form) );?>
+        <?php endif; ?>
+        <ul>
+        	</ul>
+        <?php if(count($this->comments) < $this->commentsCount): // show "load more" link ?>
+        <div class='wrapper cf' id="comments_load_more">
+            <a href="<?php echo $this->baseUrl('/comments/index/index/entryid/'.$this->entryId.'/start/'.(isset($comment->createdAt) ? $comment->createdAt : ''));?>" rel="async"><?php echo $this->translate('Load more comments');?></a>
+        </div>
+        <?php endif; ?>
+        
+        
+        <?php if($this->allowedToPost && !$this->commentsClosed && !$this->boxOnTop): ?>
+            <?php echo $this->partial('partials/commentbox.phtml', 'comments', array('form' => $this->form) );?>
+        <?php endif; ?>
+    </div>    
+</div>
+<?php
+endif;
+

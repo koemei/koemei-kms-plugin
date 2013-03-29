@@ -1,0 +1,23 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+/**
+ * render additional gallery filter bars.
+ *
+ * @viewhook Kms_Resource_Viewhook::CORE_VIEW_HOOK_GALLERY_SEARCHES
+ */
+
+$front = Zend_Controller_Front::getInstance();
+
+$front->getRequest()->setParam('defaultKeyword',$this->partial()->view->defaultKeyword);
+$front->getRequest()->setParam('keyword',$this->partial()->view->keyword);
+
+// render only the view hooks for modules implementing Kms_Interface_Functional_Search_ModifyGallery
+
+$pre = "<div class='gallery_filter_bar' id='[module]_gallery_filter_bar' style='display: none;'>";
+$post = "</div>";
+echo $this->viewHook(Kms_Resource_Viewhook::CORE_VIEW_HOOK_GALLERY_SEARCHES, $pre, $post, 'Kms_Interface_Functional_Search_ModifyGallery');
+

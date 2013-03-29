@@ -1,0 +1,48 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+// my media captions search results
+
+// parse the search results
+$this->placeholder('captions')->captureStart('SET', 'results');
+
+if ($this->captions && !empty($this->captions->objects))
+{    
+    echo '<ul id="kitems" class="captions">';
+    echo $this->ViewHook(Kms_Resource_Viewhook::CORE_VIEW_HOOK_PREMYMEDIAENTRIES);
+    echo $this->partialLoop('partials/myMediaSearchResult.phtml', 'captions', $this->captions->objects);
+    echo $this->ViewHook(Kms_Resource_Viewhook::CORE_VIEW_HOOK_POSTMYMEDIAENTRIES);
+    echo '</ul>';
+}
+else if ($this->keyword)
+{
+    echo $this->translate('No captions results were found');
+}
+
+$this->placeholder('captions')->captureEnd();
+
+// replace the search results
+$this->JsonContent(array(
+        'target' => '#mymedia',
+        'content' => $this->placeholder('captions')->results,
+        'action' => 'replace'
+)
+);
+
+// replace the pager
+$pager = $this->paginationControl($this->paginator, $this->pagerType, 'partials/mymedia/myMediaPaging.phtml',array('urlParams' => $this->urlParams));  
+$this->JsonContent(array(
+        'target' => '#mm_wrap #pager',
+        'content' => $pager,
+        'action' => 'replace'
+)
+);
+
+$this->JsonScript('$("#mm_wrap").removeClass("short").removeClass("full").addClass("'.$this->itemType.'");');
+$this->JsonScript('$("#kitems .item .short_desc[title]").ktooltip({tipclass: "ktooltip-mymedia"});');
+$this->JsonScript('redirUrl = "'.urlencode($this->MergeUrl()).'";');
+// activate the caption thumb rotator js
+$this->JsonScript("KalturaCaptionsThumbRotator.init('vidsec');");
