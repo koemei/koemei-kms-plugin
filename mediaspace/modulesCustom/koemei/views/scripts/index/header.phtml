@@ -6,5 +6,6 @@
 
 //	include css and js that will go in the page <head>
 $this->headLink()->appendStylesheet($this->baseUrl('build' . BUILD_NUMBER . '/koemei/asset/koemei-widget.css'));
+$this->headLink()->appendStylesheet($this->baseUrl('build' . BUILD_NUMBER . '/koemei/asset/koemei-style.css'));
 $this->headScript()->appendFile($this->baseUrl('build'. BUILD_NUMBER . '/koemei/asset/koemei-widget.js'));
 $this->headScript()->appendFile($this->baseUrl('build'. BUILD_NUMBER . '/koemei/asset/koemei-adaptor.js'));
