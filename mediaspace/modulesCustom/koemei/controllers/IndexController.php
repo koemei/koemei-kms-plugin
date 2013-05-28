@@ -35,7 +35,14 @@ class Koemei_IndexController extends Kms_Module_Controller_Abstract
 		$CaptionModel = new Captions_Model_Captions();
 		$entry = $CaptionModel->getEntry();
 		$assets = $CaptionModel->getCaptionAssets($entry->id, array());
-		$this->view->assets = $assets;
+		$start = 0;
+		foreach ($assets as $key=>$asset) { 
+			if ($asset[0]->partnerId=="1366641") {
+				$start=1;	
+			}
+		}
+		$this->view->start_koemei = $start;
+		$this->view->entry_id = $entry->id;
 	}
 	
 	
@@ -44,9 +51,7 @@ class Koemei_IndexController extends Kms_Module_Controller_Abstract
 		
 		 echo "123"; exit;
 	}
-	 public function index() {
-		 echo "123"; exit;
-	 }
+	
 }
 
 ?>

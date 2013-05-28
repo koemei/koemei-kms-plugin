@@ -1,2 +1,14 @@
 /* CSS Document */
 
+#koemei_tab {
+	float:left;
+}
+.koemei_info {
+	background:url(info.png) no-repeat 10px center #bfe7f4;
+	line-height:50px;
+	width:668px;
+	font-size:14px;
+	text-indent:50px;
+	border:1px solid #93bcc9;
+		
+}

@@ -1,6 +1,15 @@
 <div id="koemei_tab">
-<pre>
-<?php print_r($this->assets); ?>
+<script type="text/javascript">
+	entry_id = '<?php echo $this->entry_id; ?>';
+	start_koemei = <?php echo $this->start_koemei; ?>;
+</script>
+<div id="koemei_player"></div>
+<?php if ($this->start_koemei==0) { ?>
+	<div class="koemei_info">
+    	No translations found on the Koemei service
+    
+    </div>
 
-</pre>
+<?php } ?>
+
 </div>
