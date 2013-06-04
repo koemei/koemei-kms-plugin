@@ -35,6 +35,8 @@ class Koemei_IndexController extends Kms_Module_Controller_Abstract
 		$CaptionModel = new Captions_Model_Captions();
 		$entry = $CaptionModel->getEntry();
 		$assets = $CaptionModel->getCaptionAssets($entry->id, array());
+		
+		
 		$start = 0;
 		foreach ($assets as $key=>$asset) { 
 			if ($asset[0]->partnerId=="1366641") {

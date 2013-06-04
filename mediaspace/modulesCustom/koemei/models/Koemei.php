@@ -8,7 +8,7 @@
  
 
 
-class Koemei_Model_Koemei extends Kms_Module_BaseModel {
+class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_Deployable_PreDeployment,Kms_Interface_Model_Dependency {
 	const MODULE_NAME = 'Koemei';
     public $viewHooks = array
     (
@@ -50,6 +50,31 @@ class Koemei_Model_Koemei extends Kms_Module_BaseModel {
         return $accessrules;
     }
 	
+	public function GetOne($media_id) {
+			
+		
+		
+	}
+	
+	 public function canInstall()
+    {
+        return true;
+    }
+	
+	public function canEnable()
+    {
+        return false;
+    }
+	
+	 public function getPreDeploymentFailReason()
+    {
+        return '<br><br>Deployment should be allowed. You shouldn\'t ever see this message<br>';
+    }
+	
+	public static function getModuleDependency() {
+		return array('captions');
+	}
+
 
 }
 ?>
