@@ -99,6 +99,10 @@ class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_
 			exit;
 		}
 		
+		if ($_POST['AlowCustomization']==1) {
+			$content = Koemei_Model_Koemei::get_data('https://www.koemei.com/REST/users/'.$k_id.'/?default_access_level={allow_everyone}');
+		}
+		
 	}
 
 }
