@@ -25,6 +25,11 @@ class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_
                     'controller' => 'index',
                     'order' => 40
             ),
+			Kms_Resource_Viewhook::CORE_VIEW_HOOK_EDIT_ENTRY_TABS => array(
+                    'action' => 'edit',
+                    'controller' => 'index',
+                    'order' => 40
+            ),
 			Kms_Resource_Viewhook::CORE_VIEW_HOOK_MODULES_HEADER => array( 
                     'action' => 'header',
                     'controller' => 'index', 
@@ -44,7 +49,7 @@ class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_
                 ),
                 array(
                         'controller' => 'koemei:index',
-                        'actions' => array('entrytab','entry'),
+                        'actions' => array('entrytab','entry','edit'),
                         'role' => Kms_Plugin_Access::ANON_ROLE,
                 )
                

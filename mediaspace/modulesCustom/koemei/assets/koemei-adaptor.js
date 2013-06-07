@@ -1,19 +1,83 @@
 // JavaScript Document
 $(document).ready(function(e) {
+	start_edit = 0;
+	$('.edit_transcript').click(function(event) {
+		event.preventDefault();
+		koemeiWidget.close();
+		var clone = $("#kplayer").clone(true);
+		$("#kplayer").remove();
+		$('#player').css('background','transparent');
+		$('#new_player').html(clone);
+		$('#pseudo_overlay').show();
+		start_edit = 1;
+	});
+	
+	$('#close_pseudo_widget').live('click',function(event) {
+		event.preventDefault();
+		var clone = $("#kplayer").clone(true);
+		$("#kplayer").remove();
+		$('#player').append(clone);
+		$('#player').css('background','#000');
+		$('#pseudo_overlay').hide();
+		start_edit = 0;
+	});
+	
+	
+	
+	//edit page hook
+	if (in_edit===1) {
+		var captions_list = $('.caption');
+		if (captions_list.length>0) {
+			$.each(captions_list,function(index,element) {
+				child = $(element).children('.caption-part').children('.label');
+				label = $(child).html();
+				if (label==='Caption via Koemei') {
+					$(element).children('.caption-part').children('.change').html('<a href="#" class="improve_captions">Improve captions</a>');
+				}
+			});
+		}
+	}
+	$('.improve_captions').live('click',function(event) {
+		event.preventDefault();
+		var clone = $("#kplayer").clone(true);
+		$("#kplayer").remove();
+		$('#edit_player').css('background','transparent');
+		$('#new_player').html(clone);
+		$('#pseudo_overlay').show();
+		start_edit = 1;
+		start_koemei = 1;
+	});	
+	
+	$('#close_pseudo_widget_edit').live('click',function(event) {
+		event.preventDefault();
+		koemeiWidget.close();
+		var clone = $("#kplayer").clone(true);
+		$("#kplayer").remove();
+		$('#edit_player').append(clone);
+		$('#edit_player').css('background','#000');
+		$('#pseudo_overlay').hide();
+		start_edit = 0;
+		start_koemei = 0;
+	});
+	
+	
+	
 	KWidget.addReadyCallback( function( playerId ){
 		if (start_koemei===1) { 
-			new koemeiOnPage( playerId,entry_id);
+			new koemeiOnPage( playerId,entry_id,start_edit);
 		}
 	});
 	
-	koemeiOnPage = function( playerId, entryId ){
-		return this.init( playerId, entryId );
+	koemeiOnPage = function( playerId, entryId,start_edit ){
+		return this.init( playerId, entryId,start_edit );
 	};
 	
 	koemeiOnPage.prototype = {
-		init:function( playerId, entryId ){
+		init:function( playerId, entryId,start_edit ){
 			this.playerId = playerId;
-            var koemeiWidget = new KoemeiWidget({
+			
+			if (start_edit===0) {
+             koemeiWidget = new KoemeiWidget({
               media_uuid: entryId,
               mode:'embed',
               player_id:playerId,
@@ -25,6 +89,23 @@ $(document).ready(function(e) {
 				service:'kaltura',
 				readonly:true
             });
+			}
+			if (start_edit===1) {
+             koemeiWidget = new KoemeiWidget({
+              media_uuid: entryId,
+              mode:'edit',
+              player_id:playerId,
+              modal:false,
+              toolbar:false,
+			  el: $('#new_widget'),
+              video_height:0,
+			  width: 520,
+			  widget_height:280,
+				service:'kaltura'
+            });
+				
+			}
+			
 		},
 		addPlayerBindings:function(){
             try {
