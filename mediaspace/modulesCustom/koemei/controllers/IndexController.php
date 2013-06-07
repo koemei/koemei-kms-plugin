@@ -55,11 +55,15 @@ class Koemei_IndexController extends Kms_Module_Controller_Abstract
 		$entry = $CaptionModel->getEntry();
 		$assets = $CaptionModel->getCaptionAssets($entry->id, array());
 		$start = 0;
-		foreach ($assets as $key=>$asset) { 
-			if ($asset[0]->partnerId=="1366641") {
-				$start=1;	
-			}
-		}
+        if (count($assets)>0){
+            foreach ($assets as $key=>$asset) {
+                if (count($asset)>0){
+                    if ($asset[0]->partnerId==Kms_Resource_Config::getConfiguration('client', 'partnerId')) {
+                        $start=1;
+                    }
+                }
+            }
+        }
 		$this->view->start_koemei = $start;
 		$this->view->entry_id = $entry->id;
 	}
