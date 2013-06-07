@@ -37,8 +37,8 @@ class Koemei_IndexController extends Kms_Module_Controller_Abstract
 		$assets = $CaptionModel->getCaptionAssets($entry->id, array());
 		
 		
-		$start = 0;
-		if (count($assets)>0){
+		$start = 1;
+		/*if (count($assets)>0){
             foreach ($assets as $key=>$asset) {
                 if (count($asset)>0){
                     if ($asset[0]->partnerId==Kms_Resource_Config::getConfiguration('client', 'partnerId')) {
@@ -46,7 +46,7 @@ class Koemei_IndexController extends Kms_Module_Controller_Abstract
                     }
                 }
             }
-        }
+        }*/
 		$this->view->start_koemei = $start;
 		$this->view->entry_id = $entry->id;
 	}
@@ -54,8 +54,8 @@ class Koemei_IndexController extends Kms_Module_Controller_Abstract
 		$CaptionModel = new Captions_Model_Captions();
 		$entry = $CaptionModel->getEntry();
 		$assets = $CaptionModel->getCaptionAssets($entry->id, array());
-		$start = 0;
-        if (count($assets)>0){
+		$start = 1;
+        /*if (count($assets)>0){
             foreach ($assets as $key=>$asset) {
                 if (count($asset)>0){
                     if ($asset[0]->partnerId==Kms_Resource_Config::getConfiguration('client', 'partnerId')) {
@@ -63,7 +63,7 @@ class Koemei_IndexController extends Kms_Module_Controller_Abstract
                     }
                 }
             }
-        }
+        }*/
 		$this->view->start_koemei = $start;
 		$this->view->entry_id = $entry->id;
 	}

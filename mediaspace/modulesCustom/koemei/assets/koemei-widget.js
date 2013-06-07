@@ -1,4 +1,4 @@
-/*! Koemei Widget - v0.1.0 - 2013-05-23
+/*! Koemei Widget - v0.1.0 - 2013-06-07
 * https://www.github.com/koemei/widget
 * Copyright (c) 2013 Koemei; Licensed MIT */
 /*!
@@ -11588,39 +11588,43 @@ function urlencodeQuery(criteria) {
         if (criteria.page) {
             criteria.start = criteria.count * criteria.page - criteria.count;
         }
-        query = query + sep + 'start=' + criteria.start;
+        query += sep + 'start=' + criteria.start;
         sep = '&';
     }
     if(criteria.count != null) {
-        query = query + sep + 'count=' + criteria.count;
+        query += sep + 'count=' + criteria.count;
         sep = '&';
     }
     if(criteria.order_way != null) {
-        query = query + sep + 'order_way=' + criteria.order_way;
+        query += sep + 'order_way=' + criteria.order_way;
         sep = '&';
     }
     if(criteria.order_by != null) {
-        query = query + sep + 'order_by=' + criteria.order_by;
+        query += sep + 'order_by=' + criteria.order_by;
         sep = '&';
     }
     if(criteria.status_filter != null) {
-        query = query + sep + 'status_filter=' + criteria.status_filter;
+        query += sep + 'status_filter=' + criteria.status_filter;
         sep = '&';
     }
     if (criteria.deleted != null) {
-        query = query + sep + 'deleted=' + criteria.deleted;
+        query += sep + 'deleted=' + criteria.deleted;
         sep = '&';
     }
     if(criteria.search_query != null) {
-        query = query + sep + 'search_query=' + criteria.search_query;
-	sep = '&';
+        query += sep + 'search_query=' + criteria.search_query;
+        sep = '&';
     }
     if(criteria.source_filter != null) {
-        query = query + sep + 'source_filter=' + criteria.source_filter;
+        query += sep + 'source_filter=' + criteria.source_filter;
         sep = '&';
     }
     if(criteria.include_external != null) {
-        query = query + sep + 'include_external=' + criteria.include_external;
+        query += sep + 'include_external=' + criteria.include_external;
+        sep = '&';
+    }
+    if(criteria.unfinished_only != null) {
+        query += sep + 'unfinished_only=' + criteria.unfinished_only;
     }
     return query;
 }
@@ -13396,10 +13400,15 @@ function Controls() {
 		}
 		if (config.show_exit) {
 			var publish_button = '<a id="kw_publish-button" class="' + config.publish_button_class + '" href="#">EXIT</a>';
-			if (config.service === 'kaltura')
-				publish_button = '<a id="kw_publish-button" class="' + config.publish_button_class + '" href="#">PUBLISH</a>';
+			if (config.service === 'kaltura'){
+
+                if (config.mode === 'edit_review')
+				    publish_button = '';
+                else
+                    publish_button = '<a id="kw_publish-button" class="' + config.publish_button_class + '" href="#">FINISH</a>';
+            }
 			if (config.published) {
-				publish_button = '<a id="kw_publish-button" class="' + config.publish_button_class + '" href="#">UNPUBLISH</a>';
+				publish_button = '<a id="kw_publish-button" class="' + config.publish_button_class + '" href="#">FINISH</a>';
 			}
 		} else {
 			var publish_button = '';
@@ -13424,14 +13433,14 @@ function Controls() {
         var go_save = 0;
         $("#kw_confirm_popup a").click(function (event) {
 			var _this = this;
-			transcript.save(xhr, config.auth);
+			transcript.save(xhr, config.auth,function() {console.log('saved');});
 			//console.log(this);
 			//console.log(self);
             var action = $(this).attr('data-action');
             if (action === "YES") {
                
                 if (modal === "save") {
-                   transcript.save(xhr, config.auth);
+                   transcript.save(xhr, config.auth,function() {console.log('saved');});
                 }
                 if (modal === "publish") {
                     $("#kw_publish-button").click();
@@ -13460,7 +13469,7 @@ function Controls() {
                 try {
                     //window.submitForm = false;
                     //console.log(transcript)
-                    transcript.save(xhr, config.auth);
+                    transcript.save(xhr, config.auth,function() { console.log('saved');});
                     setTimeout(function () {
                         _this.removeClass('btn-disabled');
 						_this.removeClass('kw_loading_bg');
@@ -14707,12 +14716,29 @@ function Player(options, media_item) {
         var win = $('html').hasClass('win');
         var player = this.player;
         var transcript = this.transcript;
+		var stuck_key = '';
+		
+		 $(document).keydown(function (e) {
+			 if (stuck_key=='') {
+				 console.log('set as stuck');
+			 	stuck_key = e.keyCode ? e.keyCode : e.which;
+			 }
+		 });
 
         /* Play/pause shortcut */
         $(document).keyup(function (e) {
             var code = e.keyCode ? e.keyCode : e.which;
+			if (code===stuck_key) {
+				stuck_key='';	
+			}
+			
+			
+			$(document).keydown(function(event) {
+				code = event.keyCode;
+			});
+			
 
-            if (((code === 17 && win) || (code === 91 && !win) || code === 224) && flag) { //Ctrl / command keycode
+            if (((code === 17 && win && stuck_key==='') || (code === 91 && !win && stuck_key==='') || (code === 224 && stuck_key==='')) && flag) { //Ctrl / command keycode
                 e.preventDefault();
                 player.play();
                 //console.log(player.status);
@@ -14956,9 +14982,6 @@ KoemeiWidget = Backbone.View.extend({
 				$('body').append('<div id="koemei_widget_container"></div>');
 				this.$el = $('#koemei_widget_container');
 		}
-		
-		console.log(this.$el);
-		
 		_.bindAll(this,'init_video', 'init_transcript','keypress','display_search_results','close');
 
         // crossdomain request initialization
@@ -14984,6 +15007,13 @@ KoemeiWidget = Backbone.View.extend({
 			var mode = this.options.mode;
 			switch(mode) {
 				case 'edit':
+					var config = {
+						features:{ info:true, related:false, captions:true, transcriptions:true, arrow:false, feedback:false, dots:false, search:true },
+						improve_popup:false,
+						captions:true
+					};
+				break;
+                case 'edit_review':
 					var config = {
 						features:{ info:true, related:false, captions:true, transcriptions:true, arrow:false, feedback:false, dots:false, search:true },
 						improve_popup:false,
@@ -15038,7 +15068,14 @@ KoemeiWidget = Backbone.View.extend({
 			this.$el.empty();
 			this.$el.show();
 			this.render_sp(this.options.string);			
-		}
+		} else if (this.options.type=="caption_portal") {
+            this.$el.empty();
+            this.$el.show();
+            //this.renderCaptionPortal();
+            //TODO: use the above line and remove 'if' from doRecent and doSearch
+            //TODO: also move the progress bar from display_search_results
+            this.render_sp(this.options.string);
+        }
 
     },
 	
@@ -15089,6 +15126,12 @@ KoemeiWidget = Backbone.View.extend({
         this.init_walkthrough();
     },
 	
+
+    // Render a caption portal
+    //TODO
+    renderCaptionPortal: function() {
+
+    },
 	
 	
     events:{
@@ -15268,12 +15311,12 @@ KoemeiWidget = Backbone.View.extend({
 	exit_widget:function(event) {
         event.preventDefault();
 		var button = event.currentTarget;
-		this.transcript.save(this.xhr, this.options.auth);
+		this.transcript.save(this.xhr, this.options.auth,function() {console.log('saved');});
 		var action = $(button).attr('data-action');		
 		if (action === "YES") {
 			$('#kw_publish-button').addClass('btn-disabled');	
 			this.transcript.media.publish(this.xhr, this.options.service, this.options.auth);
-			$('#kw_publish-button').text('UNPUBLISH');
+			$('#kw_publish-button').text('FINISH');
 			setTimeout(function () {
 				$('#kw_publish-button').removeClass('btn-disabled');
 			}, 200);
@@ -15354,7 +15397,7 @@ KoemeiWidget = Backbone.View.extend({
     			var interval = this.options.autosave*1000;
     			var self = this;
     			this.interval = setInterval(function() { 
-    				self.transcript.save(self.xhr, self.options.auth);
+    				self.transcript.save(self.xhr, self.options.auth,function() {console.log('saved');});
     			 },interval);
     		}
     		if (this.options.mode=="play") {
@@ -15636,7 +15679,8 @@ KoemeiWidget = Backbone.View.extend({
                     background_save: this.options.background_save,
                     service: this.options.service,
 					show_exit: this.options.show_exit,
-                    auth: this.options.auth
+                    auth: this.options.auth,
+                    mode: this.options.mode
                 };
                 this.controls.init(this.xhr, config, this.transcript);
                 $('.tips').tipsy({live:true, gravity:'s', offset:14});
@@ -16203,6 +16247,7 @@ KoemeiWidget = Backbone.View.extend({
 
     //display search results
     display_search_results:function (page_data, append) {
+        var _this = this;
         var search_string = $('#search_phrase').val();
 		var words_arr;
 		words_arr = search_string.trim();
@@ -16287,7 +16332,12 @@ KoemeiWidget = Backbone.View.extend({
 
                     var object = '<article class="kw_grid_12">';
                     object += '<div class="kw_list_video kw_grid_3">';
-                    object += '<a href="#" data-id="' + video.uuid + '" style="background-image:url(' + video.thumbnail_path + ')"></a>';
+                    object += '<a href="#" data-id="' + video.uuid + '" style="background-image:url(' + video.thumbnail_path + ')">';
+                    if (_this.options.type == 'caption_portal') {
+                        var progress = (video.current_transcript.confidence * 100).toFixed(2) + '%';
+                        object += '<div class="kw_progress_bar" title="Progress: '+progress+'" style="top:10px;right:10px"><div class="kw_progress_fill" style="width:'+progress+'"></div></div>';
+                    }
+                    object += '</a>';
                     object += '</div>';
                     object += '<div class="kw_grid_7 kw_alpha">';
                     object += '<h2><a href="#" class="kw_video_list_link" data-id="' + video.uuid + '">' + video.title + '</a></h2>';
@@ -16365,7 +16415,10 @@ KoemeiWidget = Backbone.View.extend({
                     object += '</span>';
                     object += '</a>';
                     object += '<div class="kw_info">';
-                    object += '<div class="kw_progress_bar"><div class="kw_progress_fill" style="width:'+video.current_transcript.confidence*100+'%"></div></div>';
+                    if (_this.options.type == 'caption_portal') {
+                        var progress = (video.current_transcript.confidence * 100).toFixed(2) + '%';
+                        object += '<div class="kw_progress_bar" title="Progress: '+progress+'" style="top:-8px;right:0"><div class="kw_progress_fill" style="width:'+progress+'"></div></div>';
+                    }
                     //object += '<span class="kw_views"><strong>' + Math.floor((Math.random() * 10) + 1) + '</strong> views</span>';
                     object += '<strong class="kw_time">' + time_tommss(video.size) + '</strong>';
                     //object += '<div class="kw_graph" title="My tooltip"><div class="bar" style="height:' + Math.floor((Math.random() * 80) + 1) + '%; " >&nbsp;</div><div class="bar">&nbsp;</div><div class="bar">&nbsp;</div><div class="bar" style="height:' + Math.floor((Math.random() * 80) + 1) + '%; ">&nbsp;</div></div>';
@@ -16432,6 +16485,12 @@ KoemeiWidget = Backbone.View.extend({
 				$('#results').empty();
 		});
 		var title = 'Recent videos';	
+
+        //TODO: remove this! use a proper render instead
+        if (this.options.type == 'caption_portal') {
+            title = 'Caption portal';
+        }
+
 		 $('#search_title').html(title);
 		 $('#search_title').addClass('recent_trigger');
 		 //$('.kw_pagination').hide();
@@ -16446,6 +16505,12 @@ KoemeiWidget = Backbone.View.extend({
 		search_params.status_filter='all';
 		search_params.deleted='0';
 		search_params.start = search_params.count * page - search_params.count;
+
+        //TODO: remove this! use a proper render instead
+        if (this.options.type == 'caption_portal') {
+            search_params.order_by = 'progress';
+            search_params.unfinished_only = true;
+        }
 
         var _this = this;
         this.init_infinitescroll($('#results'), function(page) {
@@ -16507,6 +16572,12 @@ KoemeiWidget = Backbone.View.extend({
 			}
             search_params.count = 10;
             search_params.start = search_params.count * page - search_params.count;
+
+            //TODO: remove this! use a proper render instead
+            if (this.options.type == 'caption_portal') {
+                search_params.order_by = 'progress';
+                search_params.unfinished_only = true;
+            }
 
             var _this = this;
             //TODO: this is code is the same as above, take to a separate function
