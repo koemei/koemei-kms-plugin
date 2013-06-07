@@ -38,7 +38,7 @@ class Koemei_IndexController extends Kms_Module_Controller_Abstract
 		
 		
 		$start = 0;
-		if ($assets.length>0){
+		if (count($assets)>0){
             foreach ($assets as $key=>$asset) {
                 if ($asset[0]->partnerId==Kms_Resource_Config::getConfiguration('client', 'partnerId')) {
                     $start=1;
