@@ -35,43 +35,53 @@ class Koemei_IndexController extends Kms_Module_Controller_Abstract
 		$CaptionModel = new Captions_Model_Captions();
 		$entry = $CaptionModel->getEntry();
 		$assets = $CaptionModel->getCaptionAssets($entry->id, array());
-		
-		
 		$start = 1;
-		/*if (count($assets)>0){
-            foreach ($assets as $key=>$asset) {
-                if (count($asset)>0){
-                    if ($asset[0]->partnerId==Kms_Resource_Config::getConfiguration('client', 'partnerId')) {
-                        $start=1;
-                    }
-                }
+		$edit = 0;
+		if (count($assets->objects)>0){
+            foreach ($assets->objects as $key=>$asset) {
+			if ($asset->partnerId==Kms_Resource_Config::getConfiguration('client', 'partnerId')) {
+				$start=1;
+			}
+               
             }
-        }*/
+        }
+		$identity = Zend_Auth::getInstance()->getIdentity();
+		$roleKey = Kms_Plugin_Access::getRoleKey($identity->getRole());
+		if ($roleKey=="adminRole" || $roleKey=="unmoderatedAdminRole") {
+			$edit = 1;	
+		}
+		$alow_edit = Kms_Resource_Config::getModuleConfig('koemei', 'OpenImprove');
+		if ($alow_edit==1 && $roleKey!='anonymousRole') {
+			$edit=1;	
+		}
+		
 		$this->view->start_koemei = $start;
 		$this->view->entry_id = $entry->id;
+		$this->view->alow_edit = $edit;
 	}
 	public function editAction() {
 		$CaptionModel = new Captions_Model_Captions();
 		$entry = $CaptionModel->getEntry();
 		$assets = $CaptionModel->getCaptionAssets($entry->id, array());
 		$start = 1;
-        /*if (count($assets)>0){
-            foreach ($assets as $key=>$asset) {
-                if (count($asset)>0){
-                    if ($asset[0]->partnerId==Kms_Resource_Config::getConfiguration('client', 'partnerId')) {
-                        $start=1;
-                    }
-                }
+        if (count($assets->objects)>0){
+            foreach ($assets->objects as $key=>$asset) {
+			if ($asset->partnerId==Kms_Resource_Config::getConfiguration('client', 'partnerId')) {
+				$start=1;
+			}
+               
             }
-        }*/
+        }
+		
+		
+		
 		$this->view->start_koemei = $start;
 		$this->view->entry_id = $entry->id;
 	}
 	
 
 	public function indexAction() {
-		
-		 echo "123"; exit;
+		 
 	}
 	
 }

@@ -61,6 +61,11 @@ $(document).ready(function(e) {
 	});
 	
 	
+	$('#kw_publish-button').live('click',function(event) {
+		$('#close_pseudo_widget').click();
+		$('#close_pseudo_widget_edit').click();
+	});
+	
 	
 	KWidget.addReadyCallback( function( playerId ){
 		if (start_koemei===1) { 

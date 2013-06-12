@@ -4,18 +4,19 @@
 	start_koemei = <?php echo $this->start_koemei; ?>;
 	in_edit = 0;
 </script>
-<div id="koemei_player"></div>
 <?php if ($this->start_koemei==0) { ?>
 	<div class="koemei_info">
     	No translations found on the Koemei service
     </div>
 
-<?php } else { ?>
+<?php } else if ($this->alow_edit==1)  { ?>
     <div class="tabActionLinks">
 		<a id="show_edit_details" class="edit_transcript" href="#"><em></em>Edit transcript</a>
 	</div>
 
 <?php } ?>
+<div id="koemei_player"></div>
+
 </div>
 
 

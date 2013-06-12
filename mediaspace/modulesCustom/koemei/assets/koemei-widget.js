@@ -15391,7 +15391,6 @@ KoemeiWidget = Backbone.View.extend({
 
     init_transcript:function (transcript) {
         this.transcript = transcript;			
-		console.log(transcript);
         this.init_pannel(this.options.pannel);
     		if (this.options.autosave!=0) {
     			var interval = this.options.autosave*1000;
@@ -15409,6 +15408,13 @@ KoemeiWidget = Backbone.View.extend({
   		if(this.interval!==undefined) { 
   			clearInterval(this.interval);
   		}
+			console.log(this.options);
+			if (this.options.mode==="edit" && this.options.service==="kaltura") {
+				this.transcript.save(this.xhr, this.options.auth,function() {console.log('saved');});
+				this.transcript.media.publish(this.xhr, this.options.service, this.options.auth);
+			}
+			
+			
 			this.$el.empty();
 			this.$el.hide();
 			this.undelegateEvents();

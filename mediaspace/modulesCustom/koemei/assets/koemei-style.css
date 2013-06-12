@@ -13,7 +13,11 @@
 		
 }
 .tabActionLinks {
-	margin-top:10px;
+	margin-bottom:10px;
+	margin-top:-10px;
+}
+#koemei_player {
+	float:left;
 }
 
 .overlay_new {
