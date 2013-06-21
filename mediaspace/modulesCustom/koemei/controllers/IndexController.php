@@ -35,8 +35,13 @@ class Koemei_IndexController extends Kms_Module_Controller_Abstract
 		$CaptionModel = new Captions_Model_Captions();
 		$entry = $CaptionModel->getEntry();
 		$assets = $CaptionModel->getCaptionAssets($entry->id, array());
-		$start = 1;
+		
+		//$start = transcript found, display widget
+		//$edit = alow transcript edit
+		$start = 0;
 		$edit = 0;
+		
+		//check if there is a valid koemei transcript
 		if (count($assets->objects)>0){
             foreach ($assets->objects as $key=>$asset) {
 			if ($asset->partnerId==Kms_Resource_Config::getConfiguration('client', 'partnerId')) {
@@ -45,11 +50,15 @@ class Koemei_IndexController extends Kms_Module_Controller_Abstract
                
             }
         }
+		
+		//admin? then allow edit
 		$identity = Zend_Auth::getInstance()->getIdentity();
 		$roleKey = Kms_Plugin_Access::getRoleKey($identity->getRole());
 		if ($roleKey=="adminRole" || $roleKey=="unmoderatedAdminRole") {
 			$edit = 1;	
 		}
+		
+		//do the owner accepts public editing? alow edit but not for anonymus users
 		$alow_edit = Kms_Resource_Config::getModuleConfig('koemei', 'OpenImprove');
 		if ($alow_edit==1 && $roleKey!='anonymousRole') {
 			$edit=1;	
@@ -63,17 +72,17 @@ class Koemei_IndexController extends Kms_Module_Controller_Abstract
 		$CaptionModel = new Captions_Model_Captions();
 		$entry = $CaptionModel->getEntry();
 		$assets = $CaptionModel->getCaptionAssets($entry->id, array());
-		$start = 1;
+		//$start = transcript found, display widget
+		$start = 0;
+		
+		//check if there is a valid koemei transcript
         if (count($assets->objects)>0){
             foreach ($assets->objects as $key=>$asset) {
-			if ($asset->partnerId==Kms_Resource_Config::getConfiguration('client', 'partnerId')) {
-				$start=1;
-			}
-               
+				if ($asset->partnerId==Kms_Resource_Config::getConfiguration('client', 'partnerId')) {
+					$start=1;
+				}
             }
         }
-		
-		
 		
 		$this->view->start_koemei = $start;
 		$this->view->entry_id = $entry->id;

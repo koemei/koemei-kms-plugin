@@ -8,11 +8,13 @@
 
 
 
-$this->headLink()->appendStylesheet($this->baseUrl('build' . BUILD_NUMBER . '/koemei/asset/koemei-widget.css'));
-$this->headScript()->appendFile($this->baseUrl('build'. BUILD_NUMBER . '/koemei/asset/koemei-widget.js'));
+//$this->headLink()->appendStylesheet($this->baseUrl('build' . BUILD_NUMBER . '/koemei/asset/koemei-widget.css'));
+//$this->headScript()->appendFile($this->baseUrl('build'. BUILD_NUMBER . '/koemei/asset/koemei-widget.js'));
 
-//$this->headLink()->appendStylesheet('//s3.amazonaws.com/static.koemei.com/widget/css/koemei-widget.css');
-//$this->headScript()->appendFile('//s3.amazonaws.com/static.koemei.com/widget/javascript/koemei-widget.min.js');
+//load widget resources
+$this->headLink()->appendStylesheet('//s3.amazonaws.com/static.koemei.com/widget/css/koemei-widget.css');
+$this->headScript()->appendFile('//s3.amazonaws.com/static.koemei.com/widget/javascript/koemei-widget.min.js');
 
+//load custom CSS/JS
 $this->headLink()->appendStylesheet($this->baseUrl('build' . BUILD_NUMBER . '/koemei/asset/koemei-style.css'));
 $this->headScript()->appendFile($this->baseUrl('build'. BUILD_NUMBER . '/koemei/asset/koemei-adaptor.js'));
