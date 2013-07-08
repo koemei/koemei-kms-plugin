@@ -41,15 +41,12 @@ class Koemei_IndexController extends Kms_Module_Controller_Abstract
 		$start = 0;
 		$edit = 0;
 		
-		//check if there is a valid koemei transcript
-		if (count($assets->objects)>0){
-            foreach ($assets->objects as $key=>$asset) {
-			if ($asset->partnerId==Kms_Resource_Config::getConfiguration('client', 'partnerId')) {
-				$start=1;
-			}
-               
-            }
-        }
+		if (is_object($entry)) {
+		//check if there is a valid transcript
+			if (count($assets->objects)>0){
+					$start=1;
+				}
+		}
 		
 		//admin? then allow edit
 		$identity = Zend_Auth::getInstance()->getIdentity();
@@ -71,19 +68,17 @@ class Koemei_IndexController extends Kms_Module_Controller_Abstract
 	public function editAction() {
 		$CaptionModel = new Captions_Model_Captions();
 		$entry = $CaptionModel->getEntry();
-		$assets = $CaptionModel->getCaptionAssets($entry->id, array());
-		//$start = transcript found, display widget
 		$start = 0;
 		
-		//check if there is a valid koemei transcript
-        if (count($assets->objects)>0){
-            foreach ($assets->objects as $key=>$asset) {
-				if ($asset->partnerId==Kms_Resource_Config::getConfiguration('client', 'partnerId')) {
-					$start=1;
-				}
-            }
-        }
+		if (is_object($entry)) {
+		$assets = $CaptionModel->getCaptionAssets($entry->id, array());
+		//$start = transcript found, display widget
 		
+			//check if there is a valid transcript
+			if (count($assets->objects)>0){
+				$start=1;
+			}
+		}
 		$this->view->start_koemei = $start;
 		$this->view->entry_id = $entry->id;
 	}

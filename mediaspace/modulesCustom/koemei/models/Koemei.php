@@ -100,6 +100,7 @@ class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_
 		$content = Koemei_Model_Koemei::get_data('https://www.koemei.com/REST/users/'.$k_id);
 		$xml = simplexml_load_string($content);
 		
+		
 		//show message if UUID not found.
 		if (!isset($xml->Id)) {
 			echo "The Koemei UUID you've specified dose not exist.";	
@@ -112,6 +113,11 @@ class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_
 		}
 		
 	}
+    public static function getModuleDependency()
+    {
+        return array('captions');
+    }
+	
 
 }
 ?>

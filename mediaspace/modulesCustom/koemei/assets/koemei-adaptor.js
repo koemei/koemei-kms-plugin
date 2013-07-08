@@ -2,7 +2,7 @@
 $(document).ready(function (e) {
 	
 	//start_edit = 0; - is it an edit widget?
-    start_edit = 0;
+    kw_start_edit = 0;
 	
 	//edit transcript - entry page
     $('.edit_transcript').click(function (event) {
@@ -16,7 +16,7 @@ $(document).ready(function (e) {
 		//put the cloned player in the psedudo widget, and set start_edit = 1 so on player ready it will initialise an edit widget
         $('#new_player').html(clone);
         $('#pseudo_overlay').show();
-        start_edit = 1;
+        kw_start_edit = 1;
     });
 
 
@@ -28,17 +28,17 @@ $(document).ready(function (e) {
         $('#player').append(clone);
         $('#player').css('background', '#000');
         $('#pseudo_overlay').hide();
-        start_edit = 0;
+        kw_start_edit = 0;
     });
 
 
     //edit page: find rows in the captions tab that are from koemei servers. remove Edit label button and add improve captions button
-    if (in_edit === 1) {
+    if (kw_in_edit === 1) {
         var captions_list = $('.caption');
         if (captions_list.length > 0) {
             $.each(captions_list, function (index, element) {
-                child = $(element).children('.caption-part').children('.label');
-                label = $(child).html();
+                var child = $(element).children('.caption-part').children('.label');
+                var label = $(child).html();
                 if (label === 'Caption via Koemei') {
                     $(element).children('.caption-part').children('.change').html('<a href="#" class="improve_captions">Improve captions</a>');
                 }
@@ -56,8 +56,8 @@ $(document).ready(function (e) {
 		//put the cloned player in the psedudo widget, and set start_edit = 1 so on player ready it will initialise an edit widget
         $('#new_player').html(clone);
         $('#pseudo_overlay').show();
-        start_edit = 1;
-        start_koemei = 1;
+        kw_start_edit = 1;
+        kw_start_koemei = 1;
     });
 
     $('#close_pseudo_widget_edit').live('click', function (event) {
@@ -71,8 +71,8 @@ $(document).ready(function (e) {
         $('#edit_player').append(clone);
         $('#edit_player').css('background', '#000');
         $('#pseudo_overlay').hide();
-        start_edit = 0;
-        start_koemei = 0;
+        kw_start_edit = 0;
+        kw_start_koemei = 0;
     });
 
 	//close widget on publish
@@ -83,13 +83,13 @@ $(document).ready(function (e) {
 
 
     KWidget.addReadyCallback(function (playerId) {
-        if (start_koemei === 1) {
-            new koemeiOnPage(playerId, entry_id, start_edit);
+        if (kw_start_koemei === 1) {
+            new koemeiOnPage(playerId, kw_entry_id, kw_start_edit);
         }
     });
 
-    koemeiOnPage = function (playerId, entryId, start_edit) {
-        return this.init(playerId, entryId, start_edit);
+    koemeiOnPage = function (playerId, entryId, kw_start_edit) {
+        return this.init(playerId, entryId, kw_start_edit);
     };
 
     koemeiOnPage.prototype = {
@@ -124,7 +124,6 @@ $(document).ready(function (e) {
                     widget_height: 280,
                     service: 'kaltura'
                 });
-
             }
 
         },
