@@ -1,0 +1,34 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+* To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+
+if($this->success)
+{
+    $_button_html = '<div class="unlike_block">';
+    $_button_html .= '<span class="liked">' . $this->translate('Liked') . '</span>';
+    $_button_html .= '<span class="unlike_icon">&nbsp;</span>';
+    $_button_html .= '<a class="unlike" href="' . $this->baseUrl('/entry/unlike/id/') . $this->id . '"  rel="async">' . $this->translate('unlike') . '</a>';
+    $_button_html .= '</div>';
+    
+    $this->JsonContent(
+            array(
+                'target' => '#klike',
+                'content' => $_button_html,
+                'action' => 'replace'
+            )
+    );
+    
+    if(!is_null($this->likes))
+    {
+        $this->JsonContent(
+            array(
+                'target' => '#player_data .likes',
+                'content' => '<strong>'.number_format($this->likes) . '</strong> '. ($this->likes == 1 ? $this->translate('like') : $this->translate('likes')),
+                'action' => 'replace'
+            )
+        );
+    }
+}
+    

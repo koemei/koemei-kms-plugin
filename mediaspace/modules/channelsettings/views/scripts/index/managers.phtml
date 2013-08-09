@@ -1,0 +1,18 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+?>
+<?php if (isset($this->managers) && count($this->managers)):?>
+    <div class="channel_managers">
+        <?php $coma = '';?>
+        <?php echo $this->translate('Managers:')?>
+        <?php foreach ($this->managers as $manager):?>
+            <?php echo $coma;?>
+            <a href="<?php echo $this->baseUrl('/createdby/' . $manager->userId);?>"><?php echo $manager->userId; ?></a>
+            <?php $coma = ',';?>
+        <?php endforeach;?>
+    </div>
+<?php endif;?>
+<?php 

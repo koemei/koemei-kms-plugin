@@ -1,0 +1,2396 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-02-11 16:30+0200\n"
+"PO-Revision-Date: 2013-02-11 16:33+0200\n"
+"Last-Translator: Tal Bone <tal.bone@kaltura.com>\n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: translate\n"
+"X-Poedit-Basepath: ../../../\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-SearchPath-0: application\n"
+"X-Poedit-SearchPath-1: modules\n"
+"X-Poedit-SearchPath-2: public\n"
+"X-Poedit-SearchPath-3: library\n"
+"X-Poedit-SearchPath-4: themes\n"
+
+#: application/controllers/AdminController.php:197
+msgid "Add New User"
+msgstr "Add New User"
+
+#: application/controllers/AdminController.php:252
+msgid "Edit User"
+msgstr "Edit User"
+
+#: application/controllers/AdminController.php:269
+msgid "Are you sure you want to delete"
+msgstr "Are you sure you want to delete"
+
+#: application/controllers/AdminController.php:269
+msgid "users"
+msgstr "users"
+
+#: application/controllers/AdminController.php:270
+msgid "users were deleted successfully"
+msgstr "users were deleted successfully"
+
+#: application/controllers/AdminController.php:274
+msgid "Are you sure you want to delete the user"
+msgstr "Are you sure you want to delete the user"
+
+#: application/controllers/AdminController.php:275
+msgid "The user"
+msgstr "The user"
+
+#: application/controllers/AdminController.php:275
+msgid "was deleted successfully"
+msgstr "was deleted successfully"
+
+#: application/controllers/AdminController.php:326
+msgid "Passwords do not match"
+msgstr "Passwords do not match"
+
+#: application/controllers/AdminController.php:348
+#: application/controllers/AdminController.php:376
+msgid "The User"
+msgstr "The User"
+
+#: application/controllers/AdminController.php:348
+msgid "was added successfully"
+msgstr "was added successfully"
+
+#: application/controllers/AdminController.php:357
+msgid "This User ID is taken. Please choose another"
+msgstr "This User ID is taken. Please choose another"
+
+#: application/controllers/AdminController.php:362
+msgid "User ID must be a string or an email address, no spaces"
+msgstr "User ID must be a string or an email address, no spaces"
+
+#: application/controllers/AdminController.php:376
+msgid "was saved successfully"
+msgstr "was saved successfully"
+
+#: application/controllers/AdminController.php:422
+#: application/controllers/AdminController.php:423
+msgid "User Management"
+msgstr "User Management"
+
+#: application/controllers/AdminController.php:488
+msgid "Submit Users CSV"
+msgstr "Submit Users CSV"
+
+#: application/controllers/AdminController.php:504
+msgid ""
+"The CSV was submitted. You can track the progress of your import from "
+"Kaltura Management Console (KMC)"
+msgstr ""
+"The CSV was submitted. You can track the progress of your import from "
+"Kaltura Management Console (KMC)"
+
+#: application/controllers/AdminController.php:510
+msgid "! Failed to submit CSV !"
+msgstr "! Failed to submit CSV !"
+
+#: application/controllers/AdminController.php:556
+msgid "The config file"
+msgstr "The config file"
+
+#: application/controllers/AdminController.php:556
+msgid "is not writable"
+msgstr "is not writable"
+
+#: application/controllers/AdminController.php:556
+msgid "Save is disabled"
+msgstr "Save is disabled"
+
+#: application/controllers/AdminController.php:564
+#: application/controllers/AdminController.php:565
+#: application/controllers/AdminController.php:840
+msgid "Configuration Management"
+msgstr "Configuration Management"
+
+#: application/controllers/AdminController.php:582
+#: application/controllers/AdminController.php:842
+msgid "Configuration saved"
+msgstr "Configuration saved"
+
+#: application/controllers/AdminController.php:599
+#: application/controllers/AdminController.php:849
+msgid "Failed to save configuration"
+msgstr "Failed to save configuration"
+
+#: application/controllers/AdminController.php:601
+msgid ""
+"Please make sure that the config files backup folder exists, and that it is "
+"writable"
+msgstr ""
+"Please make sure that the config files backup folder exists, and that it is "
+"writable"
+
+#: application/controllers/AdminController.php:620
+msgid "Your configuration for"
+msgstr "Your configuration for"
+
+#: application/controllers/AdminController.php:620
+msgid "was saved"
+msgstr "was saved"
+
+#: application/controllers/AdminController.php:620
+msgid "The cache was cleared"
+msgstr "The cache was cleared"
+
+#: application/controllers/AdminController.php:623
+msgid "We saved a backup file of your configuration under"
+msgstr "We saved a backup file of your configuration under"
+
+#: application/controllers/AdminController.php:633
+#: application/controllers/AdminController.php:642
+msgid "Saving Configuration"
+msgstr "Saving Configuration"
+
+#: application/controllers/AdminController.php:633
+#: application/controllers/AdminController.php:642
+msgid "FAILED"
+msgstr "FAILED"
+
+#: application/controllers/AdminController.php:635
+msgid "An error occurred while saving your configuration"
+msgstr "An error occurred while saving your configuration"
+
+#: application/controllers/AdminController.php:635
+msgid "Please check the logs for details"
+msgstr "Please check the logs for details"
+
+#: application/controllers/AdminController.php:670
+msgid "Clear Cache"
+msgstr "Clear Cache"
+
+#: application/controllers/AdminController.php:686
+msgid "Log File Viewer"
+msgstr "Log File Viewer"
+
+#: application/controllers/AdminController.php:811
+msgid "Kaltura MediaSpace&trade; Configuration"
+msgstr "Kaltura MediaSpace&trade; Configuration"
+
+#: application/controllers/AdminController.php:816
+msgid "Import Configuration"
+msgstr "Import Configuration"
+
+#: application/controllers/AdminController.php:840
+msgid ""
+"Your configuration was imported, and the cache was cleared. Click OK to go "
+"back to the "
+msgstr ""
+"Your configuration was imported, and the cache was cleared. Click OK to go "
+"back to the "
+
+#: application/controllers/AdminController.php:847
+msgid "The configuration import process has failed."
+msgstr "The configuration import process has failed."
+
+#: application/controllers/AdminController.php:847
+msgid "Perhaps you can try again with a different file?"
+msgstr "Perhaps you can try again with a different file?"
+
+#: application/controllers/AdminController.php:904
+#: application/controllers/InstallController.php:79
+msgid "maximum one file expected"
+msgstr "maximum one file expected"
+
+#: application/controllers/ChannelsController.php:94
+#: application/controllers/ChannelsController.php:101
+#: application/controllers/EntryController.php:217
+#: application/controllers/EntryController.php:467
+#: application/controllers/GalleryController.php:203
+#: application/controllers/GalleryController.php:236
+msgid ""
+"Sorry, you cannot access this page. Either access has been denied or page "
+"was not found."
+msgstr ""
+"Sorry, you cannot access this page. Either access has been denied or page "
+"was not found."
+
+#: application/controllers/ChannelsController.php:199
+msgid "Channel"
+msgstr "Channel"
+
+#: application/controllers/ChannelsController.php:199
+msgid "already exists"
+msgstr "already exists"
+
+#: application/controllers/EntryController.php:137
+#: application/controllers/EntryController.php:191
+#: application/controllers/EntryController.php:203
+#: application/controllers/EntryController.php:207
+#: application/controllers/EntryController.php:296
+#: application/controllers/EntryController.php:332
+#: application/controllers/EntryController.php:339
+#: application/controllers/EntryController.php:687
+#: application/forms/EditCategory.php:93
+msgid "Save"
+msgstr "Save"
+
+#: application/controllers/EntryController.php:163
+#: application/controllers/EntryController.php:315
+#: application/controllers/EntryController.php:406
+msgid "The information was saved successfully"
+msgstr "The information was saved successfully"
+
+#: application/controllers/EntryController.php:267
+#: application/controllers/PlaylistController.php:62
+msgid "Saved"
+msgstr "Saved"
+
+#: application/controllers/EntryController.php:606
+msgid " (You are not allowed to delete other "
+msgstr " (You are not allowed to delete other "
+
+#: application/controllers/EntryController.php:606
+msgid " entries)"
+msgstr " entries)"
+
+#: application/controllers/EntryController.php:628
+#: application/controllers/EntryController.php:650
+#: application/controllers/PlaylistController.php:95
+msgid "Successfully deleted"
+msgstr "Successfully deleted"
+
+#: application/controllers/EntryController.php:628
+msgid "items"
+msgstr "items"
+
+#: application/controllers/EntryController.php:715
+msgid "Choose a file to upload"
+msgstr "Choose a file to upload"
+
+#: application/controllers/EntryController.php:715
+msgid "Choose another file"
+msgstr "Choose another file"
+
+#: application/controllers/EntryController.php:716
+msgid "Upload Media"
+msgstr "Upload Media"
+
+#: application/controllers/EntryController.php:716
+msgid "Upload another file"
+msgstr "Upload another file"
+
+#: application/controllers/EntryController.php:729
+msgid ""
+"Your presentation has been successfully created. You can now sync keypoints "
+"or edit metadata."
+msgstr ""
+"Your presentation has been successfully created. You can now sync keypoints "
+"or edit metadata."
+
+#: application/controllers/ErrorController.php:47
+msgid "We are sorry, but something went wrong"
+msgstr "We are sorry, but something went wrong"
+
+#: application/controllers/ErrorController.php:47
+msgid "Please try again or contact your support team for assistance"
+msgstr "Please try again or contact your support team for assistance"
+
+#: application/controllers/ErrorController.php:71
+#: application/controllers/ErrorController.php:72
+msgid "Page not found"
+msgstr "Page not found"
+
+#: application/controllers/ErrorController.php:73
+msgid ""
+"We're sorry, the page you requested cannot be found. Please check the "
+"address line or follow the navigation menu."
+msgstr ""
+"We're sorry, the page you requested cannot be found. Please check the "
+"address line or follow the navigation menu."
+
+#: application/controllers/ErrorController.php:80
+#: application/controllers/ErrorController.php:81
+msgid "Access Denied"
+msgstr "Access Denied"
+
+#: application/controllers/ErrorController.php:87
+msgid "API Error"
+msgstr "API Error"
+
+#: application/controllers/ErrorController.php:91
+msgid "API error"
+msgstr "API error"
+
+#: application/controllers/ErrorController.php:96
+msgid "Application Error"
+msgstr "Application Error"
+
+#: application/controllers/ErrorController.php:100
+msgid "Application error"
+msgstr "Application error"
+
+#: application/controllers/GalleryController.php:112
+msgid "Search this gallery"
+msgstr "Search this gallery"
+
+#: application/controllers/GalleryController.php:176
+#: application/controllers/GalleryController.php:201
+#: application/controllers/GalleryController.php:234
+msgid "Category"
+msgstr "Category"
+
+#: application/controllers/GalleryController.php:176
+msgid "is restricted"
+msgstr "is restricted"
+
+#: application/controllers/GalleryController.php:201
+msgid "not found or denied"
+msgstr "not found or denied"
+
+#: application/controllers/GalleryController.php:234
+msgid "access denied due to entitlement"
+msgstr "access denied due to entitlement"
+
+#: application/controllers/GalleryController.php:268
+msgid "Search this channel"
+msgstr "Search this channel"
+
+#: application/controllers/GalleryController.php:314
+#: application/controllers/GalleryController.php:337
+msgid "Playlist"
+msgstr "Playlist"
+
+#: application/controllers/GalleryController.php:314
+msgid "not found"
+msgstr "not found"
+
+#: application/controllers/GalleryController.php:331
+msgid "Home"
+msgstr "Home"
+
+#: application/controllers/GalleryController.php:366
+msgid "Tag"
+msgstr "Tag"
+
+#: application/controllers/GalleryController.php:373
+#: application/controllers/GalleryController.php:410
+msgid "Created by"
+msgstr "Created by"
+
+#: application/controllers/GalleryController.php:441
+#: application/forms/KeywordSearch.php:35
+#: application/forms/KeywordSearch.php:61
+#: modules/channeltopics/models/Channeltopics.php:389
+msgid "Search"
+msgstr "Search"
+
+#: application/controllers/GalleryController.php:458
+#: application/controllers/GalleryController.php:459
+msgid "No gallery type specified"
+msgstr "No gallery type specified"
+
+#: application/controllers/GalleryController.php:533
+msgid "Successfully removed media"
+msgstr "Successfully removed media"
+
+#: application/controllers/InstallController.php:23
+msgid "This instance does not require installation at this time"
+msgstr "Title"
+
+#: application/controllers/InstallController.php:29
+msgid "Requirements check"
+msgstr "Requirements check"
+
+#: application/controllers/InstallController.php:30
+msgid "Installation"
+msgstr "Installation"
+
+#: application/controllers/InstallController.php:30
+#: application/controllers/InstallController.php:31
+#: modules/captions/forms/Change.php:56
+#: modules/channelmembers/forms/EditChannelMember.php:31
+#: modules/customdata/models/Customdata.php:598
+msgid "Done"
+msgstr "Done"
+
+#: application/controllers/InstallController.php:31
+msgid "Migration"
+msgstr "Migration"
+
+#: application/controllers/InstallController.php:144
+msgid "Specified path is not readable"
+msgstr "Specified path is not readable"
+
+#: application/controllers/InstallController.php:148
+msgid "No File at Specified path"
+msgstr "No File at Specified path"
+
+#: application/controllers/InstallController.php:155
+msgid "Uploaded file has invalid extension or no file was uploaded."
+msgstr "Uploaded file has invalid extension or no file was uploaded."
+
+#: application/controllers/InstallController.php:250
+msgid ""
+"The instanceId provided is already in use. Check the \"force use instanceId"
+"\" or provide another ID"
+msgstr ""
+"The instanceId provided is already in use. Check the \"force use instanceId"
+"\" or provide another ID"
+
+#: application/controllers/InstallController.php:309
+msgid "Installation Error"
+msgstr "Installation Error"
+
+#: application/controllers/KbController.php:49
+msgid "Knowledge base"
+msgstr "Knowledge base"
+
+#: application/controllers/KbController.php:98
+msgid "KMS KB - Interface"
+msgstr "KMS KB - Interface"
+
+#: application/controllers/PlaylistController.php:61
+msgid "Playlist successfully updated"
+msgstr "Playlist successfully updated"
+
+#: application/controllers/PlaylistController.php:66
+msgid "The playlist could not be updated"
+msgstr "The playlist could not be updated"
+
+#: application/controllers/UserController.php:86
+#: application/controllers/UserController.php:176
+#: application/controllers/UserController.php:335
+#: library/Kms/Auth/Adapter.php:246 library/Kms/Auth/Adapter.php:262
+msgid "Error in authentication"
+msgstr "Error in authentication"
+
+#: application/controllers/UserController.php:86
+#: application/controllers/UserController.php:176
+#: application/controllers/UserController.php:335
+msgid "Auth Adapter"
+msgstr "Auth Adapter"
+
+#: application/controllers/UserController.php:86
+#: application/controllers/UserController.php:176
+#: application/controllers/UserController.php:335
+#: library/Kms/Auth/Adapter.php:246 library/Kms/Auth/Adapter.php:262
+msgid "does not exist"
+msgstr "does not exist"
+
+#: application/controllers/UserController.php:124
+#: application/controllers/UserController.php:302
+msgid "The Redirect URL"
+msgstr "The Redirect URL"
+
+#: application/controllers/UserController.php:124
+#: application/controllers/UserController.php:302
+msgid " is invalid"
+msgstr " is invalid"
+
+#: application/controllers/UserController.php:272
+msgid "Invalid Username/Password provided"
+msgstr "Invalid Username/Password provided"
+
+#: application/controllers/UserController.php:373
+msgid "Sorry, you cannot access this page."
+msgstr "Sorry, you cannot access this page."
+
+#: application/controllers/UserController.php:467
+msgid "Search My Media"
+msgstr "Search My Media"
+
+#: application/forms/EditCategory.php:22
+msgid "Title"
+msgstr "Title"
+
+#: application/forms/EditCategory.php:27
+msgid "Value is longer than %max% characters"
+msgstr "Value is longer than %max% characters"
+
+#: application/forms/EditCategory.php:35 application/forms/EditEntry.php:51
+msgid "Description"
+msgstr "Description"
+
+#: application/forms/EditCategory.php:44 application/forms/EditEntry.php:62
+msgid "Tags"
+msgstr "Tags"
+
+#: application/forms/EditCategory.php:53 application/models/Channel.php:319
+msgid "Open"
+msgstr "Open"
+
+#: application/forms/EditCategory.php:53
+msgid "Membership is open and non-members can view content and participate."
+msgstr "Membership is open and non-members can view content and participate."
+
+#: application/forms/EditCategory.php:54 application/models/Channel.php:322
+msgid "Restricted"
+msgstr "Restricted"
+
+#: application/forms/EditCategory.php:54
+msgid "Non-members can view content, but users must be invited to participate."
+msgstr ""
+"Non-members can view content, but users must be invited to participate."
+
+#: application/forms/EditCategory.php:55 application/models/Channel.php:325
+msgid "Private"
+msgstr "Private"
+
+#: application/forms/EditCategory.php:55
+msgid ""
+"Membership is by invitation only and only members can view content and "
+"participate."
+msgstr ""
+"Membership is by invitation only and only members can view content and "
+"participate."
+
+#: application/forms/EditCategory.php:74
+msgid ""
+"Moderate content (Media will not appear in channel until approved by channel "
+"manager)"
+msgstr ""
+"Moderate content (Media will not appear in channel until approved by channel "
+"manager)"
+
+#: application/forms/EditEntry.php:29
+msgid "Name"
+msgstr "Name"
+
+#: application/forms/EditEntry.php:40
+msgid "Created By"
+msgstr "Created By"
+
+#: application/forms/EditEntry.php:100 application/forms/EditEntry.php:174
+#: application/forms/EditUser.php:131
+msgid "Required"
+msgstr "Required"
+
+#: application/forms/EditEntry.php:145
+msgid "Saving"
+msgstr "Saving"
+
+#: application/forms/EditUser.php:28
+msgid "Click for Notes"
+msgstr "Click for Notes"
+
+#: application/forms/EditUser.php:30
+msgid ""
+"User ID, password and email may only contain these characters: 0-9, full "
+"alphabet of most languages (utf-8) and ~ . ! @ # $ % _ - +.&nbsp; Extra data "
+"can contain anything but a single-quote (\\'), double-quote (\") or "
+"backslash (\\\\)."
+msgstr ""
+"User ID, password and email may only contain these characters: 0-9, full "
+"alphabet of most languages (utf-8) and ~ . ! @ # $ % _ - +.&nbsp; Extra data "
+"can contain anything but a single-quote (\\'), double-quote (\") or "
+"backslash (\\\\)."
+
+#: application/forms/EditUser.php:31
+msgid ""
+"To store name-value pairs in \"Extra data\": separate names from values with "
+"the equals sign (=) and separate name-value sets using a comma (,), e.g. "
+"name=value,lorem=ipsum,one=two"
+msgstr ""
+"To store name-value pairs in \"Extra data\": separate names from values with "
+"the equals sign (=) and separate name-value sets using a comma (,), e.g. "
+"name=value,lorem=ipsum,one=two"
+
+#: application/forms/EditUser.php:32
+msgid "Passwords cannot be retrieved but only overwritten"
+msgstr "Passwords cannot be retrieved but only overwritten"
+
+#: application/forms/EditUser.php:40
+msgid "User ID"
+msgstr "User ID"
+
+#: application/forms/EditUser.php:48
+msgid "First Name"
+msgstr "First Name"
+
+#: application/forms/EditUser.php:54
+msgid "Last Name"
+msgstr "Last Name"
+
+#: application/forms/EditUser.php:61 application/forms/Login.php:47
+msgid "Password"
+msgstr "Password"
+
+#: application/forms/EditUser.php:68
+msgid "Confirm Password"
+msgstr "Confirm Password"
+
+#: application/forms/EditUser.php:90
+msgid "send by email"
+msgstr "send by email"
+
+#: application/forms/EditUser.php:94
+msgid "generate new password"
+msgstr "generate new password"
+
+#: application/forms/EditUser.php:101
+msgid "Role"
+msgstr "Role"
+
+#: application/forms/EditUser.php:110
+msgid "Email"
+msgstr "Email"
+
+#: application/forms/EditUser.php:118
+msgid "Extra Data"
+msgstr "Extra Data"
+
+#: application/forms/ImportConfig.php:27
+msgid "Upload configuration file"
+msgstr "Upload configuration file"
+
+#: application/forms/ImportConfig.php:39
+msgid "Keep partner settings?"
+msgstr "Keep partner settings?"
+
+#: application/forms/ImportConfig.php:43
+msgid "Yes"
+msgstr "Yes"
+
+#: application/forms/ImportConfig.php:43
+msgid "No"
+msgstr "No"
+
+#: application/forms/ImportConfig.php:50
+msgid "Import"
+msgstr "Import"
+
+#: application/forms/Install.php:20
+msgid "Kaltura Server URL"
+msgstr "Kaltura Server URL"
+
+#: application/forms/Install.php:29
+msgid "Partner ID"
+msgstr "Partner ID"
+
+#: application/forms/Install.php:41 application/forms/Migrate.php:66
+msgid "Instance ID"
+msgstr "Instance ID"
+
+#: application/forms/Install.php:49 application/forms/Migrate.php:74
+msgid "Unique ID for this instance of MediaSpace installation."
+msgstr "Unique ID for this instance of MediaSpace installation."
+
+#: application/forms/Install.php:54 application/forms/Migrate.php:79
+msgid "Privacy Context"
+msgstr "Privacy Context"
+
+#: application/forms/Install.php:62 application/forms/Migrate.php:87
+msgid ""
+"String to be set as privacy context on KMS root category to enforce "
+"entitlement."
+msgstr ""
+"String to be set as privacy context on KMS root category to enforce "
+"entitlement."
+
+#: application/forms/Install.php:75
+#: modules/customdata/models/Customdata.php:600
+msgid "Next"
+msgstr "Next"
+
+#: application/forms/Install.php:99 application/forms/Migrate.php:143
+msgid "Force instance id"
+msgstr "Force instance id"
+
+#: application/forms/KeywordSearch.php:76
+msgid "Reset"
+msgstr "Reset"
+
+#: application/forms/Login.php:25
+msgid "Username"
+msgstr "Username"
+
+#: application/forms/Login.php:76
+msgid "Login"
+msgstr "Login"
+
+#: application/forms/Migrate.php:31
+msgid "Select Source Version"
+msgstr "Select Source Version"
+
+#: application/forms/Migrate.php:47
+msgid "Config file path"
+msgstr "Config file path"
+
+#: application/forms/Migrate.php:55
+msgid "upload config file"
+msgstr "upload config file"
+
+#: application/forms/Migrate.php:94
+msgid "Start Migration"
+msgstr "Start Migration"
+
+#: application/forms/UserBulkUpload.php:25
+msgid "Select File"
+msgstr "Select File"
+
+#: application/forms/UserBulkUpload.php:39
+msgid "OK"
+msgstr "OK"
+
+#: application/forms/UserListFilters.php:43
+msgid "Show"
+msgstr "Show"
+
+#: application/models/Config.php:789
+msgid "No Role - Sys Admin only"
+msgstr "No Role - Sys Admin only"
+
+#: modules/addcontent/controllers/IndexController.php:194
+msgid "The media was published successfully"
+msgstr "The media was published successfully"
+
+#: modules/addcontent/controllers/IndexController.php:198
+msgid " media were published successfully"
+msgstr " media were published successfully"
+
+#: modules/addcontent/controllers/IndexController.php:202
+msgid "An error occured while trying to publisg media."
+msgstr "An error occurred while trying to publish media."
+
+#: modules/addtoplaylists/controllers/IndexController.php:186
+#: modules/publish/controllers/IndexController.php:263
+msgid "Success"
+msgstr "Success"
+
+#: modules/addtoplaylists/controllers/IndexController.php:190
+#: modules/publish/controllers/IndexController.php:267
+#: modules/publish/controllers/IndexController.php:281
+msgid "media"
+msgstr "media"
+
+#: modules/addtoplaylists/controllers/IndexController.php:192
+#: modules/publish/controllers/IndexController.php:269
+#: modules/publish/controllers/IndexController.php:283
+msgid "were"
+msgstr "were"
+
+#: modules/addtoplaylists/controllers/IndexController.php:192
+#: modules/publish/controllers/IndexController.php:269
+#: modules/publish/controllers/IndexController.php:283
+msgid "was"
+msgstr "was"
+
+#: modules/addtoplaylists/controllers/IndexController.php:194
+msgid "added to playlist/s"
+msgstr "added to playlist/s"
+
+#: modules/addtoplaylists/controllers/IndexController.php:200
+msgid "Oops, something went wrong. No media was added."
+msgstr "Oops, something went wrong. No media was added."
+
+#: modules/captions/controllers/IndexController.php:184
+msgid "An error occurred while deleting this caption file."
+msgstr "An error occurred while deleting this caption file."
+
+#: modules/captions/controllers/IndexController.php:209
+msgid "There was an error setting this caption file as Default."
+msgstr "There was an error setting this caption file as Default."
+
+#: modules/captions/controllers/IndexController.php:232
+msgid "There was an error dowloading this caption file."
+msgstr "There was an error downloading this caption file."
+
+#: modules/captions/controllers/IndexController.php:273
+msgid "Select a caption file"
+msgstr "Select a caption file"
+
+#: modules/captions/controllers/IndexController.php:287
+msgid "An Error occured while uploading the caption file."
+msgstr "An Error occurred while uploading the caption file."
+
+#: modules/captions/controllers/IndexController.php:338
+#: modules/captions/controllers/IndexController.php:356
+msgid "This caption file no longer exists."
+msgstr "This caption file no longer exists."
+
+#: modules/captions/forms/Change.php:28 modules/captions/forms/Upload.php:58
+msgid "Language"
+msgstr "Language"
+
+#: modules/captions/forms/Change.php:37 modules/captions/forms/Upload.php:67
+msgid "Select a language"
+msgstr "Select a language"
+
+#: modules/captions/forms/Change.php:50 modules/captions/forms/Upload.php:81
+msgid "Enter a label"
+msgstr "Enter a label"
+
+#: modules/captions/forms/Upload.php:60
+msgid "Select Language"
+msgstr "Select Language"
+
+#: modules/captions/forms/Upload.php:73
+msgid "Label"
+msgstr "Label"
+
+#: modules/captions/forms/Upload.php:74
+msgid "(text that appears in caption selector)"
+msgstr "(text that appears in caption selector)"
+
+#: modules/captions/models/Captions.php:121
+#: modules/captions/models/Captions.php:139
+msgid "Captions"
+msgstr "Captions"
+
+#: modules/channelmembers/controllers/IndexController.php:126
+msgid "Enter user id or name"
+msgstr "Enter user id or name"
+
+#: modules/channelmembers/controllers/IndexController.php:171
+msgid "This user is already a member of this channel"
+msgstr "This user is already a member of this channel"
+
+#: modules/channelmembers/controllers/IndexController.php:181
+msgid "was added to your channel."
+msgstr "was added to your channel."
+
+#: modules/channelmembers/controllers/IndexController.php:191
+msgid "User"
+msgstr "User"
+
+#: modules/channelmembers/controllers/IndexController.php:191
+msgid "does not exist."
+msgstr "does not exist."
+
+#: modules/channelmembers/controllers/IndexController.php:194
+msgid "There was an error creating the channel member."
+msgstr "There was an error creating the channel member."
+
+#: modules/channelmembers/controllers/IndexController.php:256
+msgid "Permission changed. Updating permissions might take a few minutes."
+msgstr "Permission changed. Updating permissions might take a few minutes."
+
+#: modules/channelmembers/controllers/IndexController.php:262
+msgid "There was an error updating the channel member permission."
+msgstr "There was an error updating the channel member permission."
+
+#: modules/channelmembers/controllers/IndexController.php:300
+msgid "is no longer a channel member."
+msgstr "is no longer a channel member."
+
+#: modules/channelmembers/forms/AddChannelMember.php:45
+msgid "Enter user name"
+msgstr "Enter user name"
+
+#: modules/channelmembers/forms/AddChannelMember.php:77
+msgid "Set permission"
+msgstr "Set permission"
+
+#: modules/channelmembers/models/Channelmembers.php:103
+msgid "Member"
+msgstr "Member"
+
+#: modules/channelmembers/models/Channelmembers.php:104
+msgid "Contributor"
+msgstr "Contributor"
+
+#: modules/channelmembers/models/Channelmembers.php:105
+msgid "Moderator"
+msgstr "Moderator"
+
+#: modules/channelmembers/models/Channelmembers.php:106
+msgid "Manager"
+msgstr "Manager"
+
+#: modules/channelmembers/models/Channelmembers.php:149
+msgid "No Results"
+msgstr "No Results"
+
+#: modules/channelmoderation/controllers/IndexController.php:195
+msgid "Item/s have been approved and will appear in channel."
+msgstr "Item/s have been approved and will appear in channel."
+
+#: modules/channelmoderation/controllers/IndexController.php:230
+msgid "Item/s have been rejected and will not appear in channel."
+msgstr "Item/s have been rejected and will not appear in channel."
+
+#: modules/channelmoderation/controllers/IndexController.php:233
+msgid "An error occured while rejecting the Item/s from the channel."
+msgstr "An error occured while rejecting the Item/s from the channel."
+
+#: modules/channelsubscription/controllers/IndexController.php:73
+msgid "As the channel owner you cannot subscribe to this channel"
+msgstr "As the channel owner you cannot subscribe to this channel"
+
+#: modules/channelsubscription/models/Channelsubscription.php:58
+msgid "Enable subscription to channel"
+msgstr "Enable subscription to channel"
+
+#: modules/channeltopics/models/Channeltopics.php:146
+msgid "no value"
+msgstr "no value"
+
+#: modules/comments/controllers/IndexController.php:47
+#: modules/comments/forms/AddComment.php:32
+msgid "Add a Comment"
+msgstr "Add a Comment"
+
+#: modules/comments/controllers/IndexController.php:48
+msgid "Add a Reply"
+msgstr "Add a Reply"
+
+#: modules/comments/forms/AddComment.php:70
+#: modules/customdata/models/Customdata.php:439
+msgid "Add"
+msgstr "Add"
+
+#: modules/comments/models/Comments.php:487
+msgid "Enable comments in channels"
+msgstr "Enable comments in channels"
+
+#: modules/comments/models/Comments.php:708
+#: modules/comments/models/Comments.php:728
+msgid "Comments"
+msgstr "Comments"
+
+#: modules/customdata/models/Customdata.php:599
+msgid "Prev"
+msgstr "Prev"
+
+#: modules/customdata/models/Customdata.php:601
+msgid "Today"
+msgstr "Today"
+
+#: modules/customdata/models/Customdata.php:603
+msgid "January"
+msgstr "January"
+
+#: modules/customdata/models/Customdata.php:604
+msgid "February"
+msgstr "February"
+
+#: modules/customdata/models/Customdata.php:605
+msgid "March"
+msgstr "March"
+
+#: modules/customdata/models/Customdata.php:606
+msgid "April"
+msgstr "April"
+
+#: modules/customdata/models/Customdata.php:607
+#: modules/customdata/models/Customdata.php:621
+msgid "May"
+msgstr "May"
+
+#: modules/customdata/models/Customdata.php:608
+msgid "June"
+msgstr "June"
+
+#: modules/customdata/models/Customdata.php:609
+msgid "July"
+msgstr "July"
+
+#: modules/customdata/models/Customdata.php:610
+msgid "August"
+msgstr "August"
+
+#: modules/customdata/models/Customdata.php:611
+msgid "September"
+msgstr "September"
+
+#: modules/customdata/models/Customdata.php:612
+msgid "October"
+msgstr "October"
+
+#: modules/customdata/models/Customdata.php:613
+msgid "November"
+msgstr "November"
+
+#: modules/customdata/models/Customdata.php:614
+msgid "December"
+msgstr "December"
+
+#: modules/customdata/models/Customdata.php:617
+msgid "Jan"
+msgstr "Jan"
+
+#: modules/customdata/models/Customdata.php:618
+msgid "Feb"
+msgstr "Feb"
+
+#: modules/customdata/models/Customdata.php:619
+msgid "Mar"
+msgstr "Mar"
+
+#: modules/customdata/models/Customdata.php:620
+msgid "Apr"
+msgstr "Apr"
+
+#: modules/customdata/models/Customdata.php:622
+msgid "Jun"
+msgstr "Jun"
+
+#: modules/customdata/models/Customdata.php:623
+msgid "Jul"
+msgstr "Jul"
+
+#: modules/customdata/models/Customdata.php:624
+msgid "Aug"
+msgstr "Aug"
+
+#: modules/customdata/models/Customdata.php:625
+msgid "Sep"
+msgstr "Sep"
+
+#: modules/customdata/models/Customdata.php:626
+msgid "Oct"
+msgstr "Oct"
+
+#: modules/customdata/models/Customdata.php:627
+msgid "Nov"
+msgstr "Nov"
+
+#: modules/customdata/models/Customdata.php:628
+msgid "Dec"
+msgstr "Dec"
+
+#: modules/customdata/models/Customdata.php:631
+msgid "Sunday"
+msgstr "Sunday"
+
+#: modules/customdata/models/Customdata.php:632
+msgid "Monday"
+msgstr "Monday"
+
+#: modules/customdata/models/Customdata.php:633
+msgid "Tuesday"
+msgstr "Tuesday"
+
+#: modules/customdata/models/Customdata.php:634
+msgid "Wednesday"
+msgstr "Wednesday"
+
+#: modules/customdata/models/Customdata.php:635
+msgid "Thursday"
+msgstr "Thursday"
+
+#: modules/customdata/models/Customdata.php:636
+msgid "Friday"
+msgstr "Friday"
+
+#: modules/customdata/models/Customdata.php:637
+msgid "Saturday"
+msgstr "Saturday"
+
+#: modules/customdata/models/Customdata.php:640
+msgid "Sun"
+msgstr "Sun"
+
+#: modules/customdata/models/Customdata.php:641
+msgid "Mon"
+msgstr "Mon"
+
+#: modules/customdata/models/Customdata.php:642
+msgid "Tue"
+msgstr "Tue"
+
+#: modules/customdata/models/Customdata.php:643
+msgid "Wed"
+msgstr "Wed"
+
+#: modules/customdata/models/Customdata.php:644
+msgid "Thu"
+msgstr "Thu"
+
+#: modules/customdata/models/Customdata.php:645
+msgid "Fri"
+msgstr "Fri"
+
+#: modules/customdata/models/Customdata.php:646
+msgid "Sat"
+msgstr "Sat"
+
+#: modules/customdata/models/Customdata.php:649
+msgid "Su"
+msgstr "Su"
+
+#: modules/customdata/models/Customdata.php:650
+msgid "Mo"
+msgstr "Mo"
+
+#: modules/customdata/models/Customdata.php:651
+msgid "Tu"
+msgstr "Tu"
+
+#: modules/customdata/models/Customdata.php:652
+msgid "We"
+msgstr "We"
+
+#: modules/customdata/models/Customdata.php:653
+msgid "Th"
+msgstr "Th"
+
+#: modules/customdata/models/Customdata.php:654
+msgid "Fr"
+msgstr "Fr"
+
+#: modules/customdata/models/Customdata.php:655
+msgid "Sa"
+msgstr "Sa"
+
+#: modules/customdata/models/Customdata.php:657
+msgid "Wk"
+msgstr "Wk"
+
+#: modules/embed/models/Embed.php:81
+#: modules/embedplaylist/models/Embedplaylist.php:49
+msgid "Owner Only"
+msgstr "Owner Only"
+
+#: modules/publish/controllers/IndexController.php:271
+msgid "published"
+msgstr "published"
+
+#: modules/publish/controllers/IndexController.php:278
+msgid "Failure"
+msgstr "Failure"
+
+#: modules/publish/controllers/IndexController.php:285
+msgid "not published"
+msgstr "not published"
+
+#: modules/publish/controllers/IndexController.php:293
+msgid "Oops, something went wrong. No media was published."
+msgstr "Oops, something went wrong. No media was published."
+
+#: modules/webcast/controllers/EntryController.php:36
+msgid "Register Now"
+msgstr "Register Now"
+
+#: modules/webcast/controllers/EntryController.php:37
+msgid "Join"
+msgstr "Join"
+
+#: modules/webcast/controllers/EntryController.php:38
+msgid "Watch"
+msgstr "Watch"
+
+#: modules/webcast/models/Webcast.php:236
+msgid "Webcasts"
+msgstr "Webcasts"
+
+#: modules/webcast/models/Webcast.php:247
+#: library/Kms/View/Helper/FilterBarSortersPreparator.php:27
+#: library/Kms/View/Helper/FilterBarSortersPreparator.php:35
+msgid "Alphabetical"
+msgstr "Alphabetical"
+
+#: modules/webcast/models/Webcast.php:248
+#: library/Kms/View/Helper/FilterBarSortersPreparator.php:28
+#: library/Kms/View/Helper/FilterBarSortersPreparator.php:36
+msgid "Likes"
+msgstr "Likes"
+
+#: modules/webcast/models/Webcast.php:394
+msgid "Broadcasting"
+msgstr "Broadcasting"
+
+#: modules/webcast/models/Webcast.php:398
+msgid "Broadcast starting in"
+msgstr "Broadcast starting in"
+
+#: modules/webcast/models/Webcast.php:402
+msgid "Broadcast started"
+msgstr "Broadcast started"
+
+#: modules/webcast/models/Webcast.php:402
+#: modules/webcast/models/Webcast.php:406
+msgid "ago"
+msgstr "ago"
+
+#: modules/webcast/models/Webcast.php:406
+msgid "Recorded"
+msgstr "Recorded"
+
+#: library/Kms/Auth/Adapter.php:246
+msgid "Authorization Adapter"
+msgstr "Authorization Adapter"
+
+#: library/Kms/Auth/Adapter.php:262
+msgid "Authentication Adapter"
+msgstr "Authentication Adapter"
+
+#: library/Kms/View/Helper/FilterBarFilterTypesPreparator.php:20
+msgid "All Media"
+msgstr "All Media"
+
+#: library/Kms/View/Helper/FilterBarFilterTypesPreparator.php:21
+msgid "Videos"
+msgstr "Videos"
+
+#: library/Kms/View/Helper/FilterBarFilterTypesPreparator.php:22
+msgid "Audios"
+msgstr "Audios"
+
+#: library/Kms/View/Helper/FilterBarFilterTypesPreparator.php:23
+msgid "Images"
+msgstr "Images"
+
+#: library/Kms/View/Helper/FilterBarFilterTypesPreparator.php:28
+msgid "Video Presentations"
+msgstr "Video Presentations"
+
+#: library/Kms/View/Helper/FilterBarSortersPreparator.php:25
+#: library/Kms/View/Helper/FilterBarSortersPreparator.php:34
+msgid "Recent"
+msgstr "Recent"
+
+#: library/Kms/View/Helper/FilterBarSortersPreparator.php:26
+msgid "Views"
+msgstr "Views"
+
+#: library/Kms/View/Helper/ForgotPasswordLink.php:32
+#: library/Kms/View/Helper/ForgotPasswordLink.php:36
+msgid "Forgot Password"
+msgstr "Forgot Password"
+
+#: library/Kms/View/Helper/TimeElapsed.php:28
+msgid "year"
+msgstr "year"
+
+#: library/Kms/View/Helper/TimeElapsed.php:29
+msgid "week"
+msgstr "week"
+
+#: library/Kms/View/Helper/TimeElapsed.php:30
+msgid "day"
+msgstr "day"
+
+#: library/Kms/View/Helper/TimeElapsed.php:31
+msgid "hour"
+msgstr "hour"
+
+#: library/Kms/View/Helper/TimeElapsed.php:32
+msgid "minute"
+msgstr "minute"
+
+#: library/Kms/View/Helper/TimeElapsed.php:33
+msgid "second"
+msgstr "second"
+
+#: library/Kms/View/Helper/Timespan.php:61
+msgid "minutes ago"
+msgstr "minutes ago"
+
+#: library/Kms/View/Helper/Timespan.php:61
+msgid "a moment ago"
+msgstr "a moment ago"
+
+#: library/Kms/View/Helper/Timespan.php:62
+msgid "hours ago"
+msgstr "hours ago"
+
+#: library/Kms/View/Helper/Timespan.php:62
+msgid "an hour ago"
+msgstr "an hour ago"
+
+#: library/Kms/View/Helper/Timespan.php:63
+msgid "days ago"
+msgstr "days ago"
+
+#: library/Kms/View/Helper/Timespan.php:63
+msgid "a day ago"
+msgstr "a day ago"
+
+#: library/Kms/View/Helper/Timespan.php:64
+msgid "weeks ago"
+msgstr "weeks ago"
+
+#: library/Kms/View/Helper/Timespan.php:64
+msgid "a week ago"
+msgstr "a week ago"
+
+#: library/Kms/View/Helper/Timespan.php:65
+msgid "months ago"
+msgstr "months ago"
+
+#: library/Kms/View/Helper/Timespan.php:65
+msgid "a month ago"
+msgstr "a month ago"
+
+#: library/Kms/View/Helper/Timespan.php:66
+msgid "years ago"
+msgstr "years ago"
+
+#: library/Kms/View/Helper/Timespan.php:66
+msgid "a year ago"
+msgstr "a year ago"
+
+#: library/Kms/View/Helper/UserLink.php:44
+msgid "logout"
+msgstr "logout"
+
+#: library/Kms/View/Helper/UserLink.php:57
+msgid "login"
+msgstr "login"
+
+#~ msgid "Decription"
+#~ msgstr "Decription"
+
+#~ msgid "Cancel"
+#~ msgstr "Cancel"
+
+#~ msgid "Requirements"
+#~ msgstr "Requirements"
+
+#~ msgid "Notice"
+#~ msgstr "Notice"
+
+#~ msgid "video portal"
+#~ msgstr "video portal"
+
+#~ msgid "by"
+#~ msgstr "by"
+
+#~ msgid "MANAGE CONFIGURATION"
+#~ msgstr "MANAGE CONFIGURATION"
+
+#~ msgid "MANAGE USERS"
+#~ msgstr "MANAGE USERS"
+
+#~ msgid "KNOWLEDGE BASE"
+#~ msgstr "KNOWLEDGE BASE"
+
+#~ msgid "CLEAR THE CACHE"
+#~ msgstr "CLEAR THE CACHE"
+
+#~ msgid "ENABLE DEBUG MODE"
+#~ msgstr "ENABLE DEBUG MODE"
+
+#~ msgid "LOG VIEWER"
+#~ msgstr "LOG VIEWER"
+
+#~ msgid "GO TO SITE"
+#~ msgstr "GO TO SITE"
+
+#~ msgid "RUN TESTS"
+#~ msgstr "RUN TESTS"
+
+#~ msgid "LOGOUT"
+#~ msgstr "LOGOUT"
+
+#~ msgid ""
+#~ "Migration cannot continue due to missing write permissions on some "
+#~ "configuration files"
+#~ msgstr ""
+#~ "Migration cannot continue due to missing write permissions on some "
+#~ "configuration files"
+
+#~ msgid ""
+#~ "Following are configuration files that need to be writable by the web-"
+#~ "server"
+#~ msgstr ""
+#~ "Following are configuration files that need to be writable by the web-"
+#~ "server"
+
+#~ msgid "You can fix this by running the following commands"
+#~ msgstr "You can fix this by running the following commands"
+
+#~ msgid "KMS"
+#~ msgstr "KMS"
+
+#~ msgid "failed to install"
+#~ msgstr "failed to install"
+
+#~ msgid "You can try to start installation again"
+#~ msgstr "You can try to start installation again"
+
+#~ msgid "here"
+#~ msgstr "here"
+
+#~ msgid "If you keep getting installation error contact Kaltura for support"
+#~ msgstr "If you keep getting installation error contact Kaltura for support"
+
+#~ msgid "Provide all logs under the \"logs\" directory"
+#~ msgstr "Provide all logs under the \"logs\" directory"
+
+#~ msgid "Please fill all the fields!"
+#~ msgstr "Please fill all the fields!"
+
+#~ msgid "Installation in progress. Please wait..."
+#~ msgstr "Installation in progress. Please wait..."
+
+#~ msgid "You can proceed with the Kaltura MediaSpace"
+#~ msgstr "You can proceed with the Kaltura MediaSpace"
+
+#~ msgid "setup process."
+#~ msgstr "setup process."
+
+#~ msgid "Some requirements failed. Please fix and refresh the page."
+#~ msgstr "Some requirements failed. Please fix and refresh the page."
+
+#~ msgid ""
+#~ "If you are upgrading from KMS2 or KMS3 select \"Migrate\", otherwise "
+#~ "select \"Install\""
+#~ msgstr ""
+#~ "If you are upgrading from KMS2 or KMS3 select \"Migrate\", otherwise "
+#~ "select \"Install\""
+
+#~ msgid "Install"
+#~ msgstr "Install"
+
+#~ msgid "Migrate"
+#~ msgstr "Migrate"
+
+#~ msgid "was setup successfully"
+#~ msgstr "was setup successfully"
+
+#~ msgid "You can visit your Kaltura MediaSpace site"
+#~ msgstr "You can visit your Kaltura MediaSpace site"
+
+#~ msgid "You can create new users for your Kaltura MediaSpace site"
+#~ msgstr "You can create new users for your Kaltura MediaSpace site"
+
+#~ msgid ""
+#~ "You can go to the administration area to set more configuration options"
+#~ msgstr ""
+#~ "You can go to the administration area to set more configuration options"
+
+#~ msgid ""
+#~ "Note that some functionality might be limited or broken until you "
+#~ "complete all of the required configurations"
+#~ msgstr ""
+#~ "Note that some functionality might be limited or broken until you "
+#~ "complete all of the required configurations"
+
+#~ msgid "To run the UnitTests please click "
+#~ msgstr "To run the UnitTests please click "
+
+#~ msgid ""
+#~ "If you migrate from KMS 3.0.x - specify path to config.ini or upload the "
+#~ "config.ini of your KMS 3.0.x instance."
+#~ msgstr ""
+#~ "If you migrate from KMS 3.0.x - specify path to config.ini or upload the "
+#~ "config.ini of your KMS 3.0.x instance."
+
+#~ msgid ""
+#~ "If you migrate from KMS 2 - specify path to config.ini.php or upload the "
+#~ "config.ini.php of your KMS 2 instance."
+#~ msgstr ""
+#~ "If you migrate from KMS 2 - specify path to config.ini.php or upload the "
+#~ "config.ini.php of your KMS 2 instance."
+
+#~ msgid "Show me"
+#~ msgstr "Show me"
+
+#~ msgid "View"
+#~ msgstr "View"
+
+#~ msgid "View:"
+#~ msgstr "View:"
+
+#~ msgid "Liked"
+#~ msgstr "Liked"
+
+#~ msgid "unlike"
+#~ msgstr "unlike"
+
+#~ msgid "Like"
+#~ msgstr "Like"
+
+#~ msgid "Details"
+#~ msgstr "Details"
+
+#~ msgid "Hide"
+#~ msgstr "Hide"
+
+#~ msgid "Search all media"
+#~ msgstr "Search all media"
+
+#~ msgid "views"
+#~ msgstr "views"
+
+#~ msgid "Media is being processed"
+#~ msgstr "Media is being processed"
+
+#~ msgid "Create Channel"
+#~ msgstr "Create Channel"
+
+#~ msgid "of"
+#~ msgstr "of"
+
+#~ msgid "Managers:"
+#~ msgstr "Managers:"
+
+#~ msgid "uploaded"
+#~ msgstr "uploaded"
+
+#~ msgid "like"
+#~ msgstr "like"
+
+#~ msgid "likes"
+#~ msgstr "likes"
+
+#~ msgid "Edit"
+#~ msgstr "Edit"
+
+#~ msgid "Delete"
+#~ msgstr "Delete"
+
+#~ msgid "This media is still being converted"
+#~ msgstr "This media is still being converted"
+
+#~ msgid "This media is pending review"
+#~ msgstr "This media is pending review"
+
+#~ msgid "No description provided"
+#~ msgstr "No description provided"
+
+#~ msgid "Categories"
+#~ msgstr "Categories"
+
+#~ msgid "Channels"
+#~ msgstr "Channels"
+
+#~ msgid "Previous"
+#~ msgstr "Previous"
+
+#~ msgid "Important Notice"
+#~ msgstr "Important Notice"
+
+#~ msgid "click to open"
+#~ msgstr "click to open"
+
+#~ msgid ""
+#~ "The default values have not changed. We recommended that you modify the "
+#~ "values for your configuration."
+#~ msgstr ""
+#~ "The default values have not changed. We recommended that you modify the "
+#~ "values for your configuration."
+
+#~ msgid "Global"
+#~ msgstr "Global"
+
+#~ msgid "Modules"
+#~ msgstr "Modules"
+
+#~ msgid "Configuration"
+#~ msgstr "Configuration"
+
+#~ msgid "All"
+#~ msgstr "All"
+
+#~ msgid "Add New"
+#~ msgstr "Add New"
+
+#~ msgid "Media Upload"
+#~ msgstr "Media Upload"
+
+#~ msgid "Webcam Recording"
+#~ msgstr "Webcam Recording"
+
+#~ msgid "Video Presentation"
+#~ msgstr "Video Presentation"
+
+#~ msgid "More"
+#~ msgstr "More"
+
+#~ msgid "Record from Webcam"
+#~ msgstr "Record from Webcam"
+
+#~ msgid "Please fill out these details"
+#~ msgstr "Please fill out these details"
+
+#~ msgid "Upload Document"
+#~ msgstr "Upload Document"
+
+#~ msgid ""
+#~ "A video presentation consists of a document and a video file, "
+#~ "synchronized together, Document formats supported are:ppt/pptx, pdf, doc/ "
+#~ "docx, xls/ xlsx."
+#~ msgstr ""
+#~ "A video presentation consists of a document and a video file, "
+#~ "synchronized together, Document formats supported are:ppt/pptx, pdf, doc/ "
+#~ "docx, xls/ xlsx."
+
+#~ msgid ""
+#~ "After the document is uploaded, it will be converted to a format suitable "
+#~ "for display in the presentation (this might take a few minutes)."
+#~ msgstr ""
+#~ "After the document is uploaded, it will be converted to a format suitable "
+#~ "for display in the presentation (this might take a few minutes)."
+
+#~ msgid ""
+#~ "Once your content is ready it will appear in the document list(step 2)."
+#~ msgstr ""
+#~ "Once your content is ready it will appear in the document list(step 2)."
+
+#~ msgid "Back to the video presentation creation flow (step 1)"
+#~ msgstr "Back to the video presentation creation flow (step 1)"
+
+#~ msgid "Loading, Please Wait..."
+#~ msgstr "Loading, Please Wait..."
+
+#~ msgid ""
+#~ "Upload limited to 2GB files. Kaltura accepts all common video, audio and "
+#~ "image formats in all resolutions.\n"
+#~ " For best results with video, we recommend preparing videos in 1280x720 "
+#~ "pixels and using the H.264 video codec at about 4000 kb/s."
+#~ msgstr ""
+#~ "Upload limited to 2GB files. Kaltura accepts all common video, audio and "
+#~ "image formats in all resolutions.\n"
+#~ " For best results with video, we recommend preparing videos in 1280x720 "
+#~ "pixels and using the H.264 video codec at about 4000 kb/s."
+
+#~ msgid "Add Video Presentation"
+#~ msgstr "Add Video Presentation"
+
+#~ msgid "To create a Video Presentation, follow these steps"
+#~ msgstr "To create a Video Presentation, follow these steps"
+
+#~ msgid ""
+#~ "Select media (from a list of already uploaded and ready video and audio "
+#~ "items)"
+#~ msgstr ""
+#~ "Select media (from a list of already uploaded and ready video and audio "
+#~ "items)"
+
+#~ msgid "Select document (from a list of uploaded, and converted documents)"
+#~ msgstr "Select document (from a list of uploaded, and converted documents)"
+
+#~ msgid "Add sync points to synchronize the document with the media"
+#~ msgstr "Add sync points to synchronize the document with the media"
+
+#~ msgid ""
+#~ "In case you need to upload new documents to the server, use the upload "
+#~ "document button below."
+#~ msgstr ""
+#~ "In case you need to upload new documents to the server, use the upload "
+#~ "document button below."
+
+#~ msgid ""
+#~ "Once a Presentation is created, you will be redirected to the \"edit page"
+#~ "\", where you will be able to sync keypoints for playback, and edit "
+#~ "metadata."
+#~ msgstr ""
+#~ "Once a Presentation is created, you will be redirected to the \"edit page"
+#~ "\", where you will be able to sync keypoints for playback, and edit "
+#~ "metadata."
+
+#~ msgid "Converting"
+#~ msgstr "Converting"
+
+#~ msgid "Published"
+#~ msgstr "Published"
+
+#~ msgid "Not published"
+#~ msgstr "Not published"
+
+#~ msgid "By"
+#~ msgstr "By"
+
+#~ msgid "Remove media from"
+#~ msgstr "Remove media from"
+
+#~ msgid "channel"
+#~ msgstr "channel"
+
+#~ msgid "gallery"
+#~ msgstr "gallery"
+
+#~ msgid "Remove"
+#~ msgstr "Remove"
+
+#~ msgid "member"
+#~ msgstr "member"
+
+#~ msgid "members"
+#~ msgstr "members"
+
+#~ msgid "Save Changes"
+#~ msgstr "Save Changes"
+
+#~ msgid "Show Playlist"
+#~ msgstr "Show Playlist"
+
+#~ msgid "Short View"
+#~ msgstr "Short View"
+
+#~ msgid "Full View"
+#~ msgstr "Full View"
+
+#~ msgid "Delete Playlist"
+#~ msgstr "Delete Playlist"
+
+#~ msgid "Unauthorized"
+#~ msgstr "Unauthorized"
+
+#~ msgid "This site requires authorization"
+#~ msgstr "This site requires authorization"
+
+#~ msgid "Please Login"
+#~ msgstr "Please Login"
+
+#~ msgid "My Playlists"
+#~ msgstr "My Playlists"
+
+#~ msgid "Drag and drop to reorder media"
+#~ msgstr "Drag and drop to reorder media"
+
+#~ msgid "No media found"
+#~ msgstr "No media found"
+
+#~ msgid "You have not created any playlists yet"
+#~ msgstr "You have not created any playlists yet"
+
+#~ msgid "To Create a Playlist"
+#~ msgstr "To Create a Playlist"
+
+#~ msgid ""
+#~ "Select \"Add to Playlist\" tab that appears under the player in other "
+#~ "pages on the site"
+#~ msgstr ""
+#~ "Select \"Add to Playlist\" tab that appears under the player in other "
+#~ "pages on the site"
+
+#~ msgid ""
+#~ "Click \"Add new Playlist\" and enter name and description, The media will "
+#~ "be added to playlist"
+#~ msgstr ""
+#~ "Click \"Add new Playlist\" and enter name and description, The media will "
+#~ "be added to playlist"
+
+#~ msgid ""
+#~ "Once you have created a playlist, it will appear on this page where you "
+#~ "can preview it, edit the sequence of media, select design of playlist, "
+#~ "and grab the embed code."
+#~ msgstr ""
+#~ "Once you have created a playlist, it will appear on this page where you "
+#~ "can preview it, edit the sequence of media, select design of playlist, "
+#~ "and grab the embed code."
+
+#~ msgid "My Media"
+#~ msgstr "My Media"
+
+#~ msgid "Back to Channels"
+#~ msgstr "Back to Channels"
+
+#~ msgid "Are you sure you want to remove this item from the"
+#~ msgstr "Are you sure you want to remove this item from the"
+
+#~ msgid "Remove Media"
+#~ msgstr "Remove Media"
+
+#~ msgid "You are not allowed to remove this media"
+#~ msgstr "You are not allowed to remove this media"
+
+#~ msgid "Ok"
+#~ msgstr "Ok"
+
+#~ msgid "Kaltura MediaSpace Administration Area"
+#~ msgstr "Kaltura MediaSpace Administration Area"
+
+#~ msgid "Please login using your Kaltura account"
+#~ msgstr "Please login using your Kaltura account"
+
+#~ msgid "Delete User"
+#~ msgstr "Delete User"
+
+#~ msgid "The unique execution id, is a mandatory parameter."
+#~ msgstr "The unique execution id, is a mandatory parameter."
+
+#~ msgid "The cache was flushed successfuly."
+#~ msgstr "The cache was flushed successfuly."
+
+#~ msgid "success"
+#~ msgstr "success"
+
+#~ msgid "ADD NEW USER"
+#~ msgstr "ADD NEW USER"
+
+#~ msgid "DELETE CHECKED"
+#~ msgstr "DELETE CHECKED"
+
+#~ msgid "SUBMIT CSV"
+#~ msgstr "SUBMIT CSV"
+
+#~ msgid "Extra data"
+#~ msgstr "Extra data"
+
+#~ msgid "No data found"
+#~ msgstr "No data found"
+
+#~ msgid "Role does not exist in config file: user will not be able to log in."
+#~ msgstr ""
+#~ "Role does not exist in config file: user will not be able to log in."
+
+#~ msgid "Unique Execution Id"
+#~ msgstr "Unique Execution Id"
+
+#~ msgid "Debug Level"
+#~ msgstr "Debug Level"
+
+#~ msgid "Log File"
+#~ msgstr "Log File"
+
+#~ msgid "General Log"
+#~ msgstr "General Log"
+
+#~ msgid "API Log"
+#~ msgstr "API Log"
+
+#~ msgid "API Debug"
+#~ msgstr "API Debug"
+
+#~ msgid "API Errors"
+#~ msgstr "API Errors"
+
+#~ msgid "Trace Log"
+#~ msgstr "Trace Log"
+
+#~ msgid "Nothing found in the log file"
+#~ msgstr "Nothing found in the log file"
+
+#~ msgid "Deployment"
+#~ msgstr "Deployment"
+
+#~ msgid ""
+#~ "Debug Mode cookie was planted, and will persist until you close your "
+#~ "browser :)"
+#~ msgstr ""
+#~ "Debug Mode cookie was planted, and will persist until you close your "
+#~ "browser :)"
+
+#~ msgid "Debug Mode cookie"
+#~ msgstr "Debug Mode cookie"
+
+#~ msgid "Unit tests create test categories and content"
+#~ msgstr "Unit tests create test categories and content"
+
+#~ msgid ""
+#~ "Please keep in mind that some of the test content may remain in your "
+#~ "account after the tests are complete"
+#~ msgstr ""
+#~ "Please keep in mind that some of the test content may remain in your "
+#~ "account after the tests are complete"
+
+#~ msgid "Developer Tools"
+#~ msgstr "Developer Tools"
+
+#~ msgid "Export configuration to a file"
+#~ msgstr "Export configuration to a file"
+
+#~ msgid "Import configuration from a file"
+#~ msgstr "Import configuration from a file"
+
+#~ msgid "Create uiConfs for Widgets"
+#~ msgstr "Create uiConfs for Widgets"
+
+#~ msgid "Create Custom Metadata profiles"
+#~ msgstr "Create Custom Metadata profiles"
+
+#~ msgid "How to enable \"Developer Tools\""
+#~ msgstr "How to enable \"Developer Tools\""
+
+#~ msgid "version"
+#~ msgstr "version"
+
+#~ msgid "build"
+#~ msgstr "build"
+
+#~ msgid "Are you sure you want to delete this playlist?"
+#~ msgstr "Are you sure you want to delete this playlist?"
+
+#~ msgid "Confirm Delete"
+#~ msgstr "Confirm Delete"
+
+#~ msgid "You are not allowed to delete this playlist"
+#~ msgstr "You are not allowed to delete this playlist"
+
+#~ msgid "Exception information:"
+#~ msgstr "Exception information:"
+
+#~ msgid "Stack trace:"
+#~ msgstr "Stack trace:"
+
+#~ msgid "Request Parameters:"
+#~ msgstr "Request Parameters:"
+
+#~ msgid "Link to this media"
+#~ msgstr "Link to this media"
+
+#~ msgid "Finished uploading"
+#~ msgstr "Finished uploading"
+
+#~ msgid "Go to media page"
+#~ msgstr "Go to media page"
+
+#~ msgid "Your changes have been saved"
+#~ msgstr "Your changes have been saved"
+
+#~ msgid ""
+#~ "This will cause this media to be disassociated from all categories and it "
+#~ "will not appear anywhere in MediaSpace."
+#~ msgstr ""
+#~ "This will cause this media to be disassociated from all categories and it "
+#~ "will not appear anywhere in MediaSpace."
+
+#~ msgid "Confirm Unpublishing"
+#~ msgstr "Confirm Unpublishing"
+
+#~ msgid "Confirm"
+#~ msgstr "Confirm"
+
+#~ msgid "Oops, something went wrong. The information was not saved."
+#~ msgstr "Oops, something went wrong. The information was not saved."
+
+#~ msgid "Please fill out all required fields"
+#~ msgstr "Please fill out all required fields"
+
+#~ msgid "The information will be saved, once the file is finished uploading"
+#~ msgstr "The information will be saved, once the file is finished uploading"
+
+#~ msgid "Video Presentations are disabled."
+#~ msgstr "Video Presentations are disabled."
+
+#~ msgid "Edit Media"
+#~ msgstr "Edit Media"
+
+#~ msgid "There is no such entry"
+#~ msgstr "There is no such entry"
+
+#~ msgid "Core"
+#~ msgstr "Core"
+
+#~ msgid "View hooks declared by core views of mediaspace."
+#~ msgstr "View hooks declared by core views of mediaspace."
+
+#~ msgid "View Files Implementing"
+#~ msgstr "View Files Implementing"
+
+#~ msgid ""
+#~ "View hooks declared in different modules that wish to let other modules "
+#~ "extend their output"
+#~ msgstr ""
+#~ "View hooks declared in different modules that wish to let other modules "
+#~ "extend their output"
+
+#~ msgid "Layouts"
+#~ msgstr "Layouts"
+
+#~ msgid "Viewhook name"
+#~ msgstr "Viewhook name"
+
+#~ msgid "Module View Files"
+#~ msgstr "Module View Files"
+
+#~ msgid "To enable \"Developer Tools\", add the following line to the"
+#~ msgstr "To enable \"Developer Tools\", add the following line to the"
+
+#~ msgid "file"
+#~ msgstr "file"
+
+#~ msgid ""
+#~ "Please note that changing the APPLICATION_ENV variable, will enable "
+#~ "debugging mode. In this mode, error suppression is turned off, and the "
+#~ "error messages are very detailed and revealing. This may represent a "
+#~ "security risk; therefore, the APPLICATION_ENV should be set to "
+#~ "\"production\" on all production and live environments, and only updated "
+#~ "for debugging or temporary administration purposes!"
+#~ msgstr ""
+#~ "Please note that changing the APPLICATION_ENV variable, will enable "
+#~ "debugging mode. In this mode, error suppression is turned off, and the "
+#~ "error messages are very detailed and revealing. This may represent a "
+#~ "security risk; therefore, the APPLICATION_ENV should be set to "
+#~ "\"production\" on all production and live environments, and only updated "
+#~ "for debugging or temporary administration purposes!"
+
+#~ msgid "as manager"
+#~ msgstr "as manager"
+
+#~ msgid "as member"
+#~ msgstr "as member"
+
+#~ msgid "My Channels"
+#~ msgstr "My Channels"
+
+#~ msgid "as Member"
+#~ msgstr "as Member"
+
+#~ msgid "as Manager"
+#~ msgstr "as Manager"
+
+#~ msgid "Date"
+#~ msgstr "Date"
+
+#~ msgid "Members"
+#~ msgstr "Members"
+
+#~ msgid "You are not a manager of any channel."
+#~ msgstr "You are not a manager of any channel."
+
+#~ msgid "Go ahead, and"
+#~ msgstr "Go ahead, and"
+
+#~ msgid "create your first channel"
+#~ msgstr "create your first channel"
+
+#~ msgid "You are not a member of any channel."
+#~ msgstr "You are not a member of any channel."
+
+#~ msgid "No Channels"
+#~ msgstr "No Channels"
+
+#~ msgid "Create New Channel"
+#~ msgstr "Create New Channel"
+
+#~ msgid "Settings"
+#~ msgstr "Settings"
+
+#~ msgid "Back to channel"
+#~ msgstr "Back to channel"
+
+#~ msgid "Basic"
+#~ msgstr "Basic"
+
+#~ msgid "Confirm delete"
+#~ msgstr "Confirm delete"
+
+#~ msgid "No channels Found..."
+#~ msgstr "No channels Found..."
+
+#~ msgid "Not Published"
+#~ msgstr "Not Published"
+
+#~ msgid "Publish in Gallery"
+#~ msgstr "Publish in Gallery"
+
+#~ msgid "Publish in Channel"
+#~ msgstr "Publish in Channel"
+
+#~ msgid "Publish"
+#~ msgstr "Publish"
+
+#~ msgid "Appears in"
+#~ msgstr "Appears in"
+
+#~ msgid "Media could not be published"
+#~ msgstr "Media could not be published"
+
+#~ msgid ""
+#~ "Try unpublishing this media from other galleries/channels and try again"
+#~ msgstr ""
+#~ "Try unpublishing this media from other galleries/channels and try again"
+
+#~ msgid ""
+#~ "Non published media will only appear to you in your \"My Media\" page. "
+#~ "You can publish to multiple categories and channels."
+#~ msgstr ""
+#~ "Non published media will only appear to you in your \"My Media\" page. "
+#~ "You can publish to multiple categories and channels."
+
+#~ msgid "Please fill out all the required fields first"
+#~ msgstr "Please fill out all the required fields first"
+
+#~ msgid "You are not allowed to publish media"
+#~ msgstr "You are not allowed to publish media"
+
+#~ msgid "Required data missing, cannot add."
+#~ msgstr "Required data missing, cannot add."
+
+#~ msgid "Media already added."
+#~ msgstr "Media already added."
+
+#~ msgid "You are not allowed to add media to this category or channel."
+#~ msgstr "You are not allowed to add media to this category or channel."
+
+#~ msgid "Add Media"
+#~ msgstr "Add Media"
+
+#~ msgid "Delete Channel"
+#~ msgstr "Delete Channel"
+
+#~ msgid "Deleting the channel will remove this channel from MediaSpace"
+#~ msgstr "Deleting the channel will remove this channel from MediaSpace"
+
+#~ msgid "Note that this will not delete the media items themselves"
+#~ msgstr "Note that this will not delete the media items themselves"
+
+#~ msgid "Update Channel Thumbnail"
+#~ msgstr "Update Channel Thumbnail"
+
+#~ msgid ""
+#~ "The channel thumbnail in the channel listing displays up to thumbnails "
+#~ "representing media assigned to this channel. Click “Update” to fetch the "
+#~ "latest thumbnails"
+#~ msgstr ""
+#~ "The channel thumbnail in the channel listing displays up to thumbnails "
+#~ "representing media assigned to this channel. Click “Update” to fetch the "
+#~ "latest thumbnails"
+
+#~ msgid "Update"
+#~ msgstr "Update"
+
+#~ msgid "Advanced"
+#~ msgstr "Advanced"
+
+#~ msgid "Show All"
+#~ msgstr "Show All"
+
+#~ msgid "Oops! You have no media... :("
+#~ msgstr "Oops! You have no media... :("
+
+#~ msgid "Loading"
+#~ msgstr "Loading"
+
+#~ msgid "No related media for this entry"
+#~ msgstr "No related media for this entry"
+
+#~ msgid "Related Media"
+#~ msgstr "Related Media"
+
+#~ msgid "Select Embed Type"
+#~ msgstr "Select Embed Type"
+
+#~ msgid "in"
+#~ msgstr "in"
+
+#~ msgid "change"
+#~ msgstr "change"
+
+#~ msgid "you"
+#~ msgstr "you"
+
+#~ msgid "owner"
+#~ msgstr "owner"
+
+#~ msgid "remove"
+#~ msgstr "remove"
+
+#~ msgid "Add Member"
+#~ msgstr "Add Member"
+
+#~ msgid "Permission"
+#~ msgstr "Permission"
+
+#~ msgid "There are no members..."
+#~ msgstr "There are no members..."
+
+#~ msgid "as a member of this channel?"
+#~ msgstr "as a member of this channel?"
+
+#~ msgid "Confirm remove"
+#~ msgstr "Confirm remove"
+
+#~ msgid "There was an error deleting the member."
+#~ msgstr "There was an error deleting the member."
+
+#~ msgid "Link to Media Page"
+#~ msgstr "Link to Media Page"
+
+#~ msgid "Press Ctrl+C to copy"
+#~ msgstr "Press Ctrl+C to copy"
+
+#~ msgid "Embed"
+#~ msgstr "Embed"
+
+#~ msgid "Grabbing the embed code will make this media public to the world."
+#~ msgstr "Grabbing the embed code will make this media public to the world."
+
+#~ msgid "Embed Code"
+#~ msgstr "Embed Code"
+
+#~ msgid "Select Player Skin"
+#~ msgstr "Select Player Skin"
+
+#~ msgid "Select Player Size"
+#~ msgstr "Select Player Size"
+
+#~ msgid "Share"
+#~ msgstr "Share"
+
+#~ msgid "Select Playlist Layout (Flash)"
+#~ msgstr "Select Playlist Layout (Flash)"
+
+#~ msgid "Width"
+#~ msgstr "Width"
+
+#~ msgid "Height"
+#~ msgstr "Height"
+
+#~ msgid "Select Playlist Color"
+#~ msgstr "Select Playlist Color"
+
+#~ msgid "Dark"
+#~ msgstr "Dark"
+
+#~ msgid "Light"
+#~ msgstr "Light"
+
+#~ msgid "Approve"
+#~ msgstr "Approve"
+
+#~ msgid "Reject"
+#~ msgstr "Reject"
+
+#~ msgid "Search pending"
+#~ msgstr "Search pending"
+
+#~ msgid "Pending Moderation"
+#~ msgstr "Pending Moderation"
+
+#~ msgid "There are no pending entries..."
+#~ msgstr "There are no pending entries..."
+
+#~ msgid "Content moderation is turned off."
+#~ msgstr "Content moderation is turned off."
+
+#~ msgid "Pending"
+#~ msgstr "Pending"
+
+#~ msgid "pending media"
+#~ msgstr "pending media"
+
+#~ msgid "Oops! This playlist is empty... :("
+#~ msgstr "Oops! This playlist is empty... :("
+
+#~ msgid ""
+#~ "Playlists allow you to grab embed code for displaying a player and a "
+#~ "collection of media"
+#~ msgstr ""
+#~ "Playlists allow you to grab embed code for displaying a player and a "
+#~ "collection of media"
+
+#~ msgid "Add to Playlists"
+#~ msgstr "Add to Playlists"
+
+#~ msgid "Manage Playlists"
+#~ msgstr "Manage Playlists"
+
+#~ msgid ""
+#~ "Playlists allow you to grab embed code for displaying a player and a "
+#~ "collection of media."
+#~ msgstr ""
+#~ "Playlists allow you to grab embed code for displaying a player and a "
+#~ "collection of media."
+
+#~ msgid "Add New Playlist"
+#~ msgstr "Add New Playlist"
+
+#~ msgid "Add to Playlist"
+#~ msgstr "Add to Playlist"
+
+#~ msgid "Get Embed Code"
+#~ msgstr "Get Embed Code"
+
+#~ msgid "You currently have no channels. Go ahead, and"
+#~ msgstr "You currently have no channels. Go ahead, and"
+
+#~ msgid "You have reached the error page"
+#~ msgstr "You have reached the error page"
+
+#~ msgid "Error page"
+#~ msgstr "Error page"
+
+#~ msgid "path"
+#~ msgstr "path"
+
+#~ msgid "Sort by"
+#~ msgstr "Sort by"
+
+#~ msgid "Most Viewed"
+#~ msgstr "Most Viewed"
+
+#~ msgid "Export to a file"
+#~ msgstr "Export to a file"
+
+#~ msgid "Import from a file"
+#~ msgstr "Import from a file"
+
+#~ msgid ""
+#~ "User Management is only available if MediaSpace authentication is set to "
+#~ "\"KalturaAuth\"."
+#~ msgstr ""
+#~ "User Management is only available if MediaSpace authentication is set to "
+#~ "\"KalturaAuth\"."
+
+#~ msgid "GO TO CONFIG"
+#~ msgstr "GO TO CONFIG"
+
+#~ msgid "hide"
+#~ msgstr "hide"
+
+#~ msgid "show"
+#~ msgstr "show"
+
+#~ msgid "This Media is Featured"
+#~ msgstr "This Media is Featured"
+
+#~ msgid "Feature this Media"
+#~ msgstr "Feature this Media"
+
+#~ msgid "Duration"
+#~ msgstr "Duration"
+
+#~ msgid "Created At"
+#~ msgstr "Created At"
+
+#~ msgid ""
+#~ "You can choose to have this Media appear in the \"Featured\" section of "
+#~ "the site."
+#~ msgstr ""
+#~ "You can choose to have this Media appear in the \"Featured\" section of "
+#~ "the site."
+
+#~ msgid "Featured Media"
+#~ msgstr "Featured Media"
+
+#~ msgid "No featured media"
+#~ msgstr "No featured media"
+
+#~ msgid "Feature"
+#~ msgstr "Feature"
+
+#~ msgid "The Media will be reset once a day"
+#~ msgstr "The Media will be reset once a day"
+
+#~ msgid "Click for login credentials to this demo site"
+#~ msgstr "Click for login credentials to this demo site"
+
+#~ msgid "ALL NEW CONTENT WILL BE REMOVED ONCE A DAY"
+#~ msgstr "ALL NEW CONTENT WILL BE REMOVED ONCE A DAY"
+
+#~ msgid "This entry is already published under a child category of"
+#~ msgstr "This entry is already published under a child category of"
+
+#~ msgid "Navigation"
+#~ msgstr "Navigation"
+
+#~ msgid "SUCCESS"
+#~ msgstr "SUCCESS"
+
+#~ msgid ""
+#~ "The following configuration options still have their default values. It "
+#~ "is recommended to change them."
+#~ msgstr ""
+#~ "The following configuration options still have their default values. It "
+#~ "is recommended to change them."
+
+#~ msgid ""
+#~ "Please click on the Allow button, to enable your camera and microphone"
+#~ msgstr ""
+#~ "Please click on the Allow button, to enable your camera and microphone"
+
+#~ msgid "An error occurred"
+#~ msgstr "An error occurred"
+
+#~ msgid "Message:"
+#~ msgstr "Message:"
+
+#~ msgid "form validation failed"
+#~ msgstr "form validation failed"
+
+#~ msgid "Edit details"
+#~ msgstr "Edit details"
+
+#~ msgid "Delete media"
+#~ msgstr "Delete media"

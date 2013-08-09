@@ -1,0 +1,95 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+/**
+ * Main AJAX view for the Gallery (gallery/view?format=ajax)
+ * @viewhook Kms_Resource_Viewhook::CORE_VIEW_HOOK_PREGALLERYITEMS
+ * @viewhook Kms_Resource_Viewhook::CORE_VIEW_HOOK_POSTGALLERYITEMS
+ */
+$this->placeholder('entries')->captureStart('SET', 'entries');
+echo $this->ViewHook(Kms_Resource_Viewhook::CORE_VIEW_HOOK_PREGALLERYITEMS);
+if ($this->entries && count($this->entries)):
+    // hook for search results rendering (my media style) for KMS 4.6
+    if(isset($this->params['keyword']) && $this->params['keyword'] || isset($this->searchKeyword) && $this->searchKeyword):
+        foreach($this->entries as $entry)
+        {
+            echo $this->partial('partials/entryItem/detailed.phtml', 
+                    array(
+                        'entry' => $entry, 
+                        'actions' => array(
+//                            '<a href="'.$this->baseUrl('edit/'.$entry->id).'" class="edit_entry"><em></em>'.$this->translate('Edit').'</a>'
+                        ),
+                        'disableCheckbox' => true,                        
+                        'itemTag' => 'div',
+                        'odd' => $this->cycle(array(false, true))->next()->toString()
+                    )
+            );
+        }
+        $this->JsonScript('$("#kgallery").attr("id", "mymedia")');
+    else:    // regular gallery view
+        /*if ($this->presentationView)
+        {
+            echo $this->partialLoop('partials/entryItem/thumbData.phtml', $this->entries);
+        } else
+        {*/
+        $this->partialLoop()->setObjectKey('entry');            
+        echo $this->partialLoop('partials/entryItem/thumb.phtml', $this->entries);
+        //}
+        $this->JsonScript('$("#mymedia").attr("id", "kgallery")');
+    endif;
+else:
+    ?>
+    <?php echo $this->translate('No media found').'.'; ?>
+    <?php
+endif;
+?>
+<?php 
+echo $this->ViewHook(Kms_Resource_Viewhook::CORE_VIEW_HOOK_POSTGALLERYITEMS);
+
+$this->placeholder('entries')->captureEnd();
+
+
+$pager = $this->paginationControl($this->paginator, $this->pagerType, 'partials/galleryPaging.phtml');
+$pagesInfo = $this->partial()->view->paginator->getPages();
+
+$this->JsonContent(array(
+        'target' => '#pager',
+        'content' => $pager,
+        'action' => 'replace'
+    )
+);
+$this->JsonContent(array(
+        'target' => '#kitems',
+        'content' => $this->placeholder('entries')->entries,
+        'action' => 'replace'
+    )
+);
+if($pagesInfo->lastItemNumber && $pagesInfo->totalItemCount)
+{
+    $this->JsonContent(array(
+            'target' => '#result_counter',
+            'content' => '(' . $pagesInfo->firstItemNumber . '-' . $pagesInfo->lastItemNumber . ' '.$this->translate('of').' ' . $pagesInfo->totalItemCount . ' '.$this->translate('items') . ')',
+            'action' => 'replace'
+        )
+    );
+}
+else
+{
+    $this->JsonContent(array(
+            'target' => '#result_counter',
+            'content' => '',
+            'action' => 'replace'
+        )
+    );
+}
+
+$script = '$("#kitems li a[rel=async]").click(function(){$("#kitems li.active").removeClass("active");$(this).parents("li").addClass("active");});';
+
+$this->JsonScript($script);
+$this->JsonScript('$(".ktooltip").remove();$("#kgallery li .item_link[title]").ktooltip();');
+$this->JsonScript('$("#kitems img").removeAttr("error");');
+$this->JsonScript('$("#kitems img").error(function() {$(this).attr({"src": "'.$this->baseUrl('build' . BUILD_NUMBER . '/img/no-thumbnail.png').'"});})');
+    
+

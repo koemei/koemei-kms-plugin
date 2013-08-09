@@ -1,0 +1,34 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+$this->placeholder('caption')->captureStart('SET', 'asset');
+if(isset($this->asset)){
+    // asset change result
+    echo $this->partial('partials/captionAssetLang.phtml', 'captions', $this->asset);
+}
+else{
+    // asset change request
+    echo $this->form;
+}
+$this->placeholder('caption')->captureEnd();
+
+$this->JsonContent(
+array(
+        'target' => 'div.caption-part[data-id="' . $this->assetId .'"]',        
+        'content' => $this->placeholder('caption')->asset,
+        'action' => 'replace'
+)
+);
+
+// messages - if exists
+if (!empty($this->message)){
+    $this->JsonFlashMessage($this->message);
+}
+
+if ($this->refreshPlayer) {
+	$script = 'reloadKDPCaptions();';
+	$this->JsonScript($script);
+}

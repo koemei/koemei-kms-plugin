@@ -1,0 +1,100 @@
+<?php
+/*
+ *  All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ *  To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+/**
+ * @ignore
+ */
+
+?>
+<div class="filters">
+    <form>
+        <div class="tabItem">        
+            <?php
+            echo new Zend_Form_Element_Text(
+                    'unique-id',
+                    array(
+                        'value' => $this->uniqueId,
+                        'label' => $this->translate('Unique Execution Id'),
+                        'onchange' => 'this.form.submit()'
+                    )
+            );
+            ?>
+        </div>
+        <div class="tabItem">        
+            <?php
+            echo new Zend_Form_Element_Select(
+                    'level',
+                    array(
+                        'multiOptions' => array(
+                            Kms_Log::DEBUG => 'DEBUG',
+                            Kms_Log::INFO => 'INFO',
+                            Kms_Log::NOTICE => 'NOTICE',
+                            Kms_Log::WARN => 'WARN',
+                            Kms_Log::ERR => 'ERR',
+                            Kms_Log::CRIT => 'CRIT',
+                            Kms_Log::ALERT => 'ALERT',
+                        ),
+                        'value' => $this->level,
+                        'label' => $this->translate('Debug Level'),
+                        'onchange' => 'this.form.submit()'
+                    )
+            );
+            ?>
+        </div>
+        <div class="tabItem">        
+            <?php
+            $elem = new Zend_Form_Element_Select(
+                            'type',
+                            array(
+                                //'selected' => $this->logFile,
+                                'label' => $this->translate('Log File'),
+                                'onchange' => 'this.form.submit()'
+                            )
+            );
+            $elem->setMultiOptions(
+                    array(
+                        'general' => $this->translate('General Log'),
+                        'api' => $this->translate('API Log'),
+                        'apidebug' => $this->translate('API Debug'),
+                        'apierrors' => $this->translate('API Errors'),
+                        'trace' => $this->translate('Trace Log')
+                    )
+            );
+            $elem->setValue($this->logType);
+            echo $elem;
+            ?>
+        </div>
+    </form>
+</div>
+<div>
+    <?php
+    if ($this->uniqueId):
+        if (count($this->lines)):
+            ?>
+            <?php
+            foreach ($this->lines as $line):
+                ?>
+                <p>
+                    <?php
+                    echo $this->escape($line);
+                    ?>
+                </p>
+                <?php
+            endforeach;
+        else:
+            ?>
+            <span><?php echo $this->translate('Nothing found in the log file'); ?></span>
+        <?php
+        endif;
+    else:
+        ?>
+        <span><?php echo $this->translate('The unique execution id, is a mandatory parameter.'); ?></span>
+    <?php
+    endif;
+    ?>
+</div>
+
+<?php
+

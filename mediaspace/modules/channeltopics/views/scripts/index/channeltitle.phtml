@@ -1,0 +1,13 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+?>
+<span>
+	<?php echo ($this->noOfChannels ? $this->noOfChannels : $this->translate('No')) . ' ' . ($this->noOfChannels == 1 ? $this->translate('Channel') : $this->translate('Channels'))  ?>
+    <?php if (!is_null($this->currentTopic)): ?>
+    <?php echo ' ' . $this->translate('in') . ' ';?><strong><?php echo $this->currentTopic; ?></strong>
+    <?php endif; ?>
+</span>
+<?php // make sure to return an empty string if no title!

@@ -1,0 +1,80 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+
+    $this->JsonContent(
+        array( // remove the "done" div
+            'target' => '#uploadbox'.$this->uploadBoxId.' .entry_status .done',
+            'content' => ' ',
+            'action' => 'delete'
+        )
+    );
+        // render the form
+    $this->JsonContent(
+        array(
+            'target' => '#uploadbox'.$this->uploadBoxId.' .entry_details',
+            'content' => '<h4>'.$this->translate('Please fill out these details').':</h4>'.$this->form->render(),
+            'action' => 'replace'
+        )
+    );
+    $this->JsonContent(
+        array( // add the "done" div with the textarea and the link to the new entry inside
+            'target' => '#uploadbox'.$this->uploadBoxId.' .entry_status',
+            'content' => '
+                <div class="done">
+                    <div>'.$this->translate('Link to this media').'</div>
+                    '.$this->formText('entryLink',$this->serverUrl().$this->EntryLink($this->entryId, $this->entryName), array('onclick' => "$(this).focus().select();")).'
+                </div>',
+            'action' => 'append'
+        )
+    );
+    $this->JsonContent(
+        array( // update the link of the DONE progress bar
+            'target' => '#uploadbox'.$this->uploadBoxId.' .progressbar > span',
+            'content' => $this->translate('Finished uploading').'!'.
+                '&nbsp;<a href="' .$this->EntryLink($this->entryId, $this->entryName) .'" target="_blank">' . $this->translate('Go to media page') . '</a>',
+            'action' => 'replace'
+        )
+    );
+    
+
+    $this->JsonContent(
+        array(
+            'target' => '#uploadbox'.$this->uploadBoxId.' .entry_details .save_edit_entry',
+            'content' => $this->translate('Saved'),
+            'action' => 'replace'
+        )
+    );
+    $this->JsonContent(
+        array(// add the show/hide button
+            'target' => '#uploadbox'.$this->uploadBoxId.' .entry_status',
+            'content' => $this->partial('partials/hideUploadBoxButton.phtml', array('id' => $this->uploadBoxId)),
+            'action' => 'append'
+        )
+    );
+    $this->JsonContent(
+        array(// delete the "saved" box
+            'target' => '#uploadbox'.$this->uploadBoxId.' .entry_details > .saved',
+            'content' => ' ',
+            'action' => 'delete'
+        )
+    );
+    $this->JsonContent(
+        array(// add a green box with "your changes have been saved"
+            'target' => '#uploadbox'.$this->uploadBoxId.' .entry_details > h4',
+            'content' => '<div class="saved">'.$this->translate('Your changes have been saved').'</div>',
+            'action' => 'before'
+        )
+    );
+    $this->JsonContent(
+        array(// delete the error box and the pendingsave span
+            'target' => '#uploadbox'.$this->uploadBoxId.' div.errorbox, #uploadbox'.$this->uploadBoxId.' div.pendingsave',
+            'content' => ' ',
+            'action' => 'delete',
+        )
+    );
+    
+    $this->JsonScript('$("#uploadbox'.$this->uploadBoxId.' .entry_details .save_edit_entry").attr("disabled", "disabled")');
+    $this->JsonScript('$("#uploadbox'.$this->uploadBoxId.' .progressbar").show();');

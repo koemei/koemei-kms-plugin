@@ -1,0 +1,43 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+if(count($this->fields)):
+?>
+<dl id="custom_metadata">
+<?php
+    foreach($this->fields as $field):
+?>
+    <?php
+        if(is_array($field['value'])):
+            $i = 0;
+            foreach($field['value'] as $f):
+                if($i == 0):
+    ?>
+                <dt><?php echo $this->escape($field['label']);?>:</dt>
+    <?php
+                else:
+    ?>
+            <dt>&nbsp;</dt>
+    <?php
+                    
+                endif;
+    ?>
+        <dd><?php echo $this->escape($f)?></dd>
+    <?php
+                $i++;
+            endforeach;
+        else:
+    ?>     
+        <dt><?php echo $this->escape($field['label'])?></dt>
+        <dd><?php echo $this->escape($field['value'])?></dd>
+    <?php
+        endif;
+    ?>
+<?php
+    endforeach;
+?>
+</dl>
+<?php
+endif;

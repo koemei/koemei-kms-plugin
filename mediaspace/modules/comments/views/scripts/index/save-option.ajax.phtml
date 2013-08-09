@@ -1,0 +1,21 @@
+<?php
+
+/*
+ *  All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ *  To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+Zend_Debug::dump($this->disableComments);
+$this->JsonContent(array(
+    'target' => '#edit_entry_comments_options',
+    'content' => $this->partial('partials/entryOptions.phtml', 'comments', 
+        array
+        (
+            'entryId' => $this->entryId,
+            'disableComments' => $this->disableComments,
+            'commentsClosed' => $this->commentsClosed,
+            'allowClose' => $this->allowClose,
+        )
+    ),
+    'action' => 'replace',
+    
+));

@@ -1,0 +1,28 @@
+<?php
+
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+
+// @todo find a way to move this into a controller or model
+$entryModel = Kms_Resource_Models::getEntry();
+$categories = $this->entryCats;
+$depth = -1;
+$i = 1;
+$dlOpened = false;
+$i = 0;
+foreach ($this->channels as $channelId => $channel)
+{
+    echo $this->partial('partials/categoryItem.phtml', 'publish', array
+        (
+        'label' => trim($channel->name),
+        'catid' => $channelId,
+        'checked' => count($categories) ? isset($categories[$channelId]) : '',
+        'entry' => $entryModel->entry,
+        'id' => $i,
+            )
+    );
+    $i++;
+}

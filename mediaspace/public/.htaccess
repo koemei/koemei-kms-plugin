@@ -1,0 +1,85 @@
+SetEnv BUILD_NUMBER 95510
+# environment variable for checking if .htaccess can be parsed
+SetEnv HTACCESS_ENABLED 1
+#Possible values for APPLICATION_ENV
+# development, staging, testing, production(default)
+# SetEnv APPLICATION_ENV development
+
+#Disable session.auto_start
+php_value session.auto_start 0
+#Disable register_globals if set
+php_value register_globals 0
+#Disable magic_quotes_gpc if set
+php_flag magic_quotes_gpc 0
+
+# Expire headers for images/javascript/css
+<IfModule mod_expires.c>
+ExpiresActive       On
+ExpiresDefault                                  "access plus 10 years"
+ExpiresByType       "image/gif"                 "access plus 10 years"
+ExpiresByType       "image/png"                 "access plus 10 years"
+ExpiresByType       "image/jpg"                 "access plus 10 years"
+ExpiresByType       "image/jpeg"                "access plus 10 years"
+ExpiresByType       "image/ico"                 "access plus 10 years"
+ExpiresByType       "image/x-icon"              "access plus 10 years"
+ExpiresByType       "text/css"                  "access plus 10 years"
+ExpiresByType       "text/javascript"           "access plus 10 years"
+ExpiresByType       "application/javascript"    "access plus 10 years"
+
+FileETag none
+</IfModule>
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+##########################################
+# CSS and SPRITE redirs (build number)   #
+# Rewrites build123/css/abc.css to -     #
+# /css/abc.css?v=123                     #
+##########################################
+RewriteRule     ^build(\d+)/(.*)                     $2?v=$1
+
+
+##########################################
+# KMS2 backwards compatibility redirects #
+##########################################
+
+#if your document root
+#RewriteBase /mediaspace_v3/public
+#index.php/action/my-media
+RewriteCond     %{REQUEST_URI}                      ^(.*/)index.php/.*$
+RewriteRule     ^index.php/action/my-media$         %1my-media                      [N,L,R=301,NE]
+
+#index.php/action/playlist-page
+RewriteCond     %{REQUEST_URI}                      ^(.*/)index.php/.*$
+RewriteRule     ^index.php/action/playlist-page     %1my-playlists                  [N,L,R=301,NE]
+
+#index.php/show/{ENTRY_NAME}?id={ENTRY_ID}
+RewriteCond     %{REQUEST_URI}?%{QUERY_STRING}      ^(.*/)index.php/.*?id=(.+)$ 
+#RewriteCond    %{QUERY_STRING} ^id=(.+)$
+RewriteRule     ^index.php/show/(.*)$               %1media/$1/%2?                  [N,L,R=301,NE]
+
+#index.php/show/cat?id={ENTRY_ID}
+RewriteCond     %{REQUEST_URI}?%{QUERY_STRING}      ^(.*/)index.php/.*?id=(.+)$ 
+RewriteRule     ^index.php/show$                    %1media/%2?                     [N,L,R=301,NE]
+
+#index.php/show/{CATEGORYNAME}/?cat={CATEGORY_NAME}
+RewriteCond     %{REQUEST_URI}?%{QUERY_STRING}      ^(.*/)index.php/.*?cat=(.+)$ 
+RewriteRule     ^index.php/show$                    %1category/%2?                  [N,L,R=301,B,NE]
+
+#index.php/show/{CATEGORYNAME}/?cat={CATEGORY_NAME}
+RewriteCond     %{REQUEST_URI}?%{QUERY_STRING}      ^(.*/)index.php/.*?cat=(.+)$ 
+RewriteRule     ^index.php/show/.*$                 %1category/%2?                  [N,L,R=301,NE]
+
+############################
+# Zend Framework Redirects #
+############################
+#RewriteRule    ^(.*\.(css|js))$                    minify/?f=$1&debug=1 [L,NC]
+
+RewriteCond     %{REQUEST_FILENAME}                 -s                              [OR]
+RewriteCond     %{REQUEST_FILENAME}                 -l                              [OR]
+RewriteCond     %{REQUEST_FILENAME}                 -d 
+RewriteRule     ^.*$                                -                               [NC,L]
+RewriteRule     ^.*$                                index.php                       [NC,L]
+
+</IfModule>

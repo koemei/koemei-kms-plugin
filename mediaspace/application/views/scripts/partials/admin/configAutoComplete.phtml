@@ -1,0 +1,59 @@
+<?php
+
+/* 
+ *  All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ *  To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+/**
+ * @ignore
+ */
+
+?>
+<script>
+$.ui.autocomplete.prototype._renderItem = function (ul, item) {
+        item.label = item.label.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + $.ui.autocomplete.escapeRegex(this.term) + ")(?![^<>]*>)(?![^&;]+;)", "gi"), "<strong>$1</strong>");
+        return $("<li></li>")
+                .data("item.autocomplete", item)
+                .append("<a>" + item.label + "</a>")
+                .appendTo(ul);
+    };
+
+</script>
+<?php
+$defaultText = $this->translate('Search').' '.$this->translate('Configuration');
+$elem = new ZendX_JQuery_Form_Element_AutoComplete('search-config',
+        array
+        (
+            'jQueryParams' => array
+            (
+                'source' => $this->partial()->view->autoCompleteConfigs,
+                'select' => new Zend_Json_Expr('
+                    function(event, ui) {
+                        var val = ui.item.value;
+                        if(val) {
+                            var parts = val.split("/");
+                            if(parts[0]) {
+                                document.location.href = baseUrl + "/admin/config/tab/" + parts[0] + "#" + parts[1];
+                                //if(baseUrl + "/admin/config/tab/" + parts[0] == document.location.pathname) {
+                                    setTimeout(flashItem, 100, parts[1]);
+                                    $(this).blur();
+                                //}
+                            }
+                        }
+                    }
+                '),
+            ),
+            'value' => $defaultText,
+            'onfocus' => 'if($(this).val() == "' . $defaultText . '") {$(this).removeClass("default-text");$(this).val("");}',
+            'onclick' => 'if($(this).val() != "' . $defaultText . '") {$(this).select();}',
+            'onkeydown' => 'if($(this).val() == "' . $defaultText . '") {$(this).removeClass("default-text");$(this).val("");}',
+            'onblur' => 'if($(this).val() == "") { $(this).addClass("default-text");$(this).val("' . $defaultText . '");}',
+            'class' => 'default-text',
+        )
+);
+$elem->removeDecorator('Label');
+$elem->setLabel($this->translate('Search'));
+echo $elem;
+?>
+
+

@@ -1,0 +1,68 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+/**
+ * partial to wrap search forms in the Kms_Interface_Functional_Search_ModifyGallery interface
+ */
+
+$links = array();
+
+// loop on the Kms_Interface_Functional_Search_Modify interface
+foreach(Kms_Resource_Config::getModulesForInterface('Kms_Interface_Functional_Search_ModifyGallery') as $name => $module)
+{
+    // compose the link text
+    $link['link'] = $this->escape($module->getLinkText());
+
+	// compose the default search text
+	$link['defaultText'] = $module->getDefaultText();
+
+	// set the module name
+	$link['module'] = strtolower($name);
+
+	if (isset($this->partial()->view->activeLink) && $this->partial()->view->activeLink == strtolower($name)){
+		// mark this link as the active link
+		$link['class'] = 'active_search';
+	}
+
+	$links[$name] = $link;
+}
+
+// add the default link if we have any links at all
+if (!empty($links)) {
+	// if we don't have an acive link indication from the calling view - the default link is active
+	$activeLink = isset($this->partial()->view->activeLink) ? '' : 'active_search';
+	$defaultLink  = array('link' => $this->translate('Media'), 'defaultText' => '', 'module' => 'default', 'class' => 'first ' . $activeLink);
+	$links = array($defaultLink) + $links;
+}
+?>
+
+<?php // render the links ?>
+<div class="search_types wrapper">
+<?php foreach($links as $link):?>
+	<a class="gallery_search_link <?php echo (isset($link['class']) ? $link['class'] : '') ?>" data-module="<?php echo $link['module']?>"><?php echo $link['link']?>
+	    <em class="icon">&nbsp;</em>
+	</a>
+<?php endforeach; ?>	
+</div>
+
+<script>
+	
+	// bind the links to the click event
+	$('a.gallery_search_link').each( function(index) {
+		$(this).click(function(event) {			
+			// set the link active class
+			$(this).addClass('active_search').siblings().removeClass('active_search');
+			$(this).addClass('active_search');
+
+			// show the relevant filter bar
+			$('.gallery_filter_bar').hide();
+			$('#' + $(this).attr('data-module') + '_gallery_filter_bar').show();
+		});
+	});
+
+</script>
+
+<?php 

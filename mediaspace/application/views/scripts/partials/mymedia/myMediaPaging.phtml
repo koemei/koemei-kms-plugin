@@ -1,0 +1,76 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+// support different base url
+$router = '';
+$urlParams = array();
+if (isset($this->urlParams))
+{
+    $router = 'default';
+    $urlParams = $this->urlParams;
+}
+
+$paramsPageNumber = $this->partial()->view->params && isset($this->partial()->view->params['page']) ? $this->partial()->view->params['page'] : null;
+if ($this->pageCount > 1 || $paramsPageNumber > 1): ?>
+    <span>
+        <!-- Previous page link -->
+	<?php if (isset($this->previous)): ?>
+	    <a id="prev_page" href="<?php echo $this->MergeUrl($urlParams + array('page' => $this->previous),$router); ?>" rel="async" seturl="1">&nbsp;</a>
+	<?php else: ?>
+	    <a id="prev_page" class="disabled">&nbsp;</a>
+    <?php endif; ?>
+        <!-- Numbered page links -->
+        <ol>
+    	<!-- First Page (if not in range ) -->
+    <?php if ($this->first != $this->firstPageInRange): ?>
+	        <li>
+	            <a href="<?php echo $this->MergeUrl($urlParams + array('page' => $this->first),$router); ?>" rel="async" seturl="1">
+	<?php echo $this->first; ?>
+	            </a>
+	        </li>
+	        <!-- add leading spacer if there is a gap between first and firstinrange -->
+		<?php if ($this->firstPageInRange > $this->first + 1): ?>
+	    	<span id="leading_spacer">...</span>        
+		<?php endif; ?>
+	    <?php endif; ?>
+    	<!-- end first page (if not in range) -->
+	    <?php foreach ($this->pagesInRange as $page): ?>
+	<?php if ($page != $this->current): ?>
+	            <li>
+	                <a href="<?php echo $this->MergeUrl($urlParams + array('page' => $page),$router); ?>" rel="async" seturl="1">
+	    <?php echo $page; ?>
+	                </a>
+	            </li>
+	<?php else: ?>
+	            <li class="active">
+	                <a href="<?php echo $this->MergeUrl($urlParams + array('page' => $page),$router); ?>" rel="async" seturl="1">
+	    <?php echo $page; ?>
+	                </a>
+	            </li>
+		<?php endif; ?>
+	    <?php endforeach; ?>
+    	<!-- Last Page (if not in range ) -->
+	    <?php if ($this->last != $this->lastPageInRange): ?>
+		<?php if ($this->lastPageInRange < $this->last - 1): ?>
+	    	<span id="trailing_spacer">...</span>        
+	<?php endif; ?>
+	        <li>
+	            <a href="<?php echo $this->MergeUrl($urlParams + array('page' => $this->last),$router); ?>" rel="async" seturl="1">
+	<?php echo $this->last; ?>
+	            </a>
+	        </li>
+	        <!-- add leading spacer if there is a gap between last and lastinrange -->
+    <?php endif; ?>
+    	<!-- end Last page (if not in range) -->
+        </ol>
+        <!-- Next page link -->
+	<?php if (isset($this->next)): ?>
+	    <a id="next_page" href="<?php echo $this->MergeUrl($urlParams + array('page' => $this->next),$router); ?>" rel="async" seturl="1">&nbsp;</a>
+	<?php else: ?>
+	    <a id="next_page" class="disabled">&nbsp;</a>
+	<?php endif; ?>
+<?php endif; ?>
+</span>

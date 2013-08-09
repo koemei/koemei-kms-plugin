@@ -1,0 +1,56 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="metadata">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element id="md_4CA87DB7-99F7-6573-BFD1-71C9DF6BB52E" name="DisableComments" minOccurs="0" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation></xsd:documentation>
+            <xsd:appinfo>
+              <label>disableComments</label>
+              <key>disableComments</key>
+              <searchable>true</searchable>
+              <timeControl>false</timeControl>
+              <description></description>
+            </xsd:appinfo>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="listType">
+              <xsd:enumeration value="false"/>
+              <xsd:enumeration value="true"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element id="md_E5C22C7D-F0B7-4373-FAC3-71DDF88F9D40" name="CloseComments" minOccurs="0" maxOccurs="1" type="objectType">
+          <xsd:annotation>
+            <xsd:documentation></xsd:documentation>
+            <xsd:appinfo>
+              <label>closeComments</label>
+              <key>closeComments</key>
+              <searchable>true</searchable>
+              <timeControl>false</timeControl>
+              <description></description>
+            </xsd:appinfo>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="textType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="dateType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:long"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="objectType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="listType">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+</xsd:schema>

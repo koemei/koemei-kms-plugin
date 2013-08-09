@@ -1,0 +1,19 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+
+
+$action = $this->checked ? 'unpublish' : 'publish';
+
+?>
+<dt style="padding-left: <?php echo (25 * $this->depth);?>px">
+<?php
+    echo $this->formCheckbox('publish_'.$this->id, $this->catid, array('checked' => false));
+?>
+&nbsp;
+<?php
+    echo $this->formLabel('publish_'.$this->id, $this->label);
+?>
+</dt>

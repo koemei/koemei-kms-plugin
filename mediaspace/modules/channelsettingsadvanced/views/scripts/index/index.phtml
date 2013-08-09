@@ -1,0 +1,38 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+/**
+ * Main view of the Channelsettingsadvanced module
+ * 
+ * @viewhook //todo
+ */
+?>
+<?php
+$channelName = Kms_View_Helper_String::removeSpecialChars($this->channel->name);
+?>
+<div id="advancedsettings_tab" onshow="$('#embed_code').focus()" class="wrapper">
+    <h3><?php echo $this->translate('Delete Channel') ?></h3>
+    <p><?php echo $this->translate('Deleting the channel will remove this channel from MediaSpace'); ?><br/>
+	<?php echo $this->translate('Note that this will not delete the media items themselves'); ?></p>
+    <a class="btn blue" rel="dialog" href="<?php echo $this->url(array('channelname' => $channelName, 'channelid' => $this->channel->id), 'channelsdelete'); ?>">
+    	<?php echo $this->translate('Delete Channel'); ?>
+    </a>
+    <div class="wrapper" id="thumb_update">
+	<h3><?php echo $this->translate('Update Channel Thumbnail') ?></h3>
+	<div class="fleft">
+	    <div class="update_desc">
+		<?php echo $this->translate('The channel thumbnail in the channel listing displays up to thumbnails representing media assigned to this channel. Click “Update” to fetch the latest thumbnails'); ?>
+	    </div>
+	    <a class="btn blue" href="<?php echo $this->baseUrl('/channelsettingsadvanced/index/update/channelname/' 
+	    		. urlencode($channelName) . '/channelid/' . $this->channel->id); ?>" rel="async">
+	    		<?php echo $this->translate('Update'); ?>
+	    </a>
+	</div>
+	<div id="channels" class="fleft">
+	    <?php echo $this->partial('partials/channels/channel.phtml', array('channel' => $this->channel, 'admin' => false, 'grid_css_class' => $this->cycle(array('grid_left', 'grid_middle', 'grid_right'))->next())); ?>
+	</div>
+    </div>
+</div>

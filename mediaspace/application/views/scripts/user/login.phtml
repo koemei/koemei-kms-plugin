@@ -1,0 +1,27 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+/**
+ * The user Login Page view
+ *
+ * @viewhook Kms_Resource_Viewhook::CORE_VIEW_HOOK_BEFORELOGIN
+ * @viewhook Kms_Resource_Viewhook::CORE_VIEW_HOOK_AFTERLOGIN
+ */
+$this->headTitle($this->translate('Login'));
+?>
+<div class="wrapper">
+    <div class="loginNotice">
+	<h1><?php echo Kms_Resource_Config::getConfiguration('application', 'title'); ?></h1>
+<?php echo $this->ViewHook(Kms_Resource_Viewhook::CORE_VIEW_HOOK_BEFORELOGIN); ?>
+    </div>
+    <div id="login">
+	<div class="form_title"><?php echo $this->translate('Login'); ?></div>
+<?php echo $this->form ?>
+    </div>
+</div>
+<script>
+    $("#Login-username").focus();
+</script>
+<?php echo $this->ViewHook(Kms_Resource_Viewhook::CORE_VIEW_HOOK_AFTERLOGIN); ?>

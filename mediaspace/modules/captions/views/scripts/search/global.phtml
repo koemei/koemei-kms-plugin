@@ -1,0 +1,103 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+/*
+ * @viewhook Kms_Resource_Viewhook::CORE_VIEW_HOOK_PREGALLERY
+ * @viewhook Kms_Resource_Viewhook::CORE_VIEW_HOOK_POSTGALLERY
+ * @viewhook Kms_Resource_Viewhook::CORE_VIEW_HOOK_PREGALLERYITEMS
+ * @viewhook Kms_Resource_Viewhook::CORE_VIEW_HOOK_POSTGALLERYITEMS
+ */
+$this->headScript()->appendFile($this->baseUrl('build' . BUILD_NUMBER . '/js/ktooltip.js'));
+
+//  counters for breadcrumbs
+$counters = '';
+$pagesInfo = $this->paginator->getPages();
+if ($pagesInfo->lastItemNumber && $pagesInfo->totalItemCount) {
+ 	$counters = '(' . $pagesInfo->firstItemNumber . '-' . $pagesInfo->lastItemNumber . ' ' . $this->translate('of') . ' ' . $pagesInfo->totalItemCount . ' ' . $this->translate('media') . ')';
+}
+$bc = $this->topBreadCrumbs('', $counters);
+
+//  the page title text
+$label = $this->translate('Search') . ': ' . $this->keyword;
+
+//  page title
+$this->headTitle($label);
+
+//  page header
+$this->placeholder('pageHeading')->content = $this->headingOnly($label) . $this->topBreadCrumbs('', $counters);
+?>
+
+<?php echo $this->ViewHook(Kms_Resource_Viewhook::CORE_VIEW_HOOK_PREGALLERY); ?>
+
+<?php 	// filter bar(s) 	?>
+<div id="filter_bar" class="wrapper">
+	<?php
+        $current_type = null;
+        $currentType = $this->params['type'];
+        if (empty($currentType)){
+            $currentType = 'all';
+        }
+        $sorters = $this->FilterBarSortersPreparator($currentType);
+        $filterTypes = $this->FilterBarFilterTypesPreparator($currentType);
+
+		echo $this->partial('partials/filterBar.phtml', array(
+            'currentType' => $currentType,
+            'filterTypes' => $filterTypes,
+            'sorters' => $sorters,
+            'showAdditionalSearches' => true,
+	        'source' => Kms_Enum_SearchSource::GLOBAL_SEARCH,
+		));
+	?>
+</div>
+
+<?php if ($this->entry && !empty($this->captions->objects)):?>
+
+<?php 	// sidebar thumbnails ?>
+<div id="kgallery" class="wrapper">
+	<?php echo $this->ViewHook(Kms_Resource_Viewhook::CORE_VIEW_HOOK_PREGALLERYITEMS); ?>                	
+	<ul id="kitems" class="captions">
+	    <?php echo $this->partialLoop('partials/globalSearchResult.phtml', $this->captions->objects);?>
+   	</ul>
+   	<?php echo $this->ViewHook(Kms_Resource_Viewhook::CORE_VIEW_HOOK_POSTGALLERYITEMS); ?>                
+
+	<?php  // pager 
+        $pager = $this->paginationControl($this->paginator, $this->pagerType, 'partials/galleryPaging.phtml', array('urlParams' => $this->pagerParams)); 
+    ?>
+    <?php if (!empty($pager)): ?>
+        <div id="pager" class="wrapper">
+    	   <?php echo $pager; ?>  
+    	</div>
+    <?php endif;?>   
+</div>
+
+<?php else: ?>
+    <div class="no_items"><?php echo $this->translate('No captions found'); ?>.</div>
+<?php endif; ?>
+
+<?php echo $this->ViewHook(Kms_Resource_Viewhook::CORE_VIEW_HOOK_POSTGALLERY); ?>   
+
+<script type="text/javascript" language="javascript">                
+    $("#kgallery li .item_link[title]").ktooltip();
+</script>
+
+<?php if ($this->entry && !empty($this->captions->objects)):?>
+
+    <script>
+        KApps.CaptionsSearch.vars.currentEntryId = '<?php echo $this->entry->id;?>';
+    </script>
+
+<?php endif; ?>
+
+<script type="text/javascript">
+    // activate the captions filter bar
+    $('.gallery_filter_bar').hide();
+    $('#captions_gallery_filter_bar').show();
+    // init the thumbrotator
+    KalturaCaptionsThumbRotator.init('vidsec');
+</script>
+
+</script>
+<?php 

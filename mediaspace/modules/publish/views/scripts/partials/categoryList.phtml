@@ -1,0 +1,51 @@
+<?php
+
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+
+// @todo find a way to move this into a controller or model
+$iterator = new RecursiveIteratorIterator($this->container, RecursiveIteratorIterator::SELF_FIRST);
+$entryModel = Kms_Resource_Models::getEntry();
+$categories = $entryModel->getEntryCategories($entryModel->id);
+
+$depth = -1;
+$i = 1;
+$dlOpened = false;
+foreach ($iterator as $level => $page)
+{
+    // check if page is a category
+    if ($page->categoryname)
+    {
+        if ($depth < $iterator->getDepth() && !$dlOpened)
+        {
+            echo '<ul>';
+            $dlOpened = true;
+        }
+        elseif ($depth > $iterator->getDepth())
+        {
+            if ($dlOpened)
+            {
+                echo '</ul>';
+            }
+            echo '<ul>';
+        }
+        $depth = $iterator->getDepth();
+
+        //$p = new Zend_Navigation_Page_Mvc();
+        $pageParams = $page->getParams();
+        echo $this->partial('partials/categoryItem.phtml', 'publish', array
+            (
+            'label' => $page->getLabel(),
+            'catid' => $page->catNum,
+            'checked' => count($categories) ? isset($categories[$page->catNum]) : '',
+            'depth' => $iterator->getDepth(),
+            'entry' => $entryModel->entry,
+            'id' => 'c' . $i,
+                )
+        );
+        $i++;
+    }
+}

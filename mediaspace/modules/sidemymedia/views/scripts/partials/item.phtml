@@ -1,0 +1,38 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+
+if(isset($this->dataContent))
+{
+    // retrieve the entryid for the thumbnail (the media entry)
+    $data = $this->dataContent;
+    $dataXml = new SimpleXMLElement($data);
+    $mediaEntryId = (string) $dataXml->video->entryId;
+    // change the thumbnail URL to include the entry Id of the media (video) entry
+    $this->thumbnailUrl = preg_replace('/\/entry_id\/([^\/])+/', '/entry_id/'.$mediaEntryId, $this->thumbnailUrl);
+
+}
+
+if($this->status != Kaltura_Client_Enum_EntryStatus::READY)
+{
+    $thumbUrl = $this->baseUrl('/img/converting.png');
+    $showPlayIcon = false;
+}
+else
+{
+    $thumbUrl = $this->thumbnailUrl . '/width/96/height/54/type/'.Kaltura_Client_Enum_ThumbCropType::CROP;
+    $showPlayIcon = true;
+}
+?>
+<li>
+    <a href="<?php echo $this->EntryLink($this->id, $this->name); ?>"  <?php /*echo $this->partial()->view->asyncThumbs ? 'rel="async"' : '';*/ ?> >
+        <img src="<?php echo $thumbUrl;?>" height="54" width="96" alt="<?php echo $this->escape($this->name); ?>">
+        <?php if($showPlayIcon):?>
+        <em></em>
+        <?php endif;?>
+        <span><?php echo $this->escape($this->name) ?></span>
+        <span class="duration"><?php echo $this->String()->formatDuration($this->duration); ?></span>
+    </a>
+</li>

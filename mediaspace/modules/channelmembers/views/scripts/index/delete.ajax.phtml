@@ -1,0 +1,66 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+if($this->results)
+{
+    // remove deleted member
+    $script = "$('div.member[data-id=". $this->userId ."]').hide(500,'linear');";
+    $this->JsonScript($script); 
+    
+    // messages - if exists
+    if (!empty($this->message)){
+        $this->JsonFlashMessage($this->message);
+    }
+    
+    // channel member count
+    $this->JsonContent(array(
+            'target' => '#members_count',
+            'content' => $this->partial('partials/memberCount.phtml','channelmembers',$this),
+            'action' => 'replace'
+    )
+    );
+    
+    // show next member in line
+    if ($this->members)
+    {
+        // add the next member to the page
+        $this->JsonContent(
+        array(
+                'target' => 'div#members',
+                'content' => $this->partialLoop('partials/channelMember.phtml', 'channelmembers', $this->members),
+                'action' => 'append'
+        )
+        );
+    
+        // hide the added member and show it with custom animation
+        $script = "$('div.member[data-id=". $this->member->userId ."]').hide();";            
+        $script .= "setTimeout(function(){
+            $('div.member[data-id=". $this->member->userId ."]').show(500)
+        },20);";     
+        $this->JsonScript($script); 
+   }
+    
+   // the pager
+   $pager = $this->paginationControl($this->paginator, $this->pagerType, 'partials/galleryPaging.phtml',array('urlParams' => $this->urlParams));
+   
+   $this->JsonContent(array(
+           'target' => '#channelmembers_tab #pager',
+           'content' => $pager,
+           'action' => 'replace'
+   )
+   );
+}
+else
+{
+    // error deleting channel
+    $this->JsonContent(
+    array(
+            'target' => '#remove',
+            'content' => $this->translate('There was an error deleting the member.'),
+            'action' => 'replace'
+    )
+    );
+}

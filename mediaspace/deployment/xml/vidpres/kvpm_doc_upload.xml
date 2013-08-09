@@ -1,0 +1,71 @@
+<kpwm>
+
+  <!-- locale for the whole app  -->
+  <locale>/content/uiconf/ps/kaltura/kvpm/v1.0.0/kvpm_en_US.swf</locale>
+  <localeName>en_US</localeName>
+
+  <skin>/content/uiconf/ps/kaltura/kvpm/v1.0.0/kvpm_skin_ms.swf</skin>
+
+  <!-- Top navigation close button  -->
+  <showCloseButton>false</showCloseButton>
+
+  <!-- show / hide Top navigation -->
+  <showMainNavigation>false</showMainNavigation>
+  <!-- show / hide logout button -->
+  <showLogout>false</showLogout>
+  <!-- show / hide categories in all edit details screens -->
+  <showCategories>false</showCategories>
+										  
+
+  <management>
+
+    <!-- show this tab -->
+    <show>false</show>
+    <!-- features of each row actions -->
+    <showEdit>true</showEdit>
+    <showDelete>true</showDelete>
+    <showEmbed>true</showEmbed>
+    <showEditXml>true</showEditXml>
+
+    <!-- show a KDP in drill down -->
+    <enableKdp>true</enableKdp>
+    <!-- KDP widget for the embed player -->
+    <embedUiConfId></embedUiConfId>
+    <!-- kdp uiconf with edit mode -->
+    <drilldownUiConfId></drilldownUiConfId>
+  </management>
+
+
+  <upload>
+    <!-- show this tab -->
+    <show>true</show>
+    <!-- KSU for uploading the document -->
+    <ksuDoc>@@KsuDocUploadUIConfID@@</ksuDoc>
+    <showKsuDoc>true</showKsuDoc>
+    <!--ksuDocAdminTag>presentation</ksuDocAdminTag-->
+    <ksuDocAdminTag></ksuDocAdminTag>
+
+    <ksuDocConversionProfile>@@DocConversionProfileID@@</ksuDocConversionProfile>
+
+    <shownavigation>false</shownavigation>
+  </upload>
+
+  <creation>
+    <!-- show this tab -->
+    <show>false</show>
+    <importXml>true</importXml>
+
+    <!-- skip KDP screen -->
+    <showKdpScreen status="done">false</showKdpScreen>
+    <!-- after creation shoud used see automatically the KDP editor  -->
+    <autoEdit>true</autoEdit>
+    <!-- show/hide the edit details UI -->
+    <showEditDetails>true</showEditDetails>
+    <!-- show info funnel -->
+
+    <showInfoPopup>true</showInfoPopup>
+    <!-- show created funnel -->
+    <showCreatedPopup>true</showCreatedPopup>
+  </creation>
+      
+</kpwm>

@@ -1,0 +1,157 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="metadata">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element id="md_7D774178-CC27-092E-8C0F-D157F932F96D" name="URL" minOccurs="0" maxOccurs="1" type="textType">
+          <xsd:annotation>
+            <xsd:documentation></xsd:documentation>
+            <xsd:appinfo>
+              <label>URL</label>
+              <key>URL</key>
+              <searchable>false</searchable>
+              <timeControl>false</timeControl>
+              <description>The URL to the microsite</description>
+            </xsd:appinfo>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element id="md_BBD1780A-4671-A135-AF04-D1589C42C310" name="DirectGuestAccess" minOccurs="0" maxOccurs="1" type="textType">
+          <xsd:annotation>
+            <xsd:documentation></xsd:documentation>
+            <xsd:appinfo>
+              <label>Direct Guest Access</label>
+              <key>Direct Guest Access</key>
+              <searchable>false</searchable>
+              <timeControl>false</timeControl>
+              <description>A URL for guests directly into the player</description>
+            </xsd:appinfo>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element id="md_D3DB22D5-8FE2-1AA5-D559-D158F42383A2" name="BroadcastTime" minOccurs="0" maxOccurs="1" type="dateType">
+          <xsd:annotation>
+            <xsd:documentation></xsd:documentation>
+            <xsd:appinfo>
+              <label>Broadcast Time</label>
+              <key>Broadcast Time</key>
+              <searchable>true</searchable>
+              <timeControl>true</timeControl>
+              <description>The time the broadcast starts (GMT)</description>
+            </xsd:appinfo>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element id="md_575CABE8-7079-269B-321D-D15B3B326061" name="BroadcastDuration" minOccurs="0" maxOccurs="1" type="dateType">
+          <xsd:annotation>
+            <xsd:documentation></xsd:documentation>
+            <xsd:appinfo>
+              <label>Broadcast Duration</label>
+              <key>Broadcast Duration</key>
+              <searchable>false</searchable>
+              <timeControl>true</timeControl>
+              <description>The broadcast duration</description>
+            </xsd:appinfo>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element id="md_49BA77E9-5500-46F9-8D23-D15B70AD3522" name="EventOpenTime" minOccurs="0" maxOccurs="1" type="dateType">
+          <xsd:annotation>
+            <xsd:documentation></xsd:documentation>
+            <xsd:appinfo>
+              <label>Event Open Time</label>
+              <key>Event Open Time</key>
+              <searchable>false</searchable>
+              <timeControl>true</timeControl>
+              <description>The time the users can login into the event from the microsite</description>
+            </xsd:appinfo>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element id="md_Speaker" name="Speaker" minOccurs="0" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation></xsd:documentation>
+            <xsd:appinfo>
+              <label>Speaker</label>
+              <key>Speaker</key>
+              <searchable>false</searchable>
+              <timeControl>false</timeControl>
+              <description>A list of speakers for the event. Linked to image entries with speaker information</description>
+            </xsd:appinfo>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element id="md_SpeakerName" name="SpeakerName" minOccurs="0" maxOccurs="1" type="textType">
+                <xsd:annotation>
+                  <xsd:documentation></xsd:documentation>
+                  <xsd:appinfo>
+                    <label>Name</label>
+                    <key>Name</key>
+                    <searchable>true</searchable>
+                    <description></description>
+                  </xsd:appinfo>
+                </xsd:annotation>
+                </xsd:element>
+                <xsd:element id="md_SpeakerTitle" name="SpeakerTitle" minOccurs="0" maxOccurs="1" type="textType">
+                  <xsd:annotation>
+                    <xsd:documentation></xsd:documentation>
+                    <xsd:appinfo>
+                      <label>Title</label>
+                      <key>Title</key>
+                      <searchable>true</searchable>
+                      <description></description>
+                    </xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element id="md_SpeakerBio" name="SpeakerBio" minOccurs="0" maxOccurs="1" type="textType">
+                  <xsd:annotation>
+                    <xsd:documentation></xsd:documentation>
+                    <xsd:appinfo>
+                      <label>Bio</label>
+                      <key>Bio</key>
+                      <searchable>true</searchable>
+                      <description></description>
+                    </xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element id="md_SpeakerLink" name="SpeakerLink" minOccurs="0" maxOccurs="1" type="textType">
+                  <xsd:annotation>
+                    <xsd:documentation></xsd:documentation>
+                    <xsd:appinfo>
+                      <label>Link</label>
+                      <key>Link</key>
+                      <searchable>false</searchable>
+                      <description></description>
+                    </xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element id="md_SpeakerImage" name="SpeakerImage" minOccurs="0" maxOccurs="1" type="textType">
+                  <xsd:annotation>
+                    <xsd:documentation></xsd:documentation>
+                    <xsd:appinfo>
+                      <label>Image</label>
+                      <key>Image</key>
+                      <searchable>false</searchable>
+                      <description>Thumbnail Asset ID, on the webcast entry, that holds the speaker image</description>
+                    </xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="textType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="dateType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:long"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="objectType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="listType">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+</xsd:schema>

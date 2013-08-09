@@ -1,0 +1,19 @@
+<div id="klike">
+    <?php
+    $like_url = $this->partial()->view->isLiked ? '/entry/unlike/id/' . $this->id : '/entry/like/id/' . $this->id;
+    
+    
+    $unlike_button_html = '<div class="unlike_block">';
+    $unlike_button_html .= '<span class="liked">' . $this->translate('Liked') . '</span>';
+    $unlike_button_html .= '<span class="unlike_icon">&nbsp;</span>';
+    $unlike_button_html .= '<a class="unlike" href="' . $this->baseUrl('/entry/unlike/id/') . $this->id . '"  rel="async">' . $this->translate('unlike') . '</a>';
+    $unlike_button_html .= '</div>';
+    
+    $like_button_html = '<a class="btn" href="'.$this->baseUrl($like_url).'" rel="async">'.$this->translate('Like').'<span class="klike_icon">&nbsp;</span></a>';
+    
+    $like_unlike = $this->partial()->view->isLiked ? $unlike_button_html : $like_button_html;
+    
+    echo $like_unlike;
+    ?>
+    
+</div>

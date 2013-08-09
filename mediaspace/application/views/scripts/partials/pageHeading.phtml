@@ -1,0 +1,53 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+/**
+ * Description of pageHeading
+ *
+ * @author yuri f
+ */
+?>
+<div id="pageHeading" class="limiter wrapper">
+    <?php echo $this->pageheading; ?>
+    <div id="gallerybuttons">
+	<?php
+	if (!empty($this->channel)) {
+	    echo $this->ViewHook(Kms_Resource_Viewhook::CORE_VIEW_HOOK_CHANNEL_BUTTONS);
+	} elseif($this->galleryType == 'channels'){ 
+	    $front = Zend_Controller_Front::getInstance();
+	    if ($front->getPlugin('Kms_Plugin_Access')->hasPermission('channels', 'create')){    
+	        echo '<a class="btn" id="add_channel_media" href="' . $this->baseUrl('channels/create') . '"><span class="icon">&nbsp;</span>' . $this->translate('Create Channel') . '</a>';
+	    }
+	} else {
+	    echo $this->ViewHook(Kms_Resource_Viewhook::CORE_VIEW_HOOK_GALLERY_BUTTONS);
+	}
+	?>
+    </div>
+    <?php
+    if ($this->galleryType == 'channel'):
+	echo $this->ViewHook(Kms_Resource_Viewhook::CORE_VIEW_HOOK_PRE_CHANNEL);
+	?>
+	<?php else: ?>
+        <div id="breadcrumbs">
+	    <?php
+	    echo $this->breadcrumbs;
+	    ?>
+
+    	<span id="result_counter" style="visibility: visible;">
+		<?php
+		if ($this->galleryType != 'channel') {
+		    $pagesInfo = $this->partial()->view->paginator->getPages();
+		    if ($pagesInfo->lastItemNumber && $pagesInfo->totalItemCount) {
+			echo '(' . $pagesInfo->firstItemNumber . '-' . $pagesInfo->lastItemNumber . ' ' . $this->translate('of') . ' ' . $pagesInfo->totalItemCount . ' ' . $this->translate('media') . ')';
+		    }
+		} else {
+		    echo $this->translate('Managers:') . '</br>';
+		}
+		?>
+    	</span>
+        </div>
+<?php endif; ?>
+</div>

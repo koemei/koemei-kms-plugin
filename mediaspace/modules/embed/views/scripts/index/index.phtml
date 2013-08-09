@@ -1,0 +1,91 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+/**
+ * Main view of the embed module
+ * 
+ * @viewhook preEmbedTab
+ */
+?>
+<div id="embed_tab" onshow="$('#link_code').focus()">
+    <p><?php echo $this->translate('Link to Media Page'); ?>: <span id="link_copy_notice"><?php echo $this->translate('Press Ctrl+C to copy'); ?></span></p>
+
+    <?php
+    echo $this->FormText(
+	    'link_code', $this->serverUrl() . $this->EntryLink($this->entryId, $this->entryName), array(
+	'id' => 'link_code',
+	'onfocus' => "$('#link_code').select();$('#link_copy_notice,.link_hilite').show(); setTimeout(function(){ $('#link_copy_notice,.link_hilite').fadeOut(500)},1000);"
+	    )
+    );
+    ?>
+    <div class="link_hilite"></div>
+
+<?php if ($this->allowEmbed): ?>
+
+        <div id="embed_button_wrapper" class="fleft">
+            <div class="fleft">
+                <a id="embed_button" class="btn" rel="async"  href="<?php echo $this->baseUrl('embed/index/embed/entryId/' . $this->entryId); ?>"><?php echo $this->translate('Embed'); ?></a>
+            </div>    
+            <p class="fleft"><?php echo $this->translate('Grabbing the embed code will make this media public to the world.'); ?></p>
+        </div>
+
+        <div class="fleft" id="embed_content" style="display: none;">    
+            <p><?php echo $this->translate('Embed Code'); ?>: <span id="copy_notice"><?php echo $this->translate('Press Ctrl+C to copy'); ?></span></p>
+    <?php
+    echo $this->FormText(
+	    'embed_code', '', array(
+	'id' => 'embed_code',
+	'onfocus' => "$('#embed_code').select();$('#copy_notice,.embed_hilite').show(); setTimeout(function(){ $('#copy_notice,.embed_hilite').fadeOut(500)},1000);"
+	    )
+    );
+    ?>
+            <div class="embed_hilite"></div>
+	    <?php if (!$this->isPresentation): ?>
+		<form id="embedForm" action="<?php echo $this->baseUrl('/embed/index/embed'); ?>" method="GET" ajax="1">
+		<?php echo $this->ViewHook('preEmbedTab'); ?>
+		    <span id="kdp_embed_options">
+			<div id="embed_colors">
+			    <p><?php echo $this->translate('Select Player Skin'); ?>:</p>
+		    <?php
+		    $firstColor = true;
+		    foreach ($this->embedColors as $color => $details):
+			if ($color && is_array($details)):
+			    ?>
+				    <label title="<?php echo $color; ?>" for="<?php echo $color ?>">
+					<input type="radio" name="embed[player]" value="<?php echo $details['playerId']; ?>" <?php if ($firstColor) { ?>checked="checked"<?php } ?> id="<?php echo $color ?>"/>
+                                        <?php $imgUri = (stripos($details['image'], 'http') === 0)? $details['image']: $this->baseUrl('build' . BUILD_NUMBER . $this->theme('/img/embed_skins/' . $details['image'])); ?>
+					<img src="<?php echo $imgUri; ?>" alt="<?php echo $color; ?>" width="483"/></label>
+				    <?php
+				    if ($firstColor)
+					$firstColor = false;
+				endif;
+			    endforeach;
+			    ?>
+			</div>
+			<div id="embed_sizes">
+			    <p><?php echo $this->translate('Select Player Size'); ?>:</p>
+			    <?php foreach ($this->embedSizes as $key => $embedSize): ?>
+	    		    <label title="<?php echo $embedSize['fullSize']; ?>" class="embedSize <?php if ($key == 'medium') { ?>selected<?php } ?>" style="width:<?php echo $embedSize['width'] / 5; ?>px; height:<?php echo $embedSize['height'] / 5; ?>px;" for="<?php echo 'size_' . $key; ?>">
+	    			<input type="radio" name="embed[size]" value="<?php echo $embedSize['fullSize']; ?>" <?php if ($key == 'medium') { ?>checked<?php } ?> id="<?php echo 'size_' . $key; ?>" />
+				<span><?php echo $embedSize['fullSize']; ?></span>
+	    		    </label>
+				<?php endforeach; ?>
+			</div>
+		    </span>
+		    <input type="hidden" name="embed[entryId]" value="<?php echo $this->entryId; ?>" />
+		    <input type="hidden" name="embed[widgetId]" value="" id="widgetId" />
+		</form>
+		<script>
+		    $('#embedForm').live('change',  function(){
+			$(this).submit(); 
+		    });
+		</script>
+    <?php endif; ?>
+        </div>
+
+	<?php endif; ?>
+</div>
+<?php 

@@ -1,0 +1,39 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+// captions asset within an entry edit page
+
+$params = $this->partialLoop()->view->urlParams;
+$params['assetId'] =  $this->id;
+$params['entryId'] =  $this->entryId;
+
+?>
+<div class="wrapper caption" data-id="<?php echo $this->id; ?>">
+    <div class="caption-part" data-id="<?php echo $this->id; ?>">
+            <?php echo $this->partial('partials/captionAssetLang.phtml', 'captions', $this); ?> 
+    </div>
+    <div class="column file"><?php echo strtoupper( strtolower($this->fileExt) == 'srt' ? 'srt' : 'dfxp'); ?></div>
+    <div class="column info">
+        <span class="default"><?php if ($this->isDefault) echo $this->translate('Default'); ?></span>
+        <div class="links">
+            <ul>
+                <li>
+                <?php if ($this->isDefault):?>
+                    <span class=""><?php echo $this->translate('Default'); ?></span>
+                <?php else:?>
+                    <?php $params['action'] = 'setdefault'; // we create the url like so to use the page params ?>
+                    <a href="<?php echo $this->MergeUrl($params,'default');?>" rel="async"><?php echo $this->translate('Set as default');?></a>
+                <?php endif;?>
+                </li>
+                <?php $params['action'] = 'delete';  // we create the url like so to use the page params ?>
+                <li><a href="<?php echo $this->MergeUrl($params,'default');?>" rel="dialog"><?php echo $this->translate('Remove');?></a></li>
+                <?php $params['action'] = 'download';  // we create the url like so to use the page params ?>
+                <li><a href="<?php echo $this->MergeUrl($params,'default');?>"><?php echo $this->translate('Download');?></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<?php 

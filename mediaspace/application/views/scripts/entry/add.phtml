@@ -1,0 +1,55 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+?>
+<div id="uploadContainer">
+<?php 
+switch($this->uploadType)
+{
+    case 'presentation':
+        if(Kms_Resource_Config::getConfiguration('application', 'enablePresentations'))
+        {
+            $this->headScript()->appendFile($this->baseUrl('build'.BUILD_NUMBER.'/js/kvpm.js'));
+            echo $this->partial('partials/upload/kvpBox.phtml');
+        }
+        else
+        {
+            ?>
+            <h1><?php echo $this->translate('Video Presentations are disabled.');?></h1>
+            <?php
+        }
+        break;
+    case 'document':
+        if(Kms_Resource_Config::getConfiguration('application', 'enablePresentations'))
+        {
+            $this->headScript()->appendFile($this->baseUrl('build'.BUILD_NUMBER.'/js/kvpm.js'));
+            echo $this->partial('partials/upload/documentBox.phtml');
+        }
+        else
+        {
+            ?>
+            <h1><?php echo $this->translate('Video Presentations are disabled.');?></h1>
+            <?php
+        }
+        break;
+    case 'webcam':
+        $translateWords = array('Saving', 'Save', 'Please Wait', 'Finished recording', 'Go to media page');
+        $this->headScript()->appendScript( $this->partial('partials/jsTranslations.phtml', array('translations' => $translateWords)));
+        $this->headScript()->appendFile($this->baseUrl('build'.BUILD_NUMBER.'/js/record.js'));
+        echo $this->partial('partials/upload/webcamBox.phtml');
+        break;
+    case 'media':
+    default:
+        
+        $translateWords = array('Oops', 'Upload pending', 'Please Wait', 'Finished uploading', 'Go to media page', 'Saving', 'Save', 'Upload Cancelled', );
+        $this->headScript()->appendScript( $this->partial('partials/jsTranslations.phtml', array('translations' => $translateWords)));
+        
+        $this->headScript()->appendFile( $this->baseUrl('build'.BUILD_NUMBER.'/js/upload.js'));
+        echo $this->partial('partials/upload/mediaBox.phtml');
+    break;
+}
+    
+    ?>
+</div>

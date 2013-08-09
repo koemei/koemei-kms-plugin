@@ -1,0 +1,110 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+
+if(!$this->confirmed)
+{
+    
+    if($this->allowed)
+    {
+        if($this->multi)
+        {
+            $text = 'Are you sure you want to permanently delete '. $this->multi.' items?' . $this->notAllowedMessage; 
+        }
+        else
+        {
+            $text = 'Are you sure you want to delete this media?' . $this->notAllowedMessage; 
+        }
+?>
+        if($('#dialog')) {
+            $("body").append('<div id="dialog"></div>');
+        }
+        $("#dialog").text('<?php echo $text ?>');
+
+        <?php 
+            $this->dialogContainer(
+                'dialog',
+                $text,
+                array(
+                    'autoOpen'      => true,
+                    'draggable'     => false,
+                    'modal'         => true,
+                    'resizable'     => false,
+                    'title'         => $this->translate('Confirm Delete'),
+                    'closeOnEscape' => true,
+                    'open' => new Zend_Json_Expr('function() {
+                            $("#player").addClass("hideplayer");
+                        }'
+                    ),
+                    'close' => new Zend_Json_Expr('function() {
+                        $("#player").removeClass("hideplayer");
+                        $("#dialog").remove();
+                    }'),
+                    'buttons'   => array(
+                        $this->translate('Yes') =>  new Zend_Json_Expr('function() {
+                            $("body").addClass("cursorwait");
+                            $.ajax({
+                                url: "'.$this->baseUrl('/entry/delete/id/'.$this->id.'/confirm/1?format=dialog').'", 
+                                success: function(){
+                                    document.location.href = "'.$this->redirectUrl.'";
+                                },
+                                error: function(){
+                                    document.location.href = "'.$this->redirectUrl.'";
+                                }
+                            });
+                        }'),
+                        $this->translate('No') => new Zend_Json_Expr('function() {
+                            $(this).dialog(\'close\');
+                        }'),
+                    ),
+             )
+            );
+    }
+    else
+    {
+        $text = $this->translate('You are not allowed to delete this media.'); ?>
+        if($('#dialog')) {
+            $("body").append('<div id="dialog"></div>');
+        }
+        $("#dialog").text('<?php echo $text ?>');
+
+        <?php 
+            $this->dialogContainer(
+                'dialog',
+                $text,
+                array(
+                    'autoOpen'      => true,
+                    'draggable'     => false,
+                    'modal'         => true,
+                    'resizable'     => false,
+                    'title'         => $this->translate('Confirm Delete'),
+                    'closeOnEscape' => true,
+                    'open' => new Zend_Json_Expr('function() {
+                            $("#player").addClass("hideplayer");
+                        }'
+                    ),
+                    'close' => new Zend_Json_Expr('function() {
+                        $("#player").removeClass("hideplayer");
+                        $("#dialog").remove();
+                    }'),
+                    'buttons'   => array(
+                        $this->translate('Ok') => new Zend_Json_Expr('function() {
+                            $(this).dialog(\'close\');
+                        }')
+                    ),
+                )
+            );
+    }
+
+    $actions = $this->JQuery()->getOnLoadActions();
+
+    $this->JQuery()->disable();
+
+    foreach($actions as $action)
+    {
+        echo $action;
+    }
+    //echo '$("#kplayer").css("visibility", "hidden");';
+}

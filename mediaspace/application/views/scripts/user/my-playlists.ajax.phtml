@@ -1,0 +1,56 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+/**
+ * View script for AJAX action of My Playlists
+ * @viewhook Kms_Resource_Viewhook::CORE_VIEW_HOOK_PREMYPLAYLISTSENTRIES
+ * @viewhook Kms_Resource_Viewhook::CORE_VIEW_HOOK_POSTMYPLAYLISTSENTRIES
+ */
+
+
+$this->placeholder('mypl')->captureStart('SET', 'mypl');
+echo $this->ViewHook(Kms_Resource_Viewhook::CORE_VIEW_HOOK_PREMYPLAYLISTSENTRIES);                
+foreach($this->entries as $entry)
+{
+    echo $this->partial('partials/entryItem/detailed.phtml', 
+            array(
+                'entry' => $entry, 
+                'actions' => array(
+                    '<a class="remove" data-entryid="'.$entry->id.'"><em></em>'.$this->translate('Remove').'</a>'
+                ),
+                'disableCheckbox' => true,
+                'itemTag' => 'div',
+                'tagUrl' => $this->baseUrl('/tag/%tag%'),
+                'tagRel' => '',
+            )
+    );
+}
+echo $this->ViewHook(Kms_Resource_Viewhook::CORE_VIEW_HOOK_POSTMYPLAYLISTSENTRIES);                
+$this->placeholder('mypl')->captureEnd();
+
+$this->JsonContent(
+    array(
+        'target' => '#myplaylists #kitems',
+        'content' => $this->placeholder('mypl')->mypl,
+        'action' => 'replace'
+    )
+);
+
+$this->JsonContent(
+    array(
+        'target' => '#mp_side',
+        'content' => $this->partial('partials/myplaylists/sideBar.phtml'),
+        'action' => 'replace'
+
+    )
+);
+
+$this->JsonScript('$("#mp_wrap #cancel_button").attr("href", "'.$this->baseUrl('/my-playlists/'.$this->playlistId.'/view/'.$this->itemType).'").fadeOut();');
+$this->JsonScript('$("#mp_wrap #bulk_actions .save").attr("disabled", "disabled");');
+
+$this->JsonScript('$("#kitems .item .short_desc[title]").ktooltip({tipclass: "ktooltip-mymedia"});');
+
+/*$this->JsonScript('$("#mp_wrap").removeClass("short").removeClass("full").addClass("'.$this->itemType.'");');
+$this->JsonScript('viewType = "'.$this->itemType.'"');*/

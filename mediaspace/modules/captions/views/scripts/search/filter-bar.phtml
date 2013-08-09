@@ -1,0 +1,147 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+/*
+ * filter bar dedicated to the captions search results. used within Galleries, My-Media and Global search
+ */
+
+$defaultKeyword = empty($this->params['defaultKeyword'])? null : $this->params['defaultKeyword'];
+$defaultText = $defaultKeyword;
+if (!empty($this->params['keyword'])) {
+    // if a search was done - make it the default keyword
+    $defaultText = $this->params['keyword'];
+}
+$form = new Captions_Form_KeywordSearch(array('keyword' => false, 'defaultKeyword' => $defaultText));
+
+// take advantage of the model interface that modified the default text
+if (!empty($form->_defaultKeyword)){
+    $defaultText = $form->_defaultKeyword;
+}
+
+$form->setAction($this->MergeUrl(array('keyword' => null),'default'));
+if ($this->urlParams){
+    $form->setAction($this->MergeUrl($this->urlParams + array('keyword' => null),'default'));
+}
+$form->setAttrib('id', 'captions_search_within');
+$form->setAttrib('ajax', '1');
+?>
+<?php echo $form->render(); ?>
+<?php
+if(!isset($this->disableType) || $this->disableType == false):
+?>
+<div id="ktype">
+    <span><?php echo $this->translate('View'); ?>:</span>
+    <?php
+    $delimiter = '-----------------------------';
+    $select = new Zend_Form_Element_Select(
+                    'show_type',
+                    array(
+                        'multiOptions' => array(
+                            '' => $this->translate('All Languages'),
+                            $delimiter,
+                        ),
+                        'disable' => array('0', '1'),
+                        'onchange' => '
+                            $("#captions_search_within #lang").val($(this).val());  
+                            if($("#captions_search_within #search_within_captions").val() != "' . $defaultKeyword .'"){    
+                                $("#captions_search_within").submit();
+                            }
+                            ',
+                    )
+    );
+
+    // add all the available languages as options
+    $availableLanguages = Captions_Model_Captions::getAvailableLanguages();
+    foreach ($availableLanguages as $language) {
+        $select->addMultiOption($language, $this->translate($language));
+    }
+
+    $select->setDecorators(array('ViewHelper'));
+    echo $select;
+    ?>
+</div>
+<?php endif;?>
+<?php /* Javascript for the live Search functionality */ ?>
+<script>
+    var defaultKeyword = "<?php echo addcslashes($defaultText, '\"');?>";
+    var searchTimeout;
+    var searchVal = $('#search_within_captions').val();
+    $('#search_within_captions').keyup(function(){
+
+        if($(this).val() == '' || $(this).val() == defaultKeyword) {
+            $('#reset_search_within_captions').hide();
+            $("#search_within_captions").removeClass("keyword");
+        }
+        else {
+            $('#reset_search_within_captions').show();
+            $("#search_within_captions").addClass("keyword");
+        }
+        
+        if(searchVal != $(this).val()) {
+            searchVal = $(this).val();
+            clearTimeout(searchTimeout);
+            searchTimeout=setTimeout(function(){
+                $("#captions_search_within").submit();
+            }, 800);
+        }
+    });
+</script>
+<?php /* end livesearch */ 
+if (isset($this->links) && count($this->links)):
+?>
+<div id="links">
+    <?php echo $this->translate('View:');?>
+    <?php 
+        foreach ($this->links as $link => $label){
+            echo '<a href="' . $this->MergeUrl($this->urlParams + array('type' => $link),'default') . '" class="' . $label['class'] . '">' . $label['label'] . '</a>';
+        }
+    ?>
+</div>
+<?php 
+endif;
+
+/*  sorters are currently not implemented in the server caption search. the code is here in hope this will change soon.
+$sorters = array(
+            'recent' => $this->translate('Recent'),
+            'views' => $this->translate('Views'),
+            'like' => $this->translate('Likes')
+        );
+*/
+if(isset($sorters) && count($sorters)):
+?>
+<div id="sorter">
+<?php echo $this->translate('by'); ?>:
+<?php
+    $currentSorter = $this->params['sort'];
+    $i = 0;
+    foreach ($sorters as $sorter => $label)
+    {
+        $class = '';
+        if($i == count($sorters) - 1 ){
+            $class = ' last';
+        }
+        if($currentSorter == $sorter){
+            $class .= ' active_sort';
+        }
+        echo '<a class="'.$class.'" data-sort="' . $sorter .'" >' . $label . '</a>';
+        $i++;
+    }
+?>
+<script type="text/javascript">
+    $("#captions_gallery_filter_bar #sorter a").click(function() {
+        if(!$(this).hasClass('active_sort') && $("#captions_search_within #search_within_captions").val() != '<?php echo $defaultKeyword?>')
+        {    
+            $("#captions_gallery_filter_bar #sorter a").removeClass('active_sort');
+            $(this).addClass('active_sort');
+            $("#captions_search_within #sort").val($(this).attr('data-sort')); 
+            $("#captions_search_within").submit();
+        }
+    });
+</script>
+</div>
+
+<?php endif;
+

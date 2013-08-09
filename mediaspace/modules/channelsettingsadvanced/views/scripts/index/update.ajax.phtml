@@ -1,0 +1,13 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+
+$this->JsonContent(array(
+        'target' => '#channels',
+        'content' => $this->partial('partials/channels/channel.phtml', array('channel' => $this->channel, 'admin' => false, 'grid_css_class'=> $this->cycle(array('grid_left', 'grid_middle', 'grid_right'))->next())),
+        'action' => 'replace'
+)
+);

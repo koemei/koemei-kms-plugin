@@ -1,0 +1,97 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+
+if($this->allowed):?>
+<div id="addtoplaylist_tab">
+    <div class="wrapper">
+        <div class="tabActionLinks">
+            <a id="manage_playlists" href="<?php echo $this->baseUrl('/my-playlists'); ?>"><em></em><?php echo $this->translate('Manage Playlists');?></a>
+        </div>
+        <div id="kdescription"><?php echo $this->translate('Playlists allow you to grab embed code for displaying a player and a collection of media.'); ?></div>
+    </div>
+    <div class="container">
+
+        <?php
+        if (count($this->playlists)) {
+            $entryPlaylists = array();
+            foreach ($this->playlists as $playlist) {
+                $checked = isset($playlist->id) && isset($this->entryPlaylists) && isset($this->entryPlaylists[$playlist->id]) ? true : false;
+                echo $this->partial(
+                        'partials/playlistCheckbox.phtml', 'addtoplaylists', array(
+                    'playlist' => $playlist,
+                    'entryId' => $this->entryId,
+                    'checked' => $checked
+                        )
+                );
+            }
+        }
+        if ($this->allowCreate):
+            ?>
+            <div class="addnewplaylistform">
+                <form action="<?php echo $this->baseUrl('/addtoplaylists/index/add-new-playlist/entry/' . $this->entryId) ?>" method="POST" ajax="1">
+            <?php
+            $defaultText = $this->translate('Add New Playlist');
+            echo $this->formText('playlist', $defaultText, array(
+                'onfocus' => 'if($(this).val() == "' . $defaultText . '") {$(this).removeClass("default-text");$(this).val("");}',
+                'onkeydown' => 'if($(this).val() == "' . $defaultText . '") {$(this).removeClass("default-text");$(this).val("");}',
+                'onblur' => 'if($(this).val() == "") { $(this).addClass("default-text");$(this).val("' . $defaultText . '");}',
+                'class' => 'default-text',
+            ));
+            ?>
+            &nbsp;        
+            <?php
+            echo $this->formButton('playlistAddButton', $this->translate('Add'), array(
+                'class' => 'linkButton',
+                'type' => 'submit',
+                'onclick' => 'if($("#addtoplaylist_tab input#playlist").val() && $("#addtoplaylist_tab input#playlist").val() == "' . $defaultText . '") return false',
+            ));
+            ?>
+                </form>
+            </div>
+                    <?php
+                endif;
+                ?>
+    </div>
+    <!-- <div class="fleft playlists_label">Appears in:</div> -->
+    <ul class="baloons">
+        <li class="appears"><?php echo $this->translate('Appears in');?>:</li>
+        <?php
+        foreach ($this->entryPlaylists as $entryPlaylist) {
+            echo $this->partial(
+                    'partials/playlistBaloon.phtml', 'addtoplaylists', array(
+                'entryId' => $this->entryId,
+                'id' => $entryPlaylist['id'],
+                'name' => $entryPlaylist['name'],
+                    )
+            );
+        }
+        ?>
+    </ul>
+</div>
+<?php endif;
+
+if($this->pending || $this->converting || !$this->readyToPublish) : ?>
+<div id="addtoplaylist_tab">
+    <div id="status_notice" class="notice"><?php
+        if($this->converting) : 
+            ?><span id="converting_media"><?php echo $this->translate('This media is still being converted');?>.&nbsp;</span><?php
+        endif; 
+        ?><?php 
+        if($this->pending) : 
+            ?><span id="pending_moderation"><?php echo $this->translate('This media is pending review');?>.&nbsp;</span><?php
+        endif; 
+        if(!$this->readyToPublish) : 
+            ?><span id="pending_moderation"><?php echo $this->translate('Please fill out all the required fields first');?>.
+                <?php if($this->canEdit):?>
+                <a href="<?php echo $this->baseUrl('/edit/'.$this->entryId);?>"><?php echo $this->translate('Edit');?></a>&nbsp;
+                <?php endif;?>
+            </span><?php
+         endif; 
+    ?></div>
+</div>
+<?php endif;
+    
+    

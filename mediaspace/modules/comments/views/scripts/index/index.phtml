@@ -1,0 +1,12 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+?>
+
+            <?php foreach( $this->comments as $comment ):  ?>
+                <?php echo $this->partial('partials/comment.phtml', 'comments', array('allowedToPost' => $this->allowedToPost, 'commentsClosed' => $this->commentsClosed, 'comment' => $comment, 'isReply' => false, 'replyToUser' => $comment->userId,  'replies' => isset($this->replies[$comment->id]) ? $this->replies[$comment->id] : array())); ?>
+            <?php endforeach; ?>
+
+<?php

@@ -1,0 +1,76 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+$front = Zend_Controller_Front::getInstance();
+$request = $front->getRequest();
+$partialScript = false;
+
+foreach ($this->menuConfig as $menuitem)
+{
+    $partialScript = false;
+    $params = array();
+    $isAnonymous = Zend_Auth::getInstance()->hasIdentity() && Zend_Auth::getInstance()->getIdentity()->getRole() == Kms_Plugin_Access::getRole(Kms_Plugin_Access::ANON_ROLE);
+    switch ($menuitem->type)
+    {
+        case 'my_media':
+            if($front->getPlugin('Kms_Plugin_Access')->hasPermission('user', 'my-media') || $isAnonymous)
+            {
+                $params['class'] = $request->getControllerName() == 'user' && $request->getActionName() == 'my-media' ? 'active' : '';
+                $params['label'] = $this->translate('My Media');
+                $params['url'] = $this->baseUrl('my-media');
+                $params['target'] = '';
+                $partialScript = 'partials/headerMenuLink.phtml';
+            }
+            break;
+        case 'my_pl':
+            if($front->getPlugin('Kms_Plugin_Access')->hasPermission('user', 'my-playlists') || $isAnonymous)
+            {
+                $params['class'] = $request->getControllerName() == 'user' && $request->getActionName() == 'my-playlists' ? 'active' : '';
+                $params['label'] = $this->translate('My Playlists');
+                $params['url'] = $this->baseUrl('my-playlists');
+                $params['target'] = '';
+                $partialScript = 'partials/headerMenuLink.phtml';
+            }
+            break;
+        case 'my_channels':
+            if($front->getPlugin('Kms_Plugin_Access')->hasPermission('channels', 'mychannels'))
+            {
+                $params['class'] = $request->getControllerName() == 'channels' && $request->getActionName() == 'mychannels' ? 'active' : '';
+                $params['label'] = $this->translate('My Channels');
+                $params['url'] = $this->baseUrl('my-channels');
+                $params['target'] = '';
+                $partialScript = 'partials/headerMenuLink.phtml';
+            }
+            break;
+        case 'url':
+            $params['label'] = $menuitem->label;
+            $params['url'] = $menuitem->link;
+            if(strpos($menuitem->link, 'http://') === 0 || strpos($menuitem->link, 'https://') === 0)
+            {
+                $params['target'] = '_blank';
+            }
+            else
+            {
+                $params['target'] = '';
+            }
+            $partialScript = 'partials/headerMenuLink.phtml';
+            break;
+        case 'menu':
+            $params['label'] = $menuitem->label;
+            $params['items'] = $menuitem->items;
+            $partialScript = 'partials/headerMenuMenu.phtml';
+            break;
+        default:
+            $partialScript = false;
+            break;
+    }
+
+    if ($partialScript)
+    {
+        echo $this->partial($partialScript, 'headermenu', $params);
+    }
+    
+}

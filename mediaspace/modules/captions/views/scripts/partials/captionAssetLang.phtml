@@ -1,0 +1,17 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+$params = $this->partialLoop()->view->urlParams;
+$params['assetId'] =  $this->id;
+$params['entryId'] =  $this->entryId;
+$params['module'] = 'captions';
+$params['action'] = 'change';
+?>
+
+<div class="column language first"><?php echo $this->language;?></div>
+<div class="column label"><?php echo $this->escape($this->label); ?></div> 
+<div class="column change"><a href="<?php echo $this->MergeUrl($params,'default');?>" rel="async"><?php echo $this->translate('Change');?></a></div>
+<?php 

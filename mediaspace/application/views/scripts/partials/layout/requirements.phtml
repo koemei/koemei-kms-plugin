@@ -1,0 +1,24 @@
+<?php
+/*
+ *  All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ *  To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+
+if ($this->partial()->view->requirements && count($this->partial()->view->requirements))
+{
+    ?>            
+    <div id="req-messages">
+        <?php
+        foreach ($this->partial()->view->requirements as $key => $arr)
+        {
+            ?>
+            <div class="ui-state-error ui-corner-all">
+                <p class="ui-icon ui-icon-info"></p><p class="flash-message"><?php echo $this->translate('Notice'); ?>: <?php echo $arr ?></p>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
+    <?php
+}

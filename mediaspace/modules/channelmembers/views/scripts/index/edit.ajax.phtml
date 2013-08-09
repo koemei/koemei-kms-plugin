@@ -1,0 +1,28 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+$this->placeholder('channelmember')->captureStart('SET', 'member');
+if($this->member){
+    // parse the channel member
+    echo $this->partial('partials/memberPermissions.phtml', 'channelmembers', $this->member);
+}
+else{
+    echo $this->form;
+}
+$this->placeholder('channelmember')->captureEnd();
+
+$this->JsonContent(
+array(
+        'target' => 'span.permission[data-id="' . $this->userId .'"]',
+        'content' => $this->placeholder('channelmember')->member,
+        'action' => 'replace'
+)
+);
+
+// messages - if exists
+if (!empty($this->message)){
+    $this->JsonFlashMessage($this->message);
+}

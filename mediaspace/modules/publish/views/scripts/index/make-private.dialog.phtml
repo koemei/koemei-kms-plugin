@@ -1,0 +1,55 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+
+
+$text = $this->translate('This will cause this media to be disassociated from all categories and it will not appear anywhere in MediaSpace.'); ?>
+if($('#dialog')) {
+    $("body").append('<div id="dialog"></div>');
+}
+$("#dialog").text('<?php echo $text ?>');
+
+<?php 
+    $this->dialogContainer(
+        'dialog',
+        $text,
+        array(
+            'autoOpen'      => true,
+            'draggable'     => false,
+            'modal'         => true,
+            'resizable'     => false,
+            'title'         => $this->translate('Confirm Unpublishing'),
+            'closeOnEscape' => true,
+            'open' => new Zend_Json_Expr('function() {
+                    $("#player").addClass("hideplayer");
+                }'
+            ),
+            'close' => new Zend_Json_Expr('function() {
+                $("#player").removeClass("hideplayer");
+                $("#dialog").remove();
+            }'),
+            'buttons'   => array(
+                $this->translate('Confirm') =>  new Zend_Json_Expr('function() {
+                            $("body").addClass("cursorwait");
+                            var url = "'.$this->baseUrl('/publish/index/make-private/entry/'.$this->entry->id.'/confirm/1?format=ajax').'";
+                            $.getJSON(url, asyncCallback).error( transportError );
+                }'),
+                $this->translate('Cancel') => new Zend_Json_Expr('function() {
+                    $("#dialog").dialog(\'close\');
+                }')
+            ),
+     )
+    );
+
+
+    $actions = $this->JQuery()->getOnLoadActions();
+
+    $this->JQuery()->disable();
+
+    foreach($actions as $action)
+    {
+        echo $action;
+    }
+?>

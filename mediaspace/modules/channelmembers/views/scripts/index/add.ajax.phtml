@@ -1,0 +1,20 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+$this->JsonContent(
+array(
+        'target' => '#add_member',
+        'content' => $this->partial('partials/addMember.phtml', 'channelmembers', array('form' => $this->form)),
+        'action' => 'replace'
+)
+);
+
+ $actions = $this->JQuery()->getOnLoadActions();
+ $this->JQuery()->disable();
+ foreach ($actions as $action)
+ {
+     $this->JsonScript($action);
+ }

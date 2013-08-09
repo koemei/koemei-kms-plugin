@@ -1,0 +1,26 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+// sso ajax view - called on form validation errors
+
+$this->placeholder('webcast')->captureStart('SET', 'sso');
+echo $this->form;
+$this->placeholder('webcast')->captureEnd();
+
+$this->JsonContent(
+array(
+        'target' => '#webcast_sso',
+        'content' => $this->placeholder('webcast')->sso,
+        'action' => 'replace'
+)
+);
+
+$actions = $this->JQuery()->getOnLoadActions();
+$this->JQuery()->disable();
+foreach ($actions as $action)
+{
+    $this->JsonScript($action);
+}

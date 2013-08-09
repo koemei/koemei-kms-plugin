@@ -1,0 +1,69 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+if($this->results)
+{
+    // remove deleted caption asset
+    $script = "$('div.caption[data-id=". $this->assetId ."]').hide(500,'linear');";
+    $this->JsonScript($script);
+
+    // caption assets count
+    $this->JsonContent(array(
+            'target' => '#captions_count',
+            'content' => $this->partial('partials/captionsCount.phtml','captions',$this),
+            'action' => 'replace'
+    )
+    );
+
+    // show next caption in line
+    if ($this->captions->objects)
+    {
+        // add the next caption to the page
+        $this->JsonContent(
+        array(
+                'target' => 'div#captions',
+                'content' => $this->partialLoop('partials/captionAsset.phtml', 'captions', $this->captions->objects),
+                'action' => 'append'
+        )
+        );
+
+        // hide the added caption and show it with custom animation
+        $script = "$('div.caption[data-id=". $this->caption->id ."]').hide();";
+        $script .= "setTimeout(function(){
+        $('div.caption[data-id=". $this->caption->id ."]').show(500)
+    },20);";
+        $this->JsonScript($script);
+    }
+
+    // the pager
+    $pager = $this->paginationControl($this->paginator, $this->pagerType, 'partials/galleryPaging.phtml',array('urlParams' => $this->urlParams));
+     
+    $this->JsonContent(array(
+            'target' => '#entry_captions #pager',
+            'content' => $pager,
+            'action' => 'replace'
+    )
+    );
+}
+else
+{
+    // error deleting caption asset
+    $this->JsonContent(
+    array(
+            'target' => '#remove',
+            'content' => $this->translate('There was an error deleting the caption file.'),
+            'action' => 'replace'
+    )
+    );
+}
+
+// messages - if exists
+if (!empty($this->message)){
+    $this->JsonFlashMessage($this->message);
+}
+
+
+$this->JsonScript('reloadKDPCaptions();');

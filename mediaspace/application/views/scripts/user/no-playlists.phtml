@@ -1,0 +1,18 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+$this->headTitle($this->translate('My Playlists')); 
+
+?>
+<?php echo $this->headingOnly($this->translate('My Playlists'), 'h1', 'heading long', $this->translate('You have not created any playlists yet'));?>
+<div class="noplaylists">
+    <h3><?php echo $this->translate('To Create a Playlist');?></h3>
+    <ol>
+        <li><span><?php echo $this->translate('Select "Add to Playlist" tab that appears under the player in other pages on the site'); ?></span></li>
+        <li><span><?php echo $this->translate('Click "Add new Playlist" and enter name and description, The media will be added to playlist'); ?></span></li>
+    </ol>
+    
+    <span><?php echo $this->translate('Once you have created a playlist, it will appear on this page where you can preview it, edit the sequence of media, select design of playlist, and grab the embed code.'); ?></span>
+</div>

@@ -1,0 +1,116 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+/**
+ * The details tab of the webcast entry page
+ *
+ * @viewhook Kms_Resource_Viewhook::CORE_VIEW_HOOK_POSTENTRYDETAILS
+ */
+?>
+<div id="details_tab">
+	<div id="entry_details">
+		<div class="wrapper">
+			<div id="kdescription">
+				<?php if($this->partial()->view->isEntryOwner) : ?>
+				<div class="tabActionLinks refresh">
+					<a id="refresh_entry" href="<?php echo $this->baseUrl('/webcast/entry/refresh/id/'.$this->id) ?>"><em></em><?php echo $this->translate('Refresh Details');?></a>
+				</div>
+				<?php endif; ?>
+
+				<div class="thumbnail fright">
+					<img src="<?php echo $this->thumbnailUrl . '/width/252/type/' . Kaltura_Client_Enum_ThumbCropType::CROP; ?>"/>
+				</div>
+
+				<?php echo trim($this->description) ? strip_tags($this->description, '<b><i><u><a><br><p><lu><li>') : $this->translate('No description provided') ?>
+			</div>
+
+		</div>
+
+		<?php echo $this->partial('partials/playerBlockCategories.phtml', $this) ?>
+
+		<div class="webcast_details">
+			<?php if (!empty($this->partial()->view->broadcastTime)): ?>
+			<div class="parents wrapper">
+				<div class="title"><?php echo $this->translate('Broadcast Time') . ':'; ?></div>
+				<div class="parent_items">
+					<?php echo date('d M y, G:i A T', $this->partial()->view->broadcastTime); ?>
+				</div>	
+			</div>
+			<?php endif; ?>
+			<?php if (!empty($this->partial()->view->broadcastDuration)): ?>
+				<div class="parents wrapper">
+					<div class="title"><?php echo $this->translate('Duration') . ':'; ?></div>
+					<div class="parent_items">
+						<?php echo $this->TimeElapsed($this->partial()->view->broadcastDuration,3); ?>
+					</div>	
+				</div>
+			<?php endif; ?>			
+			<div class="parents wrapper">
+				<div class="title"><?php echo $this->translate('Event Opens') . ':'; ?></div>
+				<div class="parent_items">
+					<?php 
+						if (!empty($this->partial()->view->broadcastTime)) {
+							// we have broadcast - show it in the open time
+							if (empty($this->partial()->view->eventOpenTimeDelta)) {
+								// no open time - do our best
+								echo $this->translate('On') . ' ' . $this->translate('Broadcast') . ' (' . date('d M y, G:i A T', $this->partial()->view->broadcastTime) . ')';
+							}
+							else{
+								// open time
+								echo $this->TimeElapsed($this->partial()->view->eventOpenTimeDelta) . ' ' .
+						 			($this->partial()->view->eventOpenTimeDelta >0 ? $this->translate('before') : $this->translate('after')). ' ' .
+						  			$this->translate('broadcast') . ' (' . date('d M y, G:i A T', $this->partial()->view->eventOpenTime) . ')'; 
+						  	}
+					  	}
+					  	else{
+					  		// no broadcast - just time
+					  		$eventOpenTime = $this->partial()->view->entry->createdAt;
+					  		if (!empty($this->partial()->view->eventOpenTime)) {
+					  			// we have open time - lets use it.
+					  			$eventOpenTime = $this->partial()->view->eventOpenTime;
+					  		}
+					  		echo date('d M y, G:i A T', $eventOpenTime);
+					  	}
+					?>
+				</div>	
+			</div>
+			<div class="parents wrapper">
+				<div class="title"><?php echo $this->translate('On Demand Period Ends') . ':'; ?></div>
+				<div class="parent_items">
+					<?php echo (empty($this->endDate) ? $this->translate('unlimited') : date('d M y, G:i A T', $this->endDate))?>
+				</div>	
+			</div>
+
+			<div class="speakers">
+				<div class="parents wrapper speaker_title"><div class="title"><?php echo $this->translate('Speakers') . ':'; ?></div></div>
+				<div class="parents wrapper speaker">
+					<?php foreach ($this->partial()->view->speakers as $speaker): ?>
+						<div class="parent_items wrapper">
+							<div class="thumbnail fleft">
+								<img width= "100" src="<?php echo $speaker->SpeakerImageUrl; ?>"/>
+							</div>
+							<div class="wrapper">
+								<div class="name">
+									<?php if (!empty($speaker->SpeakerLink)) : ?>
+									<a href="<?php echo $speaker->SpeakerLink; ?>"><?php echo $speaker->SpeakerName;?></a>
+									<?php else : echo $speaker->SpeakerName; 
+									endif;?>									
+								</div>
+								
+								<div class="webcast_title"><?php echo $speaker->SpeakerTitle;?></div>
+								<div class="bio"><?php echo $speaker->SpeakerBio;?></div>
+							</div>	
+						</div>
+					<?php endforeach;?>
+				</div>
+			</div>
+
+		</div>
+
+		<?php echo $this->ViewHook(Kms_Resource_Viewhook::CORE_VIEW_HOOK_POSTENTRYDETAILS); ?>
+	</div>
+	
+</div>

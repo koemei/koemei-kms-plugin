@@ -1,0 +1,18 @@
+<?php
+
+/* 
+ *  All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ *  To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+
+?>
+<button type="submit" class="refresh" ><?php echo $this->translate('Refresh');?></button>
+<script>
+$("#mm_wrap #bulk_actions button.refresh").click(function(){
+	<?php 
+		$params = $this->urlParams; 
+	?>
+	document.location.href = "<?php echo $this->MergeUrl($params,'default'); ?>";
+});</script>
+<?php

@@ -1,0 +1,8 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+
+echo $this->partial('partials/widgets/html5Fallback.phtml', array('playerId' => isset($this->embedParams['UICONF_ID']) ? $this->embedParams['UICONF_ID'] : Kms_Resource_Config::getConfiguration('player', 'playerId'))); 
+echo $this->EntitlementEmbedCode($this->embedParams);

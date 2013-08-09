@@ -1,0 +1,69 @@
+<?php
+
+/* 
+ *  All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ *  To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ */
+
+    if(isset($this->entry->id) && !isset($this->entry->mediaType))
+    {
+        // this is a video presentation
+        $data = $this->entry->dataContent;
+        $dataXml = new SimpleXMLElement($data);
+        $mediaEntryId = $dataXml->video->entryId->__toString();
+        // change the thumbnail URL to include the entry Id of the media (video) entry
+        $this->entry->thumbnailUrl = preg_replace('/\/entry_id\/([^\/])+/', '/entry_id/'.$mediaEntryId, $this->entry->thumbnailUrl);
+        $divClass = 'kVidPres';
+    }
+    else
+    {
+        $divClass = '';
+
+        if($this->entry->mediaType == Kaltura_Client_Enum_MediaType::AUDIO)
+        {
+            $divClass = 'kAudio';
+        }
+        elseif($this->entry->mediaType == Kaltura_Client_Enum_MediaType::IMAGE)
+        {
+            $divClass = 'kImage';
+        }
+
+        // get the entry type related classes
+        $models = Kms_Resource_Config::getModulesForInterface('Kms_Interface_Functional_Gallery_Item');
+        foreach ($models as $model)
+        {
+            $divClass .= ' ' . $model->getItemClass($this->entry);
+        }
+    }
+
+    $desc_title = $this->escape($this->String()->shortenDescription(strip_tags($this->entry->description), 430));
+    
+    
+    $checkbox_title = '';
+    if(!$this->enabled)
+    {
+        $checkbox_title = $this->translate('Required data missing, cannot add.');
+
+    }
+    elseif($this->published)
+    {
+        $checkbox_title = $this->translate('Media already added.');
+    }
+    
+    
+?>
+<li class="<?php echo $divClass;?> <?php echo $this->enabled && !$this->published ? '' : 'nopublish';?>" data-entryid="<?php echo $this->entry->id ?>">
+    <<?php echo $this->itemTag;?> class="operate wrapper">
+        <input type="checkbox" <?php echo $checkbox_title ? 'title="'.$checkbox_title.'"' : '' ;?> <?php echo $this->published ? 'checked="checked"' : ''; ?> <?php echo $this->enabled && !$this->published? '' : 'disabled="disabled"';?> value="<?php echo $this->entry->id; ?>" name="sel-entry[]" id="sel-entry" />
+        <div class="item">
+            <em></em>
+            <img src="<?php echo $this->entry->thumbnailUrl; ?>/width/66/height/36/type/<?php echo Kaltura_Client_Enum_ThumbCropType::CROP; ?>" width="66" height="36" alt="<?php echo $this->escape($this->entry->name); ?>" />
+            <div class="name" <?php echo $desc_title ? 'title="'.$desc_title.'"' : '';?>><?php echo $this->escape($this->entry->name);?></div>
+        </div>
+    </<?php echo $this->itemTag;?>>
+</li>
+
+
+
+
+<?php

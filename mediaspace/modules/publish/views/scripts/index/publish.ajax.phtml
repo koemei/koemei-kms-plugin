@@ -1,0 +1,83 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+if(!$this->bulk)
+{
+    $this->navigation()->setMaxDepth(4)->setMinDepth(0);
+    $cats = $this->navigation()
+            ->menu()
+            ->setPartial(array('partials/categoryList.phtml', 'publish'))->render();
+    
+    $channels = $this->partial('partials/channelsList.phtml', 'publish', array('channels' => Kms_Resource_Models::getChannel()->getChannelsForPublish(), 'entryCats' => $this->entryCats));
+    
+    if(!count($this->entryCats))
+    {
+        $this->JsonScript('$("#publishcats").hide();$("#publishradio-0").attr("checked", "checked");');
+    }
+    
+    $this->JsonContent(
+        array(
+            'target' => $this->target . ' #publishcats .galleries',
+            'content' => $cats,
+            'action' => 'replace',
+        )
+    );
+    
+    $this->JsonContent(
+        array(
+            'target' => $this->target . ' #publishcats .channels',
+            'content' => $channels,
+            'action' => 'replace',
+        )
+    );
+    
+    $baloons = '<li class="appears">'.$this->translate('Appears in').':</li>';
+    if(count($this->entryCats))
+    {
+        foreach($this->entryCats as $pubCat)
+        {
+            $baloons .= $this->partial(
+                'partials/publishBaloon.phtml', 
+                'publish', 
+                array
+                (
+                    'category' => $pubCat,
+                    'entryId' => $this->entry->id,
+                )
+            );
+        }
+    }
+    $this->JsonContent(array
+        (
+            'target' => '#player_tabs #publish_tab .baloons',
+            'content' => $baloons,
+            'action' => 'replace'
+        )
+    );
+    
+    if($this->categoriesLimitReached)
+    {
+        $this->JsonContent(array
+            (
+                'target' => '#player_tabs #publish_tab #publish_messages',
+                'content' => '<div class="publish_message">'.$this->translate('Media could not be published').'. '.$this->translate('Try unpublishing this media from other galleries/channels and try again').'.</div>',
+                'action' => 'replace'
+            )
+        );
+    }
+    else
+    {
+        $this->JsonContent(array
+            (
+                'target' => '#player_tabs #publish_tab #publish_messages',
+                'content' => '',
+                'action' => 'replace'
+            )
+        );
+        
+    }
+}
+    
+$this->JsonScript($this->scriptOut);

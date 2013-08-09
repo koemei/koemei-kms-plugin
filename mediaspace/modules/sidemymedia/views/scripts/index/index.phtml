@@ -1,0 +1,32 @@
+<?php
+/*
+ * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
+ * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+*/
+
+if($this->show): 
+?>
+
+
+<ul id="sidemymedia">
+    <?php  
+        if(count($this->sidemymedia))
+        {
+            echo $this->partialLoop( 'partials/item.phtml', 'sidemymedia', $this->sidemymedia);
+            
+            if(count($this->sidemymedia) >= Kms_Resource_Config::getModuleConfig('sidemymedia', 'limit')):
+            ?>
+                <p class="fright">
+                    <a href="<?php echo $this->baseUrl('/my-media');?>"><?php echo $this->translate('Show All');?></a>&nbsp;&nbsp;&nbsp;
+                </p>
+            <?php
+            endif;
+        }
+        else
+        {
+            echo $this->translate("Oops! You have no media... :(");
+        }
+    ?>
+</ul>
+<?php
+endif;
