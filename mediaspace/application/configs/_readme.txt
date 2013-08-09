@@ -1,2 +1,0 @@
-The files in this folder contain global application configuration, and should not be altered or changed.
-The config files which should be modified, reside in the "configs" folder under the root of the project, under each module folder
