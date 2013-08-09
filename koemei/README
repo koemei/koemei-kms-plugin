@@ -24,6 +24,7 @@ Revision history
 --------
 0.1.0 : Initial version
 0.1.1 : RC - Fixes to 0.1.0 following comments from Kaltura R&D validation team
+0.1.2 : Repository refactoring (removed uncompressed KMS source)
 
 Next steps :
 -------
