@@ -1,7 +1,7 @@
 <?php
 /**
  * Koemei module controller.
- * 
+ * Copyright ©2013 Koemei SA
  * @author Tra!an
  *
  */
@@ -26,7 +26,7 @@ class Koemei_IndexController extends Kms_Module_Controller_Abstract
         {
             // no captions - do not present the tab
             $this->_helper->viewRenderer->setNoRender(TRUE);
-        } 
+        }
     }
 	public function headerAction() {
 		return true;
@@ -56,7 +56,7 @@ class Koemei_IndexController extends Kms_Module_Controller_Abstract
 		}
 		
 		//do the owner accepts public editing? alow edit but not for anonymus users
-		$alow_edit = Kms_Resource_Config::getModuleConfig('koemei', 'OpenImprove');
+		$alow_edit = Kms_Resource_Config::getModuleConfig('koemei', 'koemeiOpenImprove');
 		if ($alow_edit==1 && $roleKey!='anonymousRole') {
 			$edit=1;	
 		}

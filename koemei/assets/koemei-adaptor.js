@@ -1,3 +1,8 @@
+/*
+* Copyright ©2013 Koemei SA
+* author : Tra!an
+*/
+
 // JavaScript Document
 $(document).ready(function (e) {
 	

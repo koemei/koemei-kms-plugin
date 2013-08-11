@@ -1,7 +1,7 @@
 <?php
 /**
  * Koemei module.
- * 
+ * Copyright ©2013 Koemei SA
  * @author Tra!an
  *
  */
@@ -37,8 +37,8 @@ class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_
             )
     );
 	
-	
-	
+
+
     public function getAccessRules()
     {
         $accessrules = array(
@@ -67,7 +67,7 @@ class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_
 	//check if the module can be enabled. only if Koemei UUID is set
 	public function canEnable()
     {
-		$uuid = Kms_Resource_Config::getModuleConfig('koemei', 'Koemei_uuid');
+		$uuid = Kms_Resource_Config::getModuleConfig('koemei', 'koemeiUuid');
 		if (!$uuid) {
 			$this->canEnable = false;	
 		} else {
@@ -96,7 +96,7 @@ class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_
 	
 	//save custom settings on koemei servers/check if user id exists
 	public static function settingsSaved() {
-		$k_id= $_POST['Koemei_uuid'];
+		$k_id= $_POST['koemeiUuid'];
 		$content = Koemei_Model_Koemei::get_data('https://www.koemei.com/REST/users/'.$k_id);
 		$xml = simplexml_load_string($content);
 		
