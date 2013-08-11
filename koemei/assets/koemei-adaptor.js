@@ -21,7 +21,7 @@ $(document).ready(function (e) {
 
 
 	//close the widget, put the player back in the page
-    $('#close_pseudo_widget').live('click', function (event) {
+    $('body').on('click','#close_pseudo_widget', function (event) {
         event.preventDefault();
         var clone = $("#kplayer").clone(true);
         $("#kplayer").remove();
@@ -47,7 +47,7 @@ $(document).ready(function (e) {
     }
 	
 	//improve captions click, show edit widget
-    $('.improve_captions').live('click', function (event) {
+    $('body').on('click', '.improve_captions', function (event) {
         event.preventDefault();
 		//clone the player & remove it
         var clone = $("#kplayer").clone(true);
@@ -60,7 +60,7 @@ $(document).ready(function (e) {
         kw_start_koemei = 1;
     });
 
-    $('#close_pseudo_widget_edit').live('click', function (event) {
+    $('body').on('click', '#close_pseudo_widget_edit', function (event) {
         event.preventDefault();
 		//close the widget
         koemeiWidget.close();
@@ -76,7 +76,7 @@ $(document).ready(function (e) {
     });
 
 	//close widget on publish
-    $('#kw_publish-button').live('click', function (event) {
+    $('body').on('click', '#kw_publish-button', function (event) {
         $('#close_pseudo_widget').click();
         $('#close_pseudo_widget_edit').click();
     });
