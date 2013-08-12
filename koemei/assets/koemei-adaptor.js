@@ -7,8 +7,10 @@
 $(document).ready(function (e) {
 	
 	//start_edit = 0; - is it an edit widget?
-    kw_start_edit = 0;
-	
+    var kw_start_edit = 0;
+    // TODO : Seb added this bcz dunno how to include the edit.phtml in the edit page...
+    var kw_in_edit = 1;
+
 	//edit transcript - entry page
     $('.edit_transcript').click(function (event) {
         event.preventDefault();
@@ -37,17 +39,40 @@ $(document).ready(function (e) {
     });
 
 
-    //edit page: find rows in the captions tab that are from koemei servers. remove Edit label button and add improve captions button
+    //edit page: find rows in the captions tab that are from koemei servers.
+    // add improve captions button
     if (kw_in_edit === 1) {
-        var captions_list = $('.caption');
-        if (captions_list.length > 0) {
-            $.each(captions_list, function (index, element) {
-                var child = $(element).children('.caption-part').children('.label');
-                var label = $(child).html();
-                if (label === 'Caption via Koemei') {
-                    $(element).children('.caption-part').children('.change').html('<a href="#" class="improve_captions">Improve captions</a>');
-                }
-            });
+
+        var labels = $('*[data-type="label"]');
+        var koemei_found=false;
+        labels.each(function(){
+            if ($(this).html()=== 'Caption via Koemei'){
+                koemei_found=true;
+                var sibs = $(this).parent().parent().siblings();
+                sibs.each(function(){
+                    var actions = $(this)
+                    var downloadAction = actions.children(".downloadCaption");
+                    downloadAction.each(function(){
+                        var improveLink = '<a class="improve_captions" href="#" title="Improve caption"><i class="icon-edit"></i></a>';
+                        actions.append(improveLink);
+                    })
+                });
+            }
+        });
+        // TODO : Seb added this bcz dunno how to include the edit.phtml in the edit page...
+        if(koemei_found){
+            var rhaaaa = '<div id="pseudo_overlay" class="overlay_new" style="display:none;"> \
+                            <div class="pseudo_wrapper"> \
+                                <div id="close_pseudo_widget_edit">&nbsp;</div>\
+                                <div id="new_player">\
+                                &nbsp;\
+                                </div>\
+                                <div id="new_widget">\
+                                &nbsp;\
+                                </div>\
+                            </div>\
+                        </div>';
+            $("body").append(rhaaaa);
         }
     }
 	

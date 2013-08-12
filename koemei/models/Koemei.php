@@ -8,14 +8,18 @@
  
 
 
-class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_Deployable_PreDeployment {
-	const MODULE_NAME = 'Koemei';
+class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_Deployable_PreDeployment,
+                                                                  Kms_Interface_Functional_Entry_TabType,
+                                                                  Kms_Interface_Functional_Entry_Tabs
+
+{
+	const MODULE_NAME = 'koemei';
 	
 	private $canEnable;
     public $viewHooks = array
     (
 
-            Kms_Resource_Viewhook::CORE_VIEW_HOOK_PLAYERTABLINKS => array(
+            /*Kms_Resource_Viewhook::CORE_VIEW_HOOK_PLAYERTABLINKS => array(
                     'action' => 'entrytab',
                     'controller' => 'index',
                     'order' => 100
@@ -29,7 +33,7 @@ class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_
                     'action' => 'edit',
                     'controller' => 'index',
                     'order' => 40
-            ),
+            ),*/
 			Kms_Resource_Viewhook::CORE_VIEW_HOOK_MODULES_HEADER => array( 
                     'action' => 'header',
                     'controller' => 'index', 
@@ -37,7 +41,30 @@ class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_
             )
     );
 	
+    /**
+     * Adding a new interface function for marking this tab as available for external entry
+     * (non-PHPdoc)
+     * @see Kms_Interface_Functional_Entry_TabType::isHandlingTabType()
+     */
+    public function isHandlingTabType(Kaltura_Client_Type_BaseEntry $entry)
+    {
+        return true;
+    }
 
+    /**
+     * (non-PHPdoc)
+     * @see Kms_Interface_Functional_Entry_Tabs::getEntryTabs()
+     */
+    public function getEntryTabs(Kaltura_Client_Type_BaseEntry $entry, Zend_Controller_Request_Abstract $request)
+    {
+        $translator = Zend_Registry::get('Zend_Translate');
+
+        $link = new Kms_Type_Link_Mvc(Koemei_Model_Koemei::MODULE_NAME,'index','index');
+        //$tab = new Kms_Type_Tab_Async($link, $translator->translate('Transcript'), '#transcript-tab', array(), '', 0);
+        $tab = new Kms_Type_Tab_Sync($link, $translator->translate('Transcript'), '#transcript-tab', array(), '', 0);
+
+        return array($tab);
+    }
 
     public function getAccessRules()
     {
@@ -49,10 +76,9 @@ class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_
                 ),
                 array(
                         'controller' => 'koemei:index',
-                        'actions' => array('entrytab','entry','edit'),
+                        'actions' => array('index'),
                         'role' => Kms_Plugin_Access::ANON_ROLE,
-                )
-               
+                ),
         ); 
         return $accessrules;
     }
@@ -103,7 +129,7 @@ class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_
 		
 		//show message if UUID not found.
 		if (!isset($xml->Id)) {
-			echo "The Koemei UUID you've specified dose not exist.";	
+			echo "The Koemei UUID you've specified does not exist.";
 			exit;
 		}
 		
