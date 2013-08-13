@@ -18,10 +18,13 @@ $(document).ready(function (e) {
         koemeiWidget.close();
 		//clone the player & remove it
         var clone = $("#kplayer").clone(true);
+		console.log(clone);
         $("#kplayer").remove();
         $('#player').css('background', 'transparent');
 		//put the cloned player in the psedudo widget, and set start_edit = 1 so on player ready it will initialise an edit widget
         $('#new_player').html(clone);
+		$('#kplayer').width(520);
+		$('#kplayer').height(320);
         $('#pseudo_overlay').show();
         kw_start_edit = 1;
     });
@@ -34,6 +37,8 @@ $(document).ready(function (e) {
         $("#kplayer").remove();
         $('#player').append(clone);
         $('#player').css('background', '#000');
+		$('#kplayer').width('');
+		$('#kplayer').height('');
         $('#pseudo_overlay').hide();
         kw_start_edit = 0;
     });
@@ -42,6 +47,8 @@ $(document).ready(function (e) {
     //edit page: find rows in the captions tab that are from koemei servers.
     // add improve captions button
     if (kw_in_edit === 1) {
+		$('#koemei-tab-tab').remove();
+
 
         var labels = $('*[data-type="label"]');
         var koemei_found=false;
@@ -59,21 +66,7 @@ $(document).ready(function (e) {
                 });
             }
         });
-        // TODO : Seb added this bcz dunno how to include the edit.phtml in the edit page...
-        if(koemei_found){
-            var rhaaaa = '<div id="pseudo_overlay" class="overlay_new" style="display:none;"> \
-                            <div class="pseudo_wrapper"> \
-                                <div id="close_pseudo_widget_edit">&nbsp;</div>\
-                                <div id="new_player">\
-                                &nbsp;\
-                                </div>\
-                                <div id="new_widget">\
-                                &nbsp;\
-                                </div>\
-                            </div>\
-                        </div>';
-            $("body").append(rhaaaa);
-        }
+       
     }
 	
 	//improve captions click, show edit widget
@@ -82,9 +75,11 @@ $(document).ready(function (e) {
 		//clone the player & remove it
         var clone = $("#kplayer").clone(true);
         $("#kplayer").remove();
-        $('#edit_player').css('background', 'transparent');
+        $('#player').css('background', 'transparent');
 		//put the cloned player in the psedudo widget, and set start_edit = 1 so on player ready it will initialise an edit widget
         $('#new_player').html(clone);
+		$('#kplayer').width(520);
+		$('#kplayer').height(320);
         $('#pseudo_overlay').show();
         kw_start_edit = 1;
         kw_start_koemei = 1;
@@ -98,9 +93,11 @@ $(document).ready(function (e) {
         var clone = $("#kplayer").clone(true);
         $("#kplayer").remove();
 		//put the player back
-        $('#edit_player').append(clone);
-        $('#edit_player').css('background', '#000');
+        $('#player').append(clone);
+        $('#player').css('background', '#000');
         $('#pseudo_overlay').hide();
+		$('#kplayer').width('');
+		$('#kplayer').height('');
         kw_start_edit = 0;
         kw_start_koemei = 0;
     });

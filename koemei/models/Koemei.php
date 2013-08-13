@@ -10,7 +10,8 @@
 
 class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_Deployable_PreDeployment,
                                                                   Kms_Interface_Functional_Entry_TabType,
-                                                                  Kms_Interface_Functional_Entry_Tabs
+                                                                  Kms_Interface_Functional_Entry_Tabs,
+																  Kms_Interface_Functional_Entry_Edit_Tabs
 
 {
 	const MODULE_NAME = 'koemei';
@@ -66,6 +67,15 @@ class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_
         return array($tab);
     }
 
+    public function getEntryEditTabs(Kaltura_Client_Type_BaseEntry $entry)
+    {
+        $translator = Zend_Registry::get('Zend_Translate');
+        $link = new Kms_Type_Link_Mvc('koemei','index','edit',array('entryid' => $entry->id));
+        $tab = new Kms_Type_Tab_Sync($link, $translator->translate('Transcript'), '#koemei-tab');
+        return array($tab);
+    }
+
+
     public function getAccessRules()
     {
         $accessrules = array(
@@ -76,9 +86,14 @@ class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_
                 ),
                 array(
                         'controller' => 'koemei:index',
-                        'actions' => array('index'),
+                        'actions' => array('index','edit'),
                         'role' => Kms_Plugin_Access::ANON_ROLE,
                 ),
+				array(
+                        'controller' => 'koemei:index',
+                        'actions' => array('edit'),
+                        'role' => Kms_Plugin_Access::ANON_ROLE,
+                )
         ); 
         return $accessrules;
     }

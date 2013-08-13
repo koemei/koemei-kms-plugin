@@ -20,6 +20,9 @@ class Koemei_IndexController extends Kms_Module_Controller_Abstract
 	}
 
 	public function editAction() {
+		
+		
+		
 		$CaptionModel = new Captions_Model_Captions();
 		$entry = $CaptionModel->getEntry();
 		$start = 0;
