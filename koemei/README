@@ -20,6 +20,11 @@ Known issues
 
 soon...
 
+Troubleshooting
+--------
+
+* In case your newly added media files are not automatically transcribed, please check that the notifications are setup in kmc (Settings>Integration Settings>Notifications) and that the url is https://www.koemei.com/REST/services/notify/kaltura
+
 Revision history
 --------
 0.1.0 : Initial version
