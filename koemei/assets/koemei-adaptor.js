@@ -8,8 +8,6 @@ $(document).ready(function (e) {
 	
 	//start_edit = 0; - is it an edit widget?
     var kw_start_edit = 0;
-    // TODO : Seb added this bcz dunno how to include the edit.phtml in the edit page...
-    var kw_in_edit = 1;
 
 	//edit transcript - entry page
     $('.edit_transcript').click(function (event) {
@@ -49,7 +47,6 @@ $(document).ready(function (e) {
     if (kw_in_edit === 1) {
 		$('#koemei-tab-tab').remove();
 
-
         var labels = $('*[data-type="label"]');
         var koemei_found=false;
         labels.each(function(){
@@ -60,7 +57,7 @@ $(document).ready(function (e) {
                     var actions = $(this)
                     var downloadAction = actions.children(".downloadCaption");
                     downloadAction.each(function(){
-                        var improveLink = '<a class="improve_captions" href="#" title="Improve caption"><i class="icon-edit"></i></a>';
+                        var improveLink = '<a class="improve_captions hidden-phone hidden-tablet" href="#" title="Improve caption"><i class="icon-edit"></i></a>';
                         actions.append(improveLink);
                     })
                 });
