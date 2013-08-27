@@ -11,7 +11,8 @@
 class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_Deployable_PreDeployment,
                                                                   Kms_Interface_Functional_Entry_TabType,
                                                                   Kms_Interface_Functional_Entry_Tabs,
-																  Kms_Interface_Functional_Entry_Edit_Tabs
+																  Kms_Interface_Functional_Entry_Edit_Tabs,
+																  Kms_Interface_Model_Dependency
 
 {
 	const MODULE_NAME = 'koemei';
@@ -49,7 +50,13 @@ class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_
      */
     public function isHandlingTabType(Kaltura_Client_Type_BaseEntry $entry)
     {
-        return true;
+		$CaptionModel = new Captions_Model_Captions();
+		$entry = $CaptionModel->getEntry();
+		if (isset($entry->id) && $entry->mediaType==1) {
+			return true;
+		} else {
+			return false;	
+		}
     }
 
     /**
@@ -87,11 +94,6 @@ class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_
                 array(
                         'controller' => 'koemei:index',
                         'actions' => array('index','edit'),
-                        'role' => Kms_Plugin_Access::ANON_ROLE,
-                ),
-				array(
-                        'controller' => 'koemei:index',
-                        'actions' => array('edit'),
                         'role' => Kms_Plugin_Access::ANON_ROLE,
                 )
         ); 
@@ -149,7 +151,7 @@ class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_
 		}
 		
 		//alow public customisation
-		if ($_POST['AlowCustomization']==1) {
+		if ($_POST['koemeiOpenImprove']==1) {
 			$content = Koemei_Model_Koemei::get_data('https://www.koemei.com/REST/users/'.$k_id.'/?default_access_level={allow_everyone}');
 		}
 		

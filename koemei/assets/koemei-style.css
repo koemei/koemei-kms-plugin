@@ -75,3 +75,6 @@ TODO : remove this once we use the kw_label class instead of the label class
     padding: 0px !important;
     text-shadow: none !important;
 }
+#kw_subtitles {
+	display:none !important;
+}
