@@ -1,7 +1,7 @@
 Koemei module for Kaltura Mediaspace
 ============
 
-Version 0.1.1
+Version 0.2.0
 
 Installation
 --------
@@ -18,7 +18,8 @@ Usage
 Known issues
 --------
 
-soon...
+* The subtitles ON the player in VIEW mode didn't seem to update after I improved the captions..
+* In view mode, the captions on the player should use the native Kaltura captions plugin, not a custom made one.
 
 Troubleshooting
 --------
