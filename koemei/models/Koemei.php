@@ -20,23 +20,7 @@ class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_
 	private $canEnable;
     public $viewHooks = array
     (
-
-            /*Kms_Resource_Viewhook::CORE_VIEW_HOOK_PLAYERTABLINKS => array(
-                    'action' => 'entrytab',
-                    'controller' => 'index',
-                    'order' => 100
-            ),
-			Kms_Resource_Viewhook::CORE_VIEW_HOOK_PLAYERTABS => array(
-                    'action' => 'entry',
-                    'controller' => 'index',
-                    'order' => 40
-            ),
-			Kms_Resource_Viewhook::CORE_VIEW_HOOK_EDIT_ENTRY_TABS => array(
-                    'action' => 'edit',
-                    'controller' => 'index',
-                    'order' => 40
-            ),*/
-			Kms_Resource_Viewhook::CORE_VIEW_HOOK_MODULES_HEADER => array( 
+			Kms_Resource_Viewhook::CORE_VIEW_HOOK_MODULES_HEADER => array(
                     'action' => 'header',
                     'controller' => 'index', 
                     'order' => 20
