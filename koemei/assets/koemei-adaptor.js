@@ -1,9 +1,14 @@
+/*
+* Copyright ©2013 Koemei SA
+* author : Tra!an
+*/
+
 // JavaScript Document
 $(document).ready(function (e) {
 	
 	//start_edit = 0; - is it an edit widget?
-    kw_start_edit = 0;
-	
+    var kw_start_edit = 0;
+
 	//edit transcript - entry page
     $('.edit_transcript').click(function (event) {
         event.preventDefault();
@@ -11,56 +16,73 @@ $(document).ready(function (e) {
         koemeiWidget.close();
 		//clone the player & remove it
         var clone = $("#kplayer").clone(true);
+		console.log(clone);
         $("#kplayer").remove();
         $('#player').css('background', 'transparent');
 		//put the cloned player in the psedudo widget, and set start_edit = 1 so on player ready it will initialise an edit widget
         $('#new_player').html(clone);
+		$('#kplayer').width(520);
+		$('#kplayer').height(320);
         $('#pseudo_overlay').show();
         kw_start_edit = 1;
     });
 
 
 	//close the widget, put the player back in the page
-    $('#close_pseudo_widget').live('click', function (event) {
+    $('body').on('click','#close_pseudo_widget', function (event) {
         event.preventDefault();
         var clone = $("#kplayer").clone(true);
         $("#kplayer").remove();
         $('#player').append(clone);
         $('#player').css('background', '#000');
+		$('#kplayer').width('');
+		$('#kplayer').height('');
         $('#pseudo_overlay').hide();
         kw_start_edit = 0;
     });
 
 
-    //edit page: find rows in the captions tab that are from koemei servers. remove Edit label button and add improve captions button
+    //edit page: find rows in the captions tab that are from koemei servers.
+    // add improve captions button
     if (kw_in_edit === 1) {
-        var captions_list = $('.caption');
-        if (captions_list.length > 0) {
-            $.each(captions_list, function (index, element) {
-                var child = $(element).children('.caption-part').children('.label');
-                var label = $(child).html();
-                if (label === 'Caption via Koemei') {
-                    $(element).children('.caption-part').children('.change').html('<a href="#" class="improve_captions">Improve captions</a>');
-                }
-            });
-        }
+		$('#koemei-tab-tab').remove();
+
+        var labels = $('*[data-type="label"]');
+        var koemei_found=false;
+        labels.each(function(){
+            if ($(this).html()=== 'Caption via Koemei'){
+                koemei_found=true;
+                var sibs = $(this).parent().parent().siblings();
+                sibs.each(function(){
+                    var actions = $(this)
+                    var downloadAction = actions.children(".downloadCaption");
+                    downloadAction.each(function(){
+                        var improveLink = '<a class="improve_captions hidden-phone hidden-tablet" href="#" title="Improve caption"><i class="icon-edit"></i></a>';
+                        actions.append(improveLink);
+                    })
+                });
+            }
+        });
+       
     }
 	
 	//improve captions click, show edit widget
-    $('.improve_captions').live('click', function (event) {
+    $('body').on('click', '.improve_captions', function (event) {
         event.preventDefault();
 		//clone the player & remove it
         var clone = $("#kplayer").clone(true);
         $("#kplayer").remove();
-        $('#edit_player').css('background', 'transparent');
+        $('#player').css('background', 'transparent');
 		//put the cloned player in the psedudo widget, and set start_edit = 1 so on player ready it will initialise an edit widget
         $('#new_player').html(clone);
+		$('#kplayer').width(520);
+		$('#kplayer').height(320);
         $('#pseudo_overlay').show();
         kw_start_edit = 1;
         kw_start_koemei = 1;
     });
 
-    $('#close_pseudo_widget_edit').live('click', function (event) {
+    $('body').on('click', '#close_pseudo_widget_edit', function (event) {
         event.preventDefault();
 		//close the widget
         koemeiWidget.close();
@@ -68,15 +90,17 @@ $(document).ready(function (e) {
         var clone = $("#kplayer").clone(true);
         $("#kplayer").remove();
 		//put the player back
-        $('#edit_player').append(clone);
-        $('#edit_player').css('background', '#000');
+        $('#player').append(clone);
+        $('#player').css('background', '#000');
         $('#pseudo_overlay').hide();
+		$('#kplayer').width('');
+		$('#kplayer').height('');
         kw_start_edit = 0;
         kw_start_koemei = 0;
     });
 
 	//close widget on publish
-    $('#kw_publish-button').live('click', function (event) {
+    $('body').on('click', '#kw_publish-button', function (event) {
         $('#close_pseudo_widget').click();
         $('#close_pseudo_widget_edit').click();
     });

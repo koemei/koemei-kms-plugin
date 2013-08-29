@@ -1,0 +1,34 @@
+<div id="koemei_tab">
+<script type="text/javascript">
+	var kw_entry_id = '<?php echo $this->entry_id; ?>';
+	var kw_start_koemei = <?php echo $this->start_koemei; ?>;
+	var kw_in_edit = 0;
+</script>
+<?php if ($this->start_koemei==0) { ?>
+	<div class="koemei_info">
+    	No translations found on the Koemei service
+    </div>
+
+<?php } else if ($this->allow_edit==1)  { ?>
+    <div class="tabActionLinks">
+		<a id="show_edit_details" class="btn btn-primary edit_transcript hidden-phone hidden-tablet" href="#"><i class="icon-edit icon-white"></i>Edit transcript</a>
+	</div>
+<?php } ?>
+<div id="koemei_player"></div>
+
+</div>
+
+
+
+<div id="pseudo_overlay" class="overlay_new" style="display:none;">
+	<div class="pseudo_wrapper">
+    	<div id="close_pseudo_widget">&nbsp;</div>
+    	<div id="new_player">
+        &nbsp;
+        </div>
+        <div id="new_widget">
+        &nbsp;
+    	</div>
+    </div>
+
+</div>

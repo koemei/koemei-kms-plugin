@@ -1,20 +1,15 @@
 <?php
 /*
- * All Code Confidential and Proprietary, Copyright ©2011 Kaltura, Inc.
- * To learn more: http://corp.kaltura.com/Products/Video-Applications/Kaltura-Mediaspace-Video-Portal
+ * Copyright ©2013 Koemei SA
+ * @author Tra!an
  */
+
 //	include css and js that will go in the page <head>
 
-
-
-
-//$this->headLink()->appendStylesheet($this->baseUrl('build' . BUILD_NUMBER . '/koemei/asset/koemei-widget.css'));
-//$this->headScript()->appendFile($this->baseUrl('build'. BUILD_NUMBER . '/koemei/asset/koemei-widget.js'));
-
 //load widget resources
-$this->headLink()->appendStylesheet('//s3.amazonaws.com/static.koemei.com/widget/css/koemei-widget.css');
-$this->headScript()->appendFile('//s3.amazonaws.com/static.koemei.com/widget/javascript/koemei-widget.min.js');
+$this->headLink()->appendStylesheet('koemei', '//s3.amazonaws.com/static.koemei.com/widget/css/koemei-widget.css');
+$this->headScript()->appendFile('koemei', '//s3.amazonaws.com/static.koemei.com/widget/javascript/koemei-widget.min.js');
 
 //load custom CSS/JS
-$this->headLink()->appendStylesheet($this->baseUrl('build' . BUILD_NUMBER . '/koemei/asset/koemei-style.css'));
-$this->headScript()->appendFile($this->baseUrl('build'. BUILD_NUMBER . '/koemei/asset/koemei-adaptor.js'));
+$this->headLink()->appendStylesheet('koemei', $this->baseUrl('build' . BUILD_NUMBER . '/koemei/asset/koemei-style.css'));
+$this->headScript()->appendFile('koemei', $this->baseUrl('build'. BUILD_NUMBER . '/koemei/asset/koemei-adaptor.js'));

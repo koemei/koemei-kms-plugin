@@ -1,7 +1,7 @@
 Koemei module for Kaltura Mediaspace
 ============
 
-Version 0.1.1
+Version 0.2.1
 
 Installation
 --------
@@ -20,16 +20,24 @@ Known issues
 
 soon...
 
+Troubleshooting
+--------
+
+* In case your newly added media files are not automatically transcribed, please check that the notifications are setup in kmc (Settings>Integration Settings>Notifications) and that the url is https://www.koemei.com/REST/services/notify/kaltura
+* Please contact support@koemei.com if you need help setting up or using this plugin.
+
+
 Revision history
 --------
 0.1.0 : Initial version
 0.1.1 : RC - Fixes to 0.1.0 following comments from Kaltura R&D validation team
 0.1.2 : Repository refactoring (removed uncompressed KMS source)
+0.2.0 : KMS5 compatibility
+0.2.1 : KMS5 compatibility - fixes for 20130827 review
 
 Next steps :
 -------
 
-* KMS5 compatibility
 * automatic linking : no user interaction needed (use adminSecret to link Koemei/Kaltura accounts)
 * display quota usage in admin console
 * display estimated ETA for transcription when media is still being transcribed
