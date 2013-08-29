@@ -136,7 +136,7 @@ class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_
 	}
 	
 	//alow public customisation
-	public static function enableImproove($param) {
+	public static function enableImprove($param) {
 		if ($param==1) {
 			$content = Koemei_Model_Koemei::get_data('https://www.koemei.com/REST/users/'.$k_id.'/?default_access_level={allow_everyone}');
 			return 'Open captioning activated';
