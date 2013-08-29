@@ -138,24 +138,30 @@ class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_
 	}
 	
 	//save custom settings on koemei servers/check if user id exists
-	public static function settingsSaved() {
-		$k_id= $_POST['koemeiUuid'];
-		$content = Koemei_Model_Koemei::get_data('https://www.koemei.com/REST/users/'.$k_id);
+	public static function settingsSaved($param) {
+		$content = Koemei_Model_Koemei::get_data('https://www.koemei.com/REST/users/'.$param);
 		$xml = simplexml_load_string($content);
-		
-		
 		//show message if UUID not found.
 		if (!isset($xml->Id)) {
-			echo "The Koemei UUID you've specified does not exist.";
+			return "The Koemei UUID you've specified does not exist.";
 			exit;
 		}
+		return 'Account linked';
 		
-		//alow public customisation
-		if ($_POST['koemeiOpenImprove']==1) {
-			$content = Koemei_Model_Koemei::get_data('https://www.koemei.com/REST/users/'.$k_id.'/?default_access_level={allow_everyone}');
-		}
 		
 	}
+	
+	//alow public customisation
+	public static function enableImproove($param) {
+		if ($param==1) {
+			$content = Koemei_Model_Koemei::get_data('https://www.koemei.com/REST/users/'.$k_id.'/?default_access_level={allow_everyone}');
+			return 'Open captioning activated';
+		} else {
+			return 'Open captioning disabled';	
+		}
+	}
+	
+	
     public static function getModuleDependency()
     {
         return array('captions');
