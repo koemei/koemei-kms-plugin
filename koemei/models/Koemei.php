@@ -44,10 +44,11 @@ class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_
 
         if ($entry->type == Kaltura_Client_Enum_EntryType::MEDIA_CLIP) {
             if ($entry->mediaType == Kaltura_Client_Enum_MediaType::VIDEO || $entry->mediaType == Kaltura_Client_Enum_MediaType::AUDIO) {
-                $isHandlingType = true;
+                if (Kaltura_Client_ExternalMedia_Enum_ExternalMediaSourceType::INTERCALL != $mediaType){
+                    $isHandlingType = true;
+                }
             }
         }
-
 
 		if (isset($entry->id) && $isHandlingType) {
 			return true;
