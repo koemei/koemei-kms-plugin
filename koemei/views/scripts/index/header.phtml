@@ -7,9 +7,15 @@
 //	include css and js that will go in the page <head>
 
 //load widget resources
-$this->headLink()->appendStylesheet('koemei', '//s3.amazonaws.com/static.koemei.com/widget/css/koemei-widget.css');
-$this->headScript()->appendFile('koemei', '//s3.amazonaws.com/static.koemei.com/widget/javascript/koemei-widget.min.js');
+
+
+
+$protocol = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https' : 'http');
+$this->headLink()->appendStylesheet("$protocol://s3.amazonaws.com/static.koemei.com/widget/css/koemei-widget.css");
+$this->headScript()->appendFile("$protocol://s3.amazonaws.com/static.koemei.com/widget/javascript/koemei-widget.min.js");
+
+
 
 //load custom CSS/JS
-$this->headLink()->appendStylesheet('koemei', $this->baseUrl('build' . BUILD_NUMBER . '/koemei/asset/koemei-style.css'));
-$this->headScript()->appendFile('koemei', $this->baseUrl('build'. BUILD_NUMBER . '/koemei/asset/koemei-adaptor.js'));
+$this->moduleHeadLink()->appendStylesheet('koemei', 'koemei-style.css');
+$this->moduleHeadScript()->appendFile('koemei', 'koemei-adaptor.js');
