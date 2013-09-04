@@ -1,7 +1,7 @@
 Koemei module for Kaltura Mediaspace
 ============
 
-Version 0.2.1
+Version 0.2.2
 
 Installation
 --------
@@ -34,6 +34,7 @@ Revision history
 0.1.2 : Repository refactoring (removed uncompressed KMS source)
 0.2.0 : KMS5 compatibility
 0.2.1 : KMS5 compatibility - fixes for 20130827 review
+0.2.2 : KMS5 compatibility - fixes for 20130904 review
 
 Next steps :
 -------

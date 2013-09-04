@@ -36,7 +36,20 @@ class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_
     {
 		$CaptionModel = new Captions_Model_Captions();
 		$entry = $CaptionModel->getEntry();
-		if (isset($entry->id) && $entry->type!=Kaltura_Client_Enum_EntryType::EXTERNAL_MEDIA) {
+
+		// exclude webcasts
+		$isHandlingType = false;
+        $entryType = $entry->type;
+        $mediaType = ($entryType == Kaltura_Client_Enum_EntryType::EXTERNAL_MEDIA && isset($entry->externalSourceType)? $entry->externalSourceType : null);
+
+        if ($entry->type == Kaltura_Client_Enum_EntryType::MEDIA_CLIP) {
+            if ($entry->mediaType == Kaltura_Client_Enum_MediaType::VIDEO || $entry->mediaType == Kaltura_Client_Enum_MediaType::AUDIO) {
+                $isHandlingType = true;
+            }
+        }
+
+
+		if (isset($entry->id) && $isHandlingType) {
 			return true;
 		} else {
 			return false;	
@@ -135,7 +148,7 @@ class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_
 		
 	}
 	
-	//alow public customisation
+	//allow public customisation
 	public static function enableImprove($param) {
 		if ($param==1) {
 			$content = Koemei_Model_Koemei::get_data('https://www.koemei.com/REST/users/'.$k_id.'/?default_access_level={allow_everyone}');
