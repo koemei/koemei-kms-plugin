@@ -36,7 +36,7 @@ class Koemei_Model_Koemei extends Kms_Module_BaseModel implements Kms_Interface_
     {
 		$CaptionModel = new Captions_Model_Captions();
 		$entry = $CaptionModel->getEntry();
-		if (isset($entry->id) && $entry->mediaType==1) {
+		if (isset($entry->id) && $entry->type!=Kaltura_Client_Enum_EntryType::EXTERNAL_MEDIA) {
 			return true;
 		} else {
 			return false;	
