@@ -16,7 +16,7 @@ $(document).ready(function (e) {
         koemeiWidget.close();
 		//clone the player & remove it
         var clone = $("#kplayer").clone(true);
-		console.log(clone);
+		//console.log(clone);
         $("#kplayer").remove();
         $('#player').css('background', 'transparent');
 		//put the cloned player in the psedudo widget, and set start_edit = 1 so on player ready it will initialise an edit widget
@@ -44,7 +44,7 @@ $(document).ready(function (e) {
 
     //edit page: find rows in the captions tab that are from koemei servers.
     // add improve captions button
-    if (/*kw_in_edit*/kw_start_edit === 1) {
+    if (kw_in_edit != null && kw_in_edit === 1) {
 		$('#koemei-tab-tab').remove();
 
         var labels = $('*[data-type="label"]');

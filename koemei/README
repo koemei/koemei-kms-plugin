@@ -1,7 +1,7 @@
 Koemei module for Kaltura Mediaspace
 ============
 
-Version 0.2.3
+Version 0.3.0
 
 Installation
 --------
@@ -36,8 +36,10 @@ Revision history
 0.2.0 : KMS5 compatibility
 0.2.1 : KMS5 compatibility - fixes for 20130827 review
 0.2.2 : KMS5 compatibility - fixes for 20130904 review
-0.2.3 : KMS5 compatibility - fixes for 20131030 review
-* use latest widget version (3.2)
+0.3.0 : KMS5 compatibility - fixes for 20131030 review
+* use latest widget version (3.2) - performance improvement on longer videos
+* UI fix - button margin
+* JS fix - declare all variables
 
 Next steps :
 -------
