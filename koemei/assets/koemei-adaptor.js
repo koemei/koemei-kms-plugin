@@ -16,7 +16,7 @@ $(document).ready(function (e) {
         koemeiWidget.close();
 		//clone the player & remove it
         var clone = $("#kplayer").clone(true);
-		console.log(clone);
+		//console.log(clone);
         $("#kplayer").remove();
         $('#player').css('background', 'transparent');
 		//put the cloned player in the psedudo widget, and set start_edit = 1 so on player ready it will initialise an edit widget
@@ -44,7 +44,7 @@ $(document).ready(function (e) {
 
     //edit page: find rows in the captions tab that are from koemei servers.
     // add improve captions button
-    if (kw_in_edit === 1) {
+    if (kw_in_edit != null && kw_in_edit === 1) {
 		$('#koemei-tab-tab').remove();
 
         var labels = $('*[data-type="label"]');
@@ -131,7 +131,14 @@ $(document).ready(function (e) {
                     video_height: 0,
                     width: 670,
                     service: 'kaltura',
-                    readonly: true
+                    show_exit: false,
+                    detach_info: true,
+                    features: {
+                        transcript: true,
+                        notes: false,
+                        videos: false
+                    },
+                    koemei_css_path: null
                 });
             }
 			//edit widget
@@ -146,7 +153,15 @@ $(document).ready(function (e) {
                     video_height: 0,
                     width: 520,
                     widget_height: 280,
-                    service: 'kaltura'
+                    service: 'kaltura',
+                    show_exit: false,
+                    detach_info: true,
+                    features: {
+                        transcript: true,
+                        notes: false,
+                        videos: false
+                    },
+                    koemei_css_path: null
                 });
             }
 

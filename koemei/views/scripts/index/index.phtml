@@ -1,4 +1,21 @@
 <div id="koemei_tab">
+<style>
+    .koemei_widget .widget_player {
+      height: 0 !important;
+    }
+    .koemei_widget .koemei_video_info {
+      display: none !important;
+    }
+    .koemei_widget .video_info_button {
+      display: none !important;
+    }
+    .koemei_widget .widget_bar {
+      display: none !important;
+    }
+    .koemei_widget input {
+      border-radius: 0;
+    }
+</style>
 <script type="text/javascript">
 	var kw_entry_id = '<?php echo $this->entry_id; ?>';
 	var kw_start_koemei = <?php echo $this->start_koemei; ?>;
