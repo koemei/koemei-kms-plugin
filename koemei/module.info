@@ -1,3 +1,3 @@
 Name = "Koemei"
-Usage = "To activate the plugin : 1. <a href='https://www.koemei.com/pricing' target='_blank'>Create your account</a><br/> 2. link your Kaltura account : <a href='https://www.koemei.com/importlibrary' target='_blank'>Import</a> <br />3. Grab your Koemei uuid from <a href='https://www.koemei.com/my_settings' target='_blank'>your settings page</a>"
+Usage = "To activate the plugin :<br />1. <a href='https://www.koemei.com/pricing' target='_blank'>Create your account</a><br/>2. link your Kaltura account : <a href='https://www.koemei.com/importlibrary' target='_blank'>Import</a> <br />3. Grab your Koemei uuid from <a href='https://www.koemei.com/my_settings' target='_blank'>your settings page</a><br />4. Save your configuration<br />5. Enable the module and save again<br />"
 Description = "This module enables the automatic transcription of the audio/video media hosted on Kaltura, it also provides a way to improve the automatically generated transcripts."
