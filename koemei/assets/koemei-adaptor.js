@@ -131,7 +131,14 @@ $(document).ready(function (e) {
                     video_height: 0,
                     width: 670,
                     service: 'kaltura',
-                    readonly: true
+                    show_exit: false,
+                    detach_info: true,
+                    features: {
+                        transcript: true,
+                        notes: false,
+                        videos: false
+                    },
+                    koemei_css_path: null
                 });
             }
 			//edit widget
@@ -146,7 +153,15 @@ $(document).ready(function (e) {
                     video_height: 0,
                     width: 520,
                     widget_height: 280,
-                    service: 'kaltura'
+                    service: 'kaltura',
+                    show_exit: false,
+                    detach_info: true,
+                    features: {
+                        transcript: true,
+                        notes: false,
+                        videos: false
+                    },
+                    koemei_css_path: null
                 });
             }
 
