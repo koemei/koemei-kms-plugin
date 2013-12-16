@@ -44,7 +44,7 @@ $(document).ready(function (e) {
 
     //edit page: find rows in the captions tab that are from koemei servers.
     // add improve captions button
-    if (kw_in_edit != null && kw_in_edit === 1) {
+    if (typeof kw_in_edit != "undefined" && kw_in_edit != null && kw_in_edit === 1) {
 		$('#koemei-tab-tab').remove();
 
         var labels = $('*[data-type="label"]');
