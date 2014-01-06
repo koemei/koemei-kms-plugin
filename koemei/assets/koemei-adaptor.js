@@ -21,7 +21,7 @@ $(document).ready(function (e) {
         $('#player').css('background', 'transparent');
 		//put the cloned player in the psedudo widget, and set start_edit = 1 so on player ready it will initialise an edit widget
         $('#new_player').html(clone);
-		$('#kplayer').width(520);
+		$('#kplayer').width(620);
 		$('#kplayer').height(320);
         $('#pseudo_overlay').show();
         kw_start_edit = 1;
@@ -75,7 +75,7 @@ $(document).ready(function (e) {
         $('#player').css('background', 'transparent');
 		//put the cloned player in the psedudo widget, and set start_edit = 1 so on player ready it will initialise an edit widget
         $('#new_player').html(clone);
-		$('#kplayer').width(520);
+		$('#kplayer').width(620);
 		$('#kplayer').height(320);
         $('#pseudo_overlay').show();
         kw_start_edit = 1;
@@ -151,7 +151,7 @@ $(document).ready(function (e) {
                     toolbar: false,
                     el: $('#new_widget'),
                     video_height: 0,
-                    width: 520,
+                    width: 620,
                     widget_height: 280,
                     service: 'kaltura',
                     show_exit: false,

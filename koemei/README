@@ -1,7 +1,7 @@
 Koemei module for Kaltura Mediaspace
 ============
 
-Version 0.3.0
+Version 0.3.1
 
 Installation
 --------
@@ -44,6 +44,7 @@ Revision history
 Next steps :
 -------
 
+* publish confirmation message
 * push this module to github
 * Maybe notifications is not set properly (need to specify each notification type)
 * register in 1 step
