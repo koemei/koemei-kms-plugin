@@ -1,3 +1,31 @@
-Additional resources:
-http://twitter.github.io/bootstrap/scaffolding.html
-http://fortawesome.github.io/Font-Awesome/icons/
+Koemei module for Kaltura MediaSpace (KMS)
+============
+
+Version 0.3.2
+
+Installation and usage
+--------
+
+A user guide on how to install and use the Koemei KMS module: https://docs.google.com/document/d/10EaHXiGB1r5-saE83OeaVZ0Sda-HlZofClo_CDKP0t0/edit?usp=sharing
+
+Troubleshooting
+--------
+
+* If you need help setting up or using this plugin, feel free to contact support@koemei.com or create a Github new issue (https://github.com/koemei/koemei-kms-plugin/issues/new)[here]
+* (https://github.com/koemei/koemei-kms-plugin/issues)[known issues]
+
+Revision history
+--------
+
+0.1.0 : Initial version
+0.1.1 : RC - Fixes to 0.1.0 following comments from Kaltura R&D validation team
+0.1.2 : Repository refactoring (removed uncompressed KMS source)
+0.2.0 : KMS5 compatibility
+0.2.1 : KMS5 compatibility - fixes for 20130827 review
+0.2.2 : KMS5 compatibility - fixes for 20130904 review
+0.3.0 : KMS5 compatibility - fixes for 20131030 review
+* use latest widget version (3.2) - performance improvement on longer videos
+* UI fix - button margin
+* JS fix - declare all variables
+0.3.1 : compatibility with KMS version 5.4.03
+0.3.2 : move repository and issues to github
