@@ -1,3 +1,73 @@
-Additional resources:
-http://twitter.github.io/bootstrap/scaffolding.html
-http://fortawesome.github.io/Font-Awesome/icons/
+Koemei module for Kaltura MediaSpace (KMS)
+============
+
+Version 0.3.2
+
+Installation and usage
+--------
+
+A user guide on how to install and use the Koemei KMS module: https://docs.google.com/document/d/10EaHXiGB1r5-saE83OeaVZ0Sda-HlZofClo_CDKP0t0/edit?usp=sharing
+
+Known issues
+--------
+
+* readonly view should be like on the classpage
+* when editing the transcript, closing the edit window will close also the readonly transcript
+* authorization on publish
+* problem when saving a transcript: Probably some problem with authorization (regular user can create a caption but not edit it...)
+```
+[2014-01-13 22:02:37,083: ERROR/MainProcess] publish_transcript: error while uploading transcript: The property "KalturaCaptionAsset::fileExt" cannot be updated (PROPERTY_VALIDATION_NOT_UPDATABLE)
+[2014-01-13 22:02:37,083: ERROR/MainProcess] Traceback (most recent call last):
+  File "/home/tg/www/sites/shared/connection/kaltura.py", line 311, in publish_transcript
+    caption_asset.setFormat(KalturaCaptionType.SRT)
+  File "/home/tg/www/sites/shared/libs/kaltura/KalturaPlugins/KalturaCaptionClientPlugin.py", line 768, in update
+    resultNode = self.client.doQueue()
+  File "/home/tg/www/sites/shared/libs/kaltura/KalturaClient.py", line 325, in doQueue
+    resultNode = self.parsePostResult(postResult)
+  File "/home/tg/www/sites/shared/libs/kaltura/KalturaClient.py", line 297, in parsePostResult
+    self.throwExceptionIfError(resultNode)
+  File "/home/tg/www/sites/shared/libs/kaltura/KalturaClient.py", line 373, in throwExceptionIfError
+    raise exceptionObj
+KalturaException: The property "KalturaCaptionAsset::fileExt" cannot be updated (PROPERTY_VALIDATION_NOT_UPDATABLE)
+```
+
+* the improve caption button does not display in the edit
+* publish should not be auto....
+* delay
+* webm format support
+
+Troubleshooting
+--------
+
+* In case your newly added media files are not automatically transcribed, please check that the notifications are enabled in KMC (Settings>Integration Settings>Notifications) and that the url is https://www.koemei.com/REST/services/notify/kaltura
+* Please contact support@koemei.com if you need help setting up or using this plugin.
+
+Revision history
+--------
+
+0.1.0 : Initial version
+0.1.1 : RC - Fixes to 0.1.0 following comments from Kaltura R&D validation team
+0.1.2 : Repository refactoring (removed uncompressed KMS source)
+0.2.0 : KMS5 compatibility
+0.2.1 : KMS5 compatibility - fixes for 20130827 review
+0.2.2 : KMS5 compatibility - fixes for 20130904 review
+0.3.0 : KMS5 compatibility - fixes for 20131030 review
+* use latest widget version (3.2) - performance improvement on longer videos
+* UI fix - button margin
+* JS fix - declare all variables
+0.3.1 : compatibility with KMS version 5.4.03
+0.3.2 : move repository to github
+
+Next steps :
+-------
+
+* publish confirmation message
+* push this module to github
+* display estimated ETA for transcription when media is still being transcribed
+* do not publish if accuracy is low
+* relaunch transcription
+* register in 1 step
+* automatic linking : no user interaction needed (use adminSecret to link Koemei/Kaltura accounts)
+* display quota usage in admin console
+* allow several users to edit a transcript at the same time
+* social features
